@@ -1,0 +1,939 @@
+{
+  "snapshot": "2026-09-25T15:55:49.846Z",
+  "seed": 20260926,
+  "population": 134,
+  "population_by_venue_pair": {
+    "kalshi-polymarket": 47,
+    "kalshi-limitless": 26,
+    "polymarket-limitless": 61
+  },
+  "excluded": "random-sample.json",
+  "n": 30,
+  "pairs": [
+    {
+      "n": 1,
+      "key": "polymarket:will-bitcoin-reach-86k-on-september-25-2026|limitless:86000-1790340607941",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-bitcoin-reach-86k-on-september-25-2026",
+        "title": "Will Bitcoin reach $86,000 on September 25?",
+        "outcome": "↑ 86,000",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1-minute candle for Bitcoin (BTC/USDT) on the date specified in the title, between 12:00 AM ET and 11:59 PM ET has a final \"High\" price equal to or greater than the price specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"High\" prices available at https://www.binance.com/en/trade/BTC_USDT, with the chart settings on \"1m\" candles selected on the top bar.\n\nPlease note that the outcome of this market depends solely on the price data from the Binance BTC/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-09-26T04:00:00Z",
+        "yes": 0.039,
+        "no": 0.98,
+        "url": "https://polymarket.com/market/will-bitcoin-reach-86k-on-september-25-2026"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "86000-1790340607941",
+        "title": "What price will Bitcoin hit on September 25?",
+        "outcome": "↑ 86,000",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1-minute candle for Bitcoin (BTC/USDT) on the date specified in the title, between 12:00 AM ET and 11:59 PM ET has a final \"High\" price equal to or greater than the price specified in the title. Otherwise, this market will resolve to \"No\".\n\n The resolution source for this market is Binance, specifically the BTC/USDT \"High\" prices available at https://www.binance.com/en/trade/BTC_USDT , with the chart settings on \"1m\" candles selected on the top bar.\n\n Please note that the outcome of this market depends solely on the price data from the Binance BTC/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-09-26T04:00:00.000Z",
+        "yes": 0.999,
+        "no": 0.999,
+        "url": "https://limitless.exchange/markets/what-price-will-bitcoin-hit-on-september-25-2026-1790340607934"
+      }
+    },
+    {
+      "n": 2,
+      "key": "polymarket:will-ethereum-dip-to-1600-in-september-2026|limitless:will-ethereum-dip-to-1600-in-september-2026-p",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-ethereum-dip-to-1600-in-september-2026",
+        "title": "Will Ethereum dip to $1,600 in September?",
+        "outcome": "↓ 1,600",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1 minute candle for ETH/USDT during the month specified in the title (from 00:00 AM ET on the first day to 11:59 PM ET on the last), has a final Low price equal to or lower than the price specified in the title. Otherwise, this market will resolve to \"No.\"\n\nThe resolution source for this market is Binance, specifically the ETH/USDT Low prices available at https://www.binance.com/en/trade/ETH_USDT, with the chart settings on \"1m\" for one-minute candles selected on the top bar.\n\nPlease note that the outcome of this market depends solely on the price data from the Binance ETH/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-10-01T04:00:00Z",
+        "yes": 0.004,
+        "no": 0.998,
+        "url": "https://polymarket.com/market/will-ethereum-dip-to-1600-in-september-2026"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "will-ethereum-dip-to-1600-in-september-2026-p",
+        "title": "What price will Ethereum hit in September?",
+        "outcome": "↓ 1,600",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1 minute candle for ETH/USDT during the month specified in the title (from 00:00 AM ET on the first day to 11:59 PM ET on the last), has a final Low price equal to or lower than the price specified in the title. Otherwise, this market will resolve to \"No.\"\n\n The resolution source for this market is Binance, specifically the ETH/USDT Low prices available at https://www.binance.com/en/trade/ETH_USDT , with the chart settings on \"1m\" for one-minute candles selected on the top bar.\n\n Please note that the outcome of this market depends solely on the price data from the Binance ETH/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-10-01T04:00:00.000Z",
+        "yes": 0.01,
+        "no": 1,
+        "url": "https://limitless.exchange/markets/what-price-will-ethereum-hit-in-september-2026-p"
+      }
+    },
+    {
+      "n": 3,
+      "key": "kalshi:KXPRESPERSON-28-PBUT|polymarket:will-pete-buttigieg-win-the-2028-us-presidential-election",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXPRESPERSON-28-PBUT",
+        "title": "Who will win the next presidential election?",
+        "outcome": "Pete Buttigieg",
+        "rules": "If Pete Buttigieg is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes.",
+        "close": "2029-11-07T15:00:00Z",
+        "yes": 0.029,
+        "no": 0.972,
+        "url": "https://kalshi.com/markets/kxpresperson"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-pete-buttigieg-win-the-2028-us-presidential-election",
+        "title": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+        "outcome": "Pete Buttigieg",
+        "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated.",
+        "close": "2028-11-07T00:00:00Z",
+        "yes": 0.028,
+        "no": 0.973,
+        "url": "https://polymarket.com/market/will-pete-buttigieg-win-the-2028-us-presidential-election"
+      }
+    },
+    {
+      "n": 4,
+      "key": "kalshi:SENATENH-26-R|polymarket:will-the-republicans-win-the-new-hampshire-senate-race-in-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "SENATENH-26-R",
+        "title": "Will Republicans win the Senate race in New Hampshire?",
+        "outcome": "John E. Sununu",
+        "rules": "If a representative of the Republican party is sworn in as a Senator of New Hampshire for the term beginning in 2027, then the market resolves to Yes.\n\nThis market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.",
+        "close": "2027-11-03T15:00:00Z",
+        "yes": 0.15,
+        "no": 0.86,
+        "url": "https://kalshi.com/markets/senatenh"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-the-republicans-win-the-new-hampshire-senate-race-in-2026",
+        "title": "Will the Republicans win the New Hampshire Senate race in 2026?",
+        "outcome": "John E. Sununu (R)",
+        "rules": "This market will resolve according to the winner of the 2026 midterm New Hampshire U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.",
+        "yes": 0.15,
+        "no": 0.87,
+        "url": "https://polymarket.com/market/will-the-republicans-win-the-new-hampshire-senate-race-in-2026"
+      }
+    },
+    {
+      "n": 5,
+      "key": "kalshi:KXVENEZDEFACTO-27JAN01-NMAD|polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXVENEZDEFACTO-27JAN01-NMAD",
+        "title": "Will Nicolás Maduro de facto hold head of state of Venezuela at the end of 2026?",
+        "outcome": "Nicolás Maduro",
+        "rules": "If Nicolás Maduro de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.\n\nFor the purposes of this Contract, \"Nicolás Maduro de facto holds head of state of Venezuela\" means that, at the end of 2026, Nicolás Maduro is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of Nicolás Maduro's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.\n\nThe Source Agency's determination of whether Nicolás Maduro de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:\n\nControl over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela\nIssuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction\nControl over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela\nTreatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela\nTreatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela\n\nThe following alone will NOT qualify as de facto holding head of state of Venezuela:\n\nHolding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela\nServing in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela\nNomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority\nStatus as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority\nSymbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and Nicolás Maduro performs the ceremonial functions associated with head of state of Venezuela without operative displacement\nForeign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction\nLeadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to Nicolás Maduro\nHolding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela\n\nIf, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.\n\nIf, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.",
+        "close": "2027-01-02T04:59:00Z",
+        "yes": 0.05,
+        "no": 0.99,
+        "url": "https://kalshi.com/markets/kxvenezdefacto"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026",
+        "title": "Will Nicolás Maduro be the leader of Venezuela end of 2026?",
+        "outcome": "Nicolás Maduro",
+        "rules": "This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\nFor the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. \n\nIf the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  \n\nIn the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. \n\nIf no individual holds the position this market will resolve to “No Head of State”. \n\nThe following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\nThe primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. \n\nNote: this market is mutually exclusive. \n",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.604,
+        "no": 0.397,
+        "url": "https://polymarket.com/market/will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026"
+      }
+    },
+    {
+      "n": 6,
+      "key": "polymarket:will-ethereum-dip-to-2500-september-21-27-2026|limitless:2500-1789963561335",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-ethereum-dip-to-2500-september-21-27-2026",
+        "title": "Will Ethereum dip to $2,500 September 21-27?",
+        "outcome": "↓ 2,500",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1 minute candle for Ethereum (ETH/USDT) during the date range specified in the title (from 12:00 AM ET on the first date to 11:59 PM ET on the last) has a final \"Low\" price equal to or lower than the price specified in the title. Otherwise, this market will resolve to \"No.\"\n\nThe resolution source for this market is Binance, specifically the ETH/USDT \"Low\" prices available at https://www.binance.com/en/trade/ETH_USDT, with the chart settings on \"1m\" candles selected on the top bar.\n\nPlease note that the outcome of this market depends solely on the price data from the Binance ETH/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-09-28T04:00:00Z",
+        "yes": 0.037,
+        "no": 0.964,
+        "url": "https://polymarket.com/market/will-ethereum-dip-to-2500-september-21-27-2026"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "2500-1789963561335",
+        "title": "What price will Ethereum hit September 21-27?",
+        "outcome": "↓ 2,500",
+        "rules": "This market will immediately resolve to \"Yes\" if any Binance 1 minute candle for Ethereum (ETH/USDT) during the date range specified in the title (from 12:00 AM ET on the first date to 11:59 PM ET on the last) has a final \"Low\" price equal to or lower than the price specified in the title. Otherwise, this market will resolve to \"No.\"\n\n The resolution source for this market is Binance, specifically the ETH/USDT \"Low\" prices available at https://www.binance.com/en/trade/ETH_USDT , with the chart settings on \"1m\" candles selected on the top bar.\n\n Please note that the outcome of this market depends solely on the price data from the Binance ETH/USDT trading pair. Prices from other exchanges, different trading pairs, or spot markets will not be considered for the resolution of this market.",
+        "close": "2026-09-28T04:00:00.000Z",
+        "yes": 0.05,
+        "no": 0.99,
+        "url": "https://limitless.exchange/markets/what-price-will-ethereum-hit-september-21-27-2026-1789963561328"
+      }
+    },
+    {
+      "n": 7,
+      "key": "kalshi:KXVENEZDEFACTO-27JAN01-DROD|limitless:delcy-rodriguez-1787676477917",
+      "venues": [
+        "kalshi",
+        "limitless"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXVENEZDEFACTO-27JAN01-DROD",
+        "title": "Will Delcy Rodríguez de facto hold head of state of Venezuela at the end of 2026?",
+        "outcome": "Delcy Rodríguez",
+        "rules": "If Delcy Rodríguez de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.\n\nFor the purposes of this Contract, \"Delcy Rodríguez de facto holds head of state of Venezuela\" means that, at the end of 2026, Delcy Rodríguez is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of Delcy Rodríguez's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.\n\nThe Source Agency's determination of whether Delcy Rodríguez de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:\n\nControl over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela\nIssuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction\nControl over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela\nTreatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela\nTreatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela\n\nThe following alone will NOT qualify as de facto holding head of state of Venezuela:\n\nHolding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela\nServing in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela\nNomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority\nStatus as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority\nSymbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and Delcy Rodríguez performs the ceremonial functions associated with head of state of Venezuela without operative displacement\nForeign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction\nLeadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to Delcy Rodríguez\nHolding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela\n\nIf, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.\n\nIf, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.",
+        "close": "2027-01-02T04:59:00Z",
+        "yes": 0.91,
+        "no": 0.11,
+        "url": "https://kalshi.com/markets/kxvenezdefacto"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "delcy-rodriguez-1787676477917",
+        "title": "Venezuela leader end of 2026?",
+        "outcome": "Delcy Rodríguez",
+        "rules": "Additional context — Updated August 25, 2026 \n Per the rules, “officially holds” refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. As of this clarification, The UN-recognized government of Venezuela has not formally removed or replaced Nicolás Maduro as President, and official government sources and statements continue to identify him as the President of Venezuela. Temporary legal measures assigning the exercise of presidential powers do not, on their own, constitute a transfer of the presidency. \n\n This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\n For the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela.\n\n If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa ).\n\n In the event that more than one official head of state is listed by the Venezuelan government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position.\n\n If no individual holds the position this market will resolve to “No Head of State”.\n\n The following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\n The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used.",
+        "close": "2026-12-31T18:00:00.000Z",
+        "yes": 0.38,
+        "no": 0.65,
+        "url": "https://limitless.exchange/markets/venezuela-leader-end-of-2026-1787676662914"
+      }
+    },
+    {
+      "n": 8,
+      "key": "polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026|limitless:nicolas-maduro-1787676477905",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026",
+        "title": "Will Nicolás Maduro be the leader of Venezuela end of 2026?",
+        "outcome": "Nicolás Maduro",
+        "rules": "This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\nFor the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. \n\nIf the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  \n\nIn the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. \n\nIf no individual holds the position this market will resolve to “No Head of State”. \n\nThe following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\nThe primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. \n\nNote: this market is mutually exclusive. \n",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.604,
+        "no": 0.397,
+        "url": "https://polymarket.com/market/will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "nicolas-maduro-1787676477905",
+        "title": "Venezuela leader end of 2026?",
+        "outcome": "Nicolás Maduro",
+        "rules": "Additional context — Updated August 25, 2026 \n Per the rules, “officially holds” refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. As of this clarification, The UN-recognized government of Venezuela has not formally removed or replaced Nicolás Maduro as President, and official government sources and statements continue to identify him as the President of Venezuela. Temporary legal measures assigning the exercise of presidential powers do not, on their own, constitute a transfer of the presidency. \n\n This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\n For the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela.\n\n If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa ).\n\n In the event that more than one official head of state is listed by the Venezuelan government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position.\n\n If no individual holds the position this market will resolve to “No Head of State”.\n\n The following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\n The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used.",
+        "close": "2026-12-31T18:00:00.000Z",
+        "yes": 0.615,
+        "no": 0.41,
+        "url": "https://limitless.exchange/markets/venezuela-leader-end-of-2026-1787676662914"
+      }
+    },
+    {
+      "n": 9,
+      "key": "kalshi:KXISRAELPM-26OCT27-YGOL|polymarket:will-yair-golan-be-the-next-prime-minister-of-israel",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXISRAELPM-26OCT27-YGOL",
+        "title": "Will Yair Golan become Prime Minister of Israel following the 2026 Israeli legislative election?",
+        "outcome": "Yair Golan",
+        "rules": "If Yair Golan becomes Prime Minister of Israel as a result of government formation following the 2026 Israeli legislative election and meets all constitutional requirements before Oct 27, 2027, then the market resolves to Yes.\n\nThe market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).\n\nIf no government forms by Oct 27, 2027, the Contract resolves to \"No one\" if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to \"No one\" immediately and No for all other strikes.",
+        "close": "2027-10-27T14:00:00Z",
+        "yes": 0.01,
+        "no": 1,
+        "url": "https://kalshi.com/markets/kxisraelpm"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-yair-golan-be-the-next-prime-minister-of-israel",
+        "title": "Will Yair Golan be the next Prime Minister of Israel?",
+        "outcome": "Yair Golan",
+        "rules": "Legislative elections are schedule to be held in Israel on October 27, 2026. \n\nThis market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.\n\nTo count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.\n\nIf no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.",
+        "close": "2026-10-27T23:59:00Z",
+        "yes": 0.004,
+        "no": 0.998,
+        "url": "https://polymarket.com/market/will-yair-golan-be-the-next-prime-minister-of-israel"
+      }
+    },
+    {
+      "n": 10,
+      "key": "polymarket:bank-of-england-increases-interest-rates-by-25-bps-after-november-2026-meeting-20260730150602310|limitless:25-bps-increase-1789387521645",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "bank-of-england-increases-interest-rates-by-25-bps-after-november-2026-meeting-20260730150602310",
+        "title": "Bank of England increases interest rates by 25 bps after November 2026 meeting?",
+        "outcome": "25 bps increase",
+        "rules": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England’s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of “Increase” or “Decrease” will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the “No Change” bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
+        "close": "2026-11-05T23:59:00Z",
+        "yes": 0.81,
+        "no": 0.2,
+        "url": "https://polymarket.com/market/bank-of-england-increases-interest-rates-by-25-bps-after-november-2026-meeting-20260730150602310"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "25-bps-increase-1789387521645",
+        "title": "Bank of England decision in November?",
+        "outcome": "25 bps increase",
+        "rules": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England’s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\n The resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar ( https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates ). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\n If the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\n If the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of “Increase” or “Decrease” will include policy rate increases or decreases of any size.\n\n If the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the “No Change” bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
+        "close": "2026-11-05T23:59:00.000Z",
+        "yes": 0.825,
+        "no": 0.215,
+        "url": "https://limitless.exchange/markets/bank-of-england-decision-in-november-1789387521621"
+      }
+    },
+    {
+      "n": 11,
+      "key": "polymarket:will-the-us-confirm-that-aliens-exist-before-2027-789-924-249|limitless:december-31-1787671443106",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-the-us-confirm-that-aliens-exist-before-2027-789-924-249",
+        "title": "Will the US confirm that aliens exist before 2027?",
+        "outcome": "December 31",
+        "rules": "This market will resolve to \"Yes\" if the President of the United States, any member of the Cabinet of the United States, any member of the Joint Chiefs of Staff, or any US federal agency definitively states that extraterrestrial life or technology exists by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe primary resolution source for this market will be official information from the government of the United States, however a consensus of credible reporting will also be used.",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.036,
+        "no": 0.965,
+        "url": "https://polymarket.com/market/will-the-us-confirm-that-aliens-exist-before-2027-789-924-249"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "december-31-1787671443106",
+        "title": "Will the US confirm that aliens exist by...?",
+        "outcome": "December 31",
+        "rules": "This market will resolve to \"Yes\" if the President of the United States, any member of the Cabinet of the United States, any member of the Joint Chiefs of Staff, or any US federal agency definitively states that extraterrestrial life or technology exists by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\n The primary resolution source for this market will be official information from the government of the United States, however a consensus of credible reporting will also be used.",
+        "close": "2027-01-01T04:59:00.000Z",
+        "yes": 0.045,
+        "no": 0.97,
+        "url": "https://limitless.exchange/markets/will-the-us-confirm-that-aliens-exist-by-1787671443088"
+      }
+    },
+    {
+      "n": 12,
+      "key": "kalshi:KXPRESPERSON-28-AOCA|polymarket:will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXPRESPERSON-28-AOCA",
+        "title": "Who will win the next presidential election?",
+        "outcome": "Alexandria Ocasio-Cortez",
+        "rules": "If Alexandria Ocasio-Cortez is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes.",
+        "close": "2029-11-07T15:00:00Z",
+        "yes": 0.092,
+        "no": 0.909,
+        "url": "https://kalshi.com/markets/kxpresperson"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+        "title": "Will Alexandria Ocasio-Cortez win the 2028 US Presidential Election?",
+        "outcome": "Alexandria Ocasio-Cortez",
+        "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated.",
+        "close": "2029-01-21T04:59:00Z",
+        "yes": 0.131,
+        "no": 0.87,
+        "url": "https://polymarket.com/market/will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election"
+      }
+    },
+    {
+      "n": 13,
+      "key": "kalshi:SENATEOHS-26-D|polymarket:will-the-democrats-win-the-ohio-senate-race-in-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "SENATEOHS-26-D",
+        "title": "Will Democratics win the Senate race in Ohio?",
+        "outcome": "Sherrod Brown",
+        "rules": "If a representative of the Democratic party is sworn in as a Senator of Ohio for the term beginning in 2027, then the market resolves to Yes.\n\nThis market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.",
+        "close": "2027-11-03T15:00:00Z",
+        "yes": 0.59,
+        "no": 0.42,
+        "url": "https://kalshi.com/markets/senateohs"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-the-democrats-win-the-ohio-senate-race-in-2026",
+        "title": "Will the Democrats win the Ohio Senate race in 2026?",
+        "outcome": "Sherrod Brown (D)",
+        "rules": "This market will resolve according to the winner of the 2026 Ohio U.S. Senate special election currently scheduled for November 3, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.",
+        "yes": 0.58,
+        "no": 0.43,
+        "url": "https://polymarket.com/market/will-the-democrats-win-the-ohio-senate-race-in-2026"
+      }
+    },
+    {
+      "n": 14,
+      "key": "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|polymarket:will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXVENEZDEFACTO-27JAN01-MMAC",
+        "title": "Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026?",
+        "outcome": "María Corina Machado",
+        "rules": "If María Corina Machado de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.\n\nFor the purposes of this Contract, \"María Corina Machado de facto holds head of state of Venezuela\" means that, at the end of 2026, María Corina Machado is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of María Corina Machado's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.\n\nThe Source Agency's determination of whether María Corina Machado de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:\n\nControl over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela\nIssuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction\nControl over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela\nTreatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela\nTreatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela\n\nThe following alone will NOT qualify as de facto holding head of state of Venezuela:\n\nHolding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela\nServing in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela\nNomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority\nStatus as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority\nSymbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and María Corina Machado performs the ceremonial functions associated with head of state of Venezuela without operative displacement\nForeign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction\nLeadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to María Corina Machado\nHolding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela\n\nIf, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.\n\nIf, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.",
+        "close": "2027-01-02T04:59:00Z",
+        "yes": 0.03,
+        "no": 0.99,
+        "url": "https://kalshi.com/markets/kxvenezdefacto"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026",
+        "title": "Will María Corina Machado be the leader of Venezuela end of 2026?",
+        "outcome": "María Corina Machado",
+        "rules": "This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\nFor the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. \n\nIf the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  \n\nIn the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. \n\nIf no individual holds the position this market will resolve to “No Head of State”. \n\nThe following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\nThe primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. \n\nNote: this market is mutually exclusive. \n",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.001,
+        "no": 0.9995,
+        "url": "https://polymarket.com/market/will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026"
+      }
+    },
+    {
+      "n": 15,
+      "key": "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|limitless:maria-corina-machado-1787676477924",
+      "venues": [
+        "kalshi",
+        "limitless"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXVENEZDEFACTO-27JAN01-MMAC",
+        "title": "Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026?",
+        "outcome": "María Corina Machado",
+        "rules": "If María Corina Machado de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.\n\nFor the purposes of this Contract, \"María Corina Machado de facto holds head of state of Venezuela\" means that, at the end of 2026, María Corina Machado is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of María Corina Machado's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.\n\nThe Source Agency's determination of whether María Corina Machado de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:\n\nControl over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela\nIssuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction\nControl over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela\nTreatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela\nTreatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela\n\nThe following alone will NOT qualify as de facto holding head of state of Venezuela:\n\nHolding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela\nServing in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela\nNomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority\nStatus as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority\nSymbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and María Corina Machado performs the ceremonial functions associated with head of state of Venezuela without operative displacement\nForeign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction\nLeadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to María Corina Machado\nHolding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela\n\nIf, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.\n\nIf, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.",
+        "close": "2027-01-02T04:59:00Z",
+        "yes": 0.03,
+        "no": 0.99,
+        "url": "https://kalshi.com/markets/kxvenezdefacto"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "maria-corina-machado-1787676477924",
+        "title": "Venezuela leader end of 2026?",
+        "outcome": "María Corina Machado",
+        "rules": "Additional context — Updated August 25, 2026 \n Per the rules, “officially holds” refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. As of this clarification, The UN-recognized government of Venezuela has not formally removed or replaced Nicolás Maduro as President, and official government sources and statements continue to identify him as the President of Venezuela. Temporary legal measures assigning the exercise of presidential powers do not, on their own, constitute a transfer of the presidency. \n\n This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.\n\n For the purposes of this market, \"officially holds\" refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela.\n\n If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa ).\n\n In the event that more than one official head of state is listed by the Venezuelan government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position.\n\n If no individual holds the position this market will resolve to “No Head of State”.\n\n The following do NOT constitute \"officially holding\" the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.\n\n The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used.",
+        "close": "2026-12-31T18:00:00.000Z",
+        "yes": 0.01,
+        "no": 0.999,
+        "url": "https://limitless.exchange/markets/venezuela-leader-end-of-2026-1787676662914"
+      }
+    },
+    {
+      "n": 16,
+      "key": "polymarket:will-lewis-hamilton-be-the-2026-f1-drivers-champion|limitless:lewis-hamilton-1769015228956",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "will-lewis-hamilton-be-the-2026-f1-drivers-champion",
+        "title": "Will Lewis Hamilton be the 2026 F1 Drivers' Champion?",
+        "outcome": "Lewis Hamilton",
+        "rules": "This market will resolve according to the listed driver that finishes 1st in the driver standings for the 2026 F1 season.\n\nThis market will resolve as soon as the official results of the final scheduled race of the 2026 F1 season are known.\n\nIf multiple drivers tie for first place in the drivers standings, this market will resolve according to the tiebreak procedure used by F1 to determine the 2026 F1 Drivers’ champion.\n\nIf at any point it becomes impossible for a listed driver to win the 2026 F1 Drivers Championship based on the rules of F1 (e.g., they are mathematically eliminated from contention), the corresponding market will resolve to “No”.\n\nIf the F1 season is permanently canceled or has not been completed by March 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from Formula 1.",
+        "close": "2026-12-06T00:00:00Z",
+        "yes": 0.015,
+        "no": 0.991,
+        "url": "https://polymarket.com/market/will-lewis-hamilton-be-the-2026-f1-drivers-champion"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "lewis-hamilton-1769015228956",
+        "title": "F1 Drivers' Champion",
+        "outcome": "Lewis Hamilton",
+        "rules": "This market will resolve according to the listed driver that finishes 1st in the driver standings for the 2026 F1 season.\n This market will resolve as soon as the official results of the final scheduled race of the 2026 F1 season are known.\n If multiple drivers tie for first place in the drivers standings, this market will resolve according to the tiebreak procedure used by F1 to determine the 2026 F1 Drivers’ champion.\n If the F1 season is permanently canceled or has not been completed by March 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n The primary resolution source for this market will be official information from Formula 1.",
+        "close": "2027-04-01T03:59:00.000Z",
+        "yes": 0.025,
+        "no": 0.987,
+        "url": "https://limitless.exchange/markets/f1-drivers-champion-1769015228907"
+      }
+    },
+    {
+      "n": 17,
+      "key": "polymarket:another-fed-rate-hike-in-2026|limitless:another-fed-rate-hike-in-2026-1789636928078",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "another-fed-rate-hike-in-2026",
+        "title": "Another Fed rate hike in 2026?",
+        "outcome": "",
+        "rules": "This market will resolve to “Yes” if the upper bound of the target federal funds rate is increased at any point between September 17, 2026 and the completion of the Fed's December 2026 meeting, currently scheduled for December 8 to 9, 2026, inclusive of any rate hike announced as a result of the December meeting. Otherwise, this market will resolve to “No”.\n\nAny change to the target federal funds rate announced at the conclusion of the September 15 to 16, 2026 FOMC meeting will not count toward this market. Emergency rate hikes announced on or after September 17, 2026 will qualify.\n\nThis market may not resolve to \"No\" until the Fed has released its rate change decision following its December meeting.\n\nThe primary resolution source for this market will be the official website of the Federal Reserve (https://www.federalreserve.gov/monetarypolicy/openmarket.htm), however a consensus of credible reporting may also be used.",
+        "close": "2026-12-09T00:00:00Z",
+        "yes": 0.92,
+        "no": 0.1,
+        "url": "https://polymarket.com/market/another-fed-rate-hike-in-2026"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "another-fed-rate-hike-in-2026-1789636928078",
+        "title": "Another Fed rate hike in 2026?",
+        "outcome": "",
+        "rules": "This market will resolve to “Yes” if the upper bound of the target federal funds rate is increased at any point between September 17, 2026 and the completion of the Fed's December 2026 meeting, currently scheduled for December 8 to 9, 2026, inclusive of any rate hike announced as a result of the December meeting. Otherwise, this market will resolve to “No”.\n\n Any change to the target federal funds rate announced at the conclusion of the September 15 to 16, 2026 FOMC meeting will not count toward this market. Emergency rate hikes announced on or after September 17, 2026 will qualify.\n\n This market may not resolve to \"No\" until the Fed has released its rate change decision following its December meeting.\n\n The primary resolution source for this market will be the official website of the Federal Reserve ( https://www.federalreserve.gov/monetarypolicy/openmarket.htm ), however a consensus of credible reporting may also be used.",
+        "close": "2026-12-09T00:00:00.000Z",
+        "yes": 0.93,
+        "no": 0.11,
+        "url": "https://limitless.exchange/markets/another-fed-rate-hike-in-2026-1789636928078"
+      }
+    },
+    {
+      "n": 18,
+      "key": "kalshi:SENATEMN-26-R|polymarket:will-the-republicans-win-the-minnesota-senate-race-in-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "SENATEMN-26-R",
+        "title": "Will Republicans win the Senate race in Minnesota?",
+        "outcome": "Michele Tafoya",
+        "rules": "If a representative of the Republican party is sworn in as a Senator of Minnesota for the term beginning in 2027, then the market resolves to Yes.\n\nThis market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.",
+        "close": "2027-11-03T15:00:00Z",
+        "yes": 0.12,
+        "no": 0.89,
+        "url": "https://kalshi.com/markets/senatemn"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-the-republicans-win-the-minnesota-senate-race-in-2026",
+        "title": "Will the Republicans win the Minnesota Senate race in 2026?",
+        "outcome": "Michele Tafoya (R)",
+        "rules": "This market will resolve according to the winner of the 2026 midterm Minnesota U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.",
+        "yes": 0.09,
+        "no": 0.93,
+        "url": "https://polymarket.com/market/will-the-republicans-win-the-minnesota-senate-race-in-2026"
+      }
+    },
+    {
+      "n": 19,
+      "key": "kalshi:KXNEXTISRAELPM-45JAN01-NBEN|limitless:naftali-bennett-1769098855998",
+      "venues": [
+        "kalshi",
+        "limitless"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXNEXTISRAELPM-45JAN01-NBEN",
+        "title": "Will Naftali Bennett be the next Prime Minister of Israel?",
+        "outcome": "Naftali Bennett",
+        "rules": "If the first new person to hold Prime Minister of Israel after Issuance is Naftali Bennett, then the market resolves to Yes.\n\nThe market resolves based on who actually assumes the office of Prime Minister, not who is elected or nominated. Acting or interim appointments count as holding the position if they formally assume the office. The person must be different from whoever held the position at market issuance - if the same person continues in office through the expiration date, all markets resolve to No. Resolution is based on official announcements from the country's legislature or government, with The New York Times as a secondary source for confirmation.",
+        "close": "2045-01-01T15:00:00Z",
+        "yes": 0.08,
+        "no": 0.949,
+        "url": "https://kalshi.com/markets/kxnextisraelpm"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "naftali-bennett-1769098855998",
+        "title": "Who will be the next Prime Minister of Israel after next election?",
+        "outcome": "Naftali Bennett",
+        "rules": "Legislative elections are schedule to be held in Israel on October 27, 2026.\n This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.\n To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.\n If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.",
+        "close": "2028-01-01T04:59:00.000Z",
+        "yes": 0.1,
+        "no": 0.91,
+        "url": "https://limitless.exchange/markets/who-will-be-the-next-prime-minister-of-israel-after-next-election-1769099103917"
+      }
+    },
+    {
+      "n": 20,
+      "key": "kalshi:KXCEARAGOV-26OCT04-EFRE|polymarket:will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXCEARAGOV-26OCT04-EFRE",
+        "title": "Will Elmano de Freitas win the 2026 Ceará gubernatorial election?",
+        "outcome": "Elmano de Freitas",
+        "rules": "If Elmano de Freitas wins the 2026 Ceará gubernatorial election, then the market resolves to Yes.\n\nThis market is eligible for accelerated resolution by a consensus of media calls. See full rules for details.",
+        "close": "2027-10-04T14:00:00Z",
+        "yes": 0.56,
+        "no": 0.49,
+        "url": "https://kalshi.com/markets/kxcearagov"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election",
+        "title": "Will Elmano de Freitas win the 2026 Ceará gubernatorial election?",
+        "outcome": "Elmano de Freitas",
+        "rules": "The Ceará gubernatorial election is scheduled to take place in Brazil on October 4, 2026, with a runoff on October 25, 2026, if no candidate receives a majority of the valid votes in the first round.\n\nThis market will resolve according to the candidate who wins this election.\n\nTemporary, interim, or placeholder governors appointed by any means before the specified election will not be considered.\n\nIf the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to \"Other\".\n\nThis market will resolve based on the result of the election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the Brazilian government, specifically the Superior Electoral Court (Tribunal Superior Eleitoral, TSE) (e.g., www.tse.jus.br/eleicoes/resultados-eleicoes).",
+        "close": "2027-07-01T03:59:00Z",
+        "yes": 0.56,
+        "no": 0.46,
+        "url": "https://polymarket.com/market/will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election"
+      }
+    },
+    {
+      "n": 21,
+      "key": "polymarket:iran-charges-hormuz-fees-by-september-30|limitless:september-30-1787660046632",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "iran-charges-hormuz-fees-by-september-30",
+        "title": "Iran charges Hormuz fees by September 30?",
+        "outcome": "September 30",
+        "rules": "This market resolves to “Yes” if the Iranian government officially announces and begins collecting fees, tolls, charges, tariffs, or similar payments from commercial vessels which are mandatory for passage through or access to the Strait of Hormuz between market creation and the specified date, 11:59 PM ET. Otherwise, this market resolves to “No.”\n\nA qualifying fee must be an announced policy which applies generally to all commercial vessels, or a defined subcategory of commercial vessels (e.g., vessels flagged to the US and its allies). Isolated demanded charges will not qualify.\n\nA fee is mandatory if, in practice, affected commercial vessels cannot transit or access the Strait of Hormuz without paying it, regardless of whether Iran characterizes the payment as voluntary or a fee for services. Fees described as tolls, maritime fees, service charges, environmental fees, security fees, insurance charges, etc. will qualify provided they are recognized as mandatory for passage through or access to the Strait of Hormuz by a consensus of credible reporting (e.g., a mandatory insurance fee charged by the Iranian Persian Gulf Strait Authority would qualify).\n\nBoth of the following are required to occur prior to the specified date, 11:59 PM ET to satisfy this market’s resolution criteria:\n1) An official announcement from the Iranian government that such a fee is being, or will be, implemented.\n2) A consensus of credible reporting that collection of the fee has begun.\n\nFees charged by Oman, the United Arab Emirates, shipping insurers, private companies, or other non-Iranian entities do not qualify unless charged jointly with Iran, or if Iran directly receives the fee or controls the charging entity. Normal port fees, customs duties, sanctions-related costs, or shipping surcharges do not alone qualify. \n\nThe resolution sources will be official announcements from the government of Iran and consensus of credible reporting.",
+        "close": "2026-10-01T03:59:00Z",
+        "yes": 0.022,
+        "no": 0.981,
+        "url": "https://polymarket.com/market/iran-charges-hormuz-fees-by-september-30"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "september-30-1787660046632",
+        "title": "Iran charges Hormuz fees by...?",
+        "outcome": "September 30",
+        "rules": "This market resolves to “Yes” if the Iranian government officially announces and begins collecting fees, tolls, charges, tariffs, or similar payments from commercial vessels which are mandatory for passage through or access to the Strait of Hormuz between market creation and the specified date, 11:59 PM ET. Otherwise, this market resolves to “No.”\n\n A qualifying fee must be an announced policy which applies generally to all commercial vessels, or a defined subcategory of commercial vessels (e.g., vessels flagged to the US and its allies). Isolated demanded charges will not qualify.\n\n A fee is mandatory if, in practice, affected commercial vessels cannot transit or access the Strait of Hormuz without paying it, regardless of whether Iran characterizes the payment as voluntary or a fee for services. Fees described as tolls, maritime fees, service charges, environmental fees, security fees, insurance charges, etc. will qualify provided they are recognized as mandatory for passage through or access to the Strait of Hormuz by a consensus of credible reporting (e.g., a mandatory insurance fee charged by the Iranian Persian Gulf Strait Authority would qualify).\n\n Both of the following are required to occur prior to the specified date, 11:59 PM ET to satisfy this market’s resolution criteria:\n 1) An official announcement from the Iranian government that such a fee is being, or will be, implemented.\n 2) A consensus of credible reporting that collection of the fee has begun.\n\n Fees charged by Oman, the United Arab Emirates, shipping insurers, private companies, or other non-Iranian entities do not qualify unless charged jointly with Iran, or if Iran directly receives the fee or controls the charging entity. Normal port fees, customs duties, sanctions-related costs, or shipping surcharges do not alone qualify. \n\n The resolution sources will be official announcements from the government of Iran and consensus of credible reporting.",
+        "close": "2027-01-01T04:59:00.000Z",
+        "yes": 0.03,
+        "no": 0.985,
+        "url": "https://limitless.exchange/markets/iran-charges-hormuz-fees-by-1787660046607"
+      }
+    },
+    {
+      "n": 22,
+      "key": "kalshi:KXISRAELPM-26OCT27-GEIZ|limitless:gadi-eizenkot-1769098856001",
+      "venues": [
+        "kalshi",
+        "limitless"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXISRAELPM-26OCT27-GEIZ",
+        "title": "Will Gadi Eizenkot become Prime Minister of Israel following the 2026 Israeli legislative election?",
+        "outcome": "Gadi Eizenkot",
+        "rules": "If Gadi Eizenkot becomes Prime Minister of Israel as a result of government formation following the 2026 Israeli legislative election and meets all constitutional requirements before Oct 27, 2027, then the market resolves to Yes.\n\nThe market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).\n\nIf no government forms by Oct 27, 2027, the Contract resolves to \"No one\" if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to \"No one\" immediately and No for all other strikes.",
+        "close": "2027-10-27T14:00:00Z",
+        "yes": 0.51,
+        "no": 0.51,
+        "url": "https://kalshi.com/markets/kxisraelpm"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "gadi-eizenkot-1769098856001",
+        "title": "Who will be the next Prime Minister of Israel after next election?",
+        "outcome": "Gadi Eizenkot",
+        "rules": "Legislative elections are schedule to be held in Israel on October 27, 2026.\n This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.\n To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.\n If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.",
+        "close": "2028-01-01T04:59:00.000Z",
+        "yes": 0.53,
+        "no": 0.485,
+        "url": "https://limitless.exchange/markets/who-will-be-the-next-prime-minister-of-israel-after-next-election-1769099103917"
+      }
+    },
+    {
+      "n": 23,
+      "key": "polymarket:strait-of-hormuz-traffic-returns-to-normal-by-december-31|limitless:strait-of-hormuz-traffic-returns-to-normal-by-december-31-1787655886769",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "strait-of-hormuz-traffic-returns-to-normal-by-december-31",
+        "title": "Strait of Hormuz traffic returns to normal by December 31?",
+        "outcome": "",
+        "rules": "This market will resolve to “Yes” if IMF Portwatch publishes a 7-day moving average of transit calls (“Arrivals of Ships”) for the Strait of Hormuz equal to or above 60 for any date between market creation and December 31, 2026. Otherwise, this market will resolve to “No”.\n\nDaily transit calls include container, dry bulk, roll-on/roll-off, general cargo, and tanker ships. Ships not reported by IMF Portwatch will not be considered.\n\nThis market will resolve as soon as IMF Portwatch publishes a 7-day moving average of transit calls equal to or above the specified level, or once data has been published for the final date in the specified period and no such value has been published. If no data has been published for the final date of the specified period within 14 calendar days (ET) after the end of that period, this market will resolve based on data published up to that point.\n\nRevisions to previously published data points made within this market’s timeframe will be considered. However, they will not disqualify a previously published data point from qualifying. Revisions to previously published data points after data is published for December 31, 2026, however, will not be considered.\n\nIn case of obvious data integrity issues (i.e., erroneous data), the market may remain open until the end of the third calendar day (ET) after the date on which such data is first released to allow for corrections. Data integrity issues refer only to clerical or other similar errors in the underlying data, and do not include cases where IMF Portwatch differs from alternative sources.\n\nThe resolution source for this market will be IMF Portwatch, specifically the transit calls data published for the Strait of Hormuz at https://portwatch.imf.org/pages/cb5856222a5b4105adc6ee7e880a1730, both in the chart and through downloadable files.",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.24,
+        "no": 0.77,
+        "url": "https://polymarket.com/market/strait-of-hormuz-traffic-returns-to-normal-by-december-31"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "strait-of-hormuz-traffic-returns-to-normal-by-december-31-1787655886769",
+        "title": "Strait of Hormuz traffic returns to normal by December 31?",
+        "outcome": "",
+        "rules": "This market will resolve to “Yes” if IMF Portwatch publishes a 7-day moving average of transit calls (“Arrivals of Ships”) for the Strait of Hormuz equal to or above 60 for any date between market creation and December 31, 2026. Otherwise, this market will resolve to “No”.\n\n Daily transit calls include container, dry bulk, roll-on/roll-off, general cargo, and tanker ships. Ships not reported by IMF Portwatch will not be considered.\n\n This market will resolve as soon as IMF Portwatch publishes a 7-day moving average of transit calls equal to or above the specified level, or once data has been published for the final date in the specified period and no such value has been published. If no data has been published for the final date of the specified period within 14 calendar days (ET) after the end of that period, this market will resolve based on data published up to that point.\n\n Revisions to previously published data points made within this market’s timeframe will be considered. However, they will not disqualify a previously published data point from qualifying. Revisions to previously published data points after data is published for December 31, 2026, however, will not be considered.\n\n In case of obvious data integrity issues (i.e., erroneous data), the market may remain open until the end of the third calendar day (ET) after the date on which such data is first released to allow for corrections. Data integrity issues refer only to clerical or other similar errors in the underlying data, and do not include cases where IMF Portwatch differs from alternative sources.\n\n The resolution source for this market will be IMF Portwatch, specifically the transit calls data published for the Strait of Hormuz at https://portwatch.imf.org/pages/cb5856222a5b4105adc6ee7e880a1730 , both in the chart and through downloadable files.",
+        "close": "2026-12-31T00:00:00.000Z",
+        "yes": 0.24,
+        "no": 0.77,
+        "url": "https://limitless.exchange/markets/strait-of-hormuz-traffic-returns-to-normal-by-december-31-1787655886769"
+      }
+    },
+    {
+      "n": 24,
+      "key": "kalshi:SENATETX-26-R|polymarket:will-the-republicans-win-the-texas-senate-race-in-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "SENATETX-26-R",
+        "title": "Will Republicans win the Senate race in Texas?",
+        "outcome": "Ken Paxton",
+        "rules": "If a representative of the Republican party is sworn in as a Senator of Texas for the term beginning in 2027, then the market resolves to Yes.\n\nThis market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.",
+        "close": "2027-11-03T15:00:00Z",
+        "yes": 0.39,
+        "no": 0.62,
+        "url": "https://kalshi.com/markets/senatetx"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-the-republicans-win-the-texas-senate-race-in-2026",
+        "title": "Will the Republicans win the Texas Senate race in 2026?",
+        "outcome": "Ken Paxton (R)",
+        "rules": "This market will resolve according to the winner of the 2026 midterm Texas U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.",
+        "yes": 0.4,
+        "no": 0.61,
+        "url": "https://polymarket.com/market/will-the-republicans-win-the-texas-senate-race-in-2026"
+      }
+    },
+    {
+      "n": 25,
+      "key": "kalshi:KXPUTINZELENSKYYLOCATION-28-RUS|polymarket:will-zelenskyy-and-putin-meet-next-in-russia",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXPUTINZELENSKYYLOCATION-28-RUS",
+        "title": "Will Putin and Zelenskyy meet next in Russia?",
+        "outcome": "Russia",
+        "rules": "If the next Putin and Zelenskyy meeting happens in Russia before Dec 31, 2028, then the market resolves to Yes.",
+        "close": "2028-12-31T04:59:00Z",
+        "yes": 0.08,
+        "no": 0.94,
+        "url": "https://kalshi.com/markets/kxputinzelenskyylocation"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-zelenskyy-and-putin-meet-next-in-russia",
+        "title": "Will Zelenskyy and Putin meet next in Russia before 2027?",
+        "outcome": "Russia",
+        "rules": "This market will resolve according to the location of the next meeting between Volodymyr Zelenskyy and Vladimir Putin by December 31, 2026, 11:59 PM ET. If no meeting takes place by December 31 ET, this market will resolve to \"No meeting before 2027\".\n\nA meeting is defined as any encounter where Zelenskyy and Putin are both present and interact with each other in person.\n\nFor the purpose of this market, a meeting held on Ukrainian territory under the de facto control of Russia (e.g., Crimea) will be considered part of Russia.\n\nThe primary resolution source for this market will be a consensus of credible reporting.",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.011,
+        "no": 0.996,
+        "url": "https://polymarket.com/market/will-zelenskyy-and-putin-meet-next-in-russia"
+      }
+    },
+    {
+      "n": 26,
+      "key": "kalshi:SENATEMI-26-R|polymarket:will-the-republicans-win-the-michigan-senate-race-in-2026",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "SENATEMI-26-R",
+        "title": "Will Republicans win the Senate race in Michigan?",
+        "outcome": "Mike Rogers",
+        "rules": "If a representative of the Republican party is sworn in as a Senator of Michigan for the term beginning in 2027, then the market resolves to Yes.\n\nThis market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.",
+        "close": "2027-11-03T15:00:00Z",
+        "yes": 0.28,
+        "no": 0.73,
+        "url": "https://kalshi.com/markets/senatemi"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-the-republicans-win-the-michigan-senate-race-in-2026",
+        "title": "Will the Republicans win the Michigan Senate race in 2026?",
+        "outcome": "Mike Rogers (R)",
+        "rules": "This market will resolve according to the winner of the 2026 midterm Michigan U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.",
+        "yes": 0.29,
+        "no": 0.72,
+        "url": "https://polymarket.com/market/will-the-republicans-win-the-michigan-senate-race-in-2026"
+      }
+    },
+    {
+      "n": 27,
+      "key": "polymarket:us-x-china-tariff-agreement-by-december-31|limitless:us-x-china-tariff-agreement-by-december-31-1787675335206",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "polymarket",
+        "id": "us-x-china-tariff-agreement-by-december-31",
+        "title": "US x China tariff agreement by December 31?",
+        "outcome": "December 31",
+        "rules": "This market will resolve to \"Yes\" if an official agreement over tariffs, defined as a publicly announced mutual agreement, is reached between the United States and China between market creation and the listed date 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nIf such an agreement is officially reached before the resolution date, this market will resolve to \"Yes\", regardless of if/when the agreement goes into effect.\n\nInformal and unilateral announcements that do not constitute a finalized agreement will not count.\n\nThe publicly announced lowering of tariffs by both China and the U.S. will qualify as a mutual agreement over trade and/or tariffs if confirmed as part of a mutual agreement by an overwhelming consensus of credible reporting, even if a formal agreement isn’t mutually announced.\n\nAgreements that include the United States and China as parties, even if they also involve other countries, will qualify for resolution.\n\nThe primary resolution source for this market will be an official announcement by the United States and the People's Republic of China, however an overwhelming consensus of credible reporting confirming an agreement has been reached will also qualify.",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.949,
+        "no": 0.058,
+        "url": "https://polymarket.com/market/us-x-china-tariff-agreement-by-december-31"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "us-x-china-tariff-agreement-by-december-31-1787675335206",
+        "title": "US x China tariff agreement by December 31?",
+        "outcome": "",
+        "rules": "This market will resolve to \"Yes\" if an official agreement over tariffs, defined as a publicly announced mutual agreement, is reached between the United States and China between market creation and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\n If such an agreement is officially reached before the resolution date, this market will resolve to \"Yes\", regardless of if/when the agreement goes into effect.\n\n Informal and unilateral announcements that do not constitute a finalized agreement will not count.\n\n The publicly announced lowering of tariffs by both China and the U.S. will qualify as a mutual agreement over trade and/or tariffs if confirmed as part of a mutual agreement by an overwhelming consensus of credible reporting, even if a formal agreement isn’t mutually announced.\n\n Agreements that include the United States and China as parties, even if they also involve other countries, will qualify for resolution.\n\n The primary resolution source for this market will be an official announcement by the United States and the People's Republic of China, however an overwhelming consensus of credible reporting confirming an agreement has been reached will also qualify.",
+        "close": "2027-01-01T04:59:00.000Z",
+        "yes": 0.955,
+        "no": 0.06,
+        "url": "https://limitless.exchange/markets/us-x-china-tariff-agreement-by-december-31-1787675335206"
+      }
+    },
+    {
+      "n": 28,
+      "key": "kalshi:KXFRENCHPRES-27-EZEM|polymarket:will-ric-zemmour-win-the-2027-french-presidential-election",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "check",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXFRENCHPRES-27-EZEM",
+        "title": "Will Éric Zemmour win the 2027 French presidential election?",
+        "outcome": "Éric Zemmour",
+        "rules": "If Éric Zemmour wins the next French presidential election, then the market resolves to Yes.",
+        "close": "2028-05-30T14:00:00Z",
+        "yes": 0.009,
+        "no": 0.998,
+        "url": "https://kalshi.com/markets/kxfrenchpres"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "will-ric-zemmour-win-the-2027-french-presidential-election",
+        "title": "Will Éric Zemmour win the 2027 French presidential election?",
+        "outcome": "Éric Zemmour",
+        "rules": "The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. \n\nThe President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.\n\nThis market will resolve according to the candidate who wins this election.\n\nThis market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET, this market will resolve to \"Other\".\n\nThis market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the French Government, specifically the Ministry of the Interior (https://www.interieur.gouv.fr/).",
+        "close": "2027-04-30T00:00:00Z",
+        "yes": 0.011,
+        "no": 0.99,
+        "url": "https://polymarket.com/market/will-ric-zemmour-win-the-2027-french-presidential-election"
+      }
+    },
+    {
+      "n": 29,
+      "key": "kalshi:KXBOND-30-HAR|polymarket:harris-dickinson-announced-as-next-james-bond",
+      "venues": [
+        "kalshi",
+        "polymarket"
+      ],
+      "auto": "different",
+      "a": {
+        "venue": "kalshi",
+        "id": "KXBOND-30-HAR",
+        "title": "Will Harris Dickinson be the next James Bond?",
+        "outcome": "Harris Dickinson",
+        "rules": "If Harris Dickinson is cast as the next James Bond before Jan 1, 2030, then the market resolves to Yes.\n\nThis is for the next film in the James Bond series, which goes back to Dr. No (1962); spin-offs and unauthorized productions are not included.",
+        "close": "2030-01-01T15:00:00Z",
+        "yes": 0.08,
+        "no": 0.96,
+        "url": "https://kalshi.com/markets/kxbond"
+      },
+      "b": {
+        "venue": "polymarket",
+        "id": "harris-dickinson-announced-as-next-james-bond",
+        "title": "Harris Dickinson announced as next James Bond?",
+        "outcome": "Harris Dickinson",
+        "rules": "This market will resolve to “Yes” if the listed actor is officially announced as the next James Bond actor by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nThis market will resolve based on the first official announcement of who will be the next James Bond, regardless of any changes made thereafter.\n\nIf no actor is announced as the next Bond within the timeframe, this market will resolve to \"No Bond chosen\".\n\nThe primary resolution source for this market will be official information from Amazon MGM Studios. However, a consensus of credible reporting may also be used.",
+        "close": "2027-01-01T04:59:00Z",
+        "yes": 0.1,
+        "no": 0.942,
+        "url": "https://polymarket.com/market/harris-dickinson-announced-as-next-james-bond"
+      }
+    },
+    {
+      "n": 30,
+      "key": "polymarket:nfl-cin-pit-2026-09-27|limitless:bengals-vs-steelers-1790010337293",
+      "venues": [
+        "polymarket",
+        "limitless"
+      ],
+      "auto": "looks_equivalent",
+      "a": {
+        "venue": "polymarket",
+        "id": "nfl-cin-pit-2026-09-27",
+        "title": "Bengals vs. Steelers",
+        "outcome": "",
+        "rules": "In the upcoming NFL game, scheduled for September 27 at 1:00PM ET:\nIf Bengals wins, the market will resolve to \"Bengals\".\nIf Steelers wins, the market will resolve to \"Steelers\".\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely or ends in a tie, with no make-up game, this market will resolve 50-50.\n\nResolution source: https://www.nfl.com/scores",
+        "close": "2026-09-27T17:00:00Z",
+        "yes": 0.63,
+        "no": 0.38,
+        "url": "https://polymarket.com/market/nfl-cin-pit-2026-09-27"
+      },
+      "b": {
+        "venue": "limitless",
+        "id": "bengals-vs-steelers-1790010337293",
+        "title": "Bengals vs. Steelers",
+        "outcome": "",
+        "rules": "In the upcoming NFL game, scheduled for September 27 at 1:00PM ET:\n If Bengals wins, the market will resolve to \"Bengals\".\n If Steelers wins, the market will resolve to \"Steelers\".\n If the game is postponed, this market will remain open until the game has been completed.\n If the game is canceled entirely or ends in a tie, with no make-up game, this market will resolve 50-50.",
+        "close": "2026-09-28T17:00:00.000Z",
+        "yes": 0.635,
+        "no": 0.385,
+        "url": "https://limitless.exchange/markets/bengals-vs-steelers-1790010337293"
+      }
+    }
+  ]
+}

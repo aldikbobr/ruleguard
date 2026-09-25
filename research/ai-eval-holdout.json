@@ -1,0 +1,346 @@
+{
+  "at": "2026-09-25T17:18:53.465Z",
+  "prompt_version": "1.2",
+  "models": [
+    "gemini-3.5-flash-lite"
+  ],
+  "n": 30,
+  "exact_agreement": 26,
+  "matrix": {
+    "equivalent": {
+      "equivalent": 10,
+      "caveats": 0,
+      "different": 0,
+      "uncertain": 0
+    },
+    "caveats": {
+      "equivalent": 2,
+      "caveats": 9,
+      "different": 1,
+      "uncertain": 1
+    },
+    "different": {
+      "equivalent": 0,
+      "caveats": 0,
+      "different": 7,
+      "uncertain": 0
+    }
+  },
+  "different_recall": "7/7",
+  "different_precision": "7/8",
+  "false_equivalent": [
+    {
+      "n": 8,
+      "human": "caveats",
+      "ai_why": "Both markets share identical rules, deadlines, and fallback outcomes for Maduro's leadership status."
+    },
+    {
+      "n": 12,
+      "human": "caveats",
+      "ai_why": "Both resolve based on winning the 2028 presidential election and taking office in January 2029."
+    }
+  ],
+  "pairs": [
+    {
+      "n": 1,
+      "venues": "polymarket-limitless",
+      "title": "Will Bitcoin reach $86,000 on September 25?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Identical high price thresholds, timeframes, and Binance resolution rules.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 2,
+      "venues": "polymarket-limitless",
+      "title": "Will Ethereum dip to $1,600 in September?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Both track identical Binance ETH/USDT low price conditions for September 2026.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 3,
+      "venues": "kalshi-polymarket",
+      "title": "Who will win the next presidential election?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Sources and fallback rules differ slightly between Kalshi and Polymarket.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 4,
+      "venues": "kalshi-polymarket",
+      "title": "Will Republicans win the Senate race in New Hampshire?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+      "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 5,
+      "venues": "kalshi-polymarket",
+      "title": "Will Nicolás Maduro de facto hold head of state of Venezuela at the end of 2026?",
+      "human": "different",
+      "ai": "different",
+      "why": "Criteria — Kalshi: de facto control · Polymarket: official UN-recognized title",
+      "scenario": "Maduro could maintain de facto control of the state apparatus while losing official UN recognition by the end of 2026, causing Kalshi to resolve YES and Polymarket NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 6,
+      "venues": "polymarket-limitless",
+      "title": "Will Ethereum dip to $2,500 September 21-27?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Identical low price conditions, date ranges, and Binance exchange rules for Ethereum.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 7,
+      "venues": "kalshi-limitless",
+      "title": "Will Delcy Rodríguez de facto hold head of state of Venezuela at the end of 2026?",
+      "human": "different",
+      "ai": "different",
+      "why": "Definition — Kalshi: de facto power · Limitless: official/formal role",
+      "scenario": "Delcy Rodríguez holds de facto control through military backing while a different nominal president is officially recognized, causing Kalshi to resolve YES and Limitless NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 8,
+      "venues": "polymarket-limitless",
+      "title": "Will Nicolás Maduro be the leader of Venezuela end of 2026?",
+      "human": "caveats",
+      "ai": "equivalent",
+      "why": "Both markets share identical rules, deadlines, and fallback outcomes for Maduro's leadership status.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 9,
+      "venues": "kalshi-polymarket",
+      "title": "Will Yair Golan become Prime Minister of Israel following the 2026 Israeli legislative election?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Fallback — Kalshi: No one · Polymarket: Other.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 10,
+      "venues": "polymarket-limitless",
+      "title": "Bank of England increases interest rates by 25 bps after November 2026 meeting?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Identical meeting dates, resolution sources, and handling of postponed or cancelled meetings.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 11,
+      "venues": "polymarket-limitless",
+      "title": "Will the US confirm that aliens exist before 2027?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Both markets feature identical scoping, qualifying officials, and December 31 deadline.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 12,
+      "venues": "kalshi-polymarket",
+      "title": "Who will win the next presidential election?",
+      "human": "caveats",
+      "ai": "equivalent",
+      "why": "Both resolve based on winning the 2028 presidential election and taking office in January 2029.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 13,
+      "venues": "kalshi-polymarket",
+      "title": "Will Democratics win the Senate race in Ohio?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+      "scenario": "The Democratic candidate wins the special election but cannot take the seat due to sudden disqualification prior to swearing-in.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 14,
+      "venues": "kalshi-polymarket",
+      "title": "Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026?",
+      "human": "different",
+      "ai": "different",
+      "why": "Kalshi tracks de facto power, whereas Polymarket requires official state position.",
+      "scenario": "María Corina Machado wields actual power from exile or opposition without official title, resolving Kalshi YES and Polymarket NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 15,
+      "venues": "kalshi-limitless",
+      "title": "Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026?",
+      "human": "different",
+      "ai": "different",
+      "why": "Definition — Kalshi: de facto power · Limitless: official/formal role",
+      "scenario": "María Corina Machado exercises underground de facto governing authority without holding the official title, leading to YES on Kalshi and NO on Limitless.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 16,
+      "venues": "polymarket-limitless",
+      "title": "Will Lewis Hamilton be the 2026 F1 Drivers' Champion?",
+      "human": "caveats",
+      "ai": "different",
+      "why": "Polymarket resolves to No upon mathematical elimination; Limitless does not.",
+      "scenario": "Hamilton is mathematically eliminated with three races left; Polymarket settles to No immediately, while Limitless stays open until the end of the season.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 17,
+      "venues": "polymarket-limitless",
+      "title": "Another Fed rate hike in 2026?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Both markets have identical windows, rate hike definitions, and exclusion rules for the September FOMC meeting.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 18,
+      "venues": "kalshi-polymarket",
+      "title": "Will Republicans win the Senate race in Minnesota?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+      "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 19,
+      "venues": "kalshi-limitless",
+      "title": "Will Naftali Bennett be the next Prime Minister of Israel?",
+      "human": "different",
+      "ai": "different",
+      "why": "Interim appointments count on Kalshi but are explicitly excluded on Limitless.",
+      "scenario": "An interim Prime Minister takes power briefly before the 2026 election; Kalshi counts this as the next PM, while Limitless excludes them.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 20,
+      "venues": "kalshi-polymarket",
+      "title": "Will Elmano de Freitas win the 2026 Ceará gubernatorial election?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Deadline and fallback terms added on Polymarket",
+      "scenario": "The election results are delayed past June 2027. Polymarket resolves to Other, whereas Kalshi waits for official results.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 21,
+      "venues": "polymarket-limitless",
+      "title": "Iran charges Hormuz fees by September 30?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Both markets use identical criteria and deadlines for Iran charging Hormuz fees by September 30.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 22,
+      "venues": "kalshi-limitless",
+      "title": "Will Gadi Eizenkot become Prime Minister of Israel following the 2026 Israeli legislative election?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Fallback — Kalshi: No one · Limitless: Other",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 23,
+      "venues": "polymarket-limitless",
+      "title": "Strait of Hormuz traffic returns to normal by December 31?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Exact matching criteria, thresholds, data sources, and edge cases.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 24,
+      "venues": "kalshi-polymarket",
+      "title": "Will Republicans win the Senate race in Texas?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+      "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 25,
+      "venues": "kalshi-polymarket",
+      "title": "Will Putin and Zelenskyy meet next in Russia?",
+      "human": "different",
+      "ai": "different",
+      "why": "Deadline and scope — Kalshi: Dec 2028 · Polymarket: Dec 2026",
+      "scenario": "Putin and Zelenskyy meet in Russia in 2027. Polymarket resolves to No meeting before 2027, while Kalshi resolves YES.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 26,
+      "venues": "kalshi-polymarket",
+      "title": "Will Republicans win the Senate race in Michigan?",
+      "human": "caveats",
+      "ai": "caveats",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 27,
+      "venues": "polymarket-limitless",
+      "title": "US x China tariff agreement by December 31?",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Both markets share identical criteria and deadlines for a US-China tariff agreement.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 28,
+      "venues": "kalshi-polymarket",
+      "title": "Will Éric Zemmour win the 2027 French presidential election?",
+      "human": "caveats",
+      "ai": "uncertain",
+      "why": "Kalshi rules are missing for this specific market",
+      "scenario": "Cannot compare settlement criteria because Kalshi rules text is absent.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 29,
+      "venues": "kalshi-polymarket",
+      "title": "Will Harris Dickinson be the next James Bond?",
+      "human": "different",
+      "ai": "different",
+      "why": "Deadline — Kalshi: 2030 · Polymarket: 2026",
+      "scenario": "Harris Dickinson is officially announced as the next James Bond in 2028. Kalshi resolves YES, while Polymarket resolves to 'No Bond chosen' because the announcement occurred after its 2026 deadline.",
+      "model": "gemini-3.5-flash-lite"
+    },
+    {
+      "n": 30,
+      "venues": "polymarket-limitless",
+      "title": "Bengals vs. Steelers",
+      "human": "equivalent",
+      "ai": "equivalent",
+      "why": "Exact match in game parameters, postponement rules, and 50-50 tie/cancellation fallback.",
+      "scenario": "",
+      "model": "gemini-3.5-flash-lite"
+    }
+  ],
+  "set": "holdout"
+}

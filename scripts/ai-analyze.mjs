@@ -2,7 +2,8 @@
 // AI rule review with Gemini (free tier). Results are cached in research/ai-cache.json, so a rerun only
 // analyzes new markets and changed rules, and an interrupted run resumes where it stopped.
 //
-// Usage:  node scripts/ai-analyze.mjs --sample   (the 30 labeled random-sample pairs + an accuracy report)
+// Usage:  node scripts/ai-analyze.mjs --sample   (the 30 labeled random-sample pairs + an accuracy report → ai-eval.json)
+//         node scripts/ai-analyze.mjs --holdout  (the held-out sample, never used for tuning → ai-eval-holdout.json)
 //         node scripts/ai-analyze.mjs --all      (every pair in research/pairs-all.json)
 //         [--limit N]  analyze at most N pairs
 
@@ -21,16 +22,22 @@ const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, "research", f), "ut
 
 if (!geminiReady()) { console.error("GEMINI_API_KEY is not set in .env"); process.exit(1); }
 
+// labeled sets: [sample file, labels file, report file]
+const SETS = {
+  sample: ["random-sample.json", "random-labels.json", "ai-eval.json"],
+  holdout: ["holdout-sample.json", "holdout-labels.json", "ai-eval-holdout.json"]
+};
+const set = args.sample ? "sample" : args.holdout ? "holdout" : null;
 let pairs, labels = null;
-if (args.sample) {
-  const sample = read("random-sample.json");
-  const byN = new Map(read("random-labels.json").labels.map(l => [l.n, l]));
-  pairs = sample.pairs.map(p => ({ ...p, human: byN.get(p.n) }));
+if (set) {
+  const [sampleFile, labelsFile] = SETS[set];
+  const byN = new Map(read(labelsFile).labels.map(l => [l.n, l]));
+  pairs = read(sampleFile).pairs.map(p => ({ ...p, human: byN.get(p.n) }));
   labels = true;
 } else if (args.all) {
   pairs = read("pairs-all.json").pairs;
 } else {
-  console.error("Choose --sample or --all");
+  console.error("Choose --sample, --holdout or --all");
   process.exit(1);
 }
 if (args.limit) pairs = pairs.slice(0, Number(args.limit));
@@ -73,7 +80,8 @@ if (labels) {
     false_equivalent: falseEquivalent.map(r => ({ n: r.p.n, human: r.p.human.label, ai_why: r.ai.why })),
     pairs: rows.map(r => ({ n: r.p.n, venues: r.p.venues.join("-"), title: r.p.a.title, human: r.p.human.label, ai: r.ai.verdict, why: r.ai.why, scenario: r.ai.scenario, model: r.ai.model }))
   };
-  fs.writeFileSync(path.join(ROOT, "research", "ai-eval.json"), JSON.stringify(report, null, 2));
+  report.set = set;
+  fs.writeFileSync(path.join(ROOT, "research", SETS[set][2]), JSON.stringify(report, null, 2));
   console.log(`\nAccuracy vs manual labels (${rows.length} pairs):`);
   console.log(`  exact agreement: ${agree}/${rows.length}`);
   console.log(`  "different" caught: ${report.different_recall} · AI "different" correct: ${report.different_precision}`);
@@ -81,5 +89,5 @@ if (labels) {
   console.log("  human ↓ / AI →   " + A.map(a => a.padEnd(11)).join(""));
   for (const h of H) console.log(`  ${h.padEnd(16)} ${A.map(a => String(matrix[h][a]).padEnd(11)).join("")}`);
   for (const r of rows.filter(r => r.ai.verdict !== r.p.human.label)) console.log(`  #${r.p.n} human=${r.p.human.label} ai=${r.ai.verdict}: ${r.ai.why}`);
-  console.log("Report: research/ai-eval.json");
+  console.log(`Report: research/${SETS[set][2]}`);
 }

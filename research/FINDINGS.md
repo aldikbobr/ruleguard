@@ -46,7 +46,23 @@ Even among the Polymarket ↔ Limitless “copies” one pair asks a different q
 - All 187 current pairs were reviewed at no cost: passports in ~9 minutes, the v2 re-judging in ~3 minutes (1,458 of 1,551 quotes verified).
 - **Refresh with AI:** when a pair's rules change, the ↻ button re-runs the AI for that pair (~10–15 s). In a simulated change (a “resolves 50-50 if unknown by Dec 31” clause added to one side) the verdict moved from “equivalent” to “different” with a concrete scenario.
 
-⚠️ v2 was tuned after seeing v1's errors **on these same 30 pairs**, so its numbers are optimistic until a fresh sample confirms them. The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat all of this as indicative.
+### Held-out check (the honest number)
+
+To test v2 fairly, `scripts/sample.mjs --seed 20260926 --exclude random-sample.json` drew **30 other pairs** that were never used to tune the prompts. They were labeled against the rule texts **before** looking at any AI verdict for them (`research/holdout-labels.json`); the AI verdicts come from the same v2 run over all pairs (`research/ai-eval-holdout.json`).
+
+| Manual label ↓ / AI → | equivalent | caveats | different | uncertain |
+|---|---|---|---|---|
+| equivalent (10) | **10** | 0 | 0 | 0 |
+| caveats (13) | 2 | **9** | 1 | 1 |
+| different (7) | 0 | 0 | **7** | 0 |
+
+- **Same label in 26 of 30** on unseen pairs.
+- **Caught all 7 “different” pairs**; 7 of its 8 “different” calls were right (one false alarm: the F1 early-settlement clause, labeled “caveats”).
+- **Two dangerous “equivalent” calls**, both on “caveats” pairs: a clarification that only Limitless includes (Maduro, Aug 25, 2026), and “inaugurated” vs “wins the election” (Ocasio-Cortez) — while the identical Buttigieg pair was judged correctly, so the model isn't fully consistent.
+- One “uncertain” (Kalshi's one-line rule summary for the French election), which is the intended behavior when a side says too little.
+- **Quotes:** 291 of 299 (97%) found verbatim.
+
+⚠️ v2 was tuned after seeing v1's errors **on the first 30 pairs**, so the table above that one is optimistic; the held-out table is the one to quote. The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat all of this as indicative.
 
 ## Step 1: proof of concept
 

@@ -57,12 +57,18 @@ function attachAI(data) {
     const v = verdictOf(p);
     p.ai = v ? { verdict: v.verdict, why: v.why, scenario: v.scenario, model: v.model } : null;
   }
-  const evalFile = path.join(ROOT, "research", "ai-eval.json");
-  const ev = fs.existsSync(evalFile) ? JSON.parse(fs.readFileSync(evalFile, "utf8")) : null;
+  // the held-out report (pairs never used to tune the prompts) is the honest number; the tuning-set report is kept for reference
+  const readEval = f => {
+    const file = path.join(ROOT, "research", f);
+    if (!fs.existsSync(file)) return null;
+    const ev = JSON.parse(fs.readFileSync(file, "utf8"));
+    return { n: ev.n, exact_agreement: ev.exact_agreement, different_recall: ev.different_recall, different_precision: ev.different_precision, false_equivalent: ev.false_equivalent.length, at: ev.at };
+  };
   data.ai_stats = {
     reviewed: data.pairs.filter(p => p.ai).length,
     models: [...new Set(data.pairs.filter(p => p.ai).map(p => p.ai.model))],
-    eval: ev && { n: ev.n, exact_agreement: ev.exact_agreement, different_recall: ev.different_recall, different_precision: ev.different_precision, false_equivalent: ev.false_equivalent.length, at: ev.at }
+    eval: readEval("ai-eval.json"),
+    holdout: readEval("ai-eval-holdout.json")
   };
 }
 

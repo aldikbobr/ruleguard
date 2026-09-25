@@ -378,8 +378,11 @@ if (S && S.all && S.all.n) {
     bar("Polymarket ↔ Limitless", `Limitless often copies Polymarket's rules: identical in ${S.polymarket_limitless.equivalent} of ${S.polymarket_limitless.n}`, S.polymarket_limitless) +
     bar("Whole sample", `${S.all.n} pairs`, S.all) +
     `<div class="legend"><span><i style="background:var(--red)"></i>different: a plausible scenario settles them differently</span><span><i style="background:var(--amber)"></i>caveats: they differ only in rare edge cases</span><span><i style="background:var(--green)"></i>equivalent in substance</span></div>`;
-  const E = DATA.ai_stats?.eval;
-  if (E) $("#sbars").insertAdjacentHTML("beforeend", `<div class="srow"><div class="lbl"><b>🤖 AI vs the manual labels</b><span>same label in ${E.exact_agreement} of ${E.n} · caught ${E.different_recall} “different” · wrongly said “equivalent”: ${E.false_equivalent}</span></div></div>`);
+  // prefer the held-out check (30 other pairs, labeled blind, never used to tune the prompts)
+  const H = DATA.ai_stats?.holdout, E = DATA.ai_stats?.eval;
+  const aiLine = (title, x) => `<div class="srow"><div class="lbl"><b>${title}</b><span>same label in ${x.exact_agreement} of ${x.n} · caught ${x.different_recall} “different” · wrongly said “equivalent”: ${x.false_equivalent}</span></div></div>`;
+  if (H) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI on 30 unseen pairs (held out, labeled blind)", H));
+  else if (E) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI vs the manual labels", E));
   $("#sample-note").textContent = `Reproducible (scripts/sample.mjs, seed ${S.seed}, data snapshot ${fmtTime(S.snapshot)}). Labeled by ${S.reviewer}. The sample is small and some pairs share one event (e.g. several Israeli PM candidates under the same rules), so treat the numbers as indicative, not as a precise rate.`;
 }
 
