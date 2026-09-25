@@ -15,7 +15,9 @@ RuleGuard matches "the same" market across venues, compares the resolution rules
 | Meta has the top AI model | Kalshi: #1 **at any time before 2027**; Polymarket: #1 on arena.ai **on Sep 30, 2026 at 12:00 ET** |
 | Hurricane landfall in Hawaii | Kalshi **excludes** Midway and the Northwestern Islands; Polymarket **includes** them |
 
-Details and limitations: [`research/FINDINGS.md`](research/FINDINGS.md). The manually reviewed pairs were hand-picked as illustrative; they are **not** a random sample.
+**Random sample** (30 of 163 real-money pairs, seed 20260925, `scripts/sample.mjs`): across different operators (Kalshi vs Polymarket/Limitless) the rules fully matched in only **1 of 11** pairs; **5 of 11** have a plausible scenario where the markets settle differently. Polymarket vs Limitless pairs are mostly verbatim copies (17 of 19 identical). Small sample, clustered events, labeled by an AI assistant without human re-check — treat as indicative.
+
+Details and limitations: [`research/FINDINGS.md`](research/FINDINGS.md). The manually reviewed pairs in the table above were hand-picked as illustrative; they are **not** a random sample.
 
 ## Demo
 

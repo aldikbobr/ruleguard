@@ -24,7 +24,33 @@ const MAX_RULES = 8000;
 const VENUES = [kalshi, polymarket, limitless, manifold];
 const t0 = Date.now();
 
+// Случайная выборка с разметкой (scripts/sample.mjs + research/random-labels.json):
+// метки прикрепляются к парам по ключу, статистика считается здесь, а не вручную
+function attachSample(data) {
+  const sp = path.join(ROOT, "research", "random-sample.json"), lp = path.join(ROOT, "research", "random-labels.json");
+  if (!fs.existsSync(sp) || !fs.existsSync(lp)) return;
+  const sample = JSON.parse(fs.readFileSync(sp, "utf8"));
+  const labels = JSON.parse(fs.readFileSync(lp, "utf8"));
+  const byN = new Map(labels.labels.map(l => [l.n, l]));
+  const byKey = new Map(sample.pairs.map(p => [p.key, { ...byN.get(p.n), venues: p.venues }]));
+  for (const p of data.pairs) {
+    const s = byKey.get(`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`);
+    p.sample = s?.label ? { n: s.n, label: s.label, reason: s.reason } : null;
+  }
+  const count = rows => ({ n: rows.length, equivalent: rows.filter(r => r.label === "equivalent").length, caveats: rows.filter(r => r.label === "caveats").length, different: rows.filter(r => r.label === "different").length });
+  const rows = [...byKey.values()].filter(r => r.label);
+  const copy = r => r.venues.join("-") === "polymarket-limitless";
+  data.sample_stats = {
+    snapshot: sample.snapshot, seed: sample.seed, population: sample.population, reviewer: labels.reviewer, method: labels.method,
+    attached: data.pairs.filter(p => p.sample).length,
+    all: count(rows),
+    cross_operator: count(rows.filter(r => !copy(r))),
+    polymarket_limitless: count(rows.filter(copy))
+  };
+}
+
 function renderDemo(data) {
+  attachSample(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), template.replace("/*__DATA__*/null", json));

@@ -84,6 +84,18 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:3px;padding:0 2px
 footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
 footer li{margin:3px 0}
 .empty{color:var(--muted);padding:20px;text-align:center}
+.sbars{display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.srow .lbl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;margin-bottom:6px}
+.srow .lbl b{font-weight:600}
+.srow .lbl span{color:var(--muted);font-size:13px}
+.stack{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--surface-2)}
+.stack div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;min-width:0;white-space:nowrap}
+.s-different{background:var(--red);color:#fff}.s-caveats{background:var(--amber);color:#fff}.s-equivalent{background:var(--green);color:#fff}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.snote{color:var(--muted);font-size:12.5px;margin:8px 2px 0}
+.b-sample{background:var(--surface-2);color:var(--fg);border:1px dashed var(--muted)}
+.samplebox{border:1px dashed var(--line);border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13.5px}
 @media (max-width:760px){.cols,.vs{grid-template-columns:1fr}.pair>summary{grid-template-columns:1fr auto}.pair>summary .badges{grid-column:1/-1}}
 </style>
 </head>
@@ -96,6 +108,13 @@ footer li{margin:3px 0}
 </header>
 
 <section class="tiles" id="tiles"></section>
+
+<section id="sample" hidden>
+  <h2>Как часто «одинаковые» рынки на самом деле разные</h2>
+  <p class="h2sub" id="sample-sub"></p>
+  <div class="sbars" id="sbars"></div>
+  <p class="snote" id="sample-note"></p>
+</section>
 
 <h2>Ловушки арбитража</h2>
 <p class="h2sub">Пары на площадках с реальными деньгами, где цены на «одно и то же» событие расходятся сильнее всего (только ликвидные рынки). Выглядит как ошибка рынка или арбитраж, но правила у контрактов разные.</p>
@@ -118,6 +137,7 @@ footer li{margin:3px 0}
     <option value="score">По схожести</option>
   </select>
   <label><input type="checkbox" id="manual"> только проверенные вручную</label>
+  <label><input type="checkbox" id="insample"> только случайная выборка</label>
 </div>
 <div class="count" id="count"></div>
 <div id="list"></div>
@@ -146,7 +166,10 @@ const CLS = { different: "похоже, разные", check: "проверит�
 const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
 const VERDICT = { different: "разные контракты", caveats: "одинаковы с оговорками" };
 const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
-const riskOf = p => p.verdict ? (p.verdict.verdict === "different" ? "different" : "check") : p.cmp.cls;
+// приоритет: ручной разбор → разметка случайной выборки → автоматическая метка
+const LABEL_RISK = { different: "different", caveats: "check", equivalent: "looks_equivalent" };
+const riskOf = p => p.verdict ? LABEL_RISK[p.verdict.verdict] : p.sample ? LABEL_RISK[p.sample.label] : p.cmp.cls;
+const SAMPLE_LABEL = { equivalent: "одинаковые", caveats: "с оговорками", different: "разные" };
 
 // подсветка важных мест в правилах
 const HL = [
@@ -172,6 +195,23 @@ $("#tiles").innerHTML = `
   <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 похоже, разные контракты</div></div>
   <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 есть различия, нужна проверка</div></div>
   <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ разобрано вручную</div></div>`;
+
+// --- случайная выборка
+const S = DATA.sample_stats;
+if (S && S.all && S.all.n) {
+  $("#sample").hidden = false;
+  $("#sample-sub").textContent = `Случайная выборка: ${S.all.n} пар из ${S.population} найденных пар с реальными деньгами. Каждую пару разобрали по текстам правил.`;
+  const bar = (title, sub, c) => `<div class="srow"><div class="lbl"><b>${esc(title)}</b><span>${esc(sub)}</span></div>
+    <div class="stack" role="img" aria-label="${esc(title)}: разные ${c.different}, с оговорками ${c.caveats}, одинаковые ${c.equivalent} из ${c.n}">
+      ${["different", "caveats", "equivalent"].filter(k => c[k]).map(k => `<div class="s-${k}" style="width:${c[k] / c.n * 100}%">${c[k]}</div>`).join("")}
+    </div></div>`;
+  $("#sbars").innerHTML =
+    bar("Разные операторы (Kalshi ↔ Polymarket / Limitless)", `одинаковые правила только в ${S.cross_operator.equivalent} из ${S.cross_operator.n}`, S.cross_operator) +
+    bar("Polymarket ↔ Limitless", `Limitless часто копирует правила Polymarket: одинаковые в ${S.polymarket_limitless.equivalent} из ${S.polymarket_limitless.n}`, S.polymarket_limitless) +
+    bar("Вся выборка", `${S.all.n} пар`, S.all) +
+    `<div class="legend"><span><i style="background:var(--red)"></i>разные: есть сценарий, при котором рынки рассчитаются по-разному</span><span><i style="background:var(--amber)"></i>с оговорками: расходятся только в редких случаях</span><span><i style="background:var(--green)"></i>одинаковые по смыслу</span></div>`;
+  $("#sample-note").textContent = `Выборка воспроизводима (scripts/sample.mjs, зерно ${S.seed}, снимок данных ${new Date(S.snapshot).toLocaleString("ru-RU")}). Разметку делал ${S.reviewer}. Выборка маленькая, а часть пар относится к одному событию (например, несколько кандидатов в премьеры Израиля с общими правилами), поэтому цифры — ориентир, а не точная доля.`;
+}
 
 // --- ловушки: пары с реальными деньгами и различающимися правилами, где цены расходятся сильнее всего.
 // Сравниваем середину между покупкой YES и покупкой NO: ask в пустом стакане бывает около 1 и искажает картину.
@@ -199,14 +239,15 @@ const vpairs = [["", "Все"], ...DATA.pair_stats.filter(s => s.pairs).map(s =>
 let vp = "";
 $("#vpairs").innerHTML = vpairs.map(([k, l]) => `<button type="button" data-vp="${k}" aria-pressed="${k === vp}">${esc(l)}</button>`).join("");
 $("#vpairs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; vp = b.dataset.vp; for (const x of $("#vpairs").children) x.setAttribute("aria-pressed", x === b); render(); });
-for (const id of ["#q", "#cls", "#sort", "#manual"]) $(id).addEventListener("input", render);
+for (const id of ["#q", "#cls", "#sort", "#manual", "#insample"]) $(id).addEventListener("input", render);
 
 function render() {
-  const q = $("#q").value.trim().toLowerCase(), cls = $("#cls").value, sort = $("#sort").value, manual = $("#manual").checked;
+  const q = $("#q").value.trim().toLowerCase(), cls = $("#cls").value, sort = $("#sort").value, manual = $("#manual").checked, insample = $("#insample").checked;
   let rows = P.filter(p =>
     (!vp || p.venues.join("|") === vp) &&
     (!cls || riskOf(p) === cls) &&
     (!manual || p.verdict) &&
+    (!insample || p.sample) &&
     (!q || `${p.a.title} ${p.a.outcome} ${p.b.title} ${p.b.outcome}`.toLowerCase().includes(q)));
   const cmp = {
     edge: (x, y) => (y.edge ?? -9) - (x.edge ?? -9),
@@ -225,6 +266,7 @@ function card(p) {
       <div class="badges" style="display:flex;gap:4px;flex-direction:column;align-items:flex-start">
         <span class="badge b-${r}">${CLS[r]}</span>
         ${p.verdict ? `<span class="badge b-manual">✋ вручную</span>` : ""}
+        ${p.sample ? `<span class="badge b-sample">🎲 выборка</span>` : ""}
       </div>
       <div class="ptitle"><div class="t">${esc(p.a.title)}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + esc(p.a.outcome) : ""}</div>
         <div class="m">${vname(p.a.venue)} ${vname(p.b.venue)} <span>схожесть ${p.score}</span></div></div>
@@ -232,6 +274,7 @@ function card(p) {
     </summary>
     <div class="body">
       ${p.verdict ? `<div class="verdict ${p.verdict.verdict}"><h4>✋ Ручной разбор: ${VERDICT[p.verdict.verdict]}</h4>${esc(p.verdict.summary)}<br><b>Сценарий расхождения:</b> ${esc(p.verdict.scenario)}</div>` : ""}
+      ${p.sample ? `<div class="samplebox">🎲 <b>Случайная выборка, пара №${p.sample.n}: ${SAMPLE_LABEL[p.sample.label]}.</b> ${esc(p.sample.reason)}</div>` : ""}
       <ul class="flags">${p.cmp.flags.map(f => `<li><span class="lv-${f.level}">${esc(f.field)}</span>: ${esc(f.detail)}</li>`).join("") || "<li>Автоматические проверки различий не нашли. Это не доказательство эквивалентности.</li>"}</ul>
       <div class="cols">${side(p.a)}${side(p.b)}</div>
     </div>
@@ -249,7 +292,7 @@ $("#traps").addEventListener("click", openTrap);
 $("#traps").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTrap(e); } });
 function openTrap(e) {
   const t = e.target.closest(".trap"); if (!t) return;
-  vp = ""; $("#q").value = ""; $("#cls").value = ""; $("#manual").checked = false;
+  vp = ""; $("#q").value = ""; $("#cls").value = ""; $("#manual").checked = false; $("#insample").checked = false;
   for (const x of $("#vpairs").children) x.setAttribute("aria-pressed", x.dataset.vp === "");
   render();
   const d = document.getElementById(t.dataset.key);
