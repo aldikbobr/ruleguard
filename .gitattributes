@@ -1,2 +1,2 @@
-# Единые переносы строк (LF) у всех участников, чтобы не было «изменений» из-за CRLF/LF
+# Same line endings (LF) for every contributor, so CRLF/LF never shows up as a change
 * text=auto eol=lf

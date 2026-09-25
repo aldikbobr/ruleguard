@@ -1,4 +1,4 @@
-// Polymarket: крипто-площадка (Polygon). Gamma API, правила в description.
+// Polymarket: crypto venue (Polygon). Gamma API; rules in description.
 import { getJson, num, round, parseArr, sleep } from "../util.mjs";
 
 const API = "https://gamma-api.polymarket.com";
@@ -32,7 +32,7 @@ export async function load({ pages = 20 } = {}) {
   return markets.filter(m => m.rules);
 }
 
-// Цена покупки YES = bestAsk; покупка NO ≈ 1 − bestBid. Без стакана — последние цены исходов.
+// Buying YES = bestAsk; buying NO ≈ 1 − bestBid. Without a book, fall back to the last outcome prices.
 function quote(m) {
   const prices = parseArr(m.outcomePrices);
   const yesIdx = parseArr(m.outcomes).findIndex(o => String(o).toLowerCase() === "yes");
@@ -42,7 +42,7 @@ function quote(m) {
   };
 }
 
-// Живые цены по списку slug: пачками по 40 через повторяющийся ?slug=
+// Live prices for a list of slugs: batches of 40 via repeated ?slug=
 export async function prices(ids) {
   const out = new Map();
   for (let i = 0; i < ids.length; i += 40) {

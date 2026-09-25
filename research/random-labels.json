@@ -1,187 +1,37 @@
 {
-  "method": "Случайная выборка 30 пар из 163 пар с реальными деньгами (scripts/sample.mjs, зерно 20260925, снимок 2026-09-25T12:36:58Z). Каждая пара размечена по текстам правил из снимка: equivalent — правила по смыслу совпадают; caveats — совпадают, кроме редких пограничных случаев или сроков расчёта; different — есть правдоподобный сценарий, при котором рынки рассчитаются по-разному.",
-  "reviewer": "Claude (ИИ-ассистент), без независимой перепроверки человеком",
+  "method": "Random sample of 30 of the 163 matched real-money pairs (scripts/sample.mjs, seed 20260925, data snapshot 2026-09-25T12:36:58Z). Each pair was labeled against the rule texts in the snapshot: equivalent — the rules match in substance; caveats — they match except for rare edge cases or settlement timing; different — there is a plausible scenario in which the markets settle differently.",
+  "reviewer": "Claude (AI assistant), not independently re-checked by a human",
   "date": "2026-09-25",
   "labels": [
-    {
-      "n": 1,
-      "label": "equivalent",
-      "reason": "Текст правил скопирован; у Limitless нет строки с источником nfl.com, смысл тот же.",
-      "short": "Текст скопирован, смысл тот же"
-    },
-    {
-      "n": 2,
-      "label": "equivalent",
-      "reason": "Тексты правил совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 3,
-      "label": "caveats",
-      "reason": "Kalshi: республиканец/демократ приведён к присяге. Polymarket: победитель выборов по AP+Fox+NBC, партия через номинанта, независимые не считаются. Расходятся в редких случаях.",
-      "short": "Kalshi — присяга, Polymarket — победа на выборах"
-    },
-    {
-      "n": 4,
-      "label": "equivalent",
-      "reason": "Оба: «выиграл и принял номинацию республиканцев 2028». У Limitless добавлено, что замена номинанта не меняет расчёт, — не противоречит Kalshi.",
-      "short": "Одинаково: «выиграл и принял номинацию»"
-    },
-    {
-      "n": 5,
-      "label": "equivalent",
-      "reason": "Тексты совпадают (источник Binance BTC/USDT).",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 6,
-      "label": "different",
-      "reason": "Kalshi: премьер после следующих выборов, дедлайн 31.12.2028, при новых выборах до формирования правительства — «No one». Polymarket: следующий премьер вообще (не обязательно после выборов), избранный Скупщиной, дедлайн 30.06.2028.",
-      "short": "Kalshi — премьер после выборов до 2028, Polymarket — любой следующий до 06.2028"
-    },
-    {
-      "n": 7,
-      "label": "caveats",
-      "reason": "Оба исключают временных премьеров, но при повторных выборах Kalshi рассчитывается «No one», а Polymarket ждёт итога следующих выборов; дедлайны 27.10.2027 и 31.12.2027.",
-      "short": "Разные исходы, если объявят повторные выборы"
-    },
-    {
-      "n": 8,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 9,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 10,
-      "label": "equivalent",
-      "reason": "Текст скопирован; у Limitless нет строки с источником nfl.com.",
-      "short": "Текст скопирован, смысл тот же"
-    },
-    {
-      "n": 11,
-      "label": "caveats",
-      "reason": "Почти одинаково; у Polymarket исход «Other», если результаты неизвестны к 31.12.2027, у Kalshi такого пункта нет.",
-      "short": "Почти одинаково; у Polymarket «Other» при задержке выборов"
-    },
-    {
-      "n": 12,
-      "label": "equivalent",
-      "reason": "Тексты совпадают (источник Binance ETH/USDT).",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 13,
-      "label": "caveats",
-      "reason": "Kalshi: член партии, приведённый к присяге. Polymarket: партия победителя по бюллетеню или по фракции, в которую он собирается войти. Расходятся в редких случаях.",
-      "short": "Kalshi — присяга, Polymarket — партия победителя"
-    },
-    {
-      "n": 14,
-      "label": "equivalent",
-      "reason": "Текст скопирован; у Limitless нет строки с источником nfl.com.",
-      "short": "Текст скопирован, смысл тот же"
-    },
-    {
-      "n": 15,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 16,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 17,
-      "label": "equivalent",
-      "reason": "Текст скопирован; у Limitless нет строки с источником nfl.com.",
-      "short": "Текст скопирован, смысл тот же"
-    },
-    {
-      "n": 18,
-      "label": "equivalent",
-      "reason": "Тексты совпадают; «значение из заголовка» заменено на $2B.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 19,
-      "label": "different",
-      "reason": "Kalshi: встреча в Турции до 31.12.2028. Limitless: до 31.12.2026. Встреча в 2027–2028 засчитывается только на Kalshi.",
-      "short": "Дедлайн: Kalshi — 2028, Limitless — 2026"
-    },
-    {
-      "n": 20,
-      "label": "equivalent",
-      "reason": "Тексты совпадают.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 21,
-      "label": "different",
-      "reason": "Kalshi: первый новый премьер после выпуска рынка, временные считаются, если премьер не сменился — все «Нет». Limitless (копия Polymarket): премьер после выборов 2026, временные не считаются.",
-      "short": "Kalshi засчитывает временного премьера, Limitless — нет"
-    },
-    {
-      "n": 22,
-      "label": "different",
-      "reason": "Те же правила, что в паре 21: у Kalshi временные считаются, у Polymarket — нет; разные условия привязки к выборам.",
-      "short": "Kalshi засчитывает временного премьера, Polymarket — нет"
-    },
-    {
-      "n": 23,
-      "label": "different",
-      "reason": "Kalshi: следующая встреча в Китае до 01.01.2029. Polymarket: до 31.12.2026 и с подробным определением «встречи».",
-      "short": "Дедлайн: Kalshi — 2029, Polymarket — 2026"
-    },
-    {
-      "n": 24,
-      "label": "equivalent",
-      "reason": "Тексты совпадают (источник Binance ETH/USDT).",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 25,
-      "label": "caveats",
-      "reason": "Как пара 3: присяга против победы на выборах; партия через номинанта, независимые не считаются.",
-      "short": "Kalshi — присяга, Polymarket — победа на выборах"
-    },
-    {
-      "n": 26,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 27,
-      "label": "caveats",
-      "reason": "У Limitless нет пункта о досрочном расчёте «Нет», если пилот математически выбыл. Итог тот же, отличается момент расчёта.",
-      "short": "У Limitless нет досрочного расчёта при выбывании пилота"
-    },
-    {
-      "n": 28,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    },
-    {
-      "n": 29,
-      "label": "different",
-      "reason": "Polymarket: любая встреча высокого уровня, прямая или через посредников (включая спецпосланников). Limitless: только новый официальный раунд мирных переговоров, очно; технические встречи не считаются.",
-      "short": "Polymarket — любая встреча, Limitless — только раунд переговоров"
-    },
-    {
-      "n": 30,
-      "label": "equivalent",
-      "reason": "Тексты совпадают дословно.",
-      "short": "Тексты правил совпадают"
-    }
+    { "n": 1, "label": "equivalent", "short": "Copied rule text, same meaning", "reason": "Rule text is copied; Limitless drops the nfl.com source line, the meaning is the same." },
+    { "n": 2, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 3, "label": "caveats", "short": "Kalshi: sworn in · Polymarket: wins the election", "reason": "Kalshi: the party's senator is sworn in. Polymarket: the election winner as called by AP+Fox+NBC, party defined by nomination, independents excluded. They split only in rare cases." },
+    { "n": 4, "label": "equivalent", "short": "Same: “wins and accepts the nomination”", "reason": "Both: wins and accepts the 2028 Republican nomination. Limitless adds that replacing the nominee doesn't change the result, which doesn't contradict Kalshi." },
+    { "n": 5, "label": "equivalent", "short": "Identical rule text", "reason": "The texts match (source: Binance BTC/USDT)." },
+    { "n": 6, "label": "different", "short": "Kalshi: PM after the election, by 2028 · Polymarket: any next PM, by Jun 2028", "reason": "Kalshi: the PM formed after the next election, deadline Dec 31, 2028, and “No one” if new elections are called before a government forms. Polymarket: the next PM of any kind (not necessarily after an election), elected by the National Assembly, deadline Jun 30, 2028." },
+    { "n": 7, "label": "caveats", "short": "Different outcomes if a repeat election is called", "reason": "Both exclude interim PMs, but after a repeat election Kalshi resolves to “No one” while Polymarket waits for the next election's result; deadlines Oct 27, 2027 and Dec 31, 2027." },
+    { "n": 8, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 9, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 10, "label": "equivalent", "short": "Copied rule text, same meaning", "reason": "Rule text is copied; Limitless drops the nfl.com source line." },
+    { "n": 11, "label": "caveats", "short": "Nearly identical; Polymarket has “Other” if the election is delayed", "reason": "Nearly identical; Polymarket resolves to “Other” if results aren't known by Dec 31, 2027, Kalshi has no such clause." },
+    { "n": 12, "label": "equivalent", "short": "Identical rule text", "reason": "The texts match (source: Binance ETH/USDT)." },
+    { "n": 13, "label": "caveats", "short": "Kalshi: sworn in · Polymarket: winner's party", "reason": "Kalshi: a party member is sworn in. Polymarket: the winner's party by ballot listing or intended caucus. They split only in rare cases." },
+    { "n": 14, "label": "equivalent", "short": "Copied rule text, same meaning", "reason": "Rule text is copied; Limitless drops the nfl.com source line." },
+    { "n": 15, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 16, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 17, "label": "equivalent", "short": "Copied rule text, same meaning", "reason": "Rule text is copied; Limitless drops the nfl.com source line." },
+    { "n": 18, "label": "equivalent", "short": "Identical rule text", "reason": "The texts match; “the value specified in the title” is replaced with $2B." },
+    { "n": 19, "label": "different", "short": "Deadline — Kalshi: 2028 · Limitless: 2026", "reason": "Kalshi: a meeting in Turkey before Dec 31, 2028. Limitless: by Dec 31, 2026. A meeting in 2027–2028 counts only on Kalshi." },
+    { "n": 20, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match." },
+    { "n": 21, "label": "different", "short": "Kalshi counts an interim PM · Limitless doesn't", "reason": "Kalshi: the first new PM after the market opens; interim PMs count, and if the PM doesn't change every outcome resolves NO. Limitless (a copy of Polymarket): the PM after the 2026 election; interim PMs don't count." },
+    { "n": 22, "label": "different", "short": "Kalshi counts an interim PM · Polymarket doesn't", "reason": "Same rules as pair 21: interim PMs count on Kalshi but not on Polymarket, and the markets are tied to the election differently." },
+    { "n": 23, "label": "different", "short": "Deadline — Kalshi: 2029 · Polymarket: 2026", "reason": "Kalshi: the next meeting is in China, before Jan 1, 2029. Polymarket: by Dec 31, 2026, with a detailed definition of a “meeting”." },
+    { "n": 24, "label": "equivalent", "short": "Identical rule text", "reason": "The texts match (source: Binance ETH/USDT)." },
+    { "n": 25, "label": "caveats", "short": "Kalshi: sworn in · Polymarket: wins the election", "reason": "Same as pair 3: swearing-in vs winning the election; party defined by nomination, independents excluded." },
+    { "n": 26, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 27, "label": "caveats", "short": "Limitless has no early settlement if a driver is eliminated", "reason": "Limitless drops the clause that settles NO early once a driver is mathematically eliminated. The outcome is the same; only the settlement timing differs." },
+    { "n": 28, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." },
+    { "n": 29, "label": "different", "short": "Polymarket: any senior meeting · Limitless: a new round of peace talks", "reason": "Polymarket: any senior-level meeting, direct or through mediators (special envoys included). Limitless: only a new formal round of in-person peace talks; technical meetings don't count." },
+    { "n": 30, "label": "equivalent", "short": "Identical rule text", "reason": "The rule texts match word for word." }
   ]
 }

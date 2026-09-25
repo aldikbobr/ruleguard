@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -60,7 +60,6 @@ h2{font-size:19px;margin:32px 0 4px;letter-spacing:-.01em}
 .b-different{background:var(--red-bg);color:var(--red)}
 .b-check{background:var(--amber-bg);color:var(--amber)}
 .b-looks_equivalent{background:var(--green-bg);color:var(--green)}
-.b-manual{background:var(--surface-2);color:var(--fg);border:1px solid var(--line)}
 .ptitle{min-width:0}
 .ptitle .t{font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .edge{font-variant-numeric:tabular-nums;font-weight:650;font-size:15px;text-align:right;white-space:nowrap}
@@ -118,11 +117,11 @@ footer li{margin:3px 0}
 <div class="wrap">
 <header>
   <h1>RuleGuard</h1>
-  <p class="tag">Одинаковые на вид рынки — не всегда одинаковые контракты.</p>
+  <p class="tag">Markets that look identical aren't always the same contract.</p>
   <div class="fresh">
     <span class="fbadge" id="fbadge" role="status"><span class="fdot"></span><span id="ftext"></span></span>
     <span class="fbadge" id="pbadge" role="status" hidden><span class="fdot"></span><span id="ptext"></span></span>
-    <button type="button" class="rbtn" id="refresh">↻ Обновить данные</button>
+    <button type="button" class="rbtn" id="refresh">↻ Refresh data</button>
     <span class="fmsg" id="fmsg" aria-live="polite"></span>
   </div>
   <div class="conn" id="conn" hidden></div>
@@ -132,47 +131,47 @@ footer li{margin:3px 0}
 <section class="tiles" id="tiles"></section>
 
 <section id="sample" hidden>
-  <h2>Как часто «одинаковые» рынки на самом деле разные</h2>
+  <h2>How often “identical” markets actually differ</h2>
   <p class="h2sub" id="sample-sub"></p>
   <div class="sbars" id="sbars"></div>
   <p class="snote" id="sample-note"></p>
 </section>
 
-<h2>Ловушки арбитража</h2>
-<p class="h2sub">Пары на площадках с реальными деньгами, где цены на «одно и то же» событие расходятся сильнее всего (только ликвидные рынки). Выглядит как ошибка рынка или арбитраж, но правила у контрактов разные.</p>
+<h2>Arbitrage traps</h2>
+<p class="h2sub">Real-money pairs where prices for “the same” event diverge the most (liquid markets only). It looks like mispricing or arbitrage — but the contracts settle under different rules.</p>
 <div class="traps" id="traps"></div>
 
-<h2>Все пары</h2>
-<p class="h2sub">Нажмите на пару, чтобы увидеть правила обеих площадок рядом. Даты, источники и ключевые условия подсвечены.</p>
+<h2>All pairs</h2>
+<p class="h2sub">Open a pair for a side-by-side comparison. The full rules are one click deeper.</p>
 <div class="bar">
-  <div class="seg" id="vpairs" role="group" aria-label="Пара площадок"></div>
-  <input type="search" id="q" placeholder="Поиск: Venezuela, Senate, bitcoin…">
-  <select id="cls" aria-label="Класс">
-    <option value="">Все классы</option>
-    <option value="different">🔴 похоже, разные</option>
-    <option value="check">🟡 проверить</option>
-    <option value="looks_equivalent">🟢 различий не найдено</option>
+  <div class="seg" id="vpairs" role="group" aria-label="Venue pair"></div>
+  <input type="search" id="q" placeholder="Search: Venezuela, Senate, bitcoin…">
+  <select id="cls" aria-label="Class">
+    <option value="">All classes</option>
+    <option value="different">🔴 different</option>
+    <option value="check">🟡 check</option>
+    <option value="looks_equivalent">🟢 no differences found</option>
   </select>
-  <select id="sort" aria-label="Сортировка">
-    <option value="edge">По спреду</option>
-    <option value="cls">По риску</option>
-    <option value="score">По схожести</option>
+  <select id="sort" aria-label="Sort">
+    <option value="edge">By spread</option>
+    <option value="cls">By risk</option>
+    <option value="score">By similarity</option>
   </select>
-  <label><input type="checkbox" id="manual"> только проверенные вручную</label>
-  <label><input type="checkbox" id="insample"> только случайная выборка</label>
+  <label><input type="checkbox" id="manual"> reviewed by hand only</label>
+  <label><input type="checkbox" id="insample"> random sample only</label>
 </div>
 <div class="count" id="count"></div>
 <div id="list"></div>
 
 <footer>
-  <b>Как это устроено и ограничения</b>
+  <b>How it works and limitations</b>
   <ul>
-    <li>Пары найдены по совпадению слов в названиях с вето на числа, месяцы, ключевые слова, исходы и имена собственные.</li>
-    <li>Автоматические метки 🔴/🟡/🟢 поставлены правилами на ключевых словах, без ИИ. Это сигналы для проверки, а не вывод. «Различий не найдено» не значит «эквивалентны».</li>
-    <li>Значок «проверено вручную» — разбор, который человек сделал по текстам правил. Такие пары выбраны как показательные, это <b>не случайная выборка</b>.</li>
-    <li>Спред = 1 − (YES на одной площадке + NO на другой) по ценам ask из API, без комиссий, глубины стакана и проскальзывания. В тонких стаканах он меняется за минуты, поэтому «Ловушки» отсортированы по разнице средних цен (середина между покупкой YES и покупкой NO), а рынки с разрывом шире 15 п.п. в них не попадают. Для Manifold (игровая валюта) спред не считается.</li>
-    <li>У Kalshi через API доступно краткое изложение правил (<code>rules_primary</code>). В полных условиях могут быть уточнения.</li>
-    <li>Информационный прототип, не финансовый совет.</li>
+    <li>Pairs are matched by title similarity, with vetoes for mismatched numbers, years, months, parties, direction, tournament stage, outcomes and proper nouns.</li>
+    <li>The automatic 🔴/🟡/🟢 labels come from keyword rules, not AI. They are signals to check, not conclusions: “no differences found” does not mean “equivalent”.</li>
+    <li>✋ marks pairs reviewed by hand against the rule texts. They were picked as illustrative examples, so they are <b>not a random sample</b>. 🎲 marks pairs from the random sample.</li>
+    <li>Raw spread = 1 − (YES on one venue + NO on the other), using ask prices from the APIs, without fees, book depth or slippage. In thin books it changes within minutes, so “Arbitrage traps” are ranked by the gap between mid prices (halfway between buying YES and buying NO), and markets with a YES/NO gap wider than 15 pts are excluded. No spread is shown for Manifold (play money).</li>
+    <li>Kalshi's API exposes a summary of the rules (<code>rules_primary</code>); the full contract terms may add details.</li>
+    <li>Informational prototype. Not financial advice.</li>
   </ul>
 </footer>
 </div>
@@ -184,34 +183,33 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const cents = x => x == null ? "—" : `${Math.round(x * 1000) / 10}¢`;
 const price = x => x == null ? "—" : (Math.round(x * 1000) / 1000).toFixed(3).replace(/0+$/, "").replace(/\.$/, "");
-const CLS = { different: "разные", check: "проверить", looks_equivalent: "различий нет" };
-// помощники для компактной таблицы и строки «почему» (объявлены до первой отрисовки)
-const DE_FACTO = "фактическая власть";
-const INTERIM = { "включает": "засчитывается", "исключает": "не засчитывается" };
+const fmtTime = t => new Date(t).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" });
+const CLS = { different: "different", check: "check", looks_equivalent: "no diff" };
+// helpers for the compact table and the one-line "why" (declared before the first render)
+const DE_FACTO = "de facto power";
+const INTERIM = { counts: "counts", excluded: "doesn't count" };
 const list = xs => xs?.length ? esc(xs.join(", ")) : "—";
 const sameSet = (x = [], y = []) => x.length === y.length && x.every(v => y.includes(v));
 const daysApart = (x, y) => Math.abs(Date.parse(x) - Date.parse(y)) / 864e5;
-const fmtDate = d => d ? d.split("-").reverse().join(".") : "—";
+const fmtDate = d => d ? new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "—";
 const titleOf = p => `${p.a.title}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + p.a.outcome : ""}`;
 const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
-const VERDICT = { different: "разные контракты", caveats: "одинаковы с оговорками" };
 const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
 const mkey = m => `${m.venue}:${m.id}`;
-const edgeHtml = p => `${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "без спреда" : "сырой спред"}</small>`;
+const edgeHtml = p => `${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "no spread" : "raw spread"}</small>`;
 const pxHtml = m => `${price(m.yes)} / ${price(m.no)}`;
-// та же формула, что в src/compare.mjs: YES на одной площадке + NO на другой, по ценам ask
+// same formula as src/compare.mjs: YES on one venue + NO on the other, at ask prices
 function rawEdge(a, b) {
   const x = a.yes != null && b.no != null ? 1 - (a.yes + b.no) : null;
   const y = b.yes != null && a.no != null ? 1 - (b.yes + a.no) : null;
   const best = [x, y].filter(v => v != null).sort((p, q) => q - p)[0];
   return best == null ? null : Math.round(best * 1000) / 1000;
 }
-// приоритет: ручной разбор → разметка случайной выборки → автоматическая метка
+// precedence: manual review → random-sample label → automatic label
 const LABEL_RISK = { different: "different", caveats: "check", equivalent: "looks_equivalent" };
 const riskOf = p => p.verdict ? LABEL_RISK[p.verdict.verdict] : p.sample ? LABEL_RISK[p.sample.label] : p.cmp.cls;
-const SAMPLE_LABEL = { equivalent: "одинаковые", caveats: "с оговорками", different: "разные" };
 
-// подсветка важных мест в правилах
+// highlight the parts of the rules that usually decide settlement
 const HL = [
   /\b(?:January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+\d{1,2},?\s+20\d\d(?:,?\s+\d{1,2}:\d\d\s*(?:AM|PM)?\s*(?:ET|UTC)?)?/g,
   /\b(?:de facto|officially holds|formally appointed|sworn in|interim|caretaker|acting|regardless of[^.;]{0,40}|will not count|does not count|count as holding)\b/gi,
@@ -224,16 +222,16 @@ function highlight(text) {
   return h;
 }
 
-// --- шапка и плитки
-$("#gen").textContent = `Данные получены ${new Date(DATA.generated_at).toLocaleString("ru-RU")} через публичные API площадок.`;
+// --- header
+$("#gen").textContent = `Data fetched ${fmtTime(DATA.generated_at)} from the venues' public APIs.`;
 
-// --- свежесть данных: цены на рынках предсказаний меняются за минуты
-// served: страница открыта через scripts/serve.mjs (работают кнопка обновления и живые цены)
+// --- data freshness: prediction-market prices move within minutes
+// served: the page is opened through scripts/serve.mjs (refresh button and live prices work)
 const served = location.protocol.startsWith("http");
-const rtf = new Intl.RelativeTimeFormat("ru", { numeric: "auto" });
+const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 function ago(ms) {
   const min = Math.round(ms / 60000);
-  if (min < 1) return "только что";
+  if (min < 1) return "just now";
   if (min < 60) return rtf.format(-min, "minute");
   const h = Math.round(min / 60);
   if (h < 48) return rtf.format(-h, "hour");
@@ -243,22 +241,22 @@ function paintFreshness() {
   const age = Date.now() - Date.parse(DATA.generated_at);
   const cls = age < 15 * 60000 ? "fresh-ok" : age < 2 * 3600000 ? "fresh-mid" : "fresh-old";
   $("#fbadge").className = `fbadge ${cls}`;
-  $("#ftext").textContent = `${served ? "Пары и правила" : "Данные"}: ${ago(age)}`;
-  $("#fbadge").title = `Снимок данных: ${new Date(DATA.generated_at).toLocaleString("ru-RU")}. Зелёный — моложе 15 минут, жёлтый — моложе 2 часов, красный — старше.`;
+  $("#ftext").textContent = `${served ? "Pairs & rules" : "Data"}: ${ago(age)}`;
+  $("#fbadge").title = `Data snapshot: ${fmtTime(DATA.generated_at)}. Green: under 15 minutes old; amber: under 2 hours; red: older.`;
 }
 paintFreshness();
 setInterval(paintFreshness, 30000);
 
-// --- обновление: работает, когда страница открыта через scripts/serve.mjs
+// --- refresh: works when the page is served by scripts/serve.mjs
 const btn = $("#refresh"), msg = $("#fmsg");
 async function status() {
   const r = await fetch("/api/status", { cache: "no-store" });
-  if (!r.ok) throw new Error(`статус ${r.status}`);
+  if (!r.ok) throw new Error(`status ${r.status}`);
   return r.json();
 }
 function showKeys(keys) {
-  const item = (on, name, what) => `<span class="${on ? "on" : ""}" title="${esc(what)}">${on ? "✓" : "○"} ${esc(name)}: ${on ? "ключ подключён" : "нет ключа"}</span>`;
-  $("#conn").innerHTML = item(keys.anthropic, "ИИ-разбор правил (Claude API)", "Ключ ANTHROPIC_API_KEY в файле .env") + item(keys.dflow, "Solana (DFlow)", "Ключ DFLOW_API_KEY в файле .env");
+  const item = (on, name, what) => `<span class="${on ? "on" : ""}" title="${esc(what)}">${on ? "✓" : "○"} ${esc(name)}: ${on ? "key connected" : "no key"}</span>`;
+  $("#conn").innerHTML = item(keys.anthropic, "AI rule review (Claude API)", "ANTHROPIC_API_KEY in the .env file") + item(keys.dflow, "Solana (DFlow)", "DFLOW_API_KEY in the .env file");
   $("#conn").hidden = false;
 }
 async function waitForRefresh() {
@@ -267,95 +265,97 @@ async function waitForRefresh() {
   for (;;) {
     await new Promise(r => setTimeout(r, 3000));
     let s;
-    try { s = await status(); } catch { msg.textContent = "Сервер не отвечает. Он запущен?"; btn.disabled = false; return; }
+    try { s = await status(); } catch { msg.textContent = "The server isn't responding. Is it running?"; btn.disabled = false; return; }
     if (s.refreshing) {
       const last = (s.log || []).filter(l => !/^\s*$/.test(l)).slice(-1)[0] || "";
-      msg.textContent = `Обновляю… ${Math.round((Date.now() - t0) / 1000)} с. ${last}`;
+      msg.textContent = `Refreshing… ${Math.round((Date.now() - t0) / 1000)} s. ${last}`;
       continue;
     }
-    if (s.ok === false) { msg.textContent = `Не удалось обновить: ${s.error || "ошибка"}.`; btn.disabled = false; return; }
-    msg.textContent = "Готово, перезагружаю страницу…";
+    if (s.ok === false) { msg.textContent = `Refresh failed: ${s.error || "error"}.`; btn.disabled = false; return; }
+    msg.textContent = "Done — reloading the page…";
     location.reload();
     return;
   }
 }
 btn.addEventListener("click", async () => {
   if (!served) {
-    msg.textContent = "Обновление работает, когда демо открыто через сервер: node scripts/serve.mjs → http://localhost:4173";
+    msg.textContent = "Refresh works when the demo is served: node scripts/serve.mjs → http://localhost:4173";
     return;
   }
   btn.disabled = true;
-  msg.textContent = "Запускаю обновление (обычно 1–3 минуты)…";
+  msg.textContent = "Starting a refresh (usually 1–3 minutes)…";
   try {
     const r = await fetch("/api/refresh", { method: "POST", headers: { "X-RuleGuard": "1" } });
     const body = await r.json().catch(() => ({}));
     if (r.status === 202 || r.status === 409) return waitForRefresh();
-    msg.textContent = body.error || `Ошибка ${r.status}`;
+    msg.textContent = body.error || `Error ${r.status}`;
   } catch {
-    msg.textContent = "Сервер не отвечает. Запустите: node scripts/serve.mjs";
+    msg.textContent = "The server isn't responding. Start it with: node scripts/serve.mjs";
   }
   btn.disabled = false;
 });
 if (served) {
   status().then(s => {
     showKeys(s.keys);
-    if (s.refreshing) { msg.textContent = "Идёт обновление…"; waitForRefresh(); }
+    if (s.refreshing) { msg.textContent = "A refresh is running…"; waitForRefresh(); }
     else if (s.generated_at && Date.parse(s.generated_at) > Date.parse(DATA.generated_at)) {
-      msg.innerHTML = `Есть более свежие данные. <a href="" onclick="location.reload();return false">Перезагрузить</a>`;
+      msg.innerHTML = `Newer data is available. <a href="" onclick="location.reload();return false">Reload</a>`;
     }
   }).catch(() => {});
 } else {
-  btn.title = "Кнопка работает, когда демо открыто через сервер (node scripts/serve.mjs)";
+  btn.title = "The button works when the demo is served (node scripts/serve.mjs)";
 }
-const P = DATA.pairs;
-const nReal = P.filter(p => p.edge != null).length;
-$("#tiles").innerHTML = `
-  <div class="tile"><div class="v">${DATA.venues.reduce((s, v) => s + v.markets, 0).toLocaleString("ru-RU")}</div><div class="l">рынков загружено</div>
-    <div class="venues">${DATA.venues.map(v => `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)} ${v.markets.toLocaleString("ru-RU")}${v.money === "play" ? ' <span class="play">игровая валюта</span>' : ""}</span>`).join("")}</div></div>
-  <div class="tile"><div class="v">${P.length}</div><div class="l">пар «одинаковых» рынков между ${DATA.venues.length} площадками</div></div>
-  <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 похоже, разные контракты</div></div>
-  <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 есть различия, нужна проверка</div></div>
-  <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ разобрано вручную</div></div>`;
 
-// --- случайная выборка
+// --- tiles
+const P = DATA.pairs;
+const n = x => x.toLocaleString("en-US");
+$("#tiles").innerHTML = `
+  <div class="tile"><div class="v">${n(DATA.venues.reduce((s, v) => s + v.markets, 0))}</div><div class="l">markets loaded</div>
+    <div class="venues">${DATA.venues.map(v => `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)} ${n(v.markets)}${v.money === "play" ? ' <span class="play">play money</span>' : ""}</span>`).join("")}</div></div>
+  <div class="tile"><div class="v">${P.length}</div><div class="l">“identical” market pairs across ${DATA.venues.length} venues</div></div>
+  <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 likely different contracts</div></div>
+  <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 differences worth checking</div></div>
+  <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ reviewed by hand</div></div>`;
+
+// --- random sample
 const S = DATA.sample_stats;
 if (S && S.all && S.all.n) {
   $("#sample").hidden = false;
-  $("#sample-sub").textContent = `Случайная выборка: ${S.all.n} пар из ${S.population} найденных пар с реальными деньгами. Каждую пару разобрали по текстам правил.`;
+  $("#sample-sub").textContent = `Random sample: ${S.all.n} of ${S.population} matched real-money pairs, each reviewed against the rule texts.`;
   const bar = (title, sub, c) => `<div class="srow"><div class="lbl"><b>${esc(title)}</b><span>${esc(sub)}</span></div>
-    <div class="stack" role="img" aria-label="${esc(title)}: разные ${c.different}, с оговорками ${c.caveats}, одинаковые ${c.equivalent} из ${c.n}">
+    <div class="stack" role="img" aria-label="${esc(title)}: ${c.different} different, ${c.caveats} with caveats, ${c.equivalent} equivalent out of ${c.n}">
       ${["different", "caveats", "equivalent"].filter(k => c[k]).map(k => `<div class="s-${k}" style="width:${c[k] / c.n * 100}%">${c[k]}</div>`).join("")}
     </div></div>`;
   $("#sbars").innerHTML =
-    bar("Разные операторы (Kalshi ↔ Polymarket / Limitless)", `одинаковые правила только в ${S.cross_operator.equivalent} из ${S.cross_operator.n}`, S.cross_operator) +
-    bar("Polymarket ↔ Limitless", `Limitless часто копирует правила Polymarket: одинаковые в ${S.polymarket_limitless.equivalent} из ${S.polymarket_limitless.n}`, S.polymarket_limitless) +
-    bar("Вся выборка", `${S.all.n} пар`, S.all) +
-    `<div class="legend"><span><i style="background:var(--red)"></i>разные: есть сценарий, при котором рынки рассчитаются по-разному</span><span><i style="background:var(--amber)"></i>с оговорками: расходятся только в редких случаях</span><span><i style="background:var(--green)"></i>одинаковые по смыслу</span></div>`;
-  $("#sample-note").textContent = `Выборка воспроизводима (scripts/sample.mjs, зерно ${S.seed}, снимок данных ${new Date(S.snapshot).toLocaleString("ru-RU")}). Разметку делал ${S.reviewer}. Выборка маленькая, а часть пар относится к одному событию (например, несколько кандидатов в премьеры Израиля с общими правилами), поэтому цифры — ориентир, а не точная доля.`;
+    bar("Different operators (Kalshi ↔ Polymarket / Limitless)", `identical rules in only ${S.cross_operator.equivalent} of ${S.cross_operator.n}`, S.cross_operator) +
+    bar("Polymarket ↔ Limitless", `Limitless often copies Polymarket's rules: identical in ${S.polymarket_limitless.equivalent} of ${S.polymarket_limitless.n}`, S.polymarket_limitless) +
+    bar("Whole sample", `${S.all.n} pairs`, S.all) +
+    `<div class="legend"><span><i style="background:var(--red)"></i>different: a plausible scenario settles them differently</span><span><i style="background:var(--amber)"></i>caveats: they differ only in rare edge cases</span><span><i style="background:var(--green)"></i>equivalent in substance</span></div>`;
+  $("#sample-note").textContent = `Reproducible (scripts/sample.mjs, seed ${S.seed}, data snapshot ${fmtTime(S.snapshot)}). Labeled by ${S.reviewer}. The sample is small and some pairs share one event (e.g. several Israeli PM candidates under the same rules), so treat the numbers as indicative, not as a precise rate.`;
 }
 
-// --- ловушки: пары с реальными деньгами и различающимися правилами, где цены расходятся сильнее всего.
-// Сравниваем середину между покупкой YES и покупкой NO: ask в пустом стакане бывает около 1 и искажает картину.
-// Рынки, где разрыв между YES и NO шире 15 п.п., считаем неликвидными и в ловушки не берём.
+// --- arbitrage traps: real-money pairs with different rules where prices diverge the most.
+// Compare mid prices (halfway between buying YES and buying NO): an ask in an empty book can sit near 1 and distort the picture.
+// Markets whose YES/NO gap is wider than 15 pts are treated as illiquid and left out.
 const MAX_WIDTH = 0.15;
 const mid = m => m.yes != null && m.no != null ? (m.yes + 1 - m.no) / 2 : null;
 const width = m => m.yes != null && m.no != null ? m.yes + m.no - 1 : 1;
 const liquid = m => width(m) <= MAX_WIDTH;
 const gap = p => mid(p.a) != null && mid(p.b) != null ? Math.abs(mid(p.a) - mid(p.b)) : 0;
 function renderTraps() {
-const traps = P.filter(p => p.edge != null && riskOf(p) === "different" && liquid(p.a) && liquid(p.b) && gap(p) >= 0.03).sort((x, y) => gap(y) - gap(x)).slice(0, 6);
-$("#traps").innerHTML = traps.map(p => `
-  <div class="trap" data-key="${esc(key(p))}" tabindex="0" role="button" aria-label="Открыть пару">
+  const traps = P.filter(p => p.edge != null && riskOf(p) === "different" && liquid(p.a) && liquid(p.b) && gap(p) >= 0.03).sort((x, y) => gap(y) - gap(x)).slice(0, 6);
+  $("#traps").innerHTML = traps.map(p => `
+  <div class="trap" data-key="${esc(key(p))}" tabindex="0" role="button" aria-label="Open this pair">
     <div class="q">${esc(titleOf(p))}</div>
-    <div class="tnum"><b>${Math.round(gap(p) * 100)} п.п.</b><span>${esc(V[p.a.venue].name)} ${Math.round(mid(p.a) * 100)}% · ${esc(V[p.b.venue].name)} ${Math.round(mid(p.b) * 100)}%</span></div>
+    <div class="tnum"><b>${Math.round(gap(p) * 100)} pts</b><span>${esc(V[p.a.venue].name)} ${Math.round(mid(p.a) * 100)}% · ${esc(V[p.b.venue].name)} ${Math.round(mid(p.b) * 100)}%</span></div>
     <div class="why">${p.verdict ? "✋ " : ""}${esc(whyLine(p))}</div>
-  </div>`).join("") || `<div class="empty">Сейчас нет крупных расхождений цен на ликвидных рынках с разными правилами.</div>`;
+  </div>`).join("") || `<div class="empty">No large price gaps right now on liquid markets with different rules.</div>`;
 }
 renderTraps();
 function vname(id) { const v = V[id]; return `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)}</span>`; }
 
-// --- фильтры
-const vpairs = [["", "Все"], ...DATA.pair_stats.filter(s => s.pairs).map(s => [`${s.a}|${s.b}`, `${V[s.a].name} ↔ ${V[s.b].name} · ${s.pairs}`])];
+// --- filters
+const vpairs = [["", "All"], ...DATA.pair_stats.filter(s => s.pairs).map(s => [`${s.a}|${s.b}`, `${V[s.a].name} ↔ ${V[s.b].name} · ${s.pairs}`])];
 let vp = "";
 $("#vpairs").innerHTML = vpairs.map(([k, l]) => `<button type="button" data-vp="${k}" aria-pressed="${k === vp}">${esc(l)}</button>`).join("");
 $("#vpairs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; vp = b.dataset.vp; for (const x of $("#vpairs").children) x.setAttribute("aria-pressed", x === b); render(); });
@@ -363,7 +363,7 @@ for (const id of ["#q", "#cls", "#sort", "#manual", "#insample"]) $(id).addEvent
 
 function render() {
   const q = $("#q").value.trim().toLowerCase(), cls = $("#cls").value, sort = $("#sort").value, manual = $("#manual").checked, insample = $("#insample").checked;
-  let rows = P.filter(p =>
+  const rows = P.filter(p =>
     (!vp || p.venues.join("|") === vp) &&
     (!cls || riskOf(p) === cls) &&
     (!manual || p.verdict) &&
@@ -375,14 +375,14 @@ function render() {
     score: (x, y) => y.score - x.score
   }[sort];
   rows.sort(cmp);
-  $("#count").textContent = `Показано пар: ${rows.length} из ${P.length}`;
-  $("#list").innerHTML = rows.map(card).join("") || `<div class="empty">Ничего не найдено.</div>`;
+  $("#count").textContent = `Showing ${rows.length} of ${P.length} pairs`;
+  $("#list").innerHTML = rows.map(card).join("") || `<div class="empty">Nothing found.</div>`;
 }
 
-// Строка списка: метка, вопрос, одна строка «почему», спред. Раскрытие: компактная таблица, полные правила — ещё глубже.
+// List row: label, question, one-line "why", spread. Expanded: a compact table; the full rules sit one level deeper.
 function card(p) {
   const r = riskOf(p);
-  const src = p.verdict ? `<span title="Проверено вручную">✋</span> ` : p.sample ? `<span title="Случайная выборка, пара №${p.sample.n}">🎲</span> ` : "";
+  const src = p.verdict ? `<span title="Reviewed by hand">✋</span> ` : p.sample ? `<span title="Random sample, pair #${p.sample.n}">🎲</span> ` : "";
   return `<details class="pair" id="${esc(key(p))}">
     <summary>
       <span class="badge b-${r}">${CLS[r]}</span>
@@ -392,49 +392,49 @@ function card(p) {
     </summary>
     <div class="body">
       ${factsTable(p)}
-      <details class="full"><summary>Полные правила${p.verdict ? " и сценарий" : ""}</summary>
-        ${p.verdict ? `<p class="scn"><b>Сценарий расхождения:</b> ${esc(p.verdict.scenario)}</p>` : ""}
-        ${p.sample ? `<p class="scn">🎲 <b>Выборка, пара №${p.sample.n}:</b> ${esc(p.sample.reason)}</p>` : ""}
+      <details class="full"><summary>Full rules${p.verdict ? " and scenario" : ""}</summary>
+        ${p.verdict ? `<p class="scn"><b>How they diverge:</b> ${esc(p.verdict.scenario)}</p>` : ""}
+        ${p.sample ? `<p class="scn">🎲 <b>Sample pair #${p.sample.n}:</b> ${esc(p.sample.reason)}</p>` : ""}
         <div class="cols">${side(p.a)}${side(p.b)}</div>
       </details>
     </div>
   </details>`;
 }
 function side(m) {
-  return `<div class="col"><h5>${vname(m.venue)}${V[m.venue].money === "play" ? ' <span class="play">игровая валюта</span>' : ""}</h5>
+  return `<div class="col"><h5>${vname(m.venue)}${V[m.venue].money === "play" ? ' <span class="play">play money</span>' : ""}</h5>
     <div class="q">${esc(m.title)}${m.outcome && !m.title.includes(m.outcome) ? " · " + esc(m.outcome) : ""}</div>
     <pre>${highlight(m.rules)}</pre></div>`;
 }
 
-// Таблица «площадка против площадки»: только поля, где есть что сравнивать; различия — красным
+// Venue-vs-venue table: only fields with something to compare; differences in red
 function factsTable(p) {
   const fa = p.cmp.facts?.a || {}, fb = p.cmp.facts?.b || {};
   const rows = [];
   const row = (label, a, b, diff) => rows.push(`<tr${diff ? ' class="diff"' : ""}><th>${label}</th><td>${a}</td><td>${b}</td></tr>`);
   row("YES / NO", `<span data-px="${esc(mkey(p.a))}">${pxHtml(p.a)}</span>`, `<span data-px="${esc(mkey(p.b))}">${pxHtml(p.b)}</span>`, false);
-  if (fa.deadline || fb.deadline) row("Дедлайн", fmtDate(fa.deadline), fmtDate(fb.deadline), Boolean(fa.deadline && fb.deadline && daysApart(fa.deadline, fb.deadline) > 1));
-  if (fa.sources?.length || fb.sources?.length) row("Источник", list(fa.sources), list(fb.sources), !sameSet(fa.sources, fb.sources));
-  if (fa.status === DE_FACTO || fb.status === DE_FACTO) row("Кого считают", esc(fa.status || "—"), esc(fb.status || "—"), fa.status !== fb.status);
-  if (INTERIM[fa.interim] || INTERIM[fb.interim]) row("Временный руководитель", INTERIM[fa.interim] || "не сказано", INTERIM[fb.interim] || "не сказано", fa.interim !== fb.interim);
-  if (fa.edges?.length || fb.edges?.length) row("Особые случаи", list(fa.edges), list(fb.edges), !sameSet(fa.edges, fb.edges));
-  const head = m => `${vname(m.venue)} <a href="${esc(m.url)}" target="_blank" rel="noopener" title="Открыть рынок на площадке">↗</a>`;
+  if (fa.deadline || fb.deadline) row("Deadline", fmtDate(fa.deadline), fmtDate(fb.deadline), Boolean(fa.deadline && fb.deadline && daysApart(fa.deadline, fb.deadline) > 1));
+  if (fa.sources?.length || fb.sources?.length) row("Source", list(fa.sources), list(fb.sources), !sameSet(fa.sources, fb.sources));
+  if (fa.status === DE_FACTO || fb.status === DE_FACTO) row("Resolves on", esc(fa.status || "—"), esc(fb.status || "—"), fa.status !== fb.status);
+  if (INTERIM[fa.interim] || INTERIM[fb.interim]) row("Interim leader", INTERIM[fa.interim] || "not stated", INTERIM[fb.interim] || "not stated", fa.interim !== fb.interim);
+  if (fa.edges?.length || fb.edges?.length) row("Edge cases", list(fa.edges), list(fb.edges), !sameSet(fa.edges, fb.edges));
+  const head = m => `${vname(m.venue)} <a href="${esc(m.url)}" target="_blank" rel="noopener" title="Open the market on ${esc(V[m.venue].name)}">↗</a>`;
   return `<table class="ft"><thead><tr><th></th><th>${head(p.a)}</th><th>${head(p.b)}</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
 }
 
 function dot(id) { return `<span class="dot" style="background:${V[id].color}" title="${esc(V[id].name)}"></span>`; }
 
-// Одна строка «почему»: ручной разбор → разметка выборки → главное различие из автоматических фактов
+// One-line "why": manual review → random-sample label → the main difference found automatically
 function whyLine(p) {
   if (p.verdict?.short) return p.verdict.short;
   if (p.sample?.short) return p.sample.short;
   const A = V[p.a.venue].name, B = V[p.b.venue].name, fa = p.cmp.facts?.a, fb = p.cmp.facts?.b;
   if (!fa || !fb) return "";
-  if ((fa.status === DE_FACTO) !== (fb.status === DE_FACTO)) return `${A} — ${fa.status || "не сказано"}, ${B} — ${fb.status || "не сказано"}`;
-  if (fa.deadline && fb.deadline && daysApart(fa.deadline, fb.deadline) > 1) return `Дедлайн: ${A} — ${fmtDate(fa.deadline)}, ${B} — ${fmtDate(fb.deadline)}`;
-  if ((INTERIM[fa.interim] || INTERIM[fb.interim]) && fa.interim !== fb.interim) return `Временный руководитель: ${A} — ${INTERIM[fa.interim] || "не сказано"}, ${B} — ${INTERIM[fb.interim] || "не сказано"}`;
-  if (!sameSet(fa.sources, fb.sources)) return `Источник: ${A} — ${fa.sources.join(", ") || "не указан"}, ${B} — ${fb.sources.join(", ") || "не указан"}`;
-  if (!sameSet(fa.edges, fb.edges)) return "Особые случаи описаны по-разному";
-  return "Автопроверка различий не нашла";
+  if ((fa.status === DE_FACTO) !== (fb.status === DE_FACTO)) return `${A}: ${fa.status || "not stated"} · ${B}: ${fb.status || "not stated"}`;
+  if (fa.deadline && fb.deadline && daysApart(fa.deadline, fb.deadline) > 1) return `Deadline — ${A}: ${fmtDate(fa.deadline)} · ${B}: ${fmtDate(fb.deadline)}`;
+  if ((INTERIM[fa.interim] || INTERIM[fb.interim]) && fa.interim !== fb.interim) return `Interim leader — ${A}: ${INTERIM[fa.interim] || "not stated"} · ${B}: ${INTERIM[fb.interim] || "not stated"}`;
+  if (!sameSet(fa.sources, fb.sources)) return `Source — ${A}: ${fa.sources.join(", ") || "not named"} · ${B}: ${fb.sources.join(", ") || "not named"}`;
+  if (!sameSet(fa.edges, fb.edges)) return "Edge cases are worded differently";
+  return "No differences found automatically";
 }
 
 $("#traps").addEventListener("click", openTrap);
@@ -449,7 +449,7 @@ function openTrap(e) {
 }
 render();
 
-// --- живые цены: сервер раз в минуту берёт текущие цены с площадок (без ключей), страница обновляет их на месте
+// --- live prices: the server pulls current prices from the venues once a minute (no keys needed); the page updates them in place
 const byMkey = new Map(), byKey = new Map(P.map(p => [key(p), p]));
 for (const p of P) for (const m of [p.a, p.b]) { if (!byMkey.has(mkey(m))) byMkey.set(mkey(m), []); byMkey.get(mkey(m)).push(m); }
 let pricesAt = null, pricesCount = 0, pricesErrors = [], pricesFailed = false;
@@ -461,16 +461,16 @@ function paintPrices() {
   b.hidden = false;
   if (!pricesAt) {
     b.className = "fbadge";
-    $("#ptext").textContent = pricesFailed ? "Цены: сервер не отвечает" : "Цены: загружаю…";
+    $("#ptext").textContent = pricesFailed ? "Prices: server not responding" : "Prices: loading…";
     return;
   }
   const age = Date.now() - pricesAt;
   b.className = `fbadge ${pricesFailed || age > 3 * 60000 ? "fresh-mid" : "fresh-ok"}`;
-  $("#ptext").textContent = `Цены: живые · ${age < 60000 ? `${Math.max(1, Math.round(age / 1000))} с назад` : ago(age)}`;
-  b.title = `Цены обновляются раз в минуту, пока страница открыта. Получено цен: ${pricesCount}.${pricesErrors.length ? " Ошибки: " + pricesErrors.join("; ") : ""}`;
+  $("#ptext").textContent = `Prices: live · ${age < 60000 ? `${Math.max(1, Math.round(age / 1000))} s ago` : ago(age)}`;
+  b.title = `Prices refresh every minute while the page is open. Prices received: ${pricesCount}.${pricesErrors.length ? " Errors: " + pricesErrors.join("; ") : ""}`;
 }
 
-// первая загрузка — всегда; периодические — только пока вкладку видно, чтобы не нагружать площадки
+// the first load always runs; periodic ones only while the tab is visible, to go easy on the venues
 async function pullPrices(force = false) {
   if (document.hidden && !force) return;
   let body;
@@ -480,10 +480,10 @@ async function pullPrices(force = false) {
     body = await r.json();
   } catch { pricesFailed = true; paintPrices(); return; }
   const changed = new Set();
-  for (const [k, list] of byMkey) {
+  for (const [k, markets] of byMkey) {
     const q = body.prices[k];
     if (!q) continue;
-    for (const m of list) if (q.yes !== m.yes || q.no !== m.no) { m.yes = q.yes; m.no = q.no; changed.add(k); }
+    for (const m of markets) if (q.yes !== m.yes || q.no !== m.no) { m.yes = q.yes; m.no = q.no; changed.add(k); }
   }
   for (const p of P) if (V[p.a.venue].money !== "play" && V[p.b.venue].money !== "play") p.edge = rawEdge(p.a, p.b);
   for (const el of document.querySelectorAll("[data-px]")) {

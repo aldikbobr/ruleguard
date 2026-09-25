@@ -1,11 +1,11 @@
-// Limitless: крипто-площадка (Base). Правила в description (HTML). Бывают групповые рынки с вложенными markets.
+// Limitless: crypto venue (Base). Rules in description (HTML). Group markets nest their children under markets.
 import { getJson, mapLimit, num, stripHtml, sleep } from "../util.mjs";
 
 const API = "https://api.limitless.exchange";
 
 export const meta = { id: "limitless", name: "Limitless", money: "real", color: "#c2410c" };
 
-// Короткие рынки «вверх/вниз за 5–15 минут» не имеют аналогов на других площадках — пропускаем
+// Short "up or down in 5–15 minutes" markets have no counterparts on other venues — skip them
 const SHORT_TERM = /\b(5|15|30)\s*min\b|minutely|hourly/i;
 
 export async function load({ pages = 30, pageSize = 25 } = {}) {
@@ -44,18 +44,18 @@ export async function load({ pages = 30, pageSize = 25 } = {}) {
   return markets.filter(m => m.rules);
 }
 
-// Цена покупки по рынку (tradePrices.buy.market), без стакана — средние цены
+// Market buy price (tradePrices.buy.market); without a book, fall back to mid prices
 function quote(m) {
   const [yesAsk, noAsk] = m.tradePrices?.buy?.market ?? [];
   const [yesMid, noMid] = m.prices ?? [];
   return { yes: num(yesAsk) ?? num(yesMid), no: num(noAsk) ?? num(noMid) };
 }
 
-// Живые цены: пакетного запроса нет, поэтому по одному рынку, не больше 6 одновременно
+// Live prices: there is no batch endpoint, so one market per request, at most 6 at a time
 export async function prices(ids) {
   const out = new Map();
   await mapLimit(ids, 6, async id => {
-    try { out.set(id, quote(await getJson(`${API}/markets/${encodeURIComponent(id)}`))); } catch { /* рынок закрыт или удалён */ }
+    try { out.set(id, quote(await getJson(`${API}/markets/${encodeURIComponent(id)}`))); } catch { /* market closed or removed */ }
   });
   return out;
 }

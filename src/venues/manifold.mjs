@@ -1,5 +1,5 @@
-// Manifold: игровая валюта (mana), реальных денег нет. В списке рынков правил нет —
-// текст (textDescription) подгружается отдельно, только для рынков, попавших в пары.
+// Manifold: play money (mana), no real money. The market list has no rules —
+// the text (textDescription) is fetched separately, only for markets that ended up in pairs.
 import { getJson, mapLimit, num } from "../util.mjs";
 
 const API = "https://api.manifold.markets/v0";
@@ -20,7 +20,7 @@ export async function load({ perSort = 1000 } = {}) {
         event: m.question,
         title: m.question,
         outcome: "",
-        rules: null, // подгружается в hydrateRules
+        rules: null, // filled in by hydrateRules
         close: m.closeTime ? new Date(m.closeTime).toISOString() : null,
         yes: num(m.probability),
         no: m.probability != null ? 1 - m.probability : null,
@@ -32,14 +32,14 @@ export async function load({ perSort = 1000 } = {}) {
   return [...byId.values()];
 }
 
-// Живые вероятности (игровая валюта): по одному рынку, не больше 6 одновременно
+// Live probabilities (play money): one market per request, at most 6 at a time
 export async function prices(ids) {
   const out = new Map();
   await mapLimit(ids, 6, async id => {
     try {
       const m = await getJson(`${API}/market/${encodeURIComponent(id)}`);
       if (m.probability != null) out.set(id, { yes: m.probability, no: 1 - m.probability });
-    } catch { /* рынок закрыт или удалён */ }
+    } catch { /* market closed or removed */ }
   });
   return out;
 }

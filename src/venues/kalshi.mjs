@@ -1,4 +1,4 @@
-// Kalshi: регулируемая площадка в США. Публичный API, правила в rules_primary/rules_secondary.
+// Kalshi: US-regulated exchange. Public API; rules in rules_primary/rules_secondary.
 import { getJson, num, sleep } from "../util.mjs";
 
 const API = "https://api.elections.kalshi.com/trade-api/v2";
@@ -35,7 +35,7 @@ export async function load({ pages = 30 } = {}) {
   return markets.filter(m => m.rules);
 }
 
-// Живые цены по списку тикеров: пачками по 50 через ?tickers=
+// Live prices for a list of tickers: batches of 50 via ?tickers=
 export async function prices(ids) {
   const out = new Map();
   for (let i = 0; i < ids.length; i += 50) {

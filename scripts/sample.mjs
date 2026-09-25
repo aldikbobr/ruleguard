@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Воспроизводимая случайная выборка пар для ручной разметки.
-// Берёт пары между площадками с реальными деньгами из research/pairs-all.json,
-// перемешивает с фиксированным зерном и сохраняет первые N в research/random-sample.json.
+// Reproducible random sample of pairs for manual labeling.
+// Takes the real-money pairs from research/pairs-all.json,
+// shuffles them with a fixed seed and saves the first N to research/random-sample.json.
 //
-// Запуск:  node scripts/sample.mjs [--n 30] [--seed 20260925]
+// Usage:  node scripts/sample.mjs [--n 30] [--seed 20260925]
 
 import fs from "node:fs";
 import path from "node:path";
@@ -14,7 +14,7 @@ const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) =>
 const N = Number(args.n ?? 30);
 const SEED = Number(args.seed ?? 20260925);
 
-// mulberry32: простой детерминированный генератор, чтобы выборку мог повторить любой
+// mulberry32: a simple deterministic generator, so anyone can reproduce the sample
 function rng(seed) {
   return () => {
     seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
@@ -25,7 +25,7 @@ function rng(seed) {
 }
 
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, "research", "pairs-all.json"), "utf8"));
-const population = data.pairs.filter(p => p.edge != null); // только реальные деньги (без Manifold)
+const population = data.pairs.filter(p => p.edge != null); // real money only (no Manifold)
 const rand = rng(SEED);
 const shuffled = population.map(p => [rand(), p]).sort((x, y) => x[0] - y[0]).map(([, p]) => p);
 const sample = shuffled.slice(0, N).map((p, i) => ({ n: i + 1, key: `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`, venues: p.venues, auto: p.cmp.cls, a: p.a, b: p.b }));
@@ -35,7 +35,7 @@ for (const p of population) byPair[p.venues.join("-")] = (byPair[p.venues.join("
 const out = { snapshot: data.generated_at, seed: SEED, population: population.length, population_by_venue_pair: byPair, n: sample.length, pairs: sample };
 fs.writeFileSync(path.join(ROOT, "research", "random-sample.json"), JSON.stringify(out, null, 2));
 
-console.log(`Снимок данных: ${data.generated_at}`);
-console.log(`Генеральная совокупность: ${population.length} пар с реальными деньгами`, byPair);
-console.log(`Выборка: ${sample.length} пар, зерно ${SEED} → research/random-sample.json`);
+console.log(`Data snapshot: ${data.generated_at}`);
+console.log(`Population: ${population.length} real-money pairs`, byPair);
+console.log(`Sample: ${sample.length} pairs, seed ${SEED} → research/random-sample.json`);
 for (const p of sample) console.log(`${String(p.n).padStart(2)} ${p.venues.join("-").padEnd(21)} ${p.auto.padEnd(16)} ${p.a.title} ${p.a.outcome || ""}`);

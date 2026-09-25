@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Раздаёт demo/ по адресу http://localhost:4173 и умеет обновлять данные по кнопке на странице.
-//   GET  /api/status   — время снимка данных, идёт ли обновление, какие ключи подключены (только да/нет)
-//   POST /api/refresh  — запускает scripts/build-demo.mjs в фоне (одно обновление за раз)
-//   GET  /api/prices   — живые цены по всем рынкам из найденных пар (кэш 45 с, ключи площадок не нужны)
-// Слушает только 127.0.0.1: с других компьютеров сервер недоступен.
+// Serves demo/ at http://localhost:4173 and refreshes the data from a button on the page.
+//   GET  /api/status   — data snapshot time, whether a refresh is running, which keys are connected (yes/no only)
+//   POST /api/refresh  — runs scripts/build-demo.mjs in the background (one refresh at a time)
+//   GET  /api/prices   — live prices for every market in the matched pairs (cached for 45 s; no venue keys needed)
+// Listens on 127.0.0.1 only: the server is not reachable from other machines.
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -19,7 +19,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DIR = path.join(ROOT, "demo");
 const DATA = path.join(ROOT, "research", "pairs-all.json");
 const PORT = Number(process.env.PORT ?? 4173);
-const MIN_INTERVAL_MS = 60_000; // не чаще раза в минуту: сборка опрашивает публичные API площадок
+const MIN_INTERVAL_MS = 60_000; // at most once a minute: the build polls the venues' public APIs
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json" };
 
 loadEnv(ROOT);
@@ -37,14 +37,14 @@ function startRefresh() {
   child.stdout.on("data", collect);
   child.stderr.on("data", collect);
   child.on("close", code => {
-    Object.assign(priceCache, { at: 0, body: null }); // набор пар мог измениться
-    Object.assign(job,{ running: false, finishedAt: Date.now(), ok: code === 0, error: code === 0 ? null : `сборка завершилась с кодом ${code}` });
-    console.log(code === 0 ? "Обновление готово" : `Обновление не удалось (код ${code})`);
+    Object.assign(priceCache, { at: 0, body: null }); // the set of pairs may have changed
+    Object.assign(job, { running: false, finishedAt: Date.now(), ok: code === 0, error: code === 0 ? null : `the build exited with code ${code}` });
+    console.log(code === 0 ? "Refresh complete" : `Refresh failed (code ${code})`);
   });
   child.on("error", e => Object.assign(job, { running: false, finishedAt: Date.now(), ok: false, error: e.message }));
 }
 
-// Живые цены: один общий запрос к площадкам на все вкладки, результат живёт PRICE_TTL_MS
+// Live prices: one shared request to the venues for all open tabs; the result lives for PRICE_TTL_MS
 const PRICE_TTL_MS = 45_000;
 const VENUES = { kalshi, polymarket, limitless, manifold };
 const priceCache = { at: 0, body: null, pending: null };
@@ -98,12 +98,12 @@ http.createServer((req, res) => {
   }
 
   if (url.pathname === "/api/refresh") {
-    if (req.method !== "POST") return json(res, 405, { error: "нужен POST" });
-    // собственный заголовок: чужой сайт не сможет запустить обновление из браузера без CORS-разрешения
-    if (req.headers["x-ruleguard"] !== "1") return json(res, 403, { error: "нет заголовка X-RuleGuard" });
-    if (job.running) return json(res, 409, { error: "обновление уже идёт" });
+    if (req.method !== "POST") return json(res, 405, { error: "POST required" });
+    // a custom header: another website can't trigger a refresh from the browser without a CORS preflight we never allow
+    if (req.headers["x-ruleguard"] !== "1") return json(res, 403, { error: "missing X-RuleGuard header" });
+    if (job.running) return json(res, 409, { error: "a refresh is already running" });
     const wait = job.finishedAt ? MIN_INTERVAL_MS - (Date.now() - job.finishedAt) : 0;
-    if (wait > 0) return json(res, 429, { error: `обновлять можно раз в минуту, подождите ${Math.ceil(wait / 1000)} с` });
+    if (wait > 0) return json(res, 429, { error: `refreshes are limited to one a minute — try again in ${Math.ceil(wait / 1000)} s` });
     startRefresh();
     return json(res, 202, { started: true });
   }

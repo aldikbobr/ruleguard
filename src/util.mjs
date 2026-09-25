@@ -1,4 +1,4 @@
-// Общие помощники: HTTP с повторами, числа, очистка HTML.
+// Shared helpers: HTTP with retries, numbers, HTML cleanup.
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -12,7 +12,7 @@ export async function getJson(url, tries = 3) {
   throw new Error(`failed after retries: ${url}`);
 }
 
-// Выполняет fn для каждого элемента с ограничением параллельности
+// Runs fn for every item with limited concurrency
 export async function mapLimit(items, limit, fn) {
   const out = new Array(items.length);
   let next = 0;

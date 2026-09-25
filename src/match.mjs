@@ -1,7 +1,7 @@
-// Поиск пар «одинаковых» рынков между двумя площадками: сходство слов + вето на ложные совпадения.
+// Finds "identical" markets across two venues: word similarity plus vetoes against false matches.
 
 const STOP = new Set("the a an of in on at to by for will be is are was and or before after than this that with from as it its his her their who what which when during end 2025 2026 2027 yes no market".split(" "));
-// слова, которые меняют смысл вопроса: если есть только с одной стороны — не пара
+// words that change the meaning of a question: present on only one side means it's not a pair
 const PIVOTS = ["closest", "margin", "before", "after", "above", "below", "over", "under", "between", "least", "most", "win", "lose", "leave", "out", "resign", "nominee", "nomination", "primary", "popular", "electoral", "senate", "house", "governor", "mayor", "cut", "hike", "raise", "increase", "decrease", "first", "second", "third", "runoff", "qualify", "nominated", "champion", "quarterfinal", "quarterfinals", "semifinal", "semifinals", "final", "finals", "playoffs"];
 export const MONTHS = "january february march april may june july august september october november december".split(" ");
 const GENERIC_CAPS = new Set("will who what which where when the next us usa u.s. presidential president election general party senate house race seat republican republicans democratic democrats democratics independent prime minister premier governor mayor nfl mvp award year before after following".split(" "));
@@ -18,7 +18,7 @@ function lastWord(s) {
   return w.length ? w[w.length - 1] : "";
 }
 
-// Годы из вопроса; «before 2027» означает 2026
+// Years in the question; "before 2027" means 2026
 function yearsIn(s) {
   const out = new Set();
   for (const m of s.matchAll(/\b(before\s+)?(20[2-4]\d)\b/g)) out.add(m[1] ? Number(m[2]) - 1 : Number(m[2]));
@@ -54,19 +54,19 @@ export function veto(a, b) {
   for (const p of PIVOTS) if (wa.has(p) !== wb.has(p)) return `pivot:${p}`;
   const ma = MONTHS.filter(x => wa.has(x)), mb = MONTHS.filter(x => wb.has(x));
   if (ma.length && mb.length && ma.join() !== mb.join()) return "month";
-  // «Сенат 2028» ≠ «Сенат 2026»; «до конца 2026» ≠ «до конца 2027»
+  // "Senate 2028" ≠ "Senate 2026"; "by end of 2026" ≠ "by end of 2027"
   const ya = yearsIn(ta), yb = yearsIn(tb);
   if (ya.size && yb.size && ![...ya].some(y => yb.has(y))) return "year";
   const ra = parties(ta), rb = parties(tb);
   if (ra.size && rb.size && ![...ra].some(x => rb.has(x))) return "party";
-  // направление: «упадёт до $2 600» ≠ «вырастет до $2 600»
+  // direction: "dips to $2,600" ≠ "reaches $2,600"
   const da = direction(a), db = direction(b);
   if (da && db && da !== db) return "direction";
-  // исход должен совпадать по последнему слову: Bayrou ≠ Baroin, Osborn ≠ Independent
+  // the outcome must match on its last word: Bayrou ≠ Baroin, Osborn ≠ Independent
   const oa = lastWord(a.outcome), ob = lastWord(b.outcome);
   if (oa && ob && oa !== ob) return "outcome";
-  // имена собственные одной стороны должны встречаться в тексте другой (сравнение по первым 5 буквам):
-  // «Putin и Zelenskyy» ≠ «Trump и Putin», «Senate race in Indiana» ≠ «Senate in 2026»
+  // proper nouns on one side must appear in the other side's text (compared on the first 5 letters):
+  // "Putin and Zelenskyy" ≠ "Trump and Putin", "Senate race in Indiana" ≠ "Senate in 2026"
   const words = m => textOf(m).normalize("NFD").replace(/[̀-ͯ]/g, "").split(/[^a-z0-9'’-]+/).filter(Boolean);
   const missing = (nouns, other) => nouns.some(x => !other.some(y => y.slice(0, 5) === x.slice(0, 5)));
   if (missing(properNouns(a), words(b)) || missing(properNouns(b), words(a))) return "proper_noun";
@@ -80,14 +80,14 @@ export function similarity(a, b) {
   return 0.5 * (inter / (A.size + B.size - inter)) + 0.5 * (inter / Math.min(A.size, B.size));
 }
 
-// Пары между площадками A и B: жадно один к одному, не больше perEvent пар из одного события A
+// Pairs between venues A and B: greedy one-to-one, at most perEvent pairs per event on venue A
 export function matchVenues(as, bs, { minScore = 0.45, perEvent = 3 } = {}) {
   const index = new Map();
   bs.forEach((m, i) => { for (const t of new Set(tokens(textOf(m)))) { if (!index.has(t)) index.set(t, []); index.get(t).push(i); } });
   const cands = [];
   for (const a of as) {
     const shared = new Map();
-    // годы не считаются общими словами: «US … 2030» и «US … 2030» ещё не один вопрос
+    // years don't count as shared words: "US … 2030" and "US … 2030" aren't the same question yet
     for (const t of new Set(tokens(textOf(a)))) {
       if (/^20\d\d$/.test(t)) continue;
       for (const i of index.get(t) || []) shared.set(i, (shared.get(i) || 0) + 1);

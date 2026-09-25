@@ -1,5 +1,5 @@
-// Загружает ключи из .env в process.env (без сторонних пакетов). Существующие переменные не перезаписывает.
-// Значения ключей никуда не выводятся — наружу отдаём только «подключён / нет».
+// Loads keys from .env into process.env (no third-party packages). Existing variables are not overwritten.
+// Key values are never exposed — only "connected / not connected" leaves this module.
 import fs from "node:fs";
 import path from "node:path";
 
@@ -14,7 +14,7 @@ export function loadEnv(root) {
   }
 }
 
-// Какие возможности открывают ключи: только булевы флаги, без значений
+// Which features the keys unlock: boolean flags only, never the values
 export function keyStatus() {
   return {
     anthropic: Boolean(process.env.ANTHROPIC_API_KEY),

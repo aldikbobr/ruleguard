@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// RuleGuard — демо: загружает Kalshi, Polymarket, Limitless и Manifold, ищет пары между всеми площадками,
-// сравнивает правила и собирает страницу demo/index.html (данные встраиваются в страницу, сервер не нужен).
+// RuleGuard demo build: loads Kalshi, Polymarket, Limitless and Manifold, matches pairs across every venue pair,
+// compares the rules and writes demo/index.html (the data is embedded in the page, so no server is required).
 //
-// Запуск:  node scripts/build-demo.mjs [--per-venue-pair 100] [--kalshi-pages 30]
-//          node scripts/build-demo.mjs --from-cache   (только пересобрать страницу из сохранённых данных)
+// Usage:  node scripts/build-demo.mjs [--per-venue-pair 100] [--kalshi-pages 30]
+//         node scripts/build-demo.mjs --from-cache   (re-render the page from saved data only)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -24,8 +24,8 @@ const MAX_RULES = 8000;
 const VENUES = [kalshi, polymarket, limitless, manifold];
 const t0 = Date.now();
 
-// Случайная выборка с разметкой (scripts/sample.mjs + research/random-labels.json):
-// метки прикрепляются к парам по ключу, статистика считается здесь, а не вручную
+// Labeled random sample (scripts/sample.mjs + research/random-labels.json):
+// labels are attached to pairs by key, and the stats are computed here rather than by hand
 function attachSample(data) {
   const sp = path.join(ROOT, "research", "random-sample.json"), lp = path.join(ROOT, "research", "random-labels.json");
   if (!fs.existsSync(sp) || !fs.existsSync(lp)) return;
@@ -56,27 +56,27 @@ function renderDemo(data) {
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), template.replace("/*__DATA__*/null", json));
 }
 
-// --from-cache: только пересобрать страницу из research/pairs-all.json, без загрузки площадок
+// --from-cache: re-render the page from research/pairs-all.json without fetching the venues
 if ("from-cache" in args) {
   const data = JSON.parse(fs.readFileSync(path.join(ROOT, "research", "pairs-all.json"), "utf8"));
   const names = Object.fromEntries(VENUES.map(v => [v.meta.id, v.meta.name]));
   for (const p of data.pairs) {
     p.verdict = VERDICTS[`${p.a.id}|${p.b.id}`] || null;
-    p.cmp = compareRules(p.a, p.b, [names[p.a.venue], names[p.b.venue]]); // правила уже в кэше — пересчитываем сравнение
+    p.cmp = compareRules(p.a, p.b, [names[p.a.venue], names[p.b.venue]]); // the rules are cached, so recompute the comparison
   }
   renderDemo(data);
-  console.log(`Демо пересобрано из кэша (${data.generated_at}): ${path.join(ROOT, "demo", "index.html")}`);
+  console.log(`Demo re-rendered from cache (${data.generated_at}): ${path.join(ROOT, "demo", "index.html")}`);
   process.exit(0);
 }
 
-console.log("Загружаю площадки…");
+console.log("Loading venues…");
 const loaded = await Promise.all(VENUES.map(async v => {
   try {
     const markets = await v.load(v === kalshi ? { pages: Number(args["kalshi-pages"] ?? 30) } : {});
-    console.log(`  ${v.meta.name}: ${markets.length} рынков`);
+    console.log(`  ${v.meta.name}: ${markets.length} markets`);
     return markets;
   } catch (e) {
-    console.warn(`  ${v.meta.name}: ошибка загрузки — ${e.message}`);
+    console.warn(`  ${v.meta.name}: failed to load — ${e.message}`);
     return [];
   }
 }));
@@ -86,10 +86,10 @@ const pairStats = [];
 for (let i = 0; i < VENUES.length; i++) {
   for (let j = i + 1; j < VENUES.length; j++) {
     const [va, vb] = [VENUES[i].meta, VENUES[j].meta];
-    // у Manifold вопросы пишут пользователи в свободной форме — нужен более строгий порог схожести
+    // Manifold questions are free-form and user-written, so they need a stricter similarity threshold
     const minScore = va.id === "manifold" || vb.id === "manifold" ? 0.6 : 0.45;
     let found = matchVenues(loaded[i], loaded[j], { minScore }).slice(0, PER_PAIR);
-    // у Manifold правила подгружаются только для рынков, попавших в пары
+    // Manifold rules are fetched only for markets that ended up in pairs
     const needRules = found.flatMap(p => [p.a, p.b]).filter(m => m.venue === "manifold");
     if (needRules.length) await manifold.hydrateRules(needRules);
     const before = found.length;
@@ -108,7 +108,7 @@ for (let i = 0; i < VENUES.length; i++) {
         b: slim(p.b)
       });
     }
-    console.log(`  пары ${va.name} ↔ ${vb.name}: ${found.length}`);
+    console.log(`  pairs ${va.name} ↔ ${vb.name}: ${found.length}`);
   }
 }
 
@@ -129,5 +129,5 @@ fs.writeFileSync(path.join(ROOT, "research", "pairs-all.json"), JSON.stringify(d
 renderDemo(data);
 
 const by = c => pairs.filter(p => p.cmp.cls === c).length;
-console.log(`\nВсего пар: ${pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | проверено вручную: ${pairs.filter(p => p.verdict).length}`);
-console.log(`Демо: ${path.join(ROOT, "demo", "index.html")}  (${Math.round((Date.now() - t0) / 1000)} с)`);
+console.log(`\nPairs: ${pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | reviewed by hand: ${pairs.filter(p => p.verdict).length}`);
+console.log(`Demo: ${path.join(ROOT, "demo", "index.html")}  (${Math.round((Date.now() - t0) / 1000)} s)`);

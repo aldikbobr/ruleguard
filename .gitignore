@@ -1,9 +1,9 @@
-# секреты — никогда не коммитить
+# secrets — never commit
 .env
 .env.*
 !.env.example
 
-# зависимости и служебное
+# dependencies and local files
 node_modules/
 .claude/settings.local.json
 .DS_Store
