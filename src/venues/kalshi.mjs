@@ -34,3 +34,13 @@ export async function load({ pages = 30 } = {}) {
   }
   return markets.filter(m => m.rules);
 }
+
+// Живые цены по списку тикеров: пачками по 50 через ?tickers=
+export async function prices(ids) {
+  const out = new Map();
+  for (let i = 0; i < ids.length; i += 50) {
+    const data = await getJson(`${API}/markets?tickers=${ids.slice(i, i + 50).map(encodeURIComponent).join(",")}&limit=100`);
+    for (const m of data.markets ?? []) out.set(m.ticker, { yes: num(m.yes_ask_dollars), no: num(m.no_ask_dollars) });
+  }
+  return out;
+}

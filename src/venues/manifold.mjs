@@ -32,6 +32,18 @@ export async function load({ perSort = 1000 } = {}) {
   return [...byId.values()];
 }
 
+// Живые вероятности (игровая валюта): по одному рынку, не больше 6 одновременно
+export async function prices(ids) {
+  const out = new Map();
+  await mapLimit(ids, 6, async id => {
+    try {
+      const m = await getJson(`${API}/market/${encodeURIComponent(id)}`);
+      if (m.probability != null) out.set(id, { yes: m.probability, no: 1 - m.probability });
+    } catch { /* рынок закрыт или удалён */ }
+  });
+  return out;
+}
+
 export async function hydrateRules(markets) {
   await mapLimit(markets.filter(m => m.rules == null), 5, async m => {
     try {

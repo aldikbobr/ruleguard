@@ -2,6 +2,7 @@
 // Раздаёт demo/ по адресу http://localhost:4173 и умеет обновлять данные по кнопке на странице.
 //   GET  /api/status   — время снимка данных, идёт ли обновление, какие ключи подключены (только да/нет)
 //   POST /api/refresh  — запускает scripts/build-demo.mjs в фоне (одно обновление за раз)
+//   GET  /api/prices   — живые цены по всем рынкам из найденных пар (кэш 45 с, ключи площадок не нужны)
 // Слушает только 127.0.0.1: с других компьютеров сервер недоступен.
 import http from "node:http";
 import fs from "node:fs";
@@ -9,6 +10,10 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { loadEnv, keyStatus } from "../src/env.mjs";
+import * as kalshi from "../src/venues/kalshi.mjs";
+import * as polymarket from "../src/venues/polymarket.mjs";
+import * as limitless from "../src/venues/limitless.mjs";
+import * as manifold from "../src/venues/manifold.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DIR = path.join(ROOT, "demo");
@@ -32,10 +37,38 @@ function startRefresh() {
   child.stdout.on("data", collect);
   child.stderr.on("data", collect);
   child.on("close", code => {
-    Object.assign(job, { running: false, finishedAt: Date.now(), ok: code === 0, error: code === 0 ? null : `сборка завершилась с кодом ${code}` });
+    Object.assign(priceCache, { at: 0, body: null }); // набор пар мог измениться
+    Object.assign(job,{ running: false, finishedAt: Date.now(), ok: code === 0, error: code === 0 ? null : `сборка завершилась с кодом ${code}` });
     console.log(code === 0 ? "Обновление готово" : `Обновление не удалось (код ${code})`);
   });
   child.on("error", e => Object.assign(job, { running: false, finishedAt: Date.now(), ok: false, error: e.message }));
+}
+
+// Живые цены: один общий запрос к площадкам на все вкладки, результат живёт PRICE_TTL_MS
+const PRICE_TTL_MS = 45_000;
+const VENUES = { kalshi, polymarket, limitless, manifold };
+const priceCache = { at: 0, body: null, pending: null };
+
+async function fetchPrices() {
+  const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  const ids = {};
+  for (const p of data.pairs) for (const m of [p.a, p.b]) (ids[m.venue] ??= new Set()).add(m.id);
+  const prices = {}, errors = [];
+  await Promise.all(Object.entries(ids).map(async ([venue, set]) => {
+    try {
+      const got = await VENUES[venue].prices([...set]);
+      for (const [id, q] of got) prices[`${venue}:${id}`] = q;
+    } catch (e) { errors.push(`${venue}: ${e.message}`); }
+  }));
+  return { fetched_at: new Date().toISOString(), snapshot: data.generated_at, count: Object.keys(prices).length, prices, errors };
+}
+
+async function livePrices() {
+  if (priceCache.body && Date.now() - priceCache.at < PRICE_TTL_MS) return priceCache.body;
+  priceCache.pending ??= fetchPrices()
+    .then(body => Object.assign(priceCache, { at: Date.now(), body }).body)
+    .finally(() => { priceCache.pending = null; });
+  return priceCache.pending;
 }
 
 function json(res, status, body) {
@@ -57,6 +90,11 @@ http.createServer((req, res) => {
       log: job.log.slice(-6),
       keys: keyStatus()
     });
+  }
+
+  if (url.pathname === "/api/prices" && req.method === "GET") {
+    livePrices().then(body => json(res, 200, body)).catch(e => json(res, 502, { error: e.message }));
+    return;
   }
 
   if (url.pathname === "/api/refresh") {

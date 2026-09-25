@@ -93,6 +93,8 @@ footer li{margin:3px 0}
 .rbtn{font:inherit;font-size:13px;font-weight:550;padding:5px 12px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
 .rbtn:disabled{opacity:.55;cursor:progress}
 .fmsg{font-size:12.5px;color:var(--muted)}
+@keyframes flash{from{background:var(--mark)}to{background:transparent}}
+.flash{animation:flash 1.6s ease-out}
 .conn{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .conn span{font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
 .conn span.on{color:var(--green);border-color:var(--green)}
@@ -118,6 +120,7 @@ footer li{margin:3px 0}
   <p class="tag">Одинаковые на вид рынки — не всегда одинаковые контракты.</p>
   <div class="fresh">
     <span class="fbadge" id="fbadge" role="status"><span class="fdot"></span><span id="ftext"></span></span>
+    <span class="fbadge" id="pbadge" role="status" hidden><span class="fdot"></span><span id="ptext"></span></span>
     <button type="button" class="rbtn" id="refresh">↻ Обновить данные</button>
     <span class="fmsg" id="fmsg" aria-live="polite"></span>
   </div>
@@ -184,6 +187,16 @@ const CLS = { different: "похоже, разные", check: "проверит�
 const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
 const VERDICT = { different: "разные контракты", caveats: "одинаковы с оговорками" };
 const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
+const mkey = m => `${m.venue}:${m.id}`;
+const edgeHtml = p => `${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "без спреда" : "сырой спред"}</small>`;
+const pxHtml = m => `YES ${price(m.yes)} · NO ${price(m.no)}${m.close ? ` · закрытие торгов ${esc(m.close.slice(0, 10))}` : ""}`;
+// та же формула, что в src/compare.mjs: YES на одной площадке + NO на другой, по ценам ask
+function rawEdge(a, b) {
+  const x = a.yes != null && b.no != null ? 1 - (a.yes + b.no) : null;
+  const y = b.yes != null && a.no != null ? 1 - (b.yes + a.no) : null;
+  const best = [x, y].filter(v => v != null).sort((p, q) => q - p)[0];
+  return best == null ? null : Math.round(best * 1000) / 1000;
+}
 // приоритет: ручной разбор → разметка случайной выборки → автоматическая метка
 const LABEL_RISK = { different: "different", caveats: "check", equivalent: "looks_equivalent" };
 const riskOf = p => p.verdict ? LABEL_RISK[p.verdict.verdict] : p.sample ? LABEL_RISK[p.sample.label] : p.cmp.cls;
@@ -206,6 +219,8 @@ function highlight(text) {
 $("#gen").textContent = `Данные получены ${new Date(DATA.generated_at).toLocaleString("ru-RU")} через публичные API площадок.`;
 
 // --- свежесть данных: цены на рынках предсказаний меняются за минуты
+// served: страница открыта через scripts/serve.mjs (работают кнопка обновления и живые цены)
+const served = location.protocol.startsWith("http");
 const rtf = new Intl.RelativeTimeFormat("ru", { numeric: "auto" });
 function ago(ms) {
   const min = Math.round(ms / 60000);
@@ -219,14 +234,13 @@ function paintFreshness() {
   const age = Date.now() - Date.parse(DATA.generated_at);
   const cls = age < 15 * 60000 ? "fresh-ok" : age < 2 * 3600000 ? "fresh-mid" : "fresh-old";
   $("#fbadge").className = `fbadge ${cls}`;
-  $("#ftext").textContent = `Данные ${ago(age)}`;
+  $("#ftext").textContent = `${served ? "Пары и правила" : "Данные"}: ${ago(age)}`;
   $("#fbadge").title = `Снимок данных: ${new Date(DATA.generated_at).toLocaleString("ru-RU")}. Зелёный — моложе 15 минут, жёлтый — моложе 2 часов, красный — старше.`;
 }
 paintFreshness();
 setInterval(paintFreshness, 30000);
 
 // --- обновление: работает, когда страница открыта через scripts/serve.mjs
-const served = location.protocol.startsWith("http");
 const btn = $("#refresh"), msg = $("#fmsg");
 async function status() {
   const r = await fetch("/api/status", { cache: "no-store" });
@@ -319,6 +333,7 @@ const mid = m => m.yes != null && m.no != null ? (m.yes + 1 - m.no) / 2 : null;
 const width = m => m.yes != null && m.no != null ? m.yes + m.no - 1 : 1;
 const liquid = m => width(m) <= MAX_WIDTH;
 const gap = p => mid(p.a) != null && mid(p.b) != null ? Math.abs(mid(p.a) - mid(p.b)) : 0;
+function renderTraps() {
 const traps = P.filter(p => p.edge != null && riskOf(p) === "different" && liquid(p.a) && liquid(p.b) && gap(p) >= 0.03).sort((x, y) => gap(y) - gap(x)).slice(0, 6);
 $("#traps").innerHTML = traps.map(p => `
   <div class="trap" data-key="${esc(key(p))}" tabindex="0" role="button" aria-label="Открыть пару">
@@ -330,6 +345,8 @@ $("#traps").innerHTML = traps.map(p => `
     </div>
     <div class="sum">${esc(p.verdict ? p.verdict.summary : p.cmp.flags.filter(f => f.level === "material").map(f => `${f.field}: ${f.detail}`).join("; "))}</div>
   </div>`).join("") || `<div class="empty">В этой выборке нет крупных спредов с различающимися правилами.</div>`;
+}
+renderTraps();
 function vname(id) { const v = V[id]; return `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)}</span>`; }
 
 // --- фильтры
@@ -368,7 +385,7 @@ function card(p) {
       </div>
       <div class="ptitle"><div class="t">${esc(p.a.title)}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + esc(p.a.outcome) : ""}</div>
         <div class="m">${vname(p.a.venue)} ${vname(p.b.venue)} <span>схожесть ${p.score}</span></div></div>
-      <div class="edge">${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "без спреда" : "сырой спред"}</small></div>
+      <div class="edge" data-edge="${esc(key(p))}">${edgeHtml(p)}</div>
     </summary>
     <div class="body">
       ${p.verdict ? `<div class="verdict ${p.verdict.verdict}"><h4>✋ Ручной разбор: ${VERDICT[p.verdict.verdict]}</h4>${esc(p.verdict.summary)}<br><b>Сценарий расхождения:</b> ${esc(p.verdict.scenario)}</div>` : ""}
@@ -382,7 +399,7 @@ function side(m) {
   const v = V[m.venue];
   return `<div class="col"><h5>${vname(m.venue)} <a href="${esc(m.url)}" target="_blank" rel="noopener">открыть рынок ↗</a>${v.money === "play" ? ' <span class="play">игровая валюта</span>' : ""}</h5>
     <div class="q">${esc(m.title)}${m.outcome && !m.title.includes(m.outcome) ? " · " + esc(m.outcome) : ""}</div>
-    <div class="px">YES ${price(m.yes)} · NO ${price(m.no)}${m.close ? ` · закрытие торгов ${esc(m.close.slice(0, 10))}` : ""}</div>
+    <div class="px" data-px="${esc(mkey(m))}">${pxHtml(m)}</div>
     <pre>${highlight(m.rules)}</pre></div>`;
 }
 
@@ -397,6 +414,68 @@ function openTrap(e) {
   if (d) { d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }
 }
 render();
+
+// --- живые цены: сервер раз в минуту берёт текущие цены с площадок (без ключей), страница обновляет их на месте
+const byMkey = new Map(), byKey = new Map(P.map(p => [key(p), p]));
+for (const p of P) for (const m of [p.a, p.b]) { if (!byMkey.has(mkey(m))) byMkey.set(mkey(m), []); byMkey.get(mkey(m)).push(m); }
+let pricesAt = null, pricesCount = 0, pricesErrors = [], pricesFailed = false;
+
+function flash(el) { el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+
+function paintPrices() {
+  const b = $("#pbadge");
+  b.hidden = false;
+  if (!pricesAt) {
+    b.className = "fbadge";
+    $("#ptext").textContent = pricesFailed ? "Цены: сервер не отвечает" : "Цены: загружаю…";
+    return;
+  }
+  const age = Date.now() - pricesAt;
+  b.className = `fbadge ${pricesFailed || age > 3 * 60000 ? "fresh-mid" : "fresh-ok"}`;
+  $("#ptext").textContent = `Цены: живые · ${age < 60000 ? `${Math.max(1, Math.round(age / 1000))} с назад` : ago(age)}`;
+  b.title = `Цены обновляются раз в минуту, пока страница открыта. Получено цен: ${pricesCount}.${pricesErrors.length ? " Ошибки: " + pricesErrors.join("; ") : ""}`;
+}
+
+// первая загрузка — всегда; периодические — только пока вкладку видно, чтобы не нагружать площадки
+async function pullPrices(force = false) {
+  if (document.hidden && !force) return;
+  let body;
+  try {
+    const r = await fetch("/api/prices", { cache: "no-store" });
+    if (!r.ok) throw new Error(String(r.status));
+    body = await r.json();
+  } catch { pricesFailed = true; paintPrices(); return; }
+  const changed = new Set();
+  for (const [k, list] of byMkey) {
+    const q = body.prices[k];
+    if (!q) continue;
+    for (const m of list) if (q.yes !== m.yes || q.no !== m.no) { m.yes = q.yes; m.no = q.no; changed.add(k); }
+  }
+  for (const p of P) if (V[p.a.venue].money !== "play" && V[p.b.venue].money !== "play") p.edge = rawEdge(p.a, p.b);
+  for (const el of document.querySelectorAll("[data-px]")) {
+    const m = byMkey.get(el.dataset.px)?.[0];
+    if (!m) continue;
+    el.innerHTML = pxHtml(m);
+    if (changed.has(el.dataset.px)) flash(el);
+  }
+  for (const el of document.querySelectorAll("[data-edge]")) {
+    const p = byKey.get(el.dataset.edge);
+    if (!p) continue;
+    const h = edgeHtml(p);
+    if (el.innerHTML !== h) { el.innerHTML = h; flash(el); }
+  }
+  renderTraps();
+  pricesAt = Date.parse(body.fetched_at); pricesCount = body.count; pricesErrors = body.errors || []; pricesFailed = false;
+  paintPrices();
+}
+
+if (served) {
+  paintPrices();
+  pullPrices(true);
+  setInterval(pullPrices, 60000);
+  setInterval(paintPrices, 5000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() - (pricesAt || 0) > 60000) pullPrices(); });
+}
 </script>
 </body>
 </html>

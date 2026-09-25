@@ -1,5 +1,5 @@
 // Limitless: крипто-площадка (Base). Правила в description (HTML). Бывают групповые рынки с вложенными markets.
-import { getJson, num, stripHtml, sleep } from "../util.mjs";
+import { getJson, mapLimit, num, stripHtml, sleep } from "../util.mjs";
 
 const API = "https://api.limitless.exchange";
 
@@ -22,8 +22,7 @@ export async function load({ pages = 30, pageSize = 25 } = {}) {
 
   const markets = [];
   const push = (m, group) => {
-    const [yesAsk, noAsk] = m.tradePrices?.buy?.market ?? [];
-    const [yesMid, noMid] = m.prices ?? [];
+    const { yes, no } = quote(m);
     markets.push({
       venue: meta.id,
       id: m.slug,
@@ -32,8 +31,7 @@ export async function load({ pages = 30, pageSize = 25 } = {}) {
       outcome: group ? m.title : "",
       rules: stripHtml(m.description || group?.description),
       close: m.expirationTimestamp ? new Date(m.expirationTimestamp).toISOString() : null,
-      yes: num(yesAsk) ?? num(yesMid),
-      no: num(noAsk) ?? num(noMid),
+      yes, no,
       volume: num(m.volumeFormatted ?? m.volume),
       url: `https://limitless.exchange/markets/${group?.slug || m.slug}`
     });
@@ -44,4 +42,20 @@ export async function load({ pages = 30, pageSize = 25 } = {}) {
     else push(m);
   }
   return markets.filter(m => m.rules);
+}
+
+// Цена покупки по рынку (tradePrices.buy.market), без стакана — средние цены
+function quote(m) {
+  const [yesAsk, noAsk] = m.tradePrices?.buy?.market ?? [];
+  const [yesMid, noMid] = m.prices ?? [];
+  return { yes: num(yesAsk) ?? num(yesMid), no: num(noAsk) ?? num(noMid) };
+}
+
+// Живые цены: пакетного запроса нет, поэтому по одному рынку, не больше 6 одновременно
+export async function prices(ids) {
+  const out = new Map();
+  await mapLimit(ids, 6, async id => {
+    try { out.set(id, quote(await getJson(`${API}/markets/${encodeURIComponent(id)}`))); } catch { /* рынок закрыт или удалён */ }
+  });
+  return out;
 }
