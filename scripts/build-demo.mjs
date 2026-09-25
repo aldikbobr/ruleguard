@@ -35,7 +35,7 @@ function attachSample(data) {
   const byKey = new Map(sample.pairs.map(p => [p.key, { ...byN.get(p.n), venues: p.venues }]));
   for (const p of data.pairs) {
     const s = byKey.get(`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`);
-    p.sample = s?.label ? { n: s.n, label: s.label, reason: s.reason } : null;
+    p.sample = s?.label ? { n: s.n, label: s.label, short: s.short, reason: s.reason } : null;
   }
   const count = rows => ({ n: rows.length, equivalent: rows.filter(r => r.label === "equivalent").length, caveats: rows.filter(r => r.label === "caveats").length, different: rows.filter(r => r.label === "different").length });
   const rows = [...byKey.values()].filter(r => r.label);
@@ -59,7 +59,11 @@ function renderDemo(data) {
 // --from-cache: только пересобрать страницу из research/pairs-all.json, без загрузки площадок
 if ("from-cache" in args) {
   const data = JSON.parse(fs.readFileSync(path.join(ROOT, "research", "pairs-all.json"), "utf8"));
-  for (const p of data.pairs) p.verdict = VERDICTS[`${p.a.id}|${p.b.id}`] || null;
+  const names = Object.fromEntries(VENUES.map(v => [v.meta.id, v.meta.name]));
+  for (const p of data.pairs) {
+    p.verdict = VERDICTS[`${p.a.id}|${p.b.id}`] || null;
+    p.cmp = compareRules(p.a, p.b, [names[p.a.venue], names[p.b.venue]]); // правила уже в кэше — пересчитываем сравнение
+  }
   renderDemo(data);
   console.log(`Демо пересобрано из кэша (${data.generated_at}): ${path.join(ROOT, "demo", "index.html")}`);
   process.exit(0);

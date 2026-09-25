@@ -54,6 +54,25 @@ function latestDate(text) {
 const iso = t => new Date(t).toISOString().slice(0, 10);
 const detect = (patterns, text) => patterns.filter(([, re]) => re.test(text)).map(([name]) => name);
 
+const interimRe = /interim|caretaker|acting/i;
+const stance = t => /(acting|interim)[^.]{0,80}count as/i.test(t) ? "включает"
+  : /(interim|caretaker|acting)[^.]{0,80}(will not|won'?t|does not|do not|not) count/i.test(t) ? "исключает"
+  : interimRe.test(t) ? "упоминает" : "молчит";
+const deFacto = t => /de facto|regardless of[^.]{0,60}(formal|title)/i.test(t);
+const official = t => /officially holds|formally appointed|sworn in|official(ly)? (appointed|confirmed)/i.test(t);
+
+// Короткая «карточка» правил одной стороны для компактной таблицы сравнения на странице
+function factsOf(m) {
+  const d = latestDate(m.rules);
+  return {
+    deadline: d ? iso(d) : null,
+    sources: detect(SOURCE_PATTERNS, m.rules),
+    interim: stance(m.rules),
+    status: deFacto(m.rules) ? "фактическая власть" : official(m.rules) ? "официальный статус" : null,
+    edges: detect(EDGE_PATTERNS, m.rules)
+  };
+}
+
 export function compareRules(a, b, names) {
   const [A, B] = names;
   const flags = [];
@@ -71,10 +90,6 @@ export function compareRules(a, b, names) {
     flags.push({ field: "дедлайн", level: "check", detail: `дата в правилах есть только у ${da ? A : B} (${iso(da || db)})` });
   }
 
-  const interimRe = /interim|caretaker|acting/i;
-  const stance = t => /(acting|interim)[^.]{0,80}count as/i.test(t) ? "включает"
-    : /(interim|caretaker|acting)[^.]{0,80}(will not|won'?t|does not|do not|not) count/i.test(t) ? "исключает"
-    : interimRe.test(t) ? "упоминает" : "молчит";
   if (interimRe.test(a.rules) || interimRe.test(b.rules)) {
     const xa = stance(a.rules), xb = stance(b.rules);
     const opposite = (xa === "включает" && xb === "исключает") || (xa === "исключает" && xb === "включает");
@@ -82,8 +97,6 @@ export function compareRules(a, b, names) {
   }
 
   // де-факто против официального статуса (случай Венесуэлы)
-  const deFacto = t => /de facto|regardless of[^.]{0,60}(formal|title)/i.test(t);
-  const official = t => /officially holds|formally appointed|sworn in|official(ly)? (appointed|confirmed)/i.test(t);
   if ((deFacto(a.rules) && official(b.rules) && !deFacto(b.rules)) || (deFacto(b.rules) && official(a.rules) && !deFacto(a.rules)))
     flags.push({ field: "де-факто / официально", level: "material", detail: `${deFacto(a.rules) ? A : B} считает фактическую власть, ${deFacto(a.rules) ? B : A} — официальный статус` });
 
@@ -100,7 +113,7 @@ export function compareRules(a, b, names) {
   if (!a.rules.trim() || !b.rules.trim()) flags.push({ field: "текст правил", level: "material", detail: "у одной из сторон нет текста правил" });
 
   const cls = flags.some(f => f.level === "material") ? "different" : flags.length ? "check" : "looks_equivalent";
-  return { cls, flags };
+  return { cls, flags, facts: { a: factsOf(a), b: factsOf(b) } };
 }
 
 // YES на одной площадке + NO на другой, по ценам ask, без комиссий и проскальзывания. Только для реальных денег.
