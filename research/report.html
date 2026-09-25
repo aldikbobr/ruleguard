@@ -1,0 +1,1954 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleGuard PoC</title>
+<style>
+:root{--bg:#fafafa;--fg:#1d1d1f;--muted:#666;--card:#fff;--line:#e3e3e3}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--fg:#ececec;--muted:#9a9a9a;--card:#1e1e22;--line:#333}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif;padding:16px;max-width:1200px;margin-inline:auto}
+h1{margin:.2em 0}.sub{color:var(--muted)}.stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.pair{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:8px 12px}
+summary{cursor:pointer;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.n{color:var(--muted)}
+.cls{color:#fff;border-radius:4px;padding:1px 6px;font-size:12px}.meta{color:var(--muted);font-size:13px;margin-left:auto}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:760px){.cols{grid-template-columns:1fr}}
+pre{white-space:pre-wrap;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:320px;overflow:auto}
+.q{font-weight:600;margin:.2em 0}.px{color:var(--muted);font-size:13px;margin:.2em 0}.flags{margin:.5em 0}
+a{color:inherit}
+</style></head><body>
+<h1>RuleGuard — проверка идеи</h1>
+<p class="sub">Сгенерировано 2026-09-25T11:45:55.512Z. Kalshi: 54636 рынков, Polymarket: 2000 рынков, пар найдено: 67.
+Классы выставлены простыми правилами без ИИ: «different?» и «check» — сигналы для ручной проверки, а не вывод. «edge» — сырой спред без комиссий и проскальзывания.</p>
+<div class="stats">
+<div class="stat">🔴 different?: <b>16</b></div>
+<div class="stat">🟡 check: <b>51</b></div>
+<div class="stat">🟢 looks_equivalent: <b>0</b></div>
+</div>
+
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#1</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Mircea Geoană be the next Prime Minister of Romania? Mircea Geoană</span>
+      <span class="meta">match 1 · edge -0.002</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi молчит, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextromaniapm" target="_blank">KXNEXTROMANIAPM-45JAN01-MGEO</a></h4>
+        <p class="q">Will Mircea Geoană be the next Prime Minister of Romania? Mircea Geoană</p>
+        <p class="px">YES 0.24 · NO 1 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Romania after Issuance is Mircea Geoană, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-mircea-geoan-be-the-next-prime-minister-of-romania" target="_blank">will-mircea-geoan-be-the-next-prime-minister-of-romania</a></h4>
+        <p class="q">Will Mircea Geoană be the next Prime Minister of Romania? Mircea Geoană</p>
+        <p class="px">YES 0.002 · NO 0.999 · закрытие 2026-12-31T00:00</p>
+        <pre>This market will resolve to the next individual who officially assumes the office of Prime Minister of Romania by December 31, 2027, 11:59 PM ET.
+
+To count for resolution, the individual must be formally appointed by the President of Romania and receive a vote of confidence from Parliament, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.
+
+If no such Prime Minister takes office by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Romania; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#2</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Sorin Grindeanu be the next Prime Minister of Romania? Sorin Grindeanu</span>
+      <span class="meta">match 1 · edge 0.003</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi молчит, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextromaniapm" target="_blank">KXNEXTROMANIAPM-45JAN01-SGRI</a></h4>
+        <p class="q">Will Sorin Grindeanu be the next Prime Minister of Romania? Sorin Grindeanu</p>
+        <p class="px">YES 0.38 · NO 0.64 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Romania after Issuance is Sorin Grindeanu, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-sorin-grindeanu-be-the-next-prime-minister-of-romania" target="_blank">will-sorin-grindeanu-be-the-next-prime-minister-of-romania</a></h4>
+        <p class="q">Will Sorin Grindeanu be the next Prime Minister of Romania? Sorin Grindeanu</p>
+        <p class="px">YES 0.357 · NO 0.645 · закрытие 2028-01-01T04:59</p>
+        <pre>This market will resolve to the next individual who officially assumes the office of Prime Minister of Romania by December 31, 2027, 11:59 PM ET.
+
+To count for resolution, the individual must be formally appointed by the President of Romania and receive a vote of confidence from Parliament, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.
+
+If no such Prime Minister takes office by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Romania; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#3</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Ionuț Dumitru be the next Prime Minister of Romania? Ionuț Dumitru</span>
+      <span class="meta">match 1 · edge -0.002</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi молчит, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextromaniapm" target="_blank">KXNEXTROMANIAPM-45JAN01-IDUM</a></h4>
+        <p class="q">Will Ionuț Dumitru be the next Prime Minister of Romania? Ionuț Dumitru</p>
+        <p class="px">YES 0.29 · NO 1 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Romania after Issuance is Ionuț Dumitru, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-ionu-dumitru-be-the-next-prime-minister-of-romania" target="_blank">will-ionu-dumitru-be-the-next-prime-minister-of-romania</a></h4>
+        <p class="q">Will Ionuț Dumitru be the next Prime Minister of Romania? Ionuț Dumitru</p>
+        <p class="px">YES 0.002 · NO 0.999 · закрытие 2028-01-01T04:59</p>
+        <pre>This market will resolve to the next individual who officially assumes the office of Prime Minister of Romania by December 31, 2027, 11:59 PM ET.
+
+To count for resolution, the individual must be formally appointed by the President of Romania and receive a vote of confidence from Parliament, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.
+
+If no such Prime Minister takes office by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Romania; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#4</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Naftali Bennett be the next Prime Minister of Israel? Naftali Bennett</span>
+      <span class="meta">match 1 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: NYT | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (material): временно исполняющий обязанности: Kalshi включает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextisraelpm" target="_blank">KXNEXTISRAELPM-45JAN01-NBEN</a></h4>
+        <p class="q">Will Naftali Bennett be the next Prime Minister of Israel? Naftali Bennett</p>
+        <p class="px">YES 0.08 · NO 0.948 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Israel after Issuance is Naftali Bennett, then the market resolves to Yes.
+
+The market resolves based on who actually assumes the office of Prime Minister, not who is elected or nominated. Acting or interim appointments count as holding the position if they formally assume the office. The person must be different from whoever held the position at market issuance - if the same person continues in office through the expiration date, all markets resolve to No. Resolution is based on official announcements from the country's legislature or government, with The New York Times as a secondary source for confirmation.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-naftali-bennett-be-the-next-prime-minister-of-israel" target="_blank">will-naftali-bennett-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Naftali Bennett be the next Prime Minister of Israel? Naftali Bennett</p>
+        <p class="px">YES 0.11 · NO 0.91 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#5</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Yossi Cohen be the next Prime Minister of Israel? Yossi Cohen</span>
+      <span class="meta">match 1 · edge -0.002</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: NYT | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (material): временно исполняющий обязанности: Kalshi включает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextisraelpm" target="_blank">KXNEXTISRAELPM-45JAN01-YCOH</a></h4>
+        <p class="q">Will Yossi Cohen be the next Prime Minister of Israel? Yossi Cohen</p>
+        <p class="px">YES 0.019 · NO 0.999 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Israel after Issuance is Yossi Cohen, then the market resolves to Yes.
+
+The market resolves based on who actually assumes the office of Prime Minister, not who is elected or nominated. Acting or interim appointments count as holding the position if they formally assume the office. The person must be different from whoever held the position at market issuance - if the same person continues in office through the expiration date, all markets resolve to No. Resolution is based on official announcements from the country's legislature or government, with The New York Times as a secondary source for confirmation.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-yossi-cohen-be-the-next-prime-minister-of-israel" target="_blank">will-yossi-cohen-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Yossi Cohen be the next Prime Minister of Israel? Yossi Cohen</p>
+        <p class="px">YES 0.003 · NO 0.998 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#6</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Avigdor Lieberman be the next Prime Minister of Israel? Avigdor Lieberman</span>
+      <span class="meta">match 1 · edge -0.023</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: NYT | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li><li><b>interim_officeholder</b> (material): временно исполняющий обязанности: Kalshi включает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnextisraelpm" target="_blank">KXNEXTISRAELPM-45JAN01-ALIE</a></h4>
+        <p class="q">Will Avigdor Lieberman be the next Prime Minister of Israel? Avigdor Lieberman</p>
+        <p class="px">YES 0.092 · NO 0.995 · закрытие 2045-01-01T15:00</p>
+        <pre>If the first new person to hold Prime Minister of Israel after Issuance is Avigdor Lieberman, then the market resolves to Yes.
+
+The market resolves based on who actually assumes the office of Prime Minister, not who is elected or nominated. Acting or interim appointments count as holding the position if they formally assume the office. The person must be different from whoever held the position at market issuance - if the same person continues in office through the expiration date, all markets resolve to No. Resolution is based on official announcements from the country's legislature or government, with The New York Times as a secondary source for confirmation.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-avigdor-lieberman-be-the-next-prime-minister-of-israel" target="_blank">will-avigdor-lieberman-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Avigdor Lieberman be the next Prime Minister of Israel? Avigdor Lieberman</p>
+        <p class="px">YES 0.028 · NO 0.974 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#7</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Putin and Zelenskyy meet next in Russia? Russia</span>
+      <span class="meta">match 1 · edge 0.049</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2028-12-31, Polymarket 2026-12-31 (разница 731 дн.)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxputinzelenskyylocation" target="_blank">KXPUTINZELENSKYYLOCATION-28-RUS</a></h4>
+        <p class="q">Will Putin and Zelenskyy meet next in Russia? Russia</p>
+        <p class="px">YES 0.08 · NO 0.94 · закрытие 2028-12-31T04:59</p>
+        <pre>If the next Putin and Zelenskyy meeting happens in Russia before Dec 31, 2028, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-zelenskyy-and-putin-meet-next-in-russia" target="_blank">will-zelenskyy-and-putin-meet-next-in-russia</a></h4>
+        <p class="q">Will Zelenskyy and Putin meet next in Russia before 2027? Russia</p>
+        <p class="px">YES 0.011 · NO 0.996 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the location of the next meeting between Volodymyr Zelenskyy and Vladimir Putin by December 31, 2026, 11:59 PM ET. If no meeting takes place by December 31 ET, this market will resolve to &quot;No meeting before 2027&quot;.
+
+A meeting is defined as any encounter where Zelenskyy and Putin are both present and interact with each other in person.
+
+For the purpose of this market, a meeting held on Ukrainian territory under the de facto control of Russia (e.g., Crimea) will be considered part of Russia.
+
+The primary resolution source for this market will be a consensus of credible reporting.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#8</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Elmano de Freitas win the 2026 Ceará gubernatorial election? Elmano de Freitas</span>
+      <span class="meta">match 1 · edge -0.03</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-06-30)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi молчит, Polymarket упоминает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxcearagov" target="_blank">KXCEARAGOV-26OCT04-EFRE</a></h4>
+        <p class="q">Will Elmano de Freitas win the 2026 Ceará gubernatorial election? Elmano de Freitas</p>
+        <p class="px">YES 0.57 · NO 0.49 · закрытие 2027-10-04T14:00</p>
+        <pre>If Elmano de Freitas wins the 2026 Ceará gubernatorial election, then the market resolves to Yes.
+
+This market is eligible for accelerated resolution by a consensus of media calls. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election" target="_blank">will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election</a></h4>
+        <p class="q">Will Elmano de Freitas win the 2026 Ceará gubernatorial election? Elmano de Freitas</p>
+        <p class="px">YES 0.56 · NO 0.46 · закрытие 2027-07-01T03:59</p>
+        <pre>The Ceará gubernatorial election is scheduled to take place in Brazil on October 4, 2026, with a runoff on October 25, 2026, if no candidate receives a majority of the valid votes in the first round.
+
+This market will resolve according to the candidate who wins this election.
+
+Temporary, interim, or placeholder governors appointed by any means before the specified election will not be considered.
+
+If the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the result of the election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the Brazilian government, specifically the Superior Electoral Court (Tribunal Superior Eleitoral, TSE) (e.g., www.tse.jus.br/eleicoes/resultados-eleicoes).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#9</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Ciro Gomes win the 2026 Ceará gubernatorial election? Ciro Gomes</span>
+      <span class="meta">match 1 · edge -0.04</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-06-30)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi молчит, Polymarket упоминает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxcearagov" target="_blank">KXCEARAGOV-26OCT04-CGOM</a></h4>
+        <p class="q">Will Ciro Gomes win the 2026 Ceará gubernatorial election? Ciro Gomes</p>
+        <p class="px">YES 0.52 · NO 0.58 · закрытие 2027-10-04T14:00</p>
+        <pre>If Ciro Gomes wins the 2026 Ceará gubernatorial election, then the market resolves to Yes.
+
+This market is eligible for accelerated resolution by a consensus of media calls. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-ciro-gomes-win-the-2026-cear-gubernatorial-election" target="_blank">will-ciro-gomes-win-the-2026-cear-gubernatorial-election</a></h4>
+        <p class="q">Will Ciro Gomes win the 2026 Ceará gubernatorial election? Ciro Gomes</p>
+        <p class="px">YES 0.46 · NO 0.56 · закрытие 2027-07-01T03:59</p>
+        <pre>The Ceará gubernatorial election is scheduled to take place in Brazil on October 4, 2026, with a runoff on October 25, 2026, if no candidate receives a majority of the valid votes in the first round.
+
+This market will resolve according to the candidate who wins this election.
+
+Temporary, interim, or placeholder governors appointed by any means before the specified election will not be considered.
+
+If the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the result of the election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the Brazilian government, specifically the Superior Electoral Court (Tribunal Superior Eleitoral, TSE) (e.g., www.tse.jus.br/eleicoes/resultados-eleicoes).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#10</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Édouard Philippe win the 2027 French presidential election? Édouard Philippe</span>
+      <span class="meta">match 1 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxfrenchpres" target="_blank">KXFRENCHPRES-27-EPHI</a></h4>
+        <p class="q">Will Édouard Philippe win the 2027 French presidential election? Édouard Philippe</p>
+        <p class="px">YES 0.22 · NO 0.8 · закрытие 2028-05-30T14:00</p>
+        <pre>If Édouard Philippe wins the next French presidential election, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-douard-philippe-win-the-2027-french-presidential-election" target="_blank">will-douard-philippe-win-the-2027-french-presidential-election</a></h4>
+        <p class="q">Will Édouard Philippe win the 2027 French presidential election? Édouard Philippe</p>
+        <p class="px">YES 0.24 · NO 0.77 · закрытие 2028-01-01T04:59</p>
+        <pre>The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. 
+
+The President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.
+
+This market will resolve according to the candidate who wins this election.
+
+This market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the French Government, specifically the Ministry of the Interior (https://www.interieur.gouv.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#11</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Éric Zemmour win the 2027 French presidential election? Éric Zemmour</span>
+      <span class="meta">match 1 · edge 0.001</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxfrenchpres" target="_blank">KXFRENCHPRES-27-EZEM</a></h4>
+        <p class="q">Will Éric Zemmour win the 2027 French presidential election? Éric Zemmour</p>
+        <p class="px">YES 0.009 · NO 0.998 · закрытие 2028-05-30T14:00</p>
+        <pre>If Éric Zemmour wins the next French presidential election, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-ric-zemmour-win-the-2027-french-presidential-election" target="_blank">will-ric-zemmour-win-the-2027-french-presidential-election</a></h4>
+        <p class="q">Will Éric Zemmour win the 2027 French presidential election? Éric Zemmour</p>
+        <p class="px">YES 0.011 · NO 0.99 · закрытие 2027-04-30T00:00</p>
+        <pre>The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. 
+
+The President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.
+
+This market will resolve according to the candidate who wins this election.
+
+This market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the French Government, specifically the Ministry of the Interior (https://www.interieur.gouv.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#12</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Marine Le Pen win the 2027 French presidential election? Marine Le Pen</span>
+      <span class="meta">match 1 · edge -0.014</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxfrenchpres" target="_blank">KXFRENCHPRES-27-MLEP</a></h4>
+        <p class="q">Will Marine Le Pen win the 2027 French presidential election? Marine Le Pen</p>
+        <p class="px">YES 0.41 · NO 0.63 · закрытие 2028-05-30T14:00</p>
+        <pre>If Marine Le Pen wins the next French presidential election, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-marine-le-pen-win-the-2027-french-presidential-election" target="_blank">will-marine-le-pen-win-the-2027-french-presidential-election</a></h4>
+        <p class="q">Will Marine Le Pen win the 2027 French presidential election? Marine Le Pen</p>
+        <p class="px">YES 0.384 · NO 0.617 · закрытие 2028-01-01T04:59</p>
+        <pre>The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. 
+
+The President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.
+
+This market will resolve according to the candidate who wins this election.
+
+This market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the French Government, specifically the Ministry of the Interior (https://www.interieur.gouv.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#13</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in South Dakota? Mike Rounds</span>
+      <span class="meta">match 1 · edge 0.019</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatesd" target="_blank">SENATESD-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in South Dakota? Mike Rounds</p>
+        <p class="px">YES 0.92 · NO 0.099 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of South Dakota for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-south-dakota-senate-race-in-2026" target="_blank">will-the-republicans-win-the-south-dakota-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the South Dakota Senate race in 2026? Mike Rounds (R)</p>
+        <p class="px">YES 0.943 · NO 0.061 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm South Dakota U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#14</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in New Hampshire? John E. Sununu</span>
+      <span class="meta">match 1 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatenh" target="_blank">SENATENH-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in New Hampshire? John E. Sununu</p>
+        <p class="px">YES 0.15 · NO 0.87 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of New Hampshire for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-new-hampshire-senate-race-in-2026" target="_blank">will-the-republicans-win-the-new-hampshire-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the New Hampshire Senate race in 2026? John E. Sununu (R)</p>
+        <p class="px">YES 0.16 · NO 0.85 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm New Hampshire U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#15</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Nebraska? Pete Ricketts</span>
+      <span class="meta">match 1 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatene" target="_blank">SENATENE-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Nebraska? Pete Ricketts</p>
+        <p class="px">YES 0.73 · NO 0.3 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Nebraska for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-nebraska-senate-race-in-2026" target="_blank">will-the-republicans-win-the-nebraska-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Nebraska Senate race in 2026? Pete Ricketts (R)</p>
+        <p class="px">YES 0.7 · NO 0.31 · закрытие 2026-11-03T00:00</p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Nebraska U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#16</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Michigan? Mike Rogers</span>
+      <span class="meta">match 1 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatemi" target="_blank">SENATEMI-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Michigan? Mike Rogers</p>
+        <p class="px">YES 0.28 · NO 0.73 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Michigan for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-michigan-senate-race-in-2026" target="_blank">will-the-republicans-win-the-michigan-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Michigan Senate race in 2026? Mike Rogers (R)</p>
+        <p class="px">YES 0.29 · NO 0.72 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Michigan U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#17</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Maine? Susan Collins</span>
+      <span class="meta">match 1 · edge 0.04</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateme" target="_blank">SENATEME-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Maine? Susan Collins</p>
+        <p class="px">YES 0.37 · NO 0.64 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Maine for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-maine-senate-race-in-2026" target="_blank">will-the-republicans-win-the-maine-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Maine Senate race in 2026? Susan Collins (R)</p>
+        <p class="px">YES 0.32 · NO 0.69 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Maine U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#18</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Kansas? Roger Marshall</span>
+      <span class="meta">match 1 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateks" target="_blank">SENATEKS-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Kansas? Roger Marshall</p>
+        <p class="px">YES 0.69 · NO 0.33 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Kansas for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-kansas-senate-race-in-2026" target="_blank">will-the-republicans-win-the-kansas-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Kansas Senate race in 2026? Roger Marshall (R)</p>
+        <p class="px">YES 0.7 · NO 0.31 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Kansas U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#19</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Iowa? Ashley Hinson</span>
+      <span class="meta">match 1 · edge -0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateia" target="_blank">SENATEIA-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Iowa? Ashley Hinson</p>
+        <p class="px">YES 0.57 · NO 0.44 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Iowa for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-iowa-senate-race-in-2026" target="_blank">will-the-republicans-win-the-iowa-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Iowa Senate race in 2026? Ashley Hinson (R)</p>
+        <p class="px">YES 0.57 · NO 0.44 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Iowa U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#20</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republicans win the Senate race in Florida? Ashley Moody</span>
+      <span class="meta">match 1 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatefls" target="_blank">SENATEFLS-26-R</a></h4>
+        <p class="q">Will Republicans win the Senate race in Florida? Ashley Moody</p>
+        <p class="px">YES 0.9 · NO 0.11 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Republican party is sworn in as a Senator of Florida for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republicans-win-the-florida-senate-race-in-2026" target="_blank">will-the-republicans-win-the-florida-senate-race-in-2026</a></h4>
+        <p class="q">Will the Republicans win the Florida Senate race in 2026? Ashley Moody (R)</p>
+        <p class="px">YES 0.92 · NO 0.09 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 Florida U.S. Senate special election currently scheduled for November 3, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#21</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the Ballon d'Or in 2026? Lamine Yamal</span>
+      <span class="meta">match 1 · edge 0.008</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxballondor" target="_blank">KXBALLONDOR-26-LYAM</a></h4>
+        <p class="q">Who will win the Ballon d'Or in 2026? Lamine Yamal</p>
+        <p class="px">YES 0.21 · NO 0.8 · закрытие 2026-12-31T04:59</p>
+        <pre>If Lamine Yamal wins the Ballon d'Or in 2026, then the market resolves to Yes.
+
+Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-lamine-yamal-win-the-2026-ballon-dor" target="_blank">will-lamine-yamal-win-the-2026-ballon-dor</a></h4>
+        <p class="q">Will Lamine Yamal win the 2026 Ballon d'Or? Lamine Yamal</p>
+        <p class="px">YES 0.219 · NO 0.782 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the winner of the 2026 Ballon d’Or.
+
+If no 2026 Ballon d’Or winner is declared by December 31, 2026, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+The primary resolution source for this market is official information from France Football (https://www.francefootball.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#22</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the Ballon d'Or in 2026? Harry Kane</span>
+      <span class="meta">match 1 · edge 0.011</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxballondor" target="_blank">KXBALLONDOR-26-HKAN</a></h4>
+        <p class="q">Who will win the Ballon d'Or in 2026? Harry Kane</p>
+        <p class="px">YES 0.6 · NO 0.41 · закрытие 2026-12-31T04:59</p>
+        <pre>If Harry Kane wins the Ballon d'Or in 2026, then the market resolves to Yes.
+
+Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-harry-kane-win-the-2026-ballon-dor" target="_blank">will-harry-kane-win-the-2026-ballon-dor</a></h4>
+        <p class="q">Will Harry Kane win the 2026 Ballon d'Or? Harry Kane</p>
+        <p class="px">YES 0.579 · NO 0.422 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the winner of the 2026 Ballon d’Or.
+
+If no 2026 Ballon d’Or winner is declared by December 31, 2026, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+The primary resolution source for this market is official information from France Football (https://www.francefootball.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#23</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the Ballon d'Or in 2026? Erling Haaland</span>
+      <span class="meta">match 1 · edge -0.003</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxballondor" target="_blank">KXBALLONDOR-26-EHAA</a></h4>
+        <p class="q">Who will win the Ballon d'Or in 2026? Erling Haaland</p>
+        <p class="px">YES 0.02 · NO 1 · закрытие 2026-12-31T04:59</p>
+        <pre>If Erling Haaland wins the Ballon d'Or in 2026, then the market resolves to Yes.
+
+Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-erling-haaland-win-the-2026-ballon-dor" target="_blank">will-erling-haaland-win-the-2026-ballon-dor</a></h4>
+        <p class="q">Will Erling Haaland win the 2026 Ballon d'Or? Erling Haaland</p>
+        <p class="px">YES 0.003 · NO 0.998 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the winner of the 2026 Ballon d’Or.
+
+If no 2026 Ballon d’Or winner is declared by December 31, 2026, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+The primary resolution source for this market is official information from France Football (https://www.francefootball.fr/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#24</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Satoshi move any Bitcoin by 2027? Before 2027</span>
+      <span class="meta">match 1 · edge 0.007</span>
+    </summary>
+    <ul class="flags"><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: no data available</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxsatoshibtcyear" target="_blank">KXSATOSHIBTCYEAR-27</a></h4>
+        <p class="q">Will Satoshi move any Bitcoin by 2027? Before 2027</p>
+        <p class="px">YES 0.05 · NO 0.96 · закрытие 2027-01-01T05:00</p>
+        <pre>If any wallet labeled as belonging to Satoshi Nakamoto on Arkham’s Intel Explorer shows an “Outflow” or “Swaps” transaction before January 01, 2027, 12:00 AM ET, the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-satoshi-move-any-bitcoin-in-2026" target="_blank">will-satoshi-move-any-bitcoin-in-2026</a></h4>
+        <p class="q">Will Satoshi move any Bitcoin in 2026? </p>
+        <p class="px">YES 0.033 · NO 0.968 · закрытие 2027-01-01T05:00</p>
+        <pre>This market will resolve to “Yes” if any wallet labeled as belonging to Satoshi Nakamoto on Arkham’s Intel Explorer shows an “Outflow” or “Swaps” transaction at any time between January 9, 2026, 1:00 PM ET and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No.”
+
+The resolution source for this market is Arkham’s Intel Explorer, specifically the entity page for Satoshi Nakamoto available at https://intel.arkm.com/explorer/entity/satoshi-nakamoto
+
+If Arkham becomes permanently unavailable, this market will resolve based on a consensus of credible sources.
+
+
+</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#25</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Harris Dickinson be the next James Bond? Harris Dickinson</span>
+      <span class="meta">match 0.92 · edge 0.003</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2030-01-01, Polymarket 2026-12-31 (разница 1097 дн.)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxbond" target="_blank">KXBOND-30-HAR</a></h4>
+        <p class="q">Will Harris Dickinson be the next James Bond? Harris Dickinson</p>
+        <p class="px">YES 0.06 · NO 0.97 · закрытие 2030-01-01T15:00</p>
+        <pre>If Harris Dickinson is cast as the next James Bond before Jan 1, 2030, then the market resolves to Yes.
+
+This is for the next film in the James Bond series, which goes back to Dr. No (1962); spin-offs and unauthorized productions are not included.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/harris-dickinson-announced-as-next-james-bond" target="_blank">harris-dickinson-announced-as-next-james-bond</a></h4>
+        <p class="q">Harris Dickinson announced as next James Bond? Harris Dickinson</p>
+        <p class="px">YES 0.136 · NO 0.937 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve to “Yes” if the listed actor is officially announced as the next James Bond actor by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.
+
+This market will resolve based on the first official announcement of who will be the next James Bond, regardless of any changes made thereafter.
+
+If no actor is announced as the next Bond within the timeframe, this market will resolve to &quot;No Bond chosen&quot;.
+
+The primary resolution source for this market will be official information from Amazon MGM Studios. However, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#26</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Where will Trump and Putin next meet? Turkey</span>
+      <span class="meta">match 0.92 · edge -0.006</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2029-01-01, Polymarket 2026-12-31 (разница 732 дн.)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxputindjtlocation" target="_blank">KXPUTINDJTLOCATION-29-TUR</a></h4>
+        <p class="q">Where will Trump and Putin next meet? Turkey</p>
+        <p class="px">YES 0.2 · NO 1 · закрытие 2029-01-01T04:59</p>
+        <pre>If Trump and Putin's first meeting after their planned August 15, 2025 meeting in Alaska happens in Turkey before Jan 1, 2029, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-trump-and-putin-meet-next-in-turkey-213" target="_blank">will-trump-and-putin-meet-next-in-turkey-213</a></h4>
+        <p class="q">Will Trump and Putin meet next in Turkey? Turkey</p>
+        <p class="px">YES 0.006 · NO 0.997 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the location of the next meeting between Donald Trump and Vladimir Putin between market creation and December 31, 2026, 11:59 PM ET.
+
+This market will resolve to &quot;No meeting by December 31&quot; if no qualifying meeting occurs during this market's timeframe.
+
+A meeting is defined as any encounter where Putin and Trump are all present and interact with each other in person.
+
+An exchange of words, handshake, direct conversation, or other clear personal interaction between the named individuals will qualify as a meeting. Merely standing in proximity, making eye contact, or being present in the same room or event without direct interaction will not qualify.
+
+For this market, Gulf states are defined as the six members of the Gulf Cooperation Council (Bahrain, Kuwait, Oman, Qatar, Saudi Arabia, United Arab Emirates).
+
+The primary resolution source for this market will be a consensus of credible reporting.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#27</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Where will Trump and Putin next meet? China</span>
+      <span class="meta">match 0.92 · edge -0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2029-01-01, Polymarket 2026-12-31 (разница 732 дн.)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxputindjtlocation" target="_blank">KXPUTINDJTLOCATION-29-PRC</a></h4>
+        <p class="q">Where will Trump and Putin next meet? China</p>
+        <p class="px">YES 0.71 · NO 0.35 · закрытие 2029-01-01T04:59</p>
+        <pre>If Trump and Putin's first meeting after their planned August 15, 2025 meeting in Alaska happens in China before Jan 1, 2029, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-trump-and-putin-meet-next-in-china-784" target="_blank">will-trump-and-putin-meet-next-in-china-784</a></h4>
+        <p class="q">Will Trump and Putin meet next in China? China</p>
+        <p class="px">YES 0.66 · NO 0.36 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve according to the location of the next meeting between Donald Trump and Vladimir Putin between market creation and December 31, 2026, 11:59 PM ET.
+
+This market will resolve to &quot;No meeting by December 31&quot; if no qualifying meeting occurs during this market's timeframe.
+
+A meeting is defined as any encounter where Putin and Trump are all present and interact with each other in person.
+
+An exchange of words, handshake, direct conversation, or other clear personal interaction between the named individuals will qualify as a meeting. Merely standing in proximity, making eye contact, or being present in the same room or event without direct interaction will not qualify.
+
+For this market, Gulf states are defined as the six members of the Gulf Cooperation Council (Bahrain, Kuwait, Oman, Qatar, Saudi Arabia, United Arab Emirates).
+
+The primary resolution source for this market will be a consensus of credible reporting.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#28</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Puka Nacua win the MVP? Puka Nacua</span>
+      <span class="meta">match 0.9 · edge -0.003</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-02-28)</li><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: postponed/cancelled, tie</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxnflmvp" target="_blank">KXNFLMVP-27-PNAC</a></h4>
+        <p class="q">Will Puka Nacua win the MVP? Puka Nacua</p>
+        <p class="px">YES 0.01 · NO 1 · закрытие 2028-02-12T15:00</p>
+        <pre>If Puka Nacua wins the Pro Football AP Regular Season MVP in the 2026-27 season, then the market resolves to Yes.
+
+Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-puka-nacua-win-the-2026-nfl-mvp" target="_blank">will-puka-nacua-win-the-2026-nfl-mvp</a></h4>
+        <p class="q">Will Puka Nacua win the 2026 NFL MVP? Puka Nacua</p>
+        <p class="px">YES 0.003 · NO 0.998 · закрытие 2027-03-01T04:59</p>
+        <pre>This market will resolve to the player who wins the 2026 NFL Most Valuable Player award for the 2026-27 NFL season.
+
+In the event of a tie, this market will resolve according to the official winner as determined by NFL rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.
+
+If the 2026-27 NFL season is cancelled, postponed after February 28, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.
+
+The resolution source for this market will be official information from the NFL; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#29</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will a hurricane make landfall in Hawaii during the 2026 hurricane season? Before 2027</span>
+      <span class="meta">match 0.9 · edge 0.04</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: NOAA/NWS</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: data revision</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhurpathhawaii" target="_blank">KXHURPATHHAWAII-26DEC</a></h4>
+        <p class="q">Will a hurricane make landfall in Hawaii during the 2026 hurricane season? Before 2027</p>
+        <p class="px">YES 0.11 · NO 0.93 · закрытие 2027-01-01T04:59</p>
+        <pre>If a 74 mph or higher hurricane makes landfall in Hawaii during the 2026 hurricane season, then the market resolves to Yes.
+
+This market encompasses the primary southeastern islands of the state of Hawaii. Those islands are: Niʻihau, Kauaʻi, Oʻahu, Molokaʻi, Lānaʻi, Kahoʻolawe, Maui, and the island of Hawai'i. It does not include the Midway Atoll, nor the Northwestern Islands, also known as the Leeward Hawaiian Islands.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-a-hurricane-make-landfall-in-hawaii-before-2027-20260721182828397" target="_blank">will-a-hurricane-make-landfall-in-hawaii-before-2027-20260721182828397</a></h4>
+        <p class="q">Will a hurricane make landfall in Hawaii before 2027? </p>
+        <p class="px">YES 0.16 · NO 0.85 · закрытие 2026-12-31T16:59</p>
+        <pre>This market will resolve to &quot;Yes&quot; if any storm makes landfall in the State of Hawaii at Category 1 strength or higher, as reported in official Central Pacific Hurricane Center advisories (https://www.nhc.noaa.gov/cphc/), between market creation and December 31, 2026, 11:59:59 PM ET. Otherwise, this market will resolve to &quot;No&quot;. A landfall counts toward this determination only if it occurs within this window; the time of the physical landfall governs, not the time any confirming advisory is issued.
+
+A hurricane is a tropical cyclone with maximum sustained winds of 74 mph or greater (Category 1 or higher on the Saffir-Simpson Hurricane Wind Scale), as described at https://www.nhc.noaa.gov/aboutsshws.php, and a hurricane landfall is said to occur when the hurricane's surface center intersects with the coastline, as described at https://www.nhc.noaa.gov/aboutgloss.shtml#LANDFALL. A storm must hold hurricane strength (Category 1 or higher on the Saffir-Simpson scale) at the moment its surface center intersects the coastline for that landfall to qualify. 
+
+&quot;Hawaii&quot; means the entire State of Hawaii as recognized under U.S. law, including the main Hawaiian Islands (Hawaiʻi, Maui, Oʻahu, Kauaʻi, Molokaʻi, Lānaʻi, Niʻihau, and Kahoʻolawe) and the Northwestern Hawaiian Islands (including Midway Atoll and the Papahānaumokuākea Marine National Monument).
+
+The wind speed at the moment of landfall will be determined from the CPHC advisory or Special Advisory in effect at the time closest to the reported landfall time; where no advisory covers that exact moment, the most recent advisory issued prior to landfall governs.
+
+This market may resolve based on the initial CPHC advisory reporting a qualifying landfall regardless of any later advisory, retraction, best-track revision, or reanalysis that revises that storm's intensity downward at the time of landfall. However, if a subsequent advisory or correction identifies a qualifying landfall that was not reflected in initial reporting, this market will resolve to &quot;Yes&quot; based on that correction.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#30</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in New Hampshire? Chris Pappas</span>
+      <span class="meta">match 0.83 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatenh" target="_blank">SENATENH-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in New Hampshire? Chris Pappas</p>
+        <p class="px">YES 0.87 · NO 0.14 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of New Hampshire for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-new-hampshire-senate-race-in-2026" target="_blank">will-the-democrats-win-the-new-hampshire-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the New Hampshire Senate race in 2026? Chris Pappas (D)</p>
+        <p class="px">YES 0.86 · NO 0.15 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm New Hampshire U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#31</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Michigan? Abdul El-Sayed</span>
+      <span class="meta">match 0.83 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatemi" target="_blank">SENATEMI-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Michigan? Abdul El-Sayed</p>
+        <p class="px">YES 0.74 · NO 0.27 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Michigan for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-michigan-senate-race-in-2026" target="_blank">will-the-democrats-win-the-michigan-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Michigan Senate race in 2026? Abdul El-Sayed (D)</p>
+        <p class="px">YES 0.72 · NO 0.29 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Michigan U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#32</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Texas? James Talarico</span>
+      <span class="meta">match 0.8 · edge 0.02</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatetx" target="_blank">SENATETX-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Texas? James Talarico</p>
+        <p class="px">YES 0.59 · NO 0.42 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Texas for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-texas-senate-race-in-2026" target="_blank">will-the-democrats-win-the-texas-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Texas Senate race in 2026? James Talarico (D)</p>
+        <p class="px">YES 0.62 · NO 0.39 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Texas U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#33</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Ohio? Sherrod Brown</span>
+      <span class="meta">match 0.8 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateohs" target="_blank">SENATEOHS-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Ohio? Sherrod Brown</p>
+        <p class="px">YES 0.59 · NO 0.42 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Ohio for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-ohio-senate-race-in-2026" target="_blank">will-the-democrats-win-the-ohio-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Ohio Senate race in 2026? Sherrod Brown (D)</p>
+        <p class="px">YES 0.58 · NO 0.43 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 Ohio U.S. Senate special election currently scheduled for November 3, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#34</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Maine? Troy Jackson</span>
+      <span class="meta">match 0.8 · edge 0.03</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateme" target="_blank">SENATEME-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Maine? Troy Jackson</p>
+        <p class="px">YES 0.65 · NO 0.36 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Maine for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-maine-senate-race-in-2026" target="_blank">will-the-democrats-win-the-maine-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Maine Senate race in 2026? Troy Jackson (D)</p>
+        <p class="px">YES 0.69 · NO 0.32 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Maine U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#35</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Kansas? Adam Hamilton</span>
+      <span class="meta">match 0.8 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateks" target="_blank">SENATEKS-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Kansas? Adam Hamilton</p>
+        <p class="px">YES 0.33 · NO 0.68 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Kansas for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-kansas-senate-race-in-2026" target="_blank">will-the-democrats-win-the-kansas-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Kansas Senate race in 2026? Adam Hamilton (D)</p>
+        <p class="px">YES 0.31 · NO 0.7 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Kansas U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#36</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Iowa? Josh Turek</span>
+      <span class="meta">match 0.8 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senateia" target="_blank">SENATEIA-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Iowa? Josh Turek</p>
+        <p class="px">YES 0.44 · NO 0.57 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Iowa for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-iowa-senate-race-in-2026" target="_blank">will-the-democrats-win-the-iowa-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Iowa Senate race in 2026? Josh Turek (D)</p>
+        <p class="px">YES 0.45 · NO 0.56 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Iowa U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#37</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratics win the Senate race in Georgia? Jon Ossoff</span>
+      <span class="meta">match 0.8 · edge -0.002</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/senatega" target="_blank">SENATEGA-26-D</a></h4>
+        <p class="q">Will Democratics win the Senate race in Georgia? Jon Ossoff</p>
+        <p class="px">YES 0.942 · NO 0.061 · закрытие 2027-11-03T15:00</p>
+        <pre>If a representative of the Democratic party is sworn in as a Senator of Georgia for the term beginning in 2027, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democrats-win-the-georgia-senate-race-in-2026" target="_blank">will-the-democrats-win-the-georgia-senate-race-in-2026</a></h4>
+        <p class="q">Will the Democrats win the Georgia Senate race in 2026? Jon Ossoff (D) </p>
+        <p class="px">YES 0.95 · NO 0.06 · закрытие </p>
+        <pre>This market will resolve according to the winner of the 2026 midterm Georgia U.S. Senate election, inclusive of any run-offs.
+
+A candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.
+
+Candidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.
+
+The candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the name in the contract will be updated and the market will resolve based on the replacement nominee of the party.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on the official certification.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#38</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will anyone win outright in the first round of the 2026 Brazil Presidential election? Yes</span>
+      <span class="meta">match 0.79 · edge 0.004</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2027-06-30)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxbrazilpres1r" target="_blank">KXBRAZILPRES1R-26OCT04</a></h4>
+        <p class="q">Will anyone win outright in the first round of the 2026 Brazil Presidential election? Yes</p>
+        <p class="px">YES 0.16 · NO 0.939 · закрытие 2027-10-04T14:00</p>
+        <pre>If any candidate receives the required threshold of votes (50%) to be declared the winner after the first round of the 2026 Brazil Presidential election, eliminating the need for any subsequent rounds, runoffs, or instant-runoff tabulations, then the market resolves to Yes.
+
+The market resolves to Yes if any candidate meets the legal threshold to avoid a second round. In two-round systems, this typically means receiving more than 50% of valid votes in the first round. In instant-runoff/ranked choice voting, this means a candidate received more than 50% of first-preference votes. Some elections use different thresholds (e.g., 40% with a 10-point lead, or 45%), in which case the applicable legal threshold applies. The determination is based solely on the first round/first count of votes, before any eliminations, transfers, or subsequent rounds. Blank votes, null votes, and invalid ballots are excluded unless electoral law specifically includes them. The market resolves once the relevant electoral body declares whether anyone won the first round.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-any-presidential-candidate-win-outright-in-the-first-round-of-the-brazil-election" target="_blank">will-any-presidential-candidate-win-outright-in-the-first-round-of-the-brazil-election</a></h4>
+        <p class="q">Will any presidential candidate win outright in the first round of the Brazil election? </p>
+        <p class="px">YES 0.057 · NO 0.951 · закрытие 2027-07-01T03:59</p>
+        <pre>Presidential elections are scheduled to be held in Brazil on October 4, 2026. A second round will be held if no candidate secures more than 50% of the valid votes in the first round.
+
+This market will resolve to &quot;Yes&quot; if any candidate wins this election in the first round. Otherwise, this market will resolve to &quot;No&quot;.
+
+If the result of the first round of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to &quot;No&quot;.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the Brazilian government, specifically the Superior Electoral Court (Tribunal Superior Eleitoral, TSE) (e.g., https://dadosabertos.tse.jus.br/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#39</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for WY-AL? Lisa Kinney</span>
+      <span class="meta">match 0.79 · edge -0.001</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-WYAL-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for WY-AL? Lisa Kinney</p>
+        <p class="px">YES 0.034 · NO 0.997 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for WY-AL for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-wy-al-house-seat" target="_blank">will-the-democratic-party-win-the-wy-al-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the WY-AL House seat? Lisa Kinney (D)</p>
+        <p class="px">YES 0.004 · NO 0.998 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the WY-AL congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#40</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for VT-AL? Becca Balint</span>
+      <span class="meta">match 0.79 · edge -0.021</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-VTAL-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for VT-AL? Becca Balint</p>
+        <p class="px">YES 0.997 · NO 0.079 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for VT-AL for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-vt-al-house-seat" target="_blank">will-the-democratic-party-win-the-vt-al-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the VT-AL House seat? Becca Balint (D)</p>
+        <p class="px">YES 0.988 · NO 0.024 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the VT-AL congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#41</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republican win the House race for VT-AL? Gerald Malloy</span>
+      <span class="meta">match 0.79 · edge -0.021</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-VTAL-26-R</a></h4>
+        <p class="q">Will Republican win the House race for VT-AL? Gerald Malloy</p>
+        <p class="px">YES 0.04 · NO 0.995 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for VT-AL for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republican-party-win-the-vt-al-house-seat" target="_blank">will-the-republican-party-win-the-vt-al-house-seat</a></h4>
+        <p class="q">Will the Republican Party win the VT-AL House seat? Gerald Malloy (R)</p>
+        <p class="px">YES 0.026 · NO 0.994 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the VT-AL congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#42</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for TX-29? Sylvia Garcia</span>
+      <span class="meta">match 0.79 · edge -0.04</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-TX29-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for TX-29? Sylvia Garcia</p>
+        <p class="px">YES 0.975 · NO 0.37 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for TX-29 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-tx-29-house-seat" target="_blank">will-the-democratic-party-win-the-tx-29-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the TX-29 House seat? Sylvia Garcia (D)</p>
+        <p class="px">YES 0.959 · NO 0.065 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the TX-29 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#43</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republican win the House race for TX-29? Martha Fierro</span>
+      <span class="meta">match 0.79 · edge -0.05</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-TX29-26-R</a></h4>
+        <p class="q">Will Republican win the House race for TX-29? Martha Fierro</p>
+        <p class="px">YES 0.098 · NO 0.99 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for TX-29 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republican-party-win-the-tx-29-house-seat" target="_blank">will-the-republican-party-win-the-tx-29-house-seat</a></h4>
+        <p class="q">Will the Republican Party win the TX-29 House seat? Martha Fierro (R)</p>
+        <p class="px">YES 0.06 · NO 0.96 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the TX-29 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#44</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for TN-05? Chaz Molder</span>
+      <span class="meta">match 0.79 · edge -0.003</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-TN05-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for TN-05? Chaz Molder</p>
+        <p class="px">YES 0.1 · NO 0.92 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for TN-05 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-tn-05-house-seat" target="_blank">will-the-democratic-party-win-the-tn-05-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the TN-05 House seat? Chaz Molder (D)</p>
+        <p class="px">YES 0.083 · NO 0.923 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the TN-05 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#45</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for TN-04? Victoria Broderick</span>
+      <span class="meta">match 0.79 · edge -0.003</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-TN04-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for TN-04? Victoria Broderick</p>
+        <p class="px">YES 0.17 · NO 0.998 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for TN-04 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-tn-04-house-seat" target="_blank">will-the-democratic-party-win-the-tn-04-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the TN-04 House seat? Victoria Broderick (D)</p>
+        <p class="px">YES 0.005 · NO 0.997 · закрытие 2026-11-03T00:00</p>
+        <pre>This market will resolve according to the party of the candidate who wins the TN-04 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#46</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republican win the House race for NY-26? Dennis Hannon</span>
+      <span class="meta">match 0.79 · edge -0.047</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-NY26-26-R</a></h4>
+        <p class="q">Will Republican win the House race for NY-26? Dennis Hannon</p>
+        <p class="px">YES 0.084 · NO 0.996 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for NY-26 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republican-party-win-the-ny-26-house-seat" target="_blank">will-the-republican-party-win-the-ny-26-house-seat</a></h4>
+        <p class="q">Will the Republican Party win the NY-26 House seat? Dennis Hannon (R)</p>
+        <p class="px">YES 0.051 · NO 0.983 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the NY-26 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#47</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for FL-22? Pia Dandiya</span>
+      <span class="meta">match 0.79 · edge 0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-FL22-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for FL-22? Pia Dandiya</p>
+        <p class="px">YES 0.52 · NO 0.49 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for FL-22 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-fl-22-house-seat" target="_blank">will-the-democratic-party-win-the-fl-22-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the FL-22 House seat? Pia Dandiya (D)</p>
+        <p class="px">YES 0.54 · NO 0.47 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the FL-22 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#48</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republican win the House race for CA-32? Larry Thompson</span>
+      <span class="meta">match 0.79 · edge 0.008</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-CA32-26-R</a></h4>
+        <p class="q">Will Republican win the House race for CA-32? Larry Thompson</p>
+        <p class="px">YES 0.11 · NO 0.986 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for CA-32 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republican-party-win-the-ca-32-house-seat" target="_blank">will-the-republican-party-win-the-ca-32-house-seat</a></h4>
+        <p class="q">Will the Republican Party win the CA-32 House seat? Larry Thompson (R)</p>
+        <p class="px">YES 0.006 · NO 0.995 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the CA-32 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#49</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Republican win the House race for CA-20? Vince Fong</span>
+      <span class="meta">match 0.79 · edge -0.007</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-CA20-26-R</a></h4>
+        <p class="q">Will Republican win the House race for CA-20? Vince Fong</p>
+        <p class="px">YES 0.975 · NO 0.38 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for CA-20 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-republican-party-win-the-ca-20-house-seat" target="_blank">will-the-republican-party-win-the-ca-20-house-seat</a></h4>
+        <p class="q">Will the Republican Party win the CA-20 House seat? Vince Fong (R)</p>
+        <p class="px">YES 0.97 · NO 0.032 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the CA-20 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#50</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Democratic win the House race for AL-05? Andrew Sneed</span>
+      <span class="meta">match 0.79 · edge -0.01</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-11-03)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxhouserace" target="_blank">KXHOUSERACE-AL05-26-D</a></h4>
+        <p class="q">Will Democratic win the House race for AL-05? Andrew Sneed</p>
+        <p class="px">YES 0.081 · NO 0.978 · закрытие 2027-11-03T15:00</p>
+        <pre>If the House member sworn in for AL-05 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes.
+
+This market is eligible for accelerated determination after a consensus of media organizations project the winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-the-democratic-party-win-the-al-05-house-seat" target="_blank">will-the-democratic-party-win-the-al-05-house-seat</a></h4>
+        <p class="q">Will the Democratic Party win the AL-05 House seat? Andrew Sneed (D)</p>
+        <p class="px">YES 0.032 · NO 0.97 · закрытие 2026-11-04T04:59</p>
+        <pre>This market will resolve according to the party of the candidate who wins the AL-05 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.
+
+​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time all of the House elections are conclusively called by this market's resolution sources.
+
+This market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by the United States government, specifically the Federal Election Commission (https://www.fec.gov/).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#51</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Aleksandar Vučić become Prime Minister of Serbia following the next Serbian general election? Aleksandar Vučić</span>
+      <span class="meta">match 0.77 · edge -0.232</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2028-12-31, Polymarket 2028-06-30 (разница 184 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxserbiapm" target="_blank">KXSERBIAPM-27DEC31-AVUC</a></h4>
+        <p class="q">Will Aleksandar Vučić become Prime Minister of Serbia following the next Serbian general election? Aleksandar Vučić</p>
+        <p class="px">YES 0.8 · NO 0.87 · закрытие 2028-12-31T15:00</p>
+        <pre>If Aleksandar Vučić becomes Prime Minister of Serbia as a result of government formation following the next Serbian general election and meets all constitutional requirements before Dec 31, 2028, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Dec 31, 2028, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-aleksandar-vucic-be-the-next-prime-minister-of-serbia-20260629223938643" target="_blank">will-aleksandar-vucic-be-the-next-prime-minister-of-serbia-20260629223938643</a></h4>
+        <p class="q">Will Aleksandar Vučić be the next Prime Minister of Serbia? Aleksandar Vučić</p>
+        <p class="px">YES 0.584 · NO 0.432 · закрытие 2028-06-30T23:59</p>
+        <pre>This market will resolve to the next individual who officially assumes the office of Prime Minister of Serbia by June 30, 2028, 11:59 PM ET.
+
+To count for resolution, the individual must be elected by the National Assembly and be formally sworn-in, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who is not elected by the National Assembly will not count toward the resolution of this market.
+
+If no such Prime Minister takes office by June 30, 2028, 11:59 PM ET, this market will resolve to “Other”.
+
+This market will resolve based on a consensus of credible reporting. If there is ambiguity, this market will resolve solely based on official information from the Serbian government.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#52</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the next presidential election? Alexandria Ocasio-Cortez</span>
+      <span class="meta">match 0.76 · edge 0.038</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2029-01-20)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxpresperson" target="_blank">KXPRESPERSON-28-AOCA</a></h4>
+        <p class="q">Who will win the next presidential election? Alexandria Ocasio-Cortez</p>
+        <p class="px">YES 0.092 · NO 0.909 · закрытие 2029-11-07T15:00</p>
+        <pre>If Alexandria Ocasio-Cortez is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election" target="_blank">will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election</a></h4>
+        <p class="q">Will Alexandria Ocasio-Cortez win the 2028 US Presidential Election? Alexandria Ocasio-Cortez</p>
+        <p class="px">YES 0.131 · NO 0.87 · закрытие 2029-01-21T04:59</p>
+        <pre>The 2028 US Presidential Election is scheduled to take place on November 7, 2028.
+
+This market will resolve to the person who wins the 2028 US Presidential Election.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#53</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the next presidential election? Gavin Newsom</span>
+      <span class="meta">match 0.73 · edge 0.009</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2029-01-20)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxpresperson" target="_blank">KXPRESPERSON-28-GNEWS</a></h4>
+        <p class="q">Who will win the next presidential election? Gavin Newsom</p>
+        <p class="px">YES 0.094 · NO 0.909 · закрытие 2029-11-07T15:00</p>
+        <pre>If Gavin Newsom is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-gavin-newsom-win-the-2028-us-presidential-election" target="_blank">will-gavin-newsom-win-the-2028-us-presidential-election</a></h4>
+        <p class="q">Will Gavin Newsom win the 2028 US Presidential Election? Gavin Newsom</p>
+        <p class="px">YES 0.082 · NO 0.919 · закрытие 2028-11-07T00:00</p>
+        <pre>The 2028 US Presidential Election is scheduled to take place on November 7, 2028.
+
+This market will resolve to the person who wins the 2028 US Presidential Election.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#54</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the next presidential election? Pete Buttigieg</span>
+      <span class="meta">match 0.73 · edge 0</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: AP</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2029-01-20)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxpresperson" target="_blank">KXPRESPERSON-28-PBUT</a></h4>
+        <p class="q">Who will win the next presidential election? Pete Buttigieg</p>
+        <p class="px">YES 0.029 · NO 0.972 · закрытие 2029-11-07T15:00</p>
+        <pre>If Pete Buttigieg is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-pete-buttigieg-win-the-2028-us-presidential-election" target="_blank">will-pete-buttigieg-win-the-2028-us-presidential-election</a></h4>
+        <p class="q">Will Pete Buttigieg win the 2028 US Presidential Election? Pete Buttigieg</p>
+        <p class="px">YES 0.028 · NO 0.973 · закрытие 2028-11-07T00:00</p>
+        <pre>The 2028 US Presidential Election is scheduled to take place on November 7, 2028.
+
+This market will resolve to the person who wins the 2028 US Presidential Election.
+
+The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#55</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Who will win the next Argentine presidential election? Javier Milei</span>
+      <span class="meta">match 0.73 · edge -0.07</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2028-10-31)</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxargentinapres" target="_blank">KXARGENTINAPRES-27-JMIL</a></h4>
+        <p class="q">Who will win the next Argentine presidential election? Javier Milei</p>
+        <p class="px">YES 0.61 · NO 0.72 · закрытие 2028-10-30T14:00</p>
+        <pre>If the winner of the next Argentine presidential election is Javier Milei, then the market resolves to Yes.
+
+This market may resolve early once a consensus of designated media sources has declared a winner. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-javier-milei-win-the-2027-argentina-presidential-election" target="_blank">will-javier-milei-win-the-2027-argentina-presidential-election</a></h4>
+        <p class="q">Will Javier Milei win the 2027 Argentina presidential election? Javier Milei</p>
+        <p class="px">YES 0.55 · NO 0.46 · закрытие 2027-10-24T00:00</p>
+        <pre>A presidential election scheduled to be held in Argentina on October 24, 2027.
+
+This market will resolve according to the listed candidate who wins the next Argentinian Presidential election. 
+
+This market includes any potential second round. 
+
+If the results are not known definitively by October 31, 2028, 11:59 PM ET, this market will resolve to &quot;Other&quot;.
+
+This market will resolve based on the results of this election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve solely based on official results as reported by Argentina government sources, including the Cámara Nacional Electoral (https://www.electoral.gob.ar/nuevo/index.php) and the Dirección Nacional Electoral (https://www.argentina.gob.ar/dine).</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#56</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will David Eby become Premier of British Columbia following the 2026 British Columbia general election? David Eby</span>
+      <span class="meta">match 0.67 · edge -0.09</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-10-24, Polymarket 2027-06-30 (разница 116 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxbcpremier" target="_blank">KXBCPREMIER-26OCT24-DEBY</a></h4>
+        <p class="q">Will David Eby become Premier of British Columbia following the 2026 British Columbia general election? David Eby</p>
+        <p class="px">YES 0.59 · NO 0.59 · закрытие 2027-10-24T14:00</p>
+        <pre>If David Eby becomes Premier of British Columbia as a result of government formation following the 2026 British Columbia general election and meets all constitutional requirements before Oct 24, 2027, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Premier according to British Columbia's constitutional procedures, commands the confidence of the Legislative Assembly, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Oct 24, 2027, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.
+
+This market is eligible for accelerated resolution by a consensus of media calls. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-david-eby-be-the-next-premier-of-british-columbia" target="_blank">will-david-eby-be-the-next-premier-of-british-columbia</a></h4>
+        <p class="q">Will David Eby be the next Premier of British Columbia? David Eby</p>
+        <p class="px">YES 0.51 · NO 0.5 · закрытие 2026-10-24T23:59</p>
+        <pre>The 2026 British Columbia general election is currently scheduled to be held on October 24, 2026 to elect members of the Legislative Assembly of British Columbia.
+
+This market will resolve to the individual who is formally appointed as Premier of British Columbia as a result of the specified elections.
+
+To count for resolution, the individual must be formally sworn-in as Premier following the specified elections. Any interim or caretaker head of government will not count toward the resolution of this market.
+
+If no such Premier is appointed by June 30, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of British Columbia; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#57</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Lorne Doerkson become Premier of British Columbia following the 2026 British Columbia general election? Lorne Doerkson</span>
+      <span class="meta">match 0.67 · edge 0.03</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-10-24, Polymarket 2027-06-30 (разница 116 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxbcpremier" target="_blank">KXBCPREMIER-26OCT24-LDOE</a></h4>
+        <p class="q">Will Lorne Doerkson become Premier of British Columbia following the 2026 British Columbia general election? Lorne Doerkson</p>
+        <p class="px">YES 0.45 · NO 0.6 · закрытие 2027-10-24T14:00</p>
+        <pre>If Lorne Doerkson becomes Premier of British Columbia as a result of government formation following the 2026 British Columbia general election and meets all constitutional requirements before Oct 24, 2027, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Premier according to British Columbia's constitutional procedures, commands the confidence of the Legislative Assembly, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Oct 24, 2027, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.
+
+This market is eligible for accelerated resolution by a consensus of media calls. See full rules for details.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-lorne-doerkson-be-the-next-premier-of-british-columbia" target="_blank">will-lorne-doerkson-be-the-next-premier-of-british-columbia</a></h4>
+        <p class="q">Will Lorne Doerkson be the next Premier of British Columbia? Lorne Doerkson</p>
+        <p class="px">YES 0.49 · NO 0.52 · закрытие 2026-10-24T23:59</p>
+        <pre>The 2026 British Columbia general election is currently scheduled to be held on October 24, 2026 to elect members of the Legislative Assembly of British Columbia.
+
+This market will resolve to the individual who is formally appointed as Premier of British Columbia as a result of the specified elections.
+
+To count for resolution, the individual must be formally sworn-in as Premier following the specified elections. Any interim or caretaker head of government will not count toward the resolution of this market.
+
+If no such Premier is appointed by June 30, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of British Columbia; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#58</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Benjamin Netanyahu become Prime Minister of Israel following the 2026 Israeli legislative election? Benjamin Netanyahu</span>
+      <span class="meta">match 0.64 · edge 0.02</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-10-27, Polymarket 2027-12-31 (разница 65 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxisraelpm" target="_blank">KXISRAELPM-26OCT27-BNET</a></h4>
+        <p class="q">Will Benjamin Netanyahu become Prime Minister of Israel following the 2026 Israeli legislative election? Benjamin Netanyahu</p>
+        <p class="px">YES 0.27 · NO 0.74 · закрытие 2027-10-27T14:00</p>
+        <pre>If Benjamin Netanyahu becomes Prime Minister of Israel as a result of government formation following the 2026 Israeli legislative election and meets all constitutional requirements before Oct 27, 2027, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Oct 27, 2027, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-benjamin-netanyahu-be-the-next-prime-minister-of-israel" target="_blank">will-benjamin-netanyahu-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Benjamin Netanyahu be the next Prime Minister of Israel? Benjamin Netanyahu</p>
+        <p class="px">YES 0.3 · NO 0.71 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#59</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Gadi Eizenkot become Prime Minister of Israel following the 2026 Israeli legislative election? Gadi Eizenkot</span>
+      <span class="meta">match 0.64 · edge 0.017</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-10-27, Polymarket 2027-12-31 (разница 65 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxisraelpm" target="_blank">KXISRAELPM-26OCT27-GEIZ</a></h4>
+        <p class="q">Will Gadi Eizenkot become Prime Minister of Israel following the 2026 Israeli legislative election? Gadi Eizenkot</p>
+        <p class="px">YES 0.51 · NO 0.5 · закрытие 2027-10-27T14:00</p>
+        <pre>If Gadi Eizenkot becomes Prime Minister of Israel as a result of government formation following the 2026 Israeli legislative election and meets all constitutional requirements before Oct 27, 2027, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Oct 27, 2027, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-gadi-eizenkot-be-the-next-prime-minister-of-israel" target="_blank">will-gadi-eizenkot-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Gadi Eizenkot be the next Prime Minister of Israel? Gadi Eizenkot</p>
+        <p class="px">YES 0.532 · NO 0.473 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#60</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Moshe Feiglin become Prime Minister of Israel following the 2026 Israeli legislative election? Moshe Feiglin</span>
+      <span class="meta">match 0.64 · edge -0.001</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-10-27, Polymarket 2027-12-31 (разница 65 дн.)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket исключает</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxisraelpm" target="_blank">KXISRAELPM-26OCT27-MFEI</a></h4>
+        <p class="q">Will Moshe Feiglin become Prime Minister of Israel following the 2026 Israeli legislative election? Moshe Feiglin</p>
+        <p class="px">YES 0.01 · NO 1 · закрытие 2027-10-27T14:00</p>
+        <pre>If Moshe Feiglin becomes Prime Minister of Israel as a result of government formation following the 2026 Israeli legislative election and meets all constitutional requirements before Oct 27, 2027, then the market resolves to Yes.
+
+The market resolves to the first person who, as a result of government formation following the election, is formally appointed, sworn in, or invested as Prime Minister according to the country's constitutional procedures, commands the confidence of the parliament/legislature, and exercises the full powers of the office (not serving in a caretaker/acting capacity from the previous government).
+
+If no government forms by Oct 27, 2027, the Contract resolves to &quot;No one&quot; if that is an option and No for all other strikes. If new elections are called before government formation, the Contract resolves to &quot;No one&quot; immediately and No for all other strikes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-moshe-feiglin-be-the-next-prime-minister-of-israel" target="_blank">will-moshe-feiglin-be-the-next-prime-minister-of-israel</a></h4>
+        <p class="q">Will Moshe Feiglin be the next Prime Minister of Israel? Moshe Feiglin</p>
+        <p class="px">YES 0.001 · NO 0.9995 · закрытие 2026-10-27T23:59</p>
+        <pre>Legislative elections are schedule to be held in Israel on October 27, 2026. 
+
+This market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.
+
+To count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.
+
+If no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.
+
+The primary resolution source for this market will be official information from the Government of Israel; however, a consensus of credible reporting may also be used.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#61</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Delcy Rodríguez de facto hold head of state of Venezuela at the end of 2026? Delcy Rodríguez</span>
+      <span class="meta">match 0.6 · edge 0.44</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: Kalshi Source Agency | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket молчит</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxvenezdefacto" target="_blank">KXVENEZDEFACTO-27JAN01-DROD</a></h4>
+        <p class="q">Will Delcy Rodríguez de facto hold head of state of Venezuela at the end of 2026? Delcy Rodríguez</p>
+        <p class="px">YES 0.91 · NO 0.19 · закрытие 2027-01-02T04:59</p>
+        <pre>If Delcy Rodríguez de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.
+
+For the purposes of this Contract, &quot;Delcy Rodríguez de facto holds head of state of Venezuela&quot; means that, at the end of 2026, Delcy Rodríguez is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of Delcy Rodríguez's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.
+
+The Source Agency's determination of whether Delcy Rodríguez de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:
+
+Control over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela
+Issuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction
+Control over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela
+Treatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela
+Treatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela
+
+The following alone will NOT qualify as de facto holding head of state of Venezuela:
+
+Holding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela
+Serving in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela
+Nomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority
+Status as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority
+Symbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and Delcy Rodríguez performs the ceremonial functions associated with head of state of Venezuela without operative displacement
+Foreign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction
+Leadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to Delcy Rodríguez
+Holding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela
+
+If, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.
+
+If, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026" target="_blank">will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026</a></h4>
+        <p class="q">Will Delcy Rodríguez be the leader of Venezuela end of 2026? Delcy Rodríguez</p>
+        <p class="px">YES 0.37 · NO 0.64 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.
+
+For the purposes of this market, &quot;officially holds&quot; refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. 
+
+If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  
+
+In the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. 
+
+If no individual holds the position this market will resolve to “No Head of State”. 
+
+The following do NOT constitute &quot;officially holding&quot; the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.
+
+The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. 
+
+Note: this market is mutually exclusive. 
+</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#62</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026? María Corina Machado</span>
+      <span class="meta">match 0.6 · edge 0.009</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: Kalshi Source Agency | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket молчит</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxvenezdefacto" target="_blank">KXVENEZDEFACTO-27JAN01-MMAC</a></h4>
+        <p class="q">Will María Corina Machado de facto hold head of state of Venezuela at the end of 2026? María Corina Machado</p>
+        <p class="px">YES 0.03 · NO 0.99 · закрытие 2027-01-02T04:59</p>
+        <pre>If María Corina Machado de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.
+
+For the purposes of this Contract, &quot;María Corina Machado de facto holds head of state of Venezuela&quot; means that, at the end of 2026, María Corina Machado is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of María Corina Machado's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.
+
+The Source Agency's determination of whether María Corina Machado de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:
+
+Control over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela
+Issuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction
+Control over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela
+Treatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela
+Treatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela
+
+The following alone will NOT qualify as de facto holding head of state of Venezuela:
+
+Holding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela
+Serving in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela
+Nomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority
+Status as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority
+Symbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and María Corina Machado performs the ceremonial functions associated with head of state of Venezuela without operative displacement
+Foreign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction
+Leadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to María Corina Machado
+Holding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela
+
+If, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.
+
+If, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026" target="_blank">will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026</a></h4>
+        <p class="q">Will María Corina Machado be the leader of Venezuela end of 2026? María Corina Machado</p>
+        <p class="px">YES 0.001 · NO 0.9995 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.
+
+For the purposes of this market, &quot;officially holds&quot; refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. 
+
+If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  
+
+In the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. 
+
+If no individual holds the position this market will resolve to “No Head of State”. 
+
+The following do NOT constitute &quot;officially holding&quot; the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.
+
+The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. 
+
+Note: this market is mutually exclusive. 
+</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#63</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Trump buy Greenland? Before 2027</span>
+      <span class="meta">match 0.58 · edge 0.011</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: — | Polymarket: Credible reporting consensus</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxgreenland" target="_blank">KXGREENLAND-29-27</a></h4>
+        <p class="q">Will Trump buy Greenland? Before 2027</p>
+        <p class="px">YES 0.046 · NO 0.962 · закрытие 2027-01-01T15:00</p>
+        <pre>If the United States purchases at least part of Greenland from Denmark before Jan 1, 2027, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-trump-acquire-greenland-before-2027" target="_blank">will-trump-acquire-greenland-before-2027</a></h4>
+        <p class="q">Will Trump acquire Greenland before 2027? </p>
+        <p class="px">YES 0.027 · NO 0.975 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve to &quot;Yes&quot; if the United States officially announces that Greenland will come under US sovereignty by December 31, 2026, 11:59 PM ET. Otherwise this market will resolve to &quot;No&quot;.
+
+Sovereignty is defined as the transfer of the majority of the territory of Greenland from its current status as an autonomous territory within the Kingdom of Denmark to being under the formal governance or jurisdiction of the United States, either as a state, territory, or other classification within the US system.
+
+An official announcement made by the United States and Denmark that Greenland will come under US sovereignty will qualify, even if the actual transfer of sovereignty is yet to occur. Only announcements of official agreements or actions (e.g. executive order, signed legislation, etc.) will count - mere posts on Social Media will not.
+
+The resolution source for this market will be official information from the governments of the US, Greenland, and Denmark, however a consensus of credible reporting confirming that Greenland has come under U.S. sovereignty will also qualify.</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#64</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Meta have a top-ranked AI model before 2027? Meta</span>
+      <span class="meta">match 0.58 · edge 0.098</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-01-01, Polymarket 2026-09-30 (разница 93 дн.)</li><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: no data available, tie</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxtopai" target="_blank">KXTOPAI-27-JAN01-META</a></h4>
+        <p class="q">Will Meta have a top-ranked AI model before 2027? Meta</p>
+        <p class="px">YES 0.15 · NO 0.9 · закрытие 2027-01-01T15:00</p>
+        <pre>If Meta has a #1 ranked AI model before Jan 1, 2027, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-meta-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137054" target="_blank">will-meta-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137054</a></h4>
+        <p class="q">Will Meta have the best AI model at the end of September 2026? Meta</p>
+        <p class="px">YES 0.002 · NO 0.999 · закрытие 2026-09-30T16:00</p>
+        <pre>This market will resolve according to the company which owns the model which has the highest arena rank based on the arena.ai Text Arena (Overall) when the table under the &quot;Leaderboard&quot; tab is checked on September 30, 2026, 12:00 PM ET.
+
+Results from the &quot;Rank&quot; column under the &quot;Text Arena | Overall&quot; Leaderboard tab at https://arena.ai/leaderboard/text/overall-no-style-control with style control off (Adjustments: None) and filtered for &quot;Models&quot; will be used to resolve this market.
+
+Models will be ordered primarily by their leaderboard rank at the market’s check time. If two or more models are tied on rank, they will be ordered by their Arena score, including any underlying, unrounded, granular values reflected in the data below the leaderboard. If a tie still remains, alphabetical order of company names as listed in this market group will be used as a final tiebreaker (e.g., if the two models are tied by exact arena score, “Google” would be ranked ahead of “SpaceXAI”). This market will resolve based on the company that occupies first place under this ranking.
+
+The resolution source for this market is the arena.ai Text Arena (Overall). If this resolution source is unavailable at check time, this market will remain open until the leaderboard comes back online and will resolve based on the first check after it becomes available. If it becomes permanently unavailable, this market will resolve to &quot;Other&quot;.
+
+Resolution source: https://arena.ai/leaderboard/text/overall-no-style-control</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#65</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Nvidia have a top-ranked AI model before 2027? Nvidia</span>
+      <span class="meta">match 0.58 · edge 0.049</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-01-01, Polymarket 2026-09-30 (разница 93 дн.)</li><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: no data available, tie</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxtopai" target="_blank">KXTOPAI-27-JAN01-NVID</a></h4>
+        <p class="q">Will Nvidia have a top-ranked AI model before 2027? Nvidia</p>
+        <p class="px">YES 0.06 · NO 0.95 · закрытие 2027-01-01T15:00</p>
+        <pre>If Nvidia has a #1 ranked AI model before Jan 1, 2027, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-nvidia-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137066" target="_blank">will-nvidia-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137066</a></h4>
+        <p class="q">Will Nvidia have the best AI model at the end of September 2026? Nvidia</p>
+        <p class="px">YES 0.001 · NO 0.9995 · закрытие 2026-09-30T16:00</p>
+        <pre>This market will resolve according to the company which owns the model which has the highest arena rank based on the arena.ai Text Arena (Overall) when the table under the &quot;Leaderboard&quot; tab is checked on September 30, 2026, 12:00 PM ET.
+
+Results from the &quot;Rank&quot; column under the &quot;Text Arena | Overall&quot; Leaderboard tab at https://arena.ai/leaderboard/text/overall-no-style-control with style control off (Adjustments: None) and filtered for &quot;Models&quot; will be used to resolve this market.
+
+Models will be ordered primarily by their leaderboard rank at the market’s check time. If two or more models are tied on rank, they will be ordered by their Arena score, including any underlying, unrounded, granular values reflected in the data below the leaderboard. If a tie still remains, alphabetical order of company names as listed in this market group will be used as a final tiebreaker (e.g., if the two models are tied by exact arena score, “Google” would be ranked ahead of “SpaceXAI”). This market will resolve based on the company that occupies first place under this ranking.
+
+The resolution source for this market is the arena.ai Text Arena (Overall). If this resolution source is unavailable at check time, this market will remain open until the leaderboard comes back online and will resolve based on the first check after it becomes available. If it becomes permanently unavailable, this market will resolve to &quot;Other&quot;.
+
+Resolution source: https://arena.ai/leaderboard/text/overall-no-style-control</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="different?">
+    <summary>
+      <span class="n">#66</span>
+      <span class="cls" style="background:#d64545">different?</span>
+      <span class="t">Will Deepseek have a top-ranked AI model before 2027? Deepseek</span>
+      <span class="meta">match 0.58 · edge 0.009</span>
+    </summary>
+    <ul class="flags"><li><b>deadline</b> (material): дедлайн в правилах: Kalshi 2027-01-01, Polymarket 2026-09-30 (разница 93 дн.)</li><li><b>edge_cases</b> (check): только Kalshi: — | только Polymarket: no data available, tie</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxtopai" target="_blank">KXTOPAI-27-JAN01-DEPP</a></h4>
+        <p class="q">Will Deepseek have a top-ranked AI model before 2027? Deepseek</p>
+        <p class="px">YES 0.07 · NO 0.99 · закрытие 2027-01-01T15:00</p>
+        <pre>If Deepseek has a #1 ranked AI model before Jan 1, 2027, then the market resolves to Yes.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-deepseek-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137063" target="_blank">will-deepseek-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137063</a></h4>
+        <p class="q">Will DeepSeek have the best AI model at the end of September 2026? DeepSeek</p>
+        <p class="px">YES 0.001 · NO 0.9995 · закрытие 2026-09-30T16:00</p>
+        <pre>This market will resolve according to the company which owns the model which has the highest arena rank based on the arena.ai Text Arena (Overall) when the table under the &quot;Leaderboard&quot; tab is checked on September 30, 2026, 12:00 PM ET.
+
+Results from the &quot;Rank&quot; column under the &quot;Text Arena | Overall&quot; Leaderboard tab at https://arena.ai/leaderboard/text/overall-no-style-control with style control off (Adjustments: None) and filtered for &quot;Models&quot; will be used to resolve this market.
+
+Models will be ordered primarily by their leaderboard rank at the market’s check time. If two or more models are tied on rank, they will be ordered by their Arena score, including any underlying, unrounded, granular values reflected in the data below the leaderboard. If a tie still remains, alphabetical order of company names as listed in this market group will be used as a final tiebreaker (e.g., if the two models are tied by exact arena score, “Google” would be ranked ahead of “SpaceXAI”). This market will resolve based on the company that occupies first place under this ranking.
+
+The resolution source for this market is the arena.ai Text Arena (Overall). If this resolution source is unavailable at check time, this market will remain open until the leaderboard comes back online and will resolve based on the first check after it becomes available. If it becomes permanently unavailable, this market will resolve to &quot;Other&quot;.
+
+Resolution source: https://arena.ai/leaderboard/text/overall-no-style-control</pre></div>
+    </div>
+  </details>
+  <details class="pair" data-cls="check">
+    <summary>
+      <span class="n">#67</span>
+      <span class="cls" style="background:#d8a106">check</span>
+      <span class="t">Will Nicolás Maduro de facto hold head of state of Venezuela at the end of 2026? Nicolás Maduro</span>
+      <span class="meta">match 0.54 · edge 0.412</span>
+    </summary>
+    <ul class="flags"><li><b>source</b> (check): Kalshi: Kalshi Source Agency | Polymarket: Credible reporting consensus</li><li><b>deadline</b> (check): дата в правилах есть только у Polymarket (2026-12-31)</li><li><b>interim_officeholder</b> (check): временно исполняющий обязанности: Kalshi упоминает, Polymarket молчит</li></ul>
+    <div class="cols">
+      <div><h4>Kalshi · <a href="https://kalshi.com/markets/kxvenezdefacto" target="_blank">KXVENEZDEFACTO-27JAN01-NMAD</a></h4>
+        <p class="q">Will Nicolás Maduro de facto hold head of state of Venezuela at the end of 2026? Nicolás Maduro</p>
+        <p class="px">YES 0.19 · NO 0.99 · закрытие 2027-01-02T04:59</p>
+        <pre>If Nicolás Maduro de facto holds the position of head of state of Venezuela at the end of 2026, then the market resolves to Yes.
+
+For the purposes of this Contract, &quot;Nicolás Maduro de facto holds head of state of Venezuela&quot; means that, at the end of 2026, Nicolás Maduro is the individual who primarily exercises the governing authority and core powers customarily attached to head of state of Venezuela, regardless of Nicolás Maduro's formal title, constitutional designation, formal appointment, domestic legal status, foreign recognition, or international recognition.
+
+The Source Agency's determination of whether Nicolás Maduro de facto holds head of state of Venezuela shall be based on objective indicators of governing authority over the functions attached to head of state of Venezuela, which may include, without limitation:
+
+Control over the executive ministries, administrative apparatus, bureaucracy, and state institutions associated with head of state of Venezuela
+Issuance of binding national directives, decrees, orders, or instructions that are observably obeyed and enforced within the relevant jurisdiction
+Control over the official seat of power, capital, headquarters, principal residence, or principal infrastructure associated with head of state of Venezuela
+Treatment by the domestic state institutions associated with head of state of Venezuela as the operative holder of head of state of Venezuela
+Treatment by foreign governments, multilateral institutions, and credentialed media as the operative holder of head of state of Venezuela
+
+The following alone will NOT qualify as de facto holding head of state of Venezuela:
+
+Holding the formal or constitutional title to head of state of Venezuela without exercising the core powers customarily attached to head of state of Venezuela
+Serving in an acting, interim, caretaker, provisional, or temporary capacity that is subordinate to and accountable to a principal who continues to exercise the core powers customarily attached to head of state of Venezuela
+Nomination, designation, election, appointment, or confirmation to head of state of Venezuela prior to the effective transfer of governing authority
+Status as successor, heir apparent, or designated replacement to head of state of Venezuela prior to assumption of governing authority
+Symbolic, ceremonial, or honorary status without exercise of the core powers customarily attached to head of state of Venezuela, except where head of state of Venezuela is itself a primarily ceremonial position and Nicolás Maduro performs the ceremonial functions associated with head of state of Venezuela without operative displacement
+Foreign or international recognition as the holder of head of state of Venezuela without exercise of operative governing authority within the relevant jurisdiction
+Leadership from exile, in detention, or otherwise removed from the operating seat of head of state of Venezuela, where another individual is observably exercising the core powers customarily attached to head of state of Venezuela without subordination to Nicolás Maduro
+Holding a different role with general political, religious, military, or institutional influence over head of state of Venezuela without personally exercising the core powers customarily attached to head of state of Venezuela
+
+If, at the end of 2026, the Source Agency does not identify any individual as exercising primary governing authority over the core powers customarily attached to head of state of Venezuela (including where head of state of Venezuela has been abolished, suspended, declared vacant, or where governing authority is genuinely fragmented among multiple individuals such that no individual primarily exercises the powers customarily attached to head of state of Venezuela), the Payout Criterion shall not be satisfied with respect to any listed person.
+
+If, at the end of 2026, more than one individual claims or is claimed to de facto hold head of state of Venezuela, the Source Agency shall determine the de facto holder by reference to which individual primarily exercises the indicators of governing authority described above; in any such determination, the higher-ranked Source Agencies shall prevail over lower-ranked Source Agencies. If multiple persons are determined to do so equally, all those persons' markets shall resolve to $1/n, rounded down, where n is the number of persons who do so and who have a strike listed.</pre></div>
+      <div><h4>Polymarket · <a href="https://polymarket.com/market/will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026" target="_blank">will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026</a></h4>
+        <p class="q">Will Nicolás Maduro be the leader of Venezuela end of 2026? Nicolás Maduro</p>
+        <p class="px">YES 0.603 · NO 0.398 · закрытие 2027-01-01T04:59</p>
+        <pre>This market will resolve to the individual who officially holds the position of the head of state of Venezuela on Dec 31, 2026 at 12 PM ET.
+
+For the purposes of this market, &quot;officially holds&quot; refers to the individual that was formally appointed, confirmed (if confirmation is required), and sworn in as the head of state of Venezuela or otherwise confirmed by official government information as being the head of state of Venezuela. 
+
+If the Venezuelan government does not clearly state who is the head of state, the market will resolve to the individual who is listed as the Head of State by the UN (see: https://www.un.org/dgacm/en/content/protocol/hshgnfa).  
+
+In the event that more than one official head of state is listed by the Venezuelan  government, this market will resolve to the individual who is listed as having primary status. If no distinction is made, the market will resolve to the individual who first assumed the position. 
+
+If no individual holds the position this market will resolve to “No Head of State”. 
+
+The following do NOT constitute &quot;officially holding&quot; the role: nominated, announced, or designated as the head of state of Venezuela but appointment not yet effective; appointed with an effective date after Dec 31, 2026; previously served as the head of state of Venezuela but term has expired, resigned, or been terminated before Dec 31, 2026; serving as the head of state of Venezuela in a consultant, contractor, or unofficial capacity; named as successor or heir apparent to the head of state of Venezuela but not yet appointed; or holding a different role with oversight of the head of state of Venezuela but not the specified position itself.
+
+The primary resolution source will be official information from the UN recognized government of Venezuela. If the Government of Venezuela does not clearly state who is the head of state, information from the UN and a consensus of credible reporting may be used. 
+
+Note: this market is mutually exclusive. 
+</pre></div>
+    </div>
+  </details>
+</body></html>

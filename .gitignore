@@ -1,0 +1,10 @@
+# секреты — никогда не коммитить
+.env
+.env.*
+!.env.example
+
+# зависимости и служебное
+node_modules/
+.claude/settings.local.json
+.DS_Store
+Thumbs.db

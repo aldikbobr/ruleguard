@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuleGuard Demo</title>
+<style>
+:root{
+  --bg:#f6f6f4;--surface:#ffffff;--surface-2:#f0efec;--fg:#1c1c1a;--muted:#6b6a66;--line:#e2e0db;
+  --red:#c93b3b;--red-bg:#fbeaea;--amber:#a86b00;--amber-bg:#fdf3dc;--green:#23804f;--green-bg:#e4f4ea;
+  --accent:#1c1c1a;--mark:#fff1a8;--mark-fg:#1c1c1a;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121212;--surface:#1b1b1b;--surface-2:#232323;--fg:#ececea;--muted:#9c9b97;--line:#2e2e2c;
+  --red:#ef6b6b;--red-bg:#3a1f1f;--amber:#e3a93b;--amber-bg:#3a2f18;--green:#5cc48b;--green-bg:#1b3325;
+  --accent:#ececea;--mark:#5a4d12;--mark-fg:#fff6c9;
+}}
+:root[data-theme="dark"]{
+  --bg:#121212;--surface:#1b1b1b;--surface-2:#232323;--fg:#ececea;--muted:#9c9b97;--line:#2e2e2c;
+  --red:#ef6b6b;--red-bg:#3a1f1f;--amber:#e3a93b;--amber-bg:#3a2f18;--green:#5cc48b;--green-bg:#1b3325;
+  --accent:#ececea;--mark:#5a4d12;--mark-fg:#fff6c9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 64px}
+a{color:inherit}
+header h1{font-size:28px;margin:0;letter-spacing:-.02em}
+header .tag{font-size:18px;margin:6px 0 4px}
+header .sub{color:var(--muted);font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:20px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile .v{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}
+.tile .l{color:var(--muted);font-size:12.5px}
+.venues{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.vchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+h2{font-size:19px;margin:32px 0 4px;letter-spacing:-.01em}
+.h2sub{color:var(--muted);font-size:13.5px;margin:0 0 12px}
+.traps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.trap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.trap:hover{border-color:var(--muted)}
+.trap .q{font-weight:600}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vs div{border-radius:8px;padding:8px 10px;font-size:13px}
+.vs .scan{background:var(--green-bg)}
+.vs .rg{background:var(--red-bg)}
+.vs b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.trap .sum{font-size:13.5px;color:var(--muted)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;position:sticky;top:0;z-index:5;margin-bottom:10px}
+.bar input[type=search],.bar select{font:inherit;font-size:14px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.bar input[type=search]{flex:1 1 220px;min-width:0}
+.bar label{font-size:13.5px;display:flex;gap:6px;align-items:center;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font:inherit;font-size:12.5px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.count{color:var(--muted);font-size:13px;margin:4px 2px 8px}
+.pair{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:8px 0;overflow:hidden}
+.pair>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 12px}
+.pair>summary::-webkit-details-marker{display:none}
+.badge{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.b-different{background:var(--red-bg);color:var(--red)}
+.b-check{background:var(--amber-bg);color:var(--amber)}
+.b-looks_equivalent{background:var(--green-bg);color:var(--green)}
+.b-manual{background:var(--surface-2);color:var(--fg);border:1px solid var(--line)}
+.ptitle{min-width:0}
+.ptitle .t{font-weight:550;overflow-wrap:anywhere}
+.ptitle .m{color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:2px}
+.edge{font-variant-numeric:tabular-nums;font-weight:650;font-size:15px;text-align:right;white-space:nowrap}
+.edge small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.body{border-top:1px solid var(--line);padding:12px}
+.verdict{border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:14px}
+.verdict.different{background:var(--red-bg)}.verdict.caveats{background:var(--amber-bg)}
+.verdict h4{margin:0 0 4px;font-size:13px}
+.flags{margin:0 0 10px;padding-left:18px;font-size:13.5px}
+.flags li{margin:2px 0}
+.lv-material{color:var(--red);font-weight:600}.lv-check{color:var(--amber);font-weight:600}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col h5{margin:0 0 4px;font-size:13px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.col .q{font-weight:600;margin:2px 0}
+.col .px{color:var(--muted);font-size:12.5px;margin:2px 0 6px;font-variant-numeric:tabular-nums}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 ui-sans-serif,system-ui,sans-serif;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;margin:0;max-height:360px;overflow:auto}
+mark{background:var(--mark);color:var(--mark-fg);border-radius:3px;padding:0 2px}
+.play{font-size:11px;color:var(--muted);border:1px dashed var(--line);border-radius:4px;padding:0 4px}
+footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+footer li{margin:3px 0}
+.empty{color:var(--muted);padding:20px;text-align:center}
+@media (max-width:760px){.cols,.vs{grid-template-columns:1fr}.pair>summary{grid-template-columns:1fr auto}.pair>summary .badges{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>RuleGuard</h1>
+  <p class="tag">Одинаковые на вид рынки — не всегда одинаковые контракты.</p>
+  <div class="sub" id="gen"></div>
+</header>
+
+<section class="tiles" id="tiles"></section>
+
+<h2>Ловушки арбитража</h2>
+<p class="h2sub">Пары на площадках с реальными деньгами, где цены на «одно и то же» событие расходятся сильнее всего (только ликвидные рынки). Выглядит как ошибка рынка или арбитраж, но правила у контрактов разные.</p>
+<div class="traps" id="traps"></div>
+
+<h2>Все пары</h2>
+<p class="h2sub">Нажмите на пару, чтобы увидеть правила обеих площадок рядом. Даты, источники и ключевые условия подсвечены.</p>
+<div class="bar">
+  <div class="seg" id="vpairs" role="group" aria-label="Пара площадок"></div>
+  <input type="search" id="q" placeholder="Поиск: Venezuela, Senate, bitcoin…">
+  <select id="cls" aria-label="Класс">
+    <option value="">Все классы</option>
+    <option value="different">🔴 похоже, разные</option>
+    <option value="check">🟡 проверить</option>
+    <option value="looks_equivalent">🟢 различий не найдено</option>
+  </select>
+  <select id="sort" aria-label="Сортировка">
+    <option value="edge">По спреду</option>
+    <option value="cls">По риску</option>
+    <option value="score">По схожести</option>
+  </select>
+  <label><input type="checkbox" id="manual"> только проверенные вручную</label>
+</div>
+<div class="count" id="count"></div>
+<div id="list"></div>
+
+<footer>
+  <b>Как это устроено и ограничения</b>
+  <ul>
+    <li>Пары найдены по совпадению слов в названиях с вето на числа, месяцы, ключевые слова, исходы и имена собственные.</li>
+    <li>Автоматические метки 🔴/🟡/🟢 поставлены правилами на ключевых словах, без ИИ. Это сигналы для проверки, а не вывод. «Различий не найдено» не значит «эквивалентны».</li>
+    <li>Значок «проверено вручную» — разбор, который человек сделал по текстам правил. Такие пары выбраны как показательные, это <b>не случайная выборка</b>.</li>
+    <li>Спред = 1 − (YES на одной площадке + NO на другой) по ценам ask из API, без комиссий, глубины стакана и проскальзывания. В тонких стаканах он меняется за минуты, поэтому «Ловушки» отсортированы по разнице средних цен (середина между покупкой YES и покупкой NO), а рынки с разрывом шире 15 п.п. в них не попадают. Для Manifold (игровая валюта) спред не считается.</li>
+    <li>У Kalshi через API доступно краткое изложение правил (<code>rules_primary</code>). В полных условиях могут быть уточнения.</li>
+    <li>Информационный прототип, не финансовый совет.</li>
+  </ul>
+</footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const V = Object.fromEntries(DATA.venues.map(v => [v.id, v]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cents = x => x == null ? "—" : `${Math.round(x * 1000) / 10}¢`;
+const price = x => x == null ? "—" : (Math.round(x * 1000) / 1000).toFixed(3).replace(/0+$/, "").replace(/\.$/, "");
+const CLS = { different: "похоже, разные", check: "проверить", looks_equivalent: "различий не найдено" };
+const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
+const VERDICT = { different: "разные контракты", caveats: "одинаковы с оговорками" };
+const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
+const riskOf = p => p.verdict ? (p.verdict.verdict === "different" ? "different" : "check") : p.cmp.cls;
+
+// подсветка важных мест в правилах
+const HL = [
+  /\b(?:January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+\d{1,2},?\s+20\d\d(?:,?\s+\d{1,2}:\d\d\s*(?:AM|PM)?\s*(?:ET|UTC)?)?/g,
+  /\b(?:de facto|officially holds|formally appointed|sworn in|interim|caretaker|acting|regardless of[^.;]{0,40}|will not count|does not count|count as holding)\b/gi,
+  /\b(?:consensus of credible reporting|credible reporting|Associated Press|New York Times|White House|Source Agency|Arkham[’']?s? Intel Explorer|arena\.ai|Chainlink|Binance|Coinbase|CoinGecko|NOAA|Central Pacific Hurricane Center|France Football|United Nations|UN)\b/g,
+  /\b(?:postpone[sd]?|cancel(?:l?ed)?|resolve[sd]? to "?(?:Other|No one|No)"?|not included|does not include|including)\b/gi
+];
+function highlight(text) {
+  let h = esc(text);
+  for (const re of HL) h = h.replace(re, m => `<mark>${m}</mark>`);
+  return h;
+}
+
+// --- шапка и плитки
+$("#gen").textContent = `Данные получены ${new Date(DATA.generated_at).toLocaleString("ru-RU")} через публичные API площадок.`;
+const P = DATA.pairs;
+const nReal = P.filter(p => p.edge != null).length;
+$("#tiles").innerHTML = `
+  <div class="tile"><div class="v">${DATA.venues.reduce((s, v) => s + v.markets, 0).toLocaleString("ru-RU")}</div><div class="l">рынков загружено</div>
+    <div class="venues">${DATA.venues.map(v => `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)} ${v.markets.toLocaleString("ru-RU")}${v.money === "play" ? ' <span class="play">игровая валюта</span>' : ""}</span>`).join("")}</div></div>
+  <div class="tile"><div class="v">${P.length}</div><div class="l">пар «одинаковых» рынков между ${DATA.venues.length} площадками</div></div>
+  <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 похоже, разные контракты</div></div>
+  <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 есть различия, нужна проверка</div></div>
+  <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ разобрано вручную</div></div>`;
+
+// --- ловушки: пары с реальными деньгами и различающимися правилами, где цены расходятся сильнее всего.
+// Сравниваем середину между покупкой YES и покупкой NO: ask в пустом стакане бывает около 1 и искажает картину.
+// Рынки, где разрыв между YES и NO шире 15 п.п., считаем неликвидными и в ловушки не берём.
+const MAX_WIDTH = 0.15;
+const mid = m => m.yes != null && m.no != null ? (m.yes + 1 - m.no) / 2 : null;
+const width = m => m.yes != null && m.no != null ? m.yes + m.no - 1 : 1;
+const liquid = m => width(m) <= MAX_WIDTH;
+const gap = p => mid(p.a) != null && mid(p.b) != null ? Math.abs(mid(p.a) - mid(p.b)) : 0;
+const traps = P.filter(p => p.edge != null && riskOf(p) === "different" && liquid(p.a) && liquid(p.b) && gap(p) >= 0.03).sort((x, y) => gap(y) - gap(x)).slice(0, 6);
+$("#traps").innerHTML = traps.map(p => `
+  <div class="trap" data-key="${esc(key(p))}" tabindex="0" role="button" aria-label="Открыть пару">
+    <div class="q">${esc(p.a.title)} ${esc(p.a.outcome && !p.a.title.includes(p.a.outcome) ? "· " + p.a.outcome : "")}</div>
+    <div class="m" style="font-size:12.5px;color:var(--muted)">${vname(p.a.venue)} ${Math.round(mid(p.a) * 100)}% · ${vname(p.b.venue)} ${Math.round(mid(p.b) * 100)}% <span title="середина между ценой покупки YES и NO">(середина)</span></div>
+    <div class="vs">
+      <div class="scan">Цены расходятся<b>${Math.round(gap(p) * 100)} п.п.</b>${p.edge > 0 ? `сырой спред +${cents(p.edge)}` : "выглядит как ошибка рынка"}</div>
+      <div class="rg">RuleGuard<b>${p.verdict ? "✋ " : ""}разные</b>${p.verdict ? "проверено вручную" : "авто-сигнал"}</div>
+    </div>
+    <div class="sum">${esc(p.verdict ? p.verdict.summary : p.cmp.flags.filter(f => f.level === "material").map(f => `${f.field}: ${f.detail}`).join("; "))}</div>
+  </div>`).join("") || `<div class="empty">В этой выборке нет крупных спредов с различающимися правилами.</div>`;
+function vname(id) { const v = V[id]; return `<span class="vchip"><span class="dot" style="background:${v.color}"></span>${esc(v.name)}</span>`; }
+
+// --- фильтры
+const vpairs = [["", "Все"], ...DATA.pair_stats.filter(s => s.pairs).map(s => [`${s.a}|${s.b}`, `${V[s.a].name} ↔ ${V[s.b].name} · ${s.pairs}`])];
+let vp = "";
+$("#vpairs").innerHTML = vpairs.map(([k, l]) => `<button type="button" data-vp="${k}" aria-pressed="${k === vp}">${esc(l)}</button>`).join("");
+$("#vpairs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; vp = b.dataset.vp; for (const x of $("#vpairs").children) x.setAttribute("aria-pressed", x === b); render(); });
+for (const id of ["#q", "#cls", "#sort", "#manual"]) $(id).addEventListener("input", render);
+
+function render() {
+  const q = $("#q").value.trim().toLowerCase(), cls = $("#cls").value, sort = $("#sort").value, manual = $("#manual").checked;
+  let rows = P.filter(p =>
+    (!vp || p.venues.join("|") === vp) &&
+    (!cls || riskOf(p) === cls) &&
+    (!manual || p.verdict) &&
+    (!q || `${p.a.title} ${p.a.outcome} ${p.b.title} ${p.b.outcome}`.toLowerCase().includes(q)));
+  const cmp = {
+    edge: (x, y) => (y.edge ?? -9) - (x.edge ?? -9),
+    cls: (x, y) => CLS_ORDER[riskOf(x)] - CLS_ORDER[riskOf(y)] || (y.edge ?? -9) - (x.edge ?? -9),
+    score: (x, y) => y.score - x.score
+  }[sort];
+  rows.sort(cmp);
+  $("#count").textContent = `Показано пар: ${rows.length} из ${P.length}`;
+  $("#list").innerHTML = rows.map(card).join("") || `<div class="empty">Ничего не найдено.</div>`;
+}
+
+function card(p) {
+  const r = riskOf(p);
+  return `<details class="pair" id="${esc(key(p))}">
+    <summary>
+      <div class="badges" style="display:flex;gap:4px;flex-direction:column;align-items:flex-start">
+        <span class="badge b-${r}">${CLS[r]}</span>
+        ${p.verdict ? `<span class="badge b-manual">✋ вручную</span>` : ""}
+      </div>
+      <div class="ptitle"><div class="t">${esc(p.a.title)}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + esc(p.a.outcome) : ""}</div>
+        <div class="m">${vname(p.a.venue)} ${vname(p.b.venue)} <span>схожесть ${p.score}</span></div></div>
+      <div class="edge">${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "без спреда" : "сырой спред"}</small></div>
+    </summary>
+    <div class="body">
+      ${p.verdict ? `<div class="verdict ${p.verdict.verdict}"><h4>✋ Ручной разбор: ${VERDICT[p.verdict.verdict]}</h4>${esc(p.verdict.summary)}<br><b>Сценарий расхождения:</b> ${esc(p.verdict.scenario)}</div>` : ""}
+      <ul class="flags">${p.cmp.flags.map(f => `<li><span class="lv-${f.level}">${esc(f.field)}</span>: ${esc(f.detail)}</li>`).join("") || "<li>Автоматические проверки различий не нашли. Это не доказательство эквивалентности.</li>"}</ul>
+      <div class="cols">${side(p.a)}${side(p.b)}</div>
+    </div>
+  </details>`;
+}
+function side(m) {
+  const v = V[m.venue];
+  return `<div class="col"><h5>${vname(m.venue)} <a href="${esc(m.url)}" target="_blank" rel="noopener">открыть рынок ↗</a>${v.money === "play" ? ' <span class="play">игровая валюта</span>' : ""}</h5>
+    <div class="q">${esc(m.title)}${m.outcome && !m.title.includes(m.outcome) ? " · " + esc(m.outcome) : ""}</div>
+    <div class="px">YES ${price(m.yes)} · NO ${price(m.no)}${m.close ? ` · закрытие торгов ${esc(m.close.slice(0, 10))}` : ""}</div>
+    <pre>${highlight(m.rules)}</pre></div>`;
+}
+
+$("#traps").addEventListener("click", openTrap);
+$("#traps").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTrap(e); } });
+function openTrap(e) {
+  const t = e.target.closest(".trap"); if (!t) return;
+  vp = ""; $("#q").value = ""; $("#cls").value = ""; $("#manual").checked = false;
+  for (const x of $("#vpairs").children) x.setAttribute("aria-pressed", x.dataset.vp === "");
+  render();
+  const d = document.getElementById(t.dataset.key);
+  if (d) { d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }
+}
+render();
+</script>
+</body>
+</html>
