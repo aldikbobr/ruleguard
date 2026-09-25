@@ -1,92 +1,97 @@
-# RuleGuard — результаты проверки идеи (шаг 1)
+# RuleGuard — findings
 
-**Дата прогона:** 25.09.2026 · **Скрипт:** `scripts/poc.mjs` · **Данные:** `research/pairs.json`, `research/pairs.csv`, `research/report.html`
+**Date:** Sep 25, 2026 · **Scripts:** `scripts/poc.mjs` (step 1), `scripts/build-demo.mjs` (demo), `scripts/sample.mjs` (random sample)
 
-## Что сделано
+## Headline: random sample of 30 pairs
 
-- Загружено **54 636** открытых рынков Kalshi и **2 000** самых активных рынков Polymarket (оба API публичные, ключи не нужны).
-- Найдено **67 пар** «одинаковых» рынков (не больше 3 пар из одного события Kalshi).
-- Автоматическая проверка правил (без ИИ) + **ручной разбор 14 показательных пар**.
+`scripts/sample.mjs` drew 30 of the 163 matched real-money pairs at random (seed 20260925, reproducible) from the data snapshot of Sep 25, 2026. Each pair was labeled against the rule texts (`research/random-labels.json`); the stats are computed by `scripts/build-demo.mjs`.
 
-## Главные технические ответы
-
-| Вопрос | Ответ |
-|---|---|
-| Отдаёт ли Polymarket правила через API? | ✅ **Да**, поле `description` (+ `resolutionSource`, иногда пустое) |
-| Отдаёт ли Kalshi правила? | ✅ Да, `rules_primary` + `rules_secondary`. ⚠️ Это **краткое изложение**: у части рынков написано «See full rules», полные условия лежат отдельно |
-| Работает ли простое сопоставление? | ✅ После вето (числа, ключевые слова, исход, имена собственные) все 67 пар выглядят правильными. До вето ошибки были: Bayrou↔Baroin, «Путин и Зеленский»↔«Трамп и Путин», NBA↔WNBA |
-| Хватает ли правил без ИИ для классификации? | ❌ **Нет.** Проверка по ключевым словам шумная, а главный случай (Венесуэла) она пометила только как «check». Нужен смысловой разбор, то есть ИИ-паспорт |
-
-## Главная находка для питча
-
-**Все 5 самых больших «арбитражных» спредов в выборке объясняются разными правилами, а не ошибкой рынка:**
-
-| Спред* | Пара | Почему это разные контракты |
-|---|---|---|
-| **44¢** | Делси Родригес — глава Венесуэлы на конец 2026 (Kalshi YES 0,91 · Polymarket YES 0,37) | Kalshi: кто правит **де-факто**, независимо от титула. Polymarket: кто **официально** назначен и приведён к присяге, при неясности — по списку ООН |
-| **41¢** | Николас Мадуро — то же (Kalshi 0,19 · Polymarket 0,60) | то же различие: де-факто или де-юре |
-| **9,8¢** | Meta — лучшая ИИ-модель (Kalshi 0,15 · Polymarket 0,002) | Kalshi: №1 **в любой момент до 2027**. Polymarket: №1 на arena.ai **ровно 30.09.2026 в 12:00 ET** |
-| **4,9¢** | Путин и Зеленский встретятся в России (Kalshi 0,08 · Polymarket 0,011) | Kalshi: **до конца 2028**. Polymarket: **до конца 2026**, а Крым считается Россией. Встреча в России в 2027 году → **проигрывают обе позиции** «арбитража» |
-| **4,9¢** | Nvidia — лучшая ИИ-модель | как у Meta |
-
-\* Сырой спред = 1 − (YES на одной площадке + NO на другой) по ценам ask, **без комиссий и проскальзывания**. Это ориентир, а не доступная прибыль.
-
-**Формулировка для питча:** *«В нашей выборке 5 из 5 крупнейших "арбитражей" между Kalshi и Polymarket оказались разными контрактами. Сканер показал бы их как лучшие возможности».*
-
-> ⚠️ **Обновление того же дня (после повторного прогона):** цены живые. Через час стакан Kalshi по Венесуэле почти опустел (NO ask вырос с 0,19 до 0,61, разрыв YES/NO 52 п.п.), и «спред 44¢» превратился в 2¢. **Сырой спред не годится как цифра для питча.** Устойчивое утверждение: *цены на «одно и то же» событие сильно расходятся, потому что это разные вопросы*. Поэтому в демо «Ловушки» считаются по разнице **средних** цен и только для ликвидных рынков (разрыв YES/NO ≤ 15 п.п.).
-
-## Случайная выборка 30 пар (честная цифра)
-
-Скрипт `scripts/sample.mjs` случайно (зерно 20260925, воспроизводимо) выбрал 30 из 163 пар с реальными деньгами из снимка данных 25.09.2026. Разметка по текстам правил — в `research/random-labels.json`, статистику считает `scripts/build-demo.mjs`.
-
-| Группа | Пар | 🔴 разные | 🟡 с оговорками | 🟢 одинаковые |
+| Group | Pairs | 🔴 different | 🟡 caveats | 🟢 equivalent |
 |---|---|---|---|---|
-| **Разные операторы** (Kalshi ↔ Polymarket / Limitless) | 11 | **5** | **5** | **1** |
-| Polymarket ↔ Limitless (Limitless копирует правила Polymarket) | 19 | 1 | 1 | 17 |
-| Вся выборка | 30 | 6 | 6 | 18 |
+| **Different operators** (Kalshi ↔ Polymarket / Limitless) | 11 | **5** | **5** | **1** |
+| Polymarket ↔ Limitless (Limitless copies Polymarket's rules) | 19 | 1 | 1 | 17 |
+| Whole sample | 30 | 6 | 6 | 18 |
 
-**Формулировка для питча:** *«В случайной выборке пар между Kalshi и другими площадками правила полностью совпали только в 1 из 11. В 5 случаях есть сценарий, при котором рынки рассчитаются по-разному».*
+- *different* — there is a plausible scenario in which the two markets settle differently;
+- *caveats* — they match except for rare edge cases or settlement timing;
+- *equivalent* — the rules match in substance.
 
-Даже среди «копий» Polymarket↔Limitless нашлась пара с разным вопросом (США–Иран: «любая встреча высокого уровня» против «нового официального раунда мирных переговоров»).
+**Pitch line:** *“In a random sample of pairs between Kalshi and other venues, the rules fully matched in only 1 of 11. In 5 of them there is a plausible scenario where the markets settle differently.”*
 
-⚠️ **Ограничения:** выборка маленькая (11 пар в главной группе); часть пар из одного события (кандидаты в премьеры Израиля с общими правилами), поэтому наблюдения не независимы; разметку делал Claude без проверки человеком; у Kalshi — только краткие правила; генеральная совокупность — пары, которые нашёл наш алгоритм (топ-2000 рынков Polymarket, не больше 3 пар на событие), а не все рынки площадок. Это ориентир, а не точная доля.
+Even among the Polymarket ↔ Limitless “copies” one pair asks a different question (US–Iran: “any senior-level meeting” vs “a new formal round of peace talks”).
 
-## Ручной разбор 14 пар
+⚠️ **Limitations:** the sample is small (11 pairs in the main group); some pairs share one event (Israeli PM candidates under the same rules), so the observations aren't independent; the labels were made by Claude and not re-checked by a human; Kalshi's API exposes only summary rules; the population is the pairs our algorithm found (Polymarket's top 2,000 markets, at most 3 pairs per event), not every market on the venues. Treat the numbers as indicative, not as a precise rate.
 
-| # | Пара | Вердикт | Ключевое различие |
-|---|---|---|---|
-| 61 | Венесуэла: Делси Родригес | 🔴 разные | де-факто и официально |
-| 7 | Путин–Зеленский в России | 🔴 разные | дедлайн 2028 и 2026; у Polymarket Крым = Россия |
-| 64 | Meta — лучшая ИИ-модель | 🔴 разные | «когда-либо до 2027» и «в конкретный момент 30.09»; источник у Kalshi не указан в кратких правилах |
-| 4 | Беннет — следующий премьер Израиля | 🔴 разные | Kalshi: **временный премьер считается**, если тот же человек остаётся, все исходы «Нет». Polymarket: **временный не считается**, привязка к выборам 2026 |
-| 25 | Харрис Дикинсон — Джеймс Бонд | 🔴 разные | «утверждён на роль до 2030» и «объявлен до конца 2026» |
-| 26 | Трамп–Путин встретятся в Турции | 🔴 разные | дедлайн 2029 и 2026; Polymarket подробно определяет «встречу» |
-| 63 | Трамп купит Гренландию | 🔴 разные | Kalshi: **покупка хотя бы части**. Polymarket: **официальное объявление** о суверенитете США над **большей частью** территории, самого перехода может ещё не быть |
-| 1 | Следующий премьер Румынии | 🔴 разные | Polymarket требует вотум доверия и исключает временных, дедлайн 2027. Kalshi: «первый новый человек на посту», без дедлайна до 2045 |
-| 58 | Нетаньяху после выборов 2026 | 🟡 с оговорками | оба исключают временных. **Но** при повторных выборах Kalshi рассчитывает «No one», а Polymarket ждёт итога следующих выборов. В Израиле повторные выборы уже были (2019–2020) |
-| 29 | Ураган на Гавайях | 🟡 с оговорками | Kalshi **исключает** Мидуэй и Северо-Западные острова, Polymarket **включает**. «Сезон 2026» (до 30.11) и «до 31.12» |
-| 13 | Республиканцы — сенат Южной Дакоты | 🟡 с оговорками | Kalshi: **приведён к присяге**. Polymarket: **победитель выборов** по AP+Fox+NBC, определение через номинанта партии |
-| 10 | Эдуар Филипп — выборы во Франции | 🟡 с оговорками | у Polymarket исход «Other», если результат неизвестен к концу 2027 |
-| 21 | Ламин Ямаль — Золотой мяч | 🟡 с оговорками | у Polymarket исход «Other», если приз не вручён к концу 2026; источник France Football |
-| 24 | Сатоши переведёт биткоины | 🟡 с оговорками | общий источник (Arkham), но окно у Polymarket начинается 09.01.2026, и есть запасной вариант, если Arkham недоступен |
+## Step 1: proof of concept
 
-**Итого по 14 разобранным:** 🔴 8 разных · 🟡 6 с оговорками · 🟢 0 полностью одинаковых.
+- Loaded **54,636** open Kalshi markets and the **2,000** most active Polymarket markets (both APIs are public; no keys needed).
+- Found **67 pairs** of “identical” markets (at most 3 pairs per Kalshi event).
+- Automatic rule comparison (no AI) plus a **manual review of 14 illustrative pairs**.
 
-## ⚠️ Ограничения (обязательно учитывать)
+The step-1 files in `research/` (`report.html`, `pairs.csv`, `pairs.json`) were regenerated later with the translated script, so their counts and prices differ slightly from the original run described here.
 
-1. **Выборка не случайная.** 14 пар я выбрал сам как показательные. Цифры «8 из 14» и «5 из 5 крупнейших спредов» **нельзя переносить на все пары**. Для честной доли нужна случайная выборка 30–50 пар с разметкой (шаг 4 плана).
-2. **Правила Kalshi здесь краткие** (`rules_primary`). В полных условиях могут быть пункты, которые снимают часть различий.
-3. **Цены — это ask из API на момент прогона**, без комиссий, глубины стакана и проскальзывания.
-4. **Polymarket ограничен 2 000 самых активных рынков** (ограничение API на пагинацию). Часть пар не найдена.
-5. Разбор сделан одним проверяющим (Claude) без независимой перепроверки.
+### Key technical answers
 
-## Решение по точке 🚦 (шаг 2 плана)
+| Question | Answer |
+|---|---|
+| Does Polymarket expose rules through its API? | ✅ **Yes**, the `description` field (plus `resolutionSource`, sometimes empty) |
+| Does Kalshi? | ✅ Yes, `rules_primary` + `rules_secondary`. ⚠️ This is a **summary**: some markets say “See full rules”, and the full terms live elsewhere |
+| Does simple matching work? | ✅ With vetoes (numbers, key words, outcome, proper nouns) all 67 pairs looked correct. Without them we saw Bayrou↔Baroin, “Putin and Zelenskyy”↔“Trump and Putin”, NBA↔WNBA |
+| Are keyword rules enough to classify pairs? | ❌ **No.** Keyword checks are noisy, and they flagged the key case (Venezuela) only as “check”. This needs semantic analysis — the AI market passport |
 
-**Идея прошла проверку, продолжаем.** Правила доступны на обеих площадках. Существенные различия встречаются часто, в том числе в самых заметных спредах. Автоматика на ключевых словах не справляется, и **именно это доказывает, что нужен продукт со смысловым разбором**.
+### The largest “arbitrage” spreads were different contracts
 
-## Следующие шаги
+**All five largest spreads in the step-1 run were explained by different rules, not by mispricing:**
 
-1. **Случайная выборка 30–50 пар** + ручная разметка в `pairs.csv` (колонки `human_label`, `human_note`) → честная доля.
-2. **ИИ-паспорт рынка** (раздел 6 плана): нужен ключ Claude API в `.env`.
-3. Полные правила Kalshi: найти, как их получить.
-4. Telegram-канал: первые посты — Венесуэла, Путин–Зеленский, Meta/arena.ai.
+| Spread* | Pair | Why they are different contracts |
+|---|---|---|
+| **44¢** | Delcy Rodríguez as head of state of Venezuela at the end of 2026 (Kalshi YES 0.91 · Polymarket YES 0.37) | Kalshi: whoever governs **de facto**, regardless of title. Polymarket: whoever is **officially** appointed and sworn in, falling back to the UN list |
+| **41¢** | Nicolás Maduro, same question (Kalshi 0.19 · Polymarket 0.60) | same split: de facto vs de jure |
+| **9.8¢** | Meta has the top AI model (Kalshi 0.15 · Polymarket 0.002) | Kalshi: #1 **at any point before 2027**. Polymarket: #1 on arena.ai **at 12:00 PM ET on Sep 30, 2026** |
+| **4.9¢** | Putin and Zelenskyy next meet in Russia (Kalshi 0.08 · Polymarket 0.011) | Kalshi: **by end of 2028**. Polymarket: **by end of 2026**, and Crimea counts as Russia. A meeting in Russia in 2027 → **both legs** of the “arbitrage” lose |
+| **4.9¢** | Nvidia has the top AI model | same as Meta |
+
+\* Raw spread = 1 − (YES on one venue + NO on the other), using ask prices, **without fees or slippage**. A rough guide, not available profit.
+
+> ⚠️ **Same-day update:** prices are live. An hour later the Kalshi book for Venezuela had almost emptied (the NO ask rose from 0.19 to 0.61, a 52-pt YES/NO gap) and the “44¢ spread” became 2¢. **Raw spread is not a number to pitch.** The robust claim is that *prices for “the same” event diverge a lot because they are different questions*. That is why the demo ranks “Arbitrage traps” by the gap between **mid** prices, on liquid markets only (YES/NO gap ≤ 15 pts).
+
+### Manual review of 14 illustrative pairs
+
+| Pair | Verdict | Key difference |
+|---|---|---|
+| Venezuela: Delcy Rodríguez | 🔴 different | de facto vs official |
+| Putin–Zelenskyy meet in Russia | 🔴 different | deadline 2028 vs 2026; Polymarket counts Crimea as Russia |
+| Meta has the top AI model | 🔴 different | “any time before 2027” vs “one moment on Sep 30”; Kalshi's summary rules don't name a source |
+| Naftali Bennett as next Israeli PM | 🔴 different | Kalshi: **an interim PM counts**, and if the same person stays, every outcome resolves NO. Polymarket: **interim PMs don't count**, tied to the 2026 election |
+| Harris Dickinson as James Bond | 🔴 different | “cast before 2030” vs “announced by end of 2026” |
+| Trump–Putin next meet in Turkey | 🔴 different | deadline 2029 vs 2026; Polymarket defines a “meeting” in detail |
+| Trump buys Greenland | 🔴 different | Kalshi: **buys at least part**. Polymarket: an **official announcement** of US sovereignty over **most** of the territory, even before the transfer |
+| Next Romanian PM | 🔴 different | Polymarket requires a confidence vote, excludes interim PMs, deadline 2027. Kalshi: “the first new person to hold the office”, no deadline before 2045 |
+| Netanyahu after the 2026 election | 🟡 caveats | both exclude interim PMs, **but** after a repeat election Kalshi resolves to “No one” while Polymarket waits for the next result. Israel has had repeat elections (2019–2020) |
+| Hurricane landfall in Hawaii | 🟡 caveats | Kalshi **excludes** Midway and the Northwestern Islands, Polymarket **includes** them; “2026 season” (to Nov 30) vs “by Dec 31” |
+| Republicans win South Dakota Senate | 🟡 caveats | Kalshi: **sworn in**. Polymarket: **wins the election** per AP+Fox+NBC, party defined by nomination |
+| Édouard Philippe wins the French election | 🟡 caveats | Polymarket resolves to “Other” if the result isn't known by the end of 2027 |
+| Lamine Yamal wins the Ballon d'Or | 🟡 caveats | Polymarket resolves to “Other” if no winner by the end of 2026; source France Football |
+| Satoshi moves any bitcoin | 🟡 caveats | same source (Arkham), but Polymarket's window starts Jan 9, 2026, with a fallback if Arkham goes offline |
+
+**Total for the 14:** 🔴 8 different · 🟡 6 with caveats · 🟢 0 fully equivalent.
+
+⚠️ These 14 were **hand-picked** as illustrative. “8 of 14” and “5 of the 5 largest spreads” **must not be generalized** to all pairs — the random sample above is the honest number.
+
+## General limitations
+
+1. **Kalshi rules are summaries** (`rules_primary`). The full terms may add clauses that remove some differences.
+2. **Prices are API asks at the time of the run**, without fees, book depth or slippage.
+3. **Polymarket is limited to its 2,000 most active markets** (an API pagination limit), so some pairs are missed.
+4. The reviews were made by one reviewer (Claude) without an independent check.
+
+## Decision
+
+**The idea passes the first check — continue.** Rules are available on every venue we tried. Material differences are common, including in the most visible price gaps. Keyword automation can't handle them reliably, which is **exactly why a product with semantic rule analysis is needed**.
+
+## Next steps
+
+1. An independent human check of the random-sample labels.
+2. **AI market passport** — structured rule extraction with an exact quote per field (needs a Claude API key in `.env`).
+3. Find a way to get Kalshi's full contract terms.
+4. Solana: Kalshi markets via DFlow (needs a DFlow API key).

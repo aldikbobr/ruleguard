@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-// RuleGuard — шаг 1: проверка идеи.
-// Загружает открытые рынки Kalshi и Polymarket, находит пары «одинаковых» рынков,
-// сравнивает правила расчёта простыми правилами (без ИИ) и пишет отчёт в research/.
+// RuleGuard — step 1: proof of concept (superseded by scripts/build-demo.mjs, kept for the record).
+// Loads open Kalshi and Polymarket markets, matches "identical" markets,
+// compares their resolution rules with simple keyword rules (no AI) and writes a report to research/.
 //
-// Запуск:  node scripts/poc.mjs [--kalshi-pages 30] [--poly-pages 20] [--top 60]
-// Требуется Node 20+. Ключи не нужны: оба API публичные.
+// Usage:  node scripts/poc.mjs [--kalshi-pages 30] [--poly-pages 20] [--top 60]
+// Requires Node 20+. No keys needed: both APIs are public.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -35,7 +35,7 @@ async function getJson(url, tries = 3) {
   throw new Error(`failed after retries: ${url}`);
 }
 
-// ---------- загрузка ----------
+// ---------- loading ----------
 
 async function loadKalshi() {
   const markets = [];
@@ -106,10 +106,10 @@ function parseArr(v) { try { return Array.isArray(v) ? v : JSON.parse(v || "[]")
 function num(v) { const n = Number(v); return v == null || v === "" || Number.isNaN(n) ? null : n; }
 function round(n, d = 3) { return Math.round(n * 10 ** d) / 10 ** d; }
 
-// ---------- сопоставление ----------
+// ---------- matching ----------
 
 const STOP = new Set("the a an of in on at to by for will be is are was and or before after than this that with from as it its his her their who what which when during end 2025 2026 2027 yes no market".split(" "));
-// слова, которые меняют смысл вопроса: если есть только с одной стороны — не пара
+// words that change the meaning of a question: present on only one side means it's not a pair
 const PIVOTS = ["closest", "margin", "before", "after", "above", "below", "over", "under", "between", "least", "most", "win", "lose", "leave", "out", "resign", "nominee", "nomination", "primary", "popular", "electoral", "senate", "house", "governor", "mayor", "cut", "hike", "raise", "increase", "decrease", "first", "second", "third"];
 const MONTHS = "january february march april may june july august september october november december".split(" ");
 
@@ -127,10 +127,10 @@ function vetoes(a, b) {
   for (const p of PIVOTS) if (wa.has(p) !== wb.has(p)) return `pivot:${p}`;
   const ma = MONTHS.filter(x => wa.has(x)), mb = MONTHS.filter(x => wb.has(x));
   if (ma.length && mb.length && ma.join() !== mb.join()) return "month";
-  // исход (кандидат, страна, команда) должен совпадать по последнему слову: Bayrou ≠ Baroin, Osborn ≠ Independent
+  // the outcome (candidate, country, team) must match on its last word: Bayrou ≠ Baroin, Osborn ≠ Independent
   const oa = lastWord(a.outcome), ob = lastWord(b.outcome);
   if (oa && ob && oa !== ob) return "outcome";
-  // имена собственные: «Putin и Zelenskyy» ≠ «Trump и Putin», «Jalen Williams (NBA)» ≠ «Gabby Williams (WNBA)»
+  // proper nouns: "Putin and Zelenskyy" ≠ "Trump and Putin", "Jalen Williams (NBA)" ≠ "Gabby Williams (WNBA)"
   const pa = properNouns(a), pb = properNouns(b);
   const missing = (xs, ys) => xs.some(x => !ys.some(y => y.slice(0, 5) === x.slice(0, 5)));
   if (pa.length && pb.length && (missing(pa, pb) || missing(pb, pa))) return "proper_noun";
@@ -159,7 +159,7 @@ function similarity(a, b) {
 }
 
 function matchMarkets(kalshi, poly) {
-  // инвертированный индекс по токенам Polymarket, чтобы не сравнивать всё со всем
+  // inverted index over Polymarket tokens, so we don't compare everything with everything
   const index = new Map();
   poly.forEach((m, i) => { for (const t of new Set(tokens(textOf(m)))) { if (!index.has(t)) index.set(t, []); index.get(t).push(i); } });
   const cands = [];
@@ -176,7 +176,7 @@ function matchMarkets(kalshi, poly) {
       cands.push({ k, p, score });
     }
   }
-  // жадное назначение один к одному
+  // greedy one-to-one assignment
   cands.sort((x, y) => y.score - x.score);
   const usedK = new Set(), usedP = new Set(), pairs = [];
   for (const c of cands) {
@@ -186,7 +186,7 @@ function matchMarkets(kalshi, poly) {
   return pairs;
 }
 
-// ---------- сравнение правил (без ИИ) ----------
+// ---------- rule comparison (no AI) ----------
 
 const SOURCE_PATTERNS = [
   ["AP", /\bassociated press\b|\bthe ap\b|\bap\b(?= (?:news|call|calls|declares))/i],
@@ -239,53 +239,53 @@ function compareRules(k, p) {
   const flags = [];
   const kSrc = detect(SOURCE_PATTERNS, k.rules), pSrc = detect(SOURCE_PATTERNS, p.rules);
   const onlyK = kSrc.filter(s => !pSrc.includes(s)), onlyP = pSrc.filter(s => !kSrc.includes(s));
-  // Разные источники — сигнал для проверки, а не вывод: «официальные данные + NYT» и «официальные данные + консенсус СМИ» обычно совпадают
+  // Different sources are a signal to check, not a conclusion: "official data + NYT" and "official data + media consensus" usually agree
   if (onlyK.length || onlyP.length) flags.push({ field: "source", level: "check", detail: `Kalshi: ${kSrc.join(", ") || "—"} | Polymarket: ${pSrc.join(", ") || "—"}` });
 
-  // Дедлайн события берём из текста правил (последняя упомянутая дата), а не из времени закрытия торгов:
-  // у Kalshi close_time бывает 2045 годом у бессрочных рынков, это не дедлайн события.
+  // The event deadline comes from the rule text (the latest date mentioned), not from the trading close time:
+  // open-ended Kalshi markets can have a close_time in 2045, which is not the event deadline.
   const kDl = latestDate(k.rules), pDl = latestDate(p.rules);
   if (kDl && pDl) {
     const days = Math.abs(kDl - pDl) / 864e5;
-    if (days > 1) flags.push({ field: "deadline", level: days > 7 ? "material" : "check", detail: `дедлайн в правилах: Kalshi ${iso(kDl)}, Polymarket ${iso(pDl)} (разница ${Math.round(days)} дн.)` });
+    if (days > 1) flags.push({ field: "deadline", level: days > 7 ? "material" : "check", detail: `deadline in the rules: Kalshi ${iso(kDl)}, Polymarket ${iso(pDl)} (${Math.round(days)} days apart)` });
   } else if (kDl || pDl) {
-    flags.push({ field: "deadline", level: "check", detail: `дата в правилах есть только у ${kDl ? "Kalshi" : "Polymarket"} (${iso(kDl || pDl)})` });
+    flags.push({ field: "deadline", level: "check", detail: `only ${kDl ? "Kalshi" : "Polymarket"} states a date (${iso(kDl || pDl)})` });
   }
 
-  // Временные/исполняющие обязанности: одна сторона включает, другая исключает
+  // Interim/acting officeholders: one side counts them, the other excludes them
   const interimRe = /interim|caretaker|acting/i;
   const excl = t => /(interim|caretaker|acting)[^.]{0,80}(will not|won'?t|does not|do not|not) count/i.test(t);
   const incl = t => /(acting|interim)[^.]{0,80}count as/i.test(t);
   if (interimRe.test(k.rules) || interimRe.test(p.rules)) {
-    const ks = incl(k.rules) ? "включает" : excl(k.rules) ? "исключает" : interimRe.test(k.rules) ? "упоминает" : "молчит";
-    const ps = incl(p.rules) ? "включает" : excl(p.rules) ? "исключает" : interimRe.test(p.rules) ? "упоминает" : "молчит";
-    if (ks !== ps) flags.push({ field: "interim_officeholder", level: (ks === "включает" && ps === "исключает") || (ks === "исключает" && ps === "включает") ? "material" : "check", detail: `временно исполняющий обязанности: Kalshi ${ks}, Polymarket ${ps}` });
+    const ks = incl(k.rules) ? "counts" : excl(k.rules) ? "excluded" : interimRe.test(k.rules) ? "mentioned" : "silent";
+    const ps = incl(p.rules) ? "counts" : excl(p.rules) ? "excluded" : interimRe.test(p.rules) ? "mentioned" : "silent";
+    if (ks !== ps) flags.push({ field: "interim_officeholder", level: (ks === "counts" && ps === "excluded") || (ks === "excluded" && ps === "counts") ? "material" : "check", detail: `interim officeholder: Kalshi ${ks}, Polymarket ${ps}` });
   }
 
   const kEdge = detect(EDGE_PATTERNS, k.rules), pEdge = detect(EDGE_PATTERNS, p.rules);
   const edgeOnlyK = kEdge.filter(s => !pEdge.includes(s)), edgeOnlyP = pEdge.filter(s => !kEdge.includes(s));
-  if (edgeOnlyK.length || edgeOnlyP.length) flags.push({ field: "edge_cases", level: "check", detail: `только Kalshi: ${edgeOnlyK.join(", ") || "—"} | только Polymarket: ${edgeOnlyP.join(", ") || "—"}` });
+  if (edgeOnlyK.length || edgeOnlyP.length) flags.push({ field: "edge_cases", level: "check", detail: `only Kalshi: ${edgeOnlyK.join(", ") || "—"} | only Polymarket: ${edgeOnlyP.join(", ") || "—"}` });
 
   const kNums = numbersIn(k.rules.toLowerCase()), pNums = numbersIn(p.rules.toLowerCase());
   const titleNums = numbersIn(textOf(k));
   const missing = [...titleNums].filter(n => !pNums.has(n) || !kNums.has(n));
-  if (missing.length) flags.push({ field: "threshold", level: "check", detail: `число из вопроса не найдено в правилах одной из сторон: ${missing.join(", ")}` });
+  if (missing.length) flags.push({ field: "threshold", level: "check", detail: `a number from the question is missing from one side's rules: ${missing.join(", ")}` });
 
-  if (!k.rules.trim() || !p.rules.trim()) flags.push({ field: "rules_text", level: "material", detail: "у одной из сторон нет текста правил" });
+  if (!k.rules.trim() || !p.rules.trim()) flags.push({ field: "rules_text", level: "material", detail: "one side has no rule text" });
 
   const cls = flags.some(f => f.level === "material") ? "different?" : flags.length ? "check" : "looks_equivalent";
   return { cls, flags };
 }
 
 function rawEdge(k, p) {
-  // YES на одной площадке + NO на другой; без комиссий и проскальзывания — только ориентир
+  // YES on one venue + NO on the other; no fees or slippage — a rough guide only
   const a = k.yes != null && p.no != null ? 1 - (k.yes + p.no) : null;
   const b = p.yes != null && k.no != null ? 1 - (p.yes + k.no) : null;
   const best = [a, b].filter(x => x != null).sort((x, y) => y - x)[0];
   return best == null ? null : round(best);
 }
 
-// ---------- отчёт ----------
+// ---------- report ----------
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const csvCell = s => `"${String(s ?? "").replace(/"/g, '""')}"`;
@@ -308,21 +308,21 @@ function writeReports(pairs, stats) {
       <span class="t">${esc(x.k.title)} ${esc(x.k.outcome)}</span>
       <span class="meta">match ${round(x.score, 2)} · edge ${x.edge ?? "—"}</span>
     </summary>
-    <ul class="flags">${x.cmp.flags.map(f => `<li><b>${f.field}</b> (${f.level}): ${esc(f.detail)}</li>`).join("") || "<li>автоматические проверки различий не нашли — это не доказательство эквивалентности</li>"}</ul>
+    <ul class="flags">${x.cmp.flags.map(f => `<li><b>${f.field}</b> (${f.level}): ${esc(f.detail)}</li>`).join("") || "<li>the automatic checks found no differences — that is not proof of equivalence</li>"}</ul>
     <div class="cols">
       <div><h4>Kalshi · <a href="${esc(x.k.url)}" target="_blank">${esc(x.k.id)}</a></h4>
         <p class="q">${esc(x.k.title)} ${esc(x.k.outcome)}</p>
-        <p class="px">YES ${x.k.yes ?? "—"} · NO ${x.k.no ?? "—"} · закрытие ${esc(x.k.close?.slice(0, 16))}</p>
+        <p class="px">YES ${x.k.yes ?? "—"} · NO ${x.k.no ?? "—"} · closes ${esc(x.k.close?.slice(0, 16))}</p>
         <pre>${esc(x.k.rules) || "—"}</pre></div>
       <div><h4>Polymarket · <a href="${esc(x.p.url)}" target="_blank">${esc(x.p.id)}</a></h4>
         <p class="q">${esc(x.p.title)} ${esc(x.p.outcome)}</p>
-        <p class="px">YES ${x.p.yes ?? "—"} · NO ${x.p.no ?? "—"} · закрытие ${esc(x.p.close?.slice(0, 16))}</p>
+        <p class="px">YES ${x.p.yes ?? "—"} · NO ${x.p.no ?? "—"} · closes ${esc(x.p.close?.slice(0, 16))}</p>
         <pre>${esc(x.p.rules) || "—"}</pre></div>
     </div>
   </details>`).join("");
 
   const count = c => pairs.filter(x => x.cmp.cls === c).length;
-  const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RuleGuard PoC</title>
 <style>
 :root{--bg:#fafafa;--fg:#1d1d1f;--muted:#666;--card:#fff;--line:#e3e3e3}
@@ -338,9 +338,9 @@ pre{white-space:pre-wrap;font-size:13px;background:var(--bg);border:1px solid va
 .q{font-weight:600;margin:.2em 0}.px{color:var(--muted);font-size:13px;margin:.2em 0}.flags{margin:.5em 0}
 a{color:inherit}
 </style></head><body>
-<h1>RuleGuard — проверка идеи</h1>
-<p class="sub">Сгенерировано ${esc(stamp)}. Kalshi: ${stats.kalshi} рынков, Polymarket: ${stats.poly} рынков, пар найдено: ${pairs.length}.
-Классы выставлены простыми правилами без ИИ: «different?» и «check» — сигналы для ручной проверки, а не вывод. «edge» — сырой спред без комиссий и проскальзывания.</p>
+<h1>RuleGuard — proof of concept</h1>
+<p class="sub">Generated ${esc(stamp)}. Kalshi: ${stats.kalshi} markets, Polymarket: ${stats.poly} markets, pairs found: ${pairs.length}.
+Classes come from simple keyword rules, not AI: “different?” and “check” are signals for a manual review, not conclusions. “edge” is the raw spread without fees or slippage.</p>
 <div class="stats">
 <div class="stat">🔴 different?: <b>${count("different?")}</b></div>
 <div class="stat">🟡 check: <b>${count("check")}</b></div>
@@ -354,14 +354,14 @@ ${cards}
 // ---------- main ----------
 
 const t0 = Date.now();
-console.log("Загружаю Kalshi…");
+console.log("Loading Kalshi…");
 const kalshi = (await loadKalshi()).filter(m => m.rules);
-console.log(`  Kalshi: ${kalshi.length} рынков с правилами`);
-console.log("Загружаю Polymarket…");
+console.log(`  Kalshi: ${kalshi.length} markets with rules`);
+console.log("Loading Polymarket…");
 const poly = (await loadPolymarket()).filter(m => m.rules);
-console.log(`  Polymarket: ${poly.length} рынков с правилами`);
+console.log(`  Polymarket: ${poly.length} markets with rules`);
 
-// не больше PER_EVENT пар из одного события Kalshi, чтобы отчёт не состоял из кандидатов одних выборов
+// at most PER_EVENT pairs per Kalshi event, so the report isn't all candidates from one election
 const PER_EVENT = Number(args["per-event"] ?? 3);
 const perEvent = new Map();
 const pairs = matchMarkets(kalshi, poly)
@@ -371,6 +371,6 @@ const pairs = matchMarkets(kalshi, poly)
 
 writeReports(pairs, { kalshi: kalshi.length, poly: poly.length });
 const by = c => pairs.filter(x => x.cmp.cls === c).length;
-console.log(`\nПар: ${pairs.length}  |  different?: ${by("different?")}  check: ${by("check")}  looks_equivalent: ${by("looks_equivalent")}`);
-console.log(`Отчёт: ${path.join(OUT_DIR, "report.html")}`);
-console.log(`Таблица для разметки: ${path.join(OUT_DIR, "pairs.csv")}  (${Math.round((Date.now() - t0) / 1000)} с)`);
+console.log(`\nPairs: ${pairs.length}  |  different?: ${by("different?")}  check: ${by("check")}  looks_equivalent: ${by("looks_equivalent")}`);
+console.log(`Report: ${path.join(OUT_DIR, "report.html")}`);
+console.log(`Labeling sheet: ${path.join(OUT_DIR, "pairs.csv")}  (${Math.round((Date.now() - t0) / 1000)} s)`);
