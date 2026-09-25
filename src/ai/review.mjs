@@ -6,7 +6,10 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import { generateJSON } from "./gemini.mjs";
 
-export const PROMPT_VERSION = 1; // bump when the prompts or schemas change, so cached results are recomputed
+// Bump a version when its prompt or schema changes, so the cached results of that step are recomputed
+export const PASSPORT_VERSION = 1;
+export const JUDGE_VERSION = 2; // v2: one-sided clauses count as caveats; the judge sees verified quotes
+export const PROMPT_VERSION = `${PASSPORT_VERSION}.${JUDGE_VERSION}`;
 
 const FIELDS = ["event", "threshold", "deadline", "window_start", "source", "counts", "does_not_count", "edge_case", "fallback_outcome"];
 
@@ -26,7 +29,10 @@ Using only the extracted terms given for each side, classify each pair:
 - caveats: they match except for rare edge cases or settlement timing;
 - different: there is a plausible, realistic scenario where one resolves YES and the other NO, or one resolves to a different outcome such as Other or No one;
 - uncertain: key terms are missing or ambiguous, so you can't tell.
-When in doubt between equivalent and anything else, do not say equivalent. A term missing on one side is not by itself a difference — say uncertain if it matters.
+When in doubt between equivalent and anything else, do not say equivalent.
+Compare what actually triggers settlement, not just the headline question: e.g. "sworn in" vs "wins the election", "officially appointed" vs "de facto in power", "at any time before" vs "on a specific date", a territory or window that one side includes and the other excludes.
+A clause stated on only one side that could change the outcome or when it settles (early settlement, a fallback outcome such as Other or No one, a postponement or no-data rule, a definition of what counts) means at least caveats, never equivalent.
+If such a clause can realistically flip YES/NO between the two venues, say different. If a term that matters is simply not stated on one side and you can't tell, say uncertain.
 why: one line, at most 15 words, naming the key difference, e.g. "Deadline — Kalshi: 2028 · Polymarket: 2026". For equivalent pairs, say what makes them the same.
 scenario: one or two sentences with a concrete situation where they settle differently; empty for equivalent pairs.`;
 
@@ -79,8 +85,8 @@ const verdictSchema = {
 
 export const hash = s => crypto.createHash("sha256").update(String(s)).digest("hex").slice(0, 16);
 export const marketKey = m => `${m.venue}:${m.id}`;
-const passportKey = m => `${marketKey(m)}#${hash(m.rules)}#v${PROMPT_VERSION}`;
-const verdictKey = (p, pa, pb) => `${marketKey(p.a)}|${marketKey(p.b)}#${hash(JSON.stringify([pa.items, pb.items]))}#v${PROMPT_VERSION}`;
+const passportKey = m => `${marketKey(m)}#${hash(m.rules)}#v${PASSPORT_VERSION}`;
+const verdictKey = (p, pa, pb) => `${marketKey(p.a)}|${marketKey(p.b)}#${hash(JSON.stringify([pa.items, pb.items]))}#j${JUDGE_VERSION}`;
 
 // Read-only lookups into the cache (no API calls) — used by the demo build
 export function lookup(cache) {
@@ -129,8 +135,9 @@ export async function passports(markets, cache, { batch = 6, onProgress = () => 
 
 // ---------- step 2: pair verdicts ----------
 
+// Each term with its verified quote, so the judge compares the actual wording, not only the summaries
 const describe = (m, pp) => `${m.venue} — "${m.title}${m.outcome && !m.title.includes(m.outcome) ? ` · ${m.outcome}` : ""}"\n` +
-  (pp.items.length ? pp.items.map(it => `  - ${it.field}: ${it.value}`).join("\n") : "  (no terms extracted)");
+  (pp.items.length ? pp.items.map(it => `  - ${it.field}: ${it.value}${it.quote ? ` [rules: "${it.quote}"]` : " [not found verbatim in the rules]"}`).join("\n") : "  (no terms extracted)");
 
 export async function verdicts(pairs, cache, passportOf, { batch = 5, onProgress = () => {} } = {}) {
   const ready = pairs.map(p => ({ p, pa: passportOf(p.a), pb: passportOf(p.b) })).filter(x => x.pa && x.pb);

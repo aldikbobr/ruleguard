@@ -3,7 +3,8 @@
 //   GET  /api/status   — data snapshot time, whether a refresh is running, which keys are connected (yes/no only)
 //   POST /api/refresh  — runs scripts/build-demo.mjs in the background (one refresh at a time)
 //   GET  /api/prices   — live prices for every market in the matched pairs (cached for 25 s; no venue keys needed)
-//   GET  /api/pair?key=<venue:id|venue:id> — refetch one pair's prices and rules and re-compare them (cached for 3 s)
+//   GET  /api/pair?key=<venue:id|venue:id> — refetch one pair's prices and rules and re-compare them (cached for 3 s);
+//                      if the rules changed and GEMINI_API_KEY is set, the AI review of that pair is redone too
 // Listens on 127.0.0.1 only: the server is not reachable from other machines.
 import http from "node:http";
 import fs from "node:fs";
@@ -16,6 +17,8 @@ import * as polymarket from "../src/venues/polymarket.mjs";
 import * as limitless from "../src/venues/limitless.mjs";
 import * as manifold from "../src/venues/manifold.mjs";
 import { compareRules, rawEdge } from "../src/compare.mjs";
+import { loadCache, saveCache, lookup, passports, verdicts } from "../src/ai/review.mjs";
+import { geminiReady } from "../src/ai/gemini.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DIR = path.join(ROOT, "demo");
@@ -97,17 +100,45 @@ async function refreshPair(key) {
     return { market: { ...m, yes: f.yes, no: f.no, close: f.close ?? m.close, rules }, changed: Boolean(f.rules) && squash(rules) !== squash(m.rules) };
   });
   const [ma, mb] = [VENUES[p.a.venue].meta, VENUES[p.b.venue].meta];
+  const current = { a: a.market, b: b.market }; // the pair with today's prices and rules
   const body = {
     fetched_at: new Date().toISOString(),
     a: a.market,
     b: b.market,
     cmp: compareRules(a.market, b.market, [ma.name, mb.name]),
     edge: ma.money === "play" || mb.money === "play" ? null : rawEdge(a.market, b.market),
-    rules_changed: { a: a.changed, b: b.changed }
+    rules_changed: { a: a.changed, b: b.changed },
+    ...(await aiFor(current))
   };
   pairCache.set(key, { at: Date.now(), body });
   return body;
 }
+
+// AI verdict for a pair with its current rules: from the cache when the rules are unchanged; otherwise ask Gemini
+// (two passports at most plus one verdict), giving up after AI_TIMEOUT_MS so the ↻ button never hangs.
+const AI_CACHE = path.join(ROOT, "research", "ai-cache.json");
+const AI_TIMEOUT_MS = 25_000;
+async function aiFor(pair) {
+  const cache = loadCache(AI_CACHE);
+  const cached = lookup(cache).verdictOf(pair);
+  if (cached) return { ai: pick(cached), ai_fresh: true };
+  if (!geminiReady()) return { ai: null, ai_fresh: false, ai_note: "no Gemini key" };
+  const run = (async () => {
+    const passportOf = await passports([pair.a, pair.b], cache);
+    const verdictOf = await verdicts([pair], cache, passportOf);
+    saveCache(AI_CACHE, cache);
+    return verdictOf(pair);
+  })();
+  const timeout = new Promise(resolve => setTimeout(() => resolve("timeout"), AI_TIMEOUT_MS));
+  try {
+    const v = await Promise.race([run, timeout]);
+    if (v === "timeout") return { ai: null, ai_fresh: false, ai_note: "AI review is taking longer than usual — try again in a minute" };
+    return v ? { ai: pick(v), ai_fresh: true } : { ai: null, ai_fresh: false, ai_note: "AI returned no verdict" };
+  } catch (e) {
+    return { ai: null, ai_fresh: false, ai_note: `AI review failed: ${e.message.slice(0, 120)}` };
+  }
+}
+const pick = v => ({ verdict: v.verdict, why: v.why, scenario: v.scenario, model: v.model });
 
 function json(res, status, body) {
   res.writeHead(status, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" });

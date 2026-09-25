@@ -11515,6 +11515,1343 @@
    "scenario": "The United States officially acquires part of Greenland in 2027. Limitless settles as NO, while Manifold settles as YES.",
    "model": "gemini-3.5-flash-lite",
    "at": "2026-09-25T16:57:11.097Z"
+  },
+  "polymarket:nfl-ten-nyg-2026-09-27|limitless:titans-vs-giants-1790010331995#b8ace9a53844fe89#j2": {
+   "verdict": "equivalent",
+   "why": "Identical game rules, deadlines, sources, and tie-breaking fallback outcomes.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:51.946Z"
+  },
+  "polymarket:will-the-us-confirm-that-aliens-exist-by-september-30-396|limitless:september-30-1787671443124#ae33e5c0489a19f7#j2": {
+   "verdict": "equivalent",
+   "why": "Exact matching criteria for US official confirmation, deadlines, and fallback resolutions.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:51.947Z"
+  },
+  "kalshi:SENATEKS-26-D|polymarket:will-the-democrats-win-the-kansas-senate-race-in-2026#1fa006f0190c8f67#j2": {
+   "verdict": "different",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner.",
+   "scenario": "The Democratic candidate wins the election but dies or is disqualified before being sworn in, causing Kalshi to resolve No and Polymarket Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:51.947Z"
+  },
+  "kalshi:KXPRESNOMR-28-JDV|limitless:jd-vance-1768931335052#89b5b28647544d30#j2": {
+   "verdict": "equivalent",
+   "why": "Both require J.D. Vance to win and accept the 2028 Republican presidential nomination.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:51.947Z"
+  },
+  "polymarket:will-bitcoin-dip-to-76k-september-21-27-2026|limitless:76000-1789963519679#d524a38fd41006c8#j2": {
+   "verdict": "equivalent",
+   "why": "Identical Binance 1-minute BTC/USDT low price conditions, dates, and data sources.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:51.947Z"
+  },
+  "kalshi:KXSERBIAPM-27DEC31-AVUC|polymarket:will-aleksandar-vucic-be-the-next-prime-minister-of-serbia-20260629223938643#c86e7a8e521744b0#j2": {
+   "verdict": "different",
+   "why": "Deadlines differ — Kalshi: Dec 2028 · Polymarket: Jun 2028.",
+   "scenario": "Vučić is appointed Prime Minister in July 2028, causing Polymarket to resolve to Other and Kalshi to Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:56.628Z"
+  },
+  "kalshi:KXISRAELPM-26OCT27-BNET|polymarket:will-benjamin-netanyahu-be-the-next-prime-minister-of-israel#4fba2116439614ab#j2": {
+   "verdict": "different",
+   "why": "Deadlines differ — Kalshi: Oct 2027 · Polymarket: Dec 2027.",
+   "scenario": "Netanyahu forms a government in November 2027, making Kalshi resolve to No one and Polymarket resolve to Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:56.628Z"
+  },
+  "polymarket:us-announces-end-of-iranian-blockade-by-september-30-2026-20260727171615364-722-649-646-561-213-644-414-831|limitless:september-30-1787654182332#4b1affff81706a22#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets match identically in terms, resolution criteria, and deadlines.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:56.628Z"
+  },
+  "polymarket:iran-charges-hormuz-fees-by-december-31-20260706203029175-553|limitless:december-31-1787660046616#df795e58908db7aa#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues share identical definitions, sources, and target deadlines.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:56.628Z"
+  },
+  "polymarket:nfl-car-cle-2026-09-27|limitless:panthers-vs-browns-1790010321196#0fec054504ef90b9#j2": {
+   "verdict": "equivalent",
+   "why": "Both sports markets feature identical rules, game mappings, and tie resolutions.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:09:56.628Z"
+  },
+  "kalshi:KXFRENCHPRES-27-MLEP|polymarket:will-marine-le-pen-win-the-2027-french-presidential-election#0b74419288a94c30#j2": {
+   "verdict": "caveats",
+   "why": "Fallback rules and specific source definitions differ slightly between venues.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:01.133Z"
+  },
+  "polymarket:will-ethereum-reach-3300-in-september-2026|limitless:will-ethereum-reach-3300-in-september-2026-p#f7b4438104e9c945#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use identical underlying price sources, time windows, and threshold criteria.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:01.133Z"
+  },
+  "kalshi:KXHOUSERACE-VTAL-26-R|polymarket:will-the-republican-party-win-the-vt-al-house-seat#b53e4a3996da97f5#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:01.133Z"
+  },
+  "polymarket:nfl-phi-chi-2026-09-29|limitless:eagles-vs-bears-1790122806772#1176ee0305f2a57d#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical game matching, postponement, cancellation, and scoring source rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:01.133Z"
+  },
+  "polymarket:will-gadi-eizenkot-be-the-next-prime-minister-of-israel|limitless:gadi-eizenkot-1769098856001#f2595da4ce77a4c7#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use identical criteria, deadlines, and swearing-in rules for the Israeli Prime Minister.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:01.133Z"
+  },
+  "polymarket:us-iran-hormuz-agreement-by-september-30|limitless:september-30-1787666375374#a339909f50c234dc#j2": {
+   "verdict": "equivalent",
+   "why": "Identical definitions, deadlines, and resolution sources for the US-Iran Hormuz agreement.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:05.760Z"
+  },
+  "polymarket:nfl-hou-ind-2026-09-27|limitless:texans-vs-colts-1790010328042#c313ccd4b5b0580f#j2": {
+   "verdict": "equivalent",
+   "why": "Identical game, time, rules, and 50-50 fallback for ties or cancellations.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:05.760Z"
+  },
+  "polymarket:metamask-fdv-above-2b-one-day-after-launch-222-955-573-228|limitless:metamask-fdv-above-dollar2b-one-day-after-launch-1764857266348#f1647e73dd04e2e0#j2": {
+   "verdict": "equivalent",
+   "why": "Both specify Metamask token FDV above $2B one day after launch.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:05.760Z"
+  },
+  "kalshi:KXPUTINZELENSKYYLOCATION-28-TUR|limitless:turkey-1787248233202#bf36b0bf4079cd88#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: Dec 2028 · Limitless: Dec 2026",
+   "scenario": "Putin and Zelenskyy meet in Turkey in March 2027. Limitless resolves to No meeting before 2027, while Kalshi remains open and resolves Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:05.760Z"
+  },
+  "polymarket:clarity-act-signed-into-law-in-2026|limitless:clarity-act-hr3633-signed-into-law-in-2026-1789385165383#ff77c6646fa23aae#j2": {
+   "verdict": "equivalent",
+   "why": "Identical bill, deadline, and resolution sources for the Clarity Act.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:05.760Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-YGOL|limitless:yair-golan-1769098856023#e31142c8a97d3979#j2": {
+   "verdict": "different",
+   "why": "Interim roles — Kalshi: counts · Limitless: excludes",
+   "scenario": "Yair Golan serves as an interim Prime Minister and steps down before a formal vote, resolving Kalshi as YES and Limitless as NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:10.510Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-ALIE|polymarket:will-avigdor-lieberman-be-the-next-prime-minister-of-israel#e43d13a03e582e3f#j2": {
+   "verdict": "different",
+   "why": "Interim roles — Kalshi: counts · Polymarket: excludes",
+   "scenario": "Avigdor Lieberman takes office as an interim Prime Minister but is never formally sworn in for a full term, causing Kalshi to resolve YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:10.510Z"
+  },
+  "kalshi:KXPUTINDJTLOCATION-29-PRC|polymarket:will-trump-and-putin-meet-next-in-china-784#05dd2d0afbfa92c4#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: 2029 · Polymarket: 2026",
+   "scenario": "Trump and Putin meet in China in 2027, resolving Kalshi as YES and Polymarket as NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:10.510Z"
+  },
+  "polymarket:will-ethereum-reach-4000-in-september-2026|limitless:will-ethereum-reach-4000-in-september-2026-p#188e32574d02a7a3#j2": {
+   "verdict": "equivalent",
+   "why": "Both use identical rules, Binance 1m High source, threshold, and September 2026 window.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:10.510Z"
+  },
+  "kalshi:SENATEME-26-R|polymarket:will-the-republicans-win-the-maine-senate-race-in-2026#4aba49cdd9d48cc2#j2": {
+   "verdict": "different",
+   "why": "Trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican candidate wins the election in 2026 but dies before being sworn in for the 2027 term, making Polymarket YES and Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:10.510Z"
+  },
+  "polymarket:us-iran-final-nuclear-deal-by-december-31-2026-191|limitless:december-31-1787657393561#c02dda6ba471a728#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets match on the exact same event, deadline, and edge case rules for a US-Iran deal.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:15.104Z"
+  },
+  "polymarket:will-kimi-antonelli-be-the-2026-f1-drivers-champion|limitless:kimi-antonelli-1769015228948#61128fc3d232ce46#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets match on the 2026 F1 drivers' standings outcome, deadlines, and fallback rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:15.104Z"
+  },
+  "polymarket:will-anthropic-ipo-by-december-15-2026|limitless:december-15-2026-1789547697142#109458ca002ddeec#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical criteria, deadlines, and acquisition fallback terms for Anthropic's IPO.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:15.104Z"
+  },
+  "polymarket:us-x-iran-diplomatic-meeting-by-march-31-2027-20260922|limitless:september-30-2026-1787658200745#5ec56b24ded168bd#j2": {
+   "verdict": "different",
+   "why": "Deadline — Polymarket: March 31, 2027 · Limitless: September 30, 2026",
+   "scenario": "A diplomatic meeting occurs in December 2026. Limitless resolves to No as its deadline has passed, while Polymarket resolves to Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:15.104Z"
+  },
+  "polymarket:us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696|limitless:october-31-1787654182326#b64fa5031b095120#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues specify the exact same announcement criteria, sources, and reversal rules regarding the Iranian blockade.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:15.104Z"
+  },
+  "kalshi:KXNEXTROMANIAPM-45JAN01-MGEO|polymarket:will-mircea-geoan-be-the-next-prime-minister-of-romania#7dbb28409a833ee6#j2": {
+   "verdict": "caveats",
+   "why": "Polymarket has a December 2027 deadline and explicit exclusion of interim PMs.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:46.448Z"
+  },
+  "kalshi:KXNEXTROMANIAPM-45JAN01-SGRI|polymarket:will-sorin-grindeanu-be-the-next-prime-minister-of-romania#0d524844673d4424#j2": {
+   "verdict": "caveats",
+   "why": "Polymarket has a December 2027 deadline and explicit exclusion of interim PMs.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:46.449Z"
+  },
+  "kalshi:KXNEXTROMANIAPM-45JAN01-IDUM|polymarket:will-ionu-dumitru-be-the-next-prime-minister-of-romania#6e5b2fa50c3562c1#j2": {
+   "verdict": "uncertain",
+   "why": "Kalshi rules are missing event details for this specific candidate.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:46.449Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-NBEN|polymarket:will-naftali-bennett-be-the-next-prime-minister-of-israel#d727975cdc68b46c#j2": {
+   "verdict": "different",
+   "why": "Kalshi counts interim appointments; Polymarket explicitly excludes interim/caretaker Prime Ministers.",
+   "scenario": "Naftali Bennett serves as an interim Prime Minister without a full new parliamentary election; Kalshi resolves YES while Polymarket resolves to NO or Other.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:46.449Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-YCOH|polymarket:will-yossi-cohen-be-the-next-prime-minister-of-israel#94f3fcc1e01f5566#j2": {
+   "verdict": "different",
+   "why": "Kalshi counts interim appointments; Polymarket explicitly excludes interim/caretaker Prime Ministers.",
+   "scenario": "Yossi Cohen takes over in an interim capacity; Kalshi resolves YES while Polymarket resolves to NO or Other.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:46.449Z"
+  },
+  "kalshi:KXPUTINZELENSKYYLOCATION-28-RUS|polymarket:will-zelenskyy-and-putin-meet-next-in-russia#6add4e61483f6807#j2": {
+   "verdict": "different",
+   "why": "Deadline and scope — Kalshi: Dec 2028 · Polymarket: Dec 2026",
+   "scenario": "Putin and Zelenskyy meet in Russia in 2027. Polymarket resolves to No meeting before 2027, while Kalshi resolves YES.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:50.918Z"
+  },
+  "kalshi:KXCEARAGOV-26OCT04-EFRE|polymarket:will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election#2559089081fb2e67#j2": {
+   "verdict": "caveats",
+   "why": "Deadline and fallback terms added on Polymarket",
+   "scenario": "The election results are delayed past June 2027. Polymarket resolves to Other, whereas Kalshi waits for official results.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:50.918Z"
+  },
+  "kalshi:KXCEARAGOV-26OCT04-CGOM|polymarket:will-ciro-gomes-win-the-2026-cear-gubernatorial-election#ac564a9096ee5588#j2": {
+   "verdict": "caveats",
+   "why": "Deadline and fallback terms added on Polymarket",
+   "scenario": "The election results are delayed past June 2027. Polymarket resolves to Other, whereas Kalshi waits for official results.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:50.918Z"
+  },
+  "kalshi:KXFRENCHPRES-27-EPHI|polymarket:will-douard-philippe-win-the-2027-french-presidential-election#a9e9a46f544b293a#j2": {
+   "verdict": "caveats",
+   "why": "Fallback outcome and explicit deadline added on Polymarket",
+   "scenario": "Election results are delayed beyond Dec 31, 2027. Polymarket resolves to Other, while Kalshi remains open.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:50.918Z"
+  },
+  "kalshi:KXFRENCHPRES-27-EZEM|polymarket:will-ric-zemmour-win-the-2027-french-presidential-election#5797d20bee988387#j2": {
+   "verdict": "uncertain",
+   "why": "Kalshi rules are missing for this specific market",
+   "scenario": "Cannot compare settlement criteria because Kalshi rules text is absent.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:50.918Z"
+  },
+  "kalshi:SENATETX-26-R|polymarket:will-the-republicans-win-the-texas-senate-race-in-2026#3247464f3e79efa6#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:55.415Z"
+  },
+  "kalshi:SENATESD-26-R|polymarket:will-the-republicans-win-the-south-dakota-senate-race-in-2026#e2b4a42a5b09bc23#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:55.416Z"
+  },
+  "kalshi:SENATENH-26-R|polymarket:will-the-republicans-win-the-new-hampshire-senate-race-in-2026#53881cafd25e6822#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:55.416Z"
+  },
+  "kalshi:SENATENE-26-R|polymarket:will-the-republicans-win-the-nebraska-senate-race-in-2026#66599f07d3869e6b#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:55.416Z"
+  },
+  "kalshi:SENATEMN-26-R|polymarket:will-the-republicans-win-the-minnesota-senate-race-in-2026#08b20b918c9e9c2b#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The Republican wins the election but passes away before being sworn in; Polymarket resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:55.416Z"
+  },
+  "kalshi:SENATEMI-26-R|polymarket:will-the-republicans-win-the-michigan-senate-race-in-2026#bb3030585ef7c19b#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:59.584Z"
+  },
+  "kalshi:SENATEKS-26-R|polymarket:will-the-republicans-win-the-kansas-senate-race-in-2026#a0cbd77d4ebc3465#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:59.584Z"
+  },
+  "kalshi:SENATEIA-26-R|polymarket:will-the-republicans-win-the-iowa-senate-race-in-2026#7b3425a1f2a45edc#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:59.584Z"
+  },
+  "kalshi:SENATEFLS-26-R|polymarket:will-the-republicans-win-the-florida-senate-race-in-2026#8b4cb3fb7326baca#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:59.584Z"
+  },
+  "kalshi:KXBALLONDOR-26-LYAM|polymarket:will-lamine-yamal-win-the-2026-ballon-dor#32dbdab592c0870a#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve to Yes if Lamine Yamal wins the 2026 Ballon d'Or.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:10:59.584Z"
+  },
+  "kalshi:KXBALLONDOR-26-HKAN|polymarket:will-harry-kane-win-the-2026-ballon-dor#85684ac283f43d75#j2": {
+   "verdict": "equivalent",
+   "why": "Both require Harry Kane to win the 2026 Ballon d'Or according to France Football.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:15.650Z"
+  },
+  "kalshi:KXBALLONDOR-26-EHAA|polymarket:will-erling-haaland-win-the-2026-ballon-dor#73b838251c13db81#j2": {
+   "verdict": "equivalent",
+   "why": "Both require Erling Haaland to win the 2026 Ballon d'Or according to France Football.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:15.650Z"
+  },
+  "kalshi:KXSATOSHIBTCYEAR-27|polymarket:will-satoshi-move-any-bitcoin-in-2026#750f8773a8435073#j2": {
+   "verdict": "caveats",
+   "why": "Deadline — Kalshi: Jan 1, 2027 · Polymarket: Dec 31, 2026",
+   "scenario": "Satoshi moves Bitcoin on January 1, 2027. Kalshi resolves YES, while Polymarket resolves NO because its deadline is December 31, 2026.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:15.650Z"
+  },
+  "kalshi:KXBOND-30-HAR|polymarket:harris-dickinson-announced-as-next-james-bond#1a42b55b61c376c4#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: 2030 · Polymarket: 2026",
+   "scenario": "Harris Dickinson is officially announced as the next James Bond in 2028. Kalshi resolves YES, while Polymarket resolves to 'No Bond chosen' because the announcement occurred after its 2026 deadline.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:15.650Z"
+  },
+  "kalshi:KXHURPATHHAWAII-26DEC|polymarket:will-a-hurricane-make-landfall-in-hawaii-before-2027-20260721182828397#95ea8d3d47fd44a3#j2": {
+   "verdict": "different",
+   "why": "Geography — Kalshi excludes Northwestern Islands · Polymarket includes all State of Hawaii",
+   "scenario": "A Category 1 hurricane makes landfall in the Northwestern Hawaiian Islands in 2026. Polymarket resolves YES, while Kalshi resolves NO due to its geographical exclusion of those islands.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:15.650Z"
+  },
+  "kalshi:SENATENH-26-D|polymarket:will-the-democrats-win-the-new-hampshire-senate-race-in-2026#66eff4bf23869f1d#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+   "scenario": "The winning Democratic candidate wins the election but dies or steps down before being sworn into office in 2027.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:17.960Z"
+  },
+  "kalshi:SENATEMI-26-D|polymarket:will-the-democrats-win-the-michigan-senate-race-in-2026#411a7cb73eb86863#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+   "scenario": "The winning Democratic candidate wins the election but passes away before the swearing-in ceremony for the new term.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:17.960Z"
+  },
+  "kalshi:SENATETX-26-D|polymarket:will-the-democrats-win-the-texas-senate-race-in-2026#ec691bc6439e2865#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+   "scenario": "The Democratic nominee wins the election, but is disqualified or dies before taking the oath of office.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:17.960Z"
+  },
+  "kalshi:SENATEOHS-26-D|polymarket:will-the-democrats-win-the-ohio-senate-race-in-2026#57bbb67a7ea19b3e#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+   "scenario": "The Democratic candidate wins the special election but cannot take the seat due to sudden disqualification prior to swearing-in.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:17.960Z"
+  },
+  "kalshi:SENATEME-26-D|polymarket:will-the-democrats-win-the-maine-senate-race-in-2026#322033440c626f9d#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election",
+   "scenario": "The Democratic nominee wins the election in Maine but is unable to be sworn in for the 2027 term.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:17.960Z"
+  },
+  "kalshi:SENATEIA-26-D|polymarket:will-the-democrats-win-the-iowa-senate-race-in-2026#42164a52eb547033#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "A winning candidate is declared by the election but passes away before being sworn in.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:22.596Z"
+  },
+  "kalshi:KXBRAZILPRES1R-26OCT04|polymarket:will-any-presidential-candidate-win-outright-in-the-first-round-of-the-brazil-election#a0b9dc81ec0a88a8#j2": {
+   "verdict": "equivalent",
+   "why": "Both define winning the first round as receiving over 50 percent of valid votes in Brazil's election.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:22.596Z"
+  },
+  "kalshi:KXHOUSERACE-VTAL-26-D|polymarket:will-the-democratic-party-win-the-vt-al-house-seat#5c38273b2215fff8#j2": {
+   "verdict": "caveats",
+   "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner",
+   "scenario": "The election winner is decided, but resigns or dies before taking the oath of office.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:22.596Z"
+  },
+  "kalshi:KXPRESPERSON-28-AOCA|polymarket:will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election#2c36f6e251f0b844#j2": {
+   "verdict": "equivalent",
+   "why": "Both resolve based on winning the 2028 presidential election and taking office in January 2029.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:22.596Z"
+  },
+  "kalshi:KXPRESPERSON-28-GNEWS|polymarket:will-gavin-newsom-win-the-2028-us-presidential-election#4262503c7621c8d0#j2": {
+   "verdict": "equivalent",
+   "why": "Both resolve based on winning the 2028 presidential election and taking office in January 2029.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:22.596Z"
+  },
+  "kalshi:KXPRESPERSON-28-PBUT|polymarket:will-pete-buttigieg-win-the-2028-us-presidential-election#92a92188c96c12f7#j2": {
+   "verdict": "caveats",
+   "why": "Sources and fallback rules differ slightly between Kalshi and Polymarket.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:26.832Z"
+  },
+  "kalshi:KXBCPREMIER-26OCT24-DEBY|polymarket:will-david-eby-be-the-next-premier-of-british-columbia#3d79e7a482ade95a#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: No one · Polymarket: Other.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:26.833Z"
+  },
+  "kalshi:KXBCPREMIER-26OCT24-LDOE|polymarket:will-lorne-doerkson-be-the-next-premier-of-british-columbia#74a3abd90be5d621#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: No one · Polymarket: Other.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:26.833Z"
+  },
+  "kalshi:KXISRAELPM-26OCT27-GEIZ|polymarket:will-gadi-eizenkot-be-the-next-prime-minister-of-israel#f5c2521670d148a0#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: No one · Polymarket: Other.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:26.833Z"
+  },
+  "kalshi:KXISRAELPM-26OCT27-YGOL|polymarket:will-yair-golan-be-the-next-prime-minister-of-israel#88be2dc3ba8878f9#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: No one · Polymarket: Other.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:26.833Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-DROD|polymarket:will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026#3ffbdffaf3ec5b4c#j2": {
+   "verdict": "different",
+   "why": "Kalshi requires de facto governing power, while Polymarket requires official status.",
+   "scenario": "Delcy Rodríguez exercises de facto rule without official recognition, making Kalshi YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:42.421Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|polymarket:will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026#d1bf899fd68b6e1e#j2": {
+   "verdict": "different",
+   "why": "Kalshi tracks de facto power, whereas Polymarket requires official state position.",
+   "scenario": "María Corina Machado wields actual power from exile or opposition without official title, resolving Kalshi YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:42.421Z"
+  },
+  "kalshi:KXGREENLAND-29-27|polymarket:will-trump-acquire-greenland-before-2027#eb467b561c637f26#j2": {
+   "verdict": "different",
+   "why": "Kalshi requires a formal purchase, whereas Polymarket accepts official announcement of sovereignty.",
+   "scenario": "Denmark transfers sovereignty via treaty without a financial purchase, causing Polymarket to resolve YES and Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:42.421Z"
+  },
+  "kalshi:KXTOPAI-27-JAN01-META|polymarket:will-meta-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137054#d53805a1c1cc549f#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: end of 2026 · Polymarket: September 30, 2026.",
+   "scenario": "Meta achieves the top AI leaderboard spot in November 2026, making Kalshi YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:42.421Z"
+  },
+  "kalshi:KXTOPAI-27-JAN01-NVID|polymarket:will-nvidia-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137066#120097959e5438af#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: end of 2026 · Polymarket: September 30, 2026.",
+   "scenario": "Nvidia hits #1 on the leaderboard in December 2026, causing Kalshi to resolve YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:42.421Z"
+  },
+  "kalshi:KXTOPAI-27-JAN01-DEPP|polymarket:will-deepseek-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137063#bd06dadaf2b7f179#j2": {
+   "verdict": "different",
+   "why": "Deadline & Metric — Kalshi: Jan 2027 any time · Polymarket: Sept 30 2026 leaderboard rank",
+   "scenario": "DeepSeek could have the top model in December 2026 (resolving Kalshi YES), but not be ranked #1 on September 30, 2026 (resolving Polymarket NO).",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:44.810Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-NMAD|polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026#6c226c283ff62a87#j2": {
+   "verdict": "different",
+   "why": "Criteria — Kalshi: de facto control · Polymarket: official UN-recognized title",
+   "scenario": "Maduro could maintain de facto control of the state apparatus while losing official UN recognition by the end of 2026, causing Kalshi to resolve YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:44.810Z"
+  },
+  "kalshi:KXPRESNOMD-28-KH|limitless:kamala-harris-1768927395509#67457574d6a877bd#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve YES if Kamala Harris wins and accepts the 2028 Democratic presidential nomination.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:44.810Z"
+  },
+  "kalshi:KXPRESNOMD-28-GN|limitless:gavin-newsom-1768927395479#8f5032ba2746b40f#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve YES if Gavin Newsom wins and accepts the 2028 Democratic presidential nomination.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:44.810Z"
+  },
+  "kalshi:KXPRESNOMD-28-JS|limitless:josh-shapiro-1768927395492#5a44090dbff43abb#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve YES if Josh Shapiro wins and accepts the 2028 Democratic presidential nomination.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:44.810Z"
+  },
+  "kalshi:KXLAYOFFSYINFO-26-494000|limitless:more-tech-layoffs-in-2026-than-in-2025-1788780822193#851858c70acf73fd#j2": {
+   "verdict": "equivalent",
+   "why": "Both use identical thresholds, sector definitions, and deadlines.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:49.247Z"
+  },
+  "kalshi:KXLEAVEOPEC-27|limitless:will-another-country-leave-opec-in-2026-1787749159804#c8f3289f83217215#j2": {
+   "verdict": "caveats",
+   "why": "Slightly different wording on acceptable resolution sources and timezones.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:49.247Z"
+  },
+  "kalshi:KXGALLEGOOUT-26OCT01|limitless:before-oct-1-2026-1787764251359#7d25101805792042#j2": {
+   "verdict": "caveats",
+   "why": "Kalshi includes a specific death fallback rule absent on Limitless.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:49.247Z"
+  },
+  "kalshi:KXGALLEGOOUT-26APR-NOV03|limitless:before-nov-3-2026-1787764250647#38fd2b856db0ac4b#j2": {
+   "verdict": "equivalent",
+   "why": "Both share identical deadlines, criteria, and exclusions for the Senate seat.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:49.247Z"
+  },
+  "kalshi:KXHKANEKNIGHT-26-YES|limitless:will-harry-kane-be-knighted-in-2026-1790165245270#a6872dc915279769#j2": {
+   "verdict": "equivalent",
+   "why": "Both share identical deadlines, source agencies, and criteria for the knighthood.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:49.247Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-NBEN|limitless:naftali-bennett-1769098855998#fbe2bb6c0eec9450#j2": {
+   "verdict": "different",
+   "why": "Interim appointments count on Kalshi but are explicitly excluded on Limitless.",
+   "scenario": "An interim Prime Minister takes power briefly before the 2026 election; Kalshi counts this as the next PM, while Limitless excludes them.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:53.996Z"
+  },
+  "kalshi:KXNEXTISRAELPM-45JAN01-YLAP|limitless:yair-lapid-1769098856014#f9b481483d516c9d#j2": {
+   "verdict": "different",
+   "why": "Interim appointments count on Kalshi but are explicitly excluded on Limitless.",
+   "scenario": "An interim Prime Minister takes power briefly; Kalshi counts them, while Limitless waits for a post-election appointee.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:53.996Z"
+  },
+  "kalshi:KXPUTINZELENSKYYLOCATION-28-HUNG|limitless:hungary-1787248233211#b57df08e5378d4dc#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: Dec 2028 · Limitless: Dec 2026",
+   "scenario": "Putin and Zelenskyy meet in Hungary in 2027; Kalshi resolves YES, while Limitless has already expired with a fallback outcome.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:53.996Z"
+  },
+  "kalshi:KXPUTINZELENSKYYLOCATION-28-SWZ|limitless:switzerland-1787248233195#f7b18af6028c7d24#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: Dec 2028 · Limitless: Dec 2026",
+   "scenario": "A meeting occurs in Switzerland in 2027; Kalshi resolves YES, but Limitless resolves to no-meeting due to its earlier deadline.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:53.996Z"
+  },
+  "kalshi:CONTROLH-2026-D|limitless:democratic-party-1769088464320#f20ea3da9e07f5a7#j2": {
+   "verdict": "caveats",
+   "why": "Fallback rules and handling of ambiguous caucus majorities differ slightly between venues.",
+   "scenario": "A razor-thin, disputed majority leads to a deadlock until the Speaker vote, causing temporary divergence before official resolution.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:11:53.996Z"
+  },
+  "kalshi:CONTROLH-2026-R|limitless:republican-party-1769088464329#5b47359ab89656f6#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: Speaker fallback · Limitless: Other",
+   "scenario": "An independent candidate who does not caucus with either major party is elected Speaker, causing Limitless to resolve to Other while Kalshi relies on its backup rules.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:04.360Z"
+  },
+  "kalshi:CONTROLS-2026-D|limitless:democratic-party-1785850263376#8eb6d13a1c1c40ea#j2": {
+   "verdict": "caveats",
+   "why": "Resolution source and ambiguity handling differ slightly between venues.",
+   "scenario": "A deadlocked Senate with disputed results leads to prolonged ambiguity where Kalshi falls back to the President pro tempore while Limitless waits for the Majority Leader.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:04.360Z"
+  },
+  "kalshi:CONTROLS-2026-R|limitless:republican-party-1785850263389#dcf171dd9dd7ff4c#j2": {
+   "verdict": "caveats",
+   "why": "Resolution source and ambiguity handling differ slightly between venues.",
+   "scenario": "A deadlocked Senate with disputed results leads to prolonged ambiguity where Kalshi falls back to the President pro tempore while Limitless waits for the Majority Leader.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:04.360Z"
+  },
+  "kalshi:KXWINSTREAKMANU-27-5|limitless:will-manchester-united-mens-soccer-win-at-least-5-games-in-a-row-this-1790109556619#4374e9934b74007b#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets track Manchester United winning 5 consecutive games in 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:04.360Z"
+  },
+  "kalshi:KXISRAELPM-26OCT27-BNET|limitless:benjamin-netanyahu-1769098855968#4ea036e1b7cc5452#j2": {
+   "verdict": "caveats",
+   "why": "Deadline — Kalshi: Oct 27, 2027 · Limitless: Dec 31, 2027",
+   "scenario": "A government is successfully formed with Netanyahu as Prime Minister on November 15, 2027, causing Kalshi to resolve No because it missed its October deadline, while Limitless resolves Yes.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:04.360Z"
+  },
+  "kalshi:KXISRAELPM-26OCT27-GEIZ|limitless:gadi-eizenkot-1769098856001#533a4d3f81aced62#j2": {
+   "verdict": "caveats",
+   "why": "Fallback — Kalshi: No one · Limitless: Other",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:06.732Z"
+  },
+  "kalshi:KXSTARSHIPSPACE-26-5.0|limitless:less5-1782465127228#1854cdbce0ee0d33#j2": {
+   "verdict": "equivalent",
+   "why": "Both measure exactly 5 successful Starship launches reaching 62 miles in 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:06.732Z"
+  },
+  "kalshi:KXPRESNOMR-28-DJTJR|limitless:donald-trump-jr-1768931335074#60b4cef5ea9726ed#j2": {
+   "verdict": "equivalent",
+   "why": "Both track Donald Trump Jr. winning and accepting the 2028 Republican presidential nomination.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:06.732Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-DROD|limitless:delcy-rodriguez-1787676477917#6c0b60d1b2b0cf14#j2": {
+   "verdict": "different",
+   "why": "Definition — Kalshi: de facto power · Limitless: official/formal role",
+   "scenario": "Delcy Rodríguez holds de facto control through military backing while a different nominal president is officially recognized, causing Kalshi to resolve YES and Limitless NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:06.732Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|limitless:maria-corina-machado-1787676477924#6091429f5721fdca#j2": {
+   "verdict": "different",
+   "why": "Definition — Kalshi: de facto power · Limitless: official/formal role",
+   "scenario": "María Corina Machado exercises underground de facto governing authority without holding the official title, leading to YES on Kalshi and NO on Limitless.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:06.732Z"
+  },
+  "kalshi:KXGREENLAND-29-27|limitless:will-trump-acquire-greenland-before-2027-1768930762585#97cf49d04a5c7020#j2": {
+   "verdict": "different",
+   "why": "Event definition — Kalshi: physical purchase · Limitless: official sovereignty announcement",
+   "scenario": "Trump officially announces that Greenland comes under US sovereignty via executive order, but no actual purchase or transfer of land from Denmark occurs before 2027. Limitless resolves YES while Kalshi resolves NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:11.720Z"
+  },
+  "kalshi:KXPRESNOMR-28-RDS|limitless:ron-desantis-1768931335065#a406a002c5a7d5e9#j2": {
+   "verdict": "caveats",
+   "why": "Edge case — Limitless specifies replacement rules, Kalshi relies on standard convention.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:11.721Z"
+  },
+  "kalshi:KXVENEZDEFACTO-27JAN01-NMAD|limitless:nicolas-maduro-1787676477905#0d0a71e265e09ec7#j2": {
+   "verdict": "different",
+   "why": "Criteria — Kalshi: de facto control indicators · Limitless: official UN-recognized title and UN list fallback",
+   "scenario": "Maduro is ousted in a coup and loses all de facto control of ministries by late 2026, but the UN continues to formally list him as head of state. Limitless resolves YES while Kalshi resolves NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:11.721Z"
+  },
+  "kalshi:KXGTEMP-27-P0|manifold:PZnRZhLUgt#10e521c2f1ed49df#j2": {
+   "verdict": "different",
+   "why": "Source — Kalshi: NASA GISS index threshold · Manifold: NOAA global surface temperature",
+   "scenario": "NASA GISS reports an index value exceeding 1.28 degrees Celsius, while NOAA's separate dataset ranks 2026 differently or below the hottest threshold. Kalshi resolves YES while Manifold resolves NO or 50/50.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:11.721Z"
+  },
+  "kalshi:KXMILLENNIUMALL-40-30JAN01|manifold:OI65QnIIys#491c9920ed530048#j2": {
+   "verdict": "caveats",
+   "why": "Edge case — Kalshi requires solutions to remain unretracted through expiration.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:11.721Z"
+  },
+  "kalshi:KXPRESELECTIONOCCUR-28|manifold:dP9ggPInAz#1a2cc8b9125f04ca#j2": {
+   "verdict": "different",
+   "why": "Manifold requires election to be \"as normal\" and excludes precedented events.",
+   "scenario": "An unusual emergency decree postpones the election normally, but it still legally occurs via a modified format; Kalshi resolves YES while Manifold resolves NO due to the \"as normal\" clause.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:18.860Z"
+  },
+  "kalshi:KXTRUMPPRES-28|manifold:XPwlP7BLrkQDbzw2wXDR#febca9a73e00e7d7#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets ask if a Trump family member will be the 2028 Republican presidential nominee.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:18.860Z"
+  },
+  "kalshi:KXROBOTMARS-35|manifold:X6baYqVr651Iziyw23cD#c1a9946c7b502cf1#j2": {
+   "verdict": "different",
+   "why": "Kalshi asks if robot walks before human; Manifold asks if human walks before 2035.",
+   "scenario": "A human walks on Mars in 2030, and a humanoid robot walks there in 2032. Kalshi resolves NO (human went first) while Manifold resolves YES (human walked before 2035).",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:18.860Z"
+  },
+  "kalshi:KXGREENLAND-29-27|manifold:y9RAdPnhOp#e8fe26d5be9e2f86#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: Jan 1, 2027 · Manifold: Jan 20, 2029",
+   "scenario": "The US purchases part of Greenland in June 2028. Kalshi resolves NO (past Jan 1, 2027) while Manifold resolves YES (before Jan 20, 2029).",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:18.860Z"
+  },
+  "kalshi:KXNZPM-26NOV07-CLUX|manifold:EUhytOdNRu#36ae5d2429ece81a#j2": {
+   "verdict": "different",
+   "why": "Kalshi asks about becoming PM after 2026 election; Manifold asks if he is still PM on election day.",
+   "scenario": "Luxon loses the 2026 election and steps down on election day. Manifold resolves YES (he was PM on election day) while Kalshi resolves NO (he did not become PM following the election).",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:18.860Z"
+  },
+  "kalshi:KXMILLENNIUMALL-40-28JAN01|manifold:5EyEO0nZRu#147a799219623d41#j2": {
+   "verdict": "different",
+   "why": "Deadline — Kalshi: Jan 1, 2028 · Manifold: Apr 30, 2027",
+   "scenario": "All problems are solved in June 2027; Kalshi resolves YES, but Manifold resolves NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:21.121Z"
+  },
+  "kalshi:KXPRESPARTY-2028-D|manifold:3hpDrur4CXnfLysxQdO3#aea26caeb51f1f81#j2": {
+   "verdict": "different",
+   "why": "Settlement trigger — Kalshi: inauguration in 2029 · Manifold: election win in 2028",
+   "scenario": "A Democrat wins the 2028 election but passes away before the January 2029 inauguration; Manifold resolves YES, Kalshi NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:21.121Z"
+  },
+  "kalshi:KXIPO-26-ANTHROPIC|manifold:9shSz6N0zd#a9529a8beb78f49b#j2": {
+   "verdict": "different",
+   "why": "Completely different topics: Kalshi tracks an IPO, Manifold tracks a cancer cure announcement.",
+   "scenario": "Anthropic announces a cancer cure without going public; Manifold resolves YES while Kalshi resolves NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:21.121Z"
+  },
+  "polymarket:will-the-us-invade-iran-before-2027|limitless:will-the-us-invade-iran-before-2027-1787659328650#72da4a6188e0d4f6#j2": {
+   "verdict": "equivalent",
+   "why": "Identical definitions, deadlines, and criteria for U.S. invading Iran.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:21.121Z"
+  },
+  "polymarket:strait-of-hormuz-traffic-returns-to-normal-by-december-31|limitless:strait-of-hormuz-traffic-returns-to-normal-by-december-31-1787655886769#254d11e685edf5b6#j2": {
+   "verdict": "equivalent",
+   "why": "Exact matching criteria, thresholds, data sources, and edge cases.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:21.121Z"
+  },
+  "polymarket:nfl-nyj-det-2026-09-27|limitless:jets-vs-lions-1790010322468#d80d5729a3f13228#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues track the exact same NFL game, schedule, and fallback rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:25.560Z"
+  },
+  "polymarket:will-china-invade-taiwan-before-2027|limitless:will-china-invade-taiwan-by-end-of-2026-1768932552478#d139a2f73f65746f#j2": {
+   "verdict": "equivalent",
+   "why": "Identical definitions, territorial criteria, deadlines, and resolution sources.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:25.560Z"
+  },
+  "polymarket:us-recession-by-end-of-2026|limitless:us-recession-by-end-of-2026-1767804297592#11f8e19b7cd471eb#j2": {
+   "verdict": "equivalent",
+   "why": "Both share the same GDP criteria, NBER rules, deadlines, and edge cases.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:25.560Z"
+  },
+  "polymarket:nfl-ari-sf-2026-09-27|limitless:cardinals-vs-49ers-1790021111171#5cb8700800d04c46#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues track the exact same NFL game, schedule, and fallback rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:25.560Z"
+  },
+  "polymarket:will-the-iranian-regime-fall-by-the-end-of-2026|limitless:will-the-iranian-regime-fall-before-2027-1787660719869#4bdb4c84f41c1017#j2": {
+   "verdict": "equivalent",
+   "why": "Identical wording for regime fall conditions, exclusions, deadlines, and sources.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:25.560Z"
+  },
+  "polymarket:us-iran-final-nuclear-deal-by-september-30-2026|limitless:september-30-1787657393583#887404de1a1346db#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical rules, deadlines, and criteria for a US-Iran nuclear deal.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:30.092Z"
+  },
+  "polymarket:nfl-bal-dal-2026-09-27|limitless:ravens-vs-cowboys-1790022904014#d27bd808d96a23c4#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical scheduling, postponement, and 50-50 fallback rules for ties.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:30.092Z"
+  },
+  "polymarket:us-iran-final-nuclear-deal-by-october-31-2026|limitless:october-31-1787657393576#2db78fbe9e4209fb#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets have matching deadlines, definitions, and resolution sources.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:30.092Z"
+  },
+  "polymarket:nfl-kc-mia-2026-09-27|limitless:chiefs-vs-dolphins-1790010330684#9f00d7394451a0a0#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use identical game times, team options, and 50-50 tie/cancellation resolutions.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:30.092Z"
+  },
+  "polymarket:xi-jinping-out-before-2027|limitless:xi-jinping-out-before-2027-1787659720504#13514abb5358e951#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets track Xi Jinping's removal with identical start dates, deadlines, and criteria.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:30.092Z"
+  },
+  "polymarket:nfl-la-den-2026-09-28|limitless:rams-vs-broncos-1790036404717#ea3f1b41900dab48#j2": {
+   "verdict": "equivalent",
+   "why": "Identical game rules, deadlines, resolution sources, and 50-50 fallback terms.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:34.508Z"
+  },
+  "polymarket:trump-out-as-president-before-2027|limitless:trump-out-as-president-before-2027-1768933068297#bcdad54ee69d31be#j2": {
+   "verdict": "equivalent",
+   "why": "Identical definitions, deadlines, and announcement triggers for presidential departure.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:34.508Z"
+  },
+  "polymarket:will-the-us-acquire-any-part-of-greenland-in-2026|limitless:will-the-us-acquire-part-of-greenland-in-2026-1787749529287#81dc24afaf941124#j2": {
+   "verdict": "equivalent",
+   "why": "Identical criteria for land acquisition, jurisdiction transfer, and deadlines.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:34.508Z"
+  },
+  "polymarket:nfl-min-tb-2026-09-27|limitless:vikings-vs-buccaneers-1790021112250#50cdfdeef134b6f6#j2": {
+   "verdict": "equivalent",
+   "why": "Identical NFL matchup conditions, postponement clauses, and fallback outcomes.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:34.508Z"
+  },
+  "polymarket:will-anthropic-ipo-by-october-31-2026-213|limitless:october-31-2026-1789547697117#b97d587664cd7a1d#j2": {
+   "verdict": "equivalent",
+   "why": "Identical IPO criteria, deadlines, and acquisition-to-No fallback clauses.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:34.508Z"
+  },
+  "polymarket:nfl-sea-was-2026-09-27|limitless:seahawks-vs-commanders-1790010338341#dd579fca6c55c034#j2": {
+   "verdict": "equivalent",
+   "why": "Identical event rules, deadlines, edge cases, and fallback outcomes.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:39.318Z"
+  },
+  "polymarket:will-lewis-hamilton-be-the-2026-f1-drivers-champion|limitless:lewis-hamilton-1769015228956#bcdff39cced0631d#j2": {
+   "verdict": "different",
+   "why": "Polymarket resolves to No upon mathematical elimination; Limitless does not.",
+   "scenario": "Hamilton is mathematically eliminated with three races left; Polymarket settles to No immediately, while Limitless stays open until the end of the season.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:39.318Z"
+  },
+  "polymarket:will-george-russell-be-the-2026-f1-drivers-champion|limitless:george-russell-1769015228929#cc8e5dfa749a9946#j2": {
+   "verdict": "different",
+   "why": "Polymarket resolves to No upon mathematical elimination; Limitless does not.",
+   "scenario": "Russell is mathematically eliminated mid-season; Polymarket resolves to No immediately, whereas Limitless remains active.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:39.318Z"
+  },
+  "polymarket:nfl-lac-buf-2026-09-27|limitless:chargers-vs-bills-1790010320115#34d34007446c9020#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues share identical terms, game conditions, and resolution sources.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:39.318Z"
+  },
+  "polymarket:nfl-cin-pit-2026-09-27|limitless:bengals-vs-steelers-1790010337293#b07d1401685c9c11#j2": {
+   "verdict": "equivalent",
+   "why": "Exact match in game parameters, postponement rules, and 50-50 tie/cancellation fallback.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:39.318Z"
+  },
+  "polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026|limitless:nicolas-maduro-1787676477905#06da5fac790a5be9#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical rules, deadlines, and fallback outcomes for Maduro's leadership status.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:44.070Z"
+  },
+  "polymarket:will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026|limitless:maria-corina-machado-1787676477924#83a4bd0c2597a3cb#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets match on settlement criteria, deadlines, and fallback outcomes for Machado.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:44.070Z"
+  },
+  "polymarket:will-trump-acquire-greenland-before-2027|limitless:will-trump-acquire-greenland-before-2027-1768930762585#9a1d7343c075ff79#j2": {
+   "verdict": "caveats",
+   "why": "Limitless explicitly specifies required official actions like executive orders, while Polymarket allows general announcements.",
+   "scenario": "Trump issues a formal decree declaring Greenland under US sovereignty, but without signing a formal executive order or legislation; Limitless might delay or dispute while Polymarket resolves Yes immediately.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:44.070Z"
+  },
+  "polymarket:will-trump-meet-with-kim-jong-un-in-2026|limitless:kim-jong-un-1787673220097#0631627638e793f2#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues use identical definitions, timeframes, and source rules for an in-person meeting.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:44.070Z"
+  },
+  "polymarket:another-fed-rate-hike-in-2026|limitless:another-fed-rate-hike-in-2026-1789636928078#fca48b182dc268c6#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets have identical windows, rate hike definitions, and exclusion rules for the September FOMC meeting.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:44.070Z"
+  },
+  "polymarket:us-x-china-tariff-agreement-by-december-31|limitless:us-x-china-tariff-agreement-by-december-31-1787675335206#b7d2f4e550992838#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical criteria and deadlines for a US-China tariff agreement.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:50.605Z"
+  },
+  "polymarket:will-the-iranian-regime-fall-by-september-30-20260629143335077|limitless:will-the-iranian-regime-fall-by-september-30-1787660718524#e82022b5da412018#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share matching definitions and resolution sources for the Iranian regime falling.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:50.605Z"
+  },
+  "polymarket:will-revolut-launch-a-usd-stablecoin-in-2026|limitless:will-revolut-launch-a-usd-stablecoin-in-2026-1788430432342#6ac7fc4e6265ed88#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues require an actively transferable USD stablecoin launched by Revolut within 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:50.605Z"
+  },
+  "polymarket:will-anthropic-ipo-by-september-30-2026-733|limitless:september-30-2026-1789547697099#5e57d4c00c76a6a1#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use identical rules and acquisition clauses for Anthropic's IPO.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:50.605Z"
+  },
+  "polymarket:nfl-ne-jax-2026-09-27|limitless:patriots-vs-jaguars-1790010329358#4d5172003aff3f90#j2": {
+   "verdict": "equivalent",
+   "why": "Both NFL match markets have identical postponement, cancellation, and 50-50 tie rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:50.606Z"
+  },
+  "polymarket:will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026|limitless:delcy-rodriguez-1787676477917#bc05a20b728e57c1#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues share identical definitions, resolution sources, and deadlines for Delcy Rodríguez.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:55.686Z"
+  },
+  "polymarket:kharg-island-no-longer-under-iranian-control-by-september-30-20260730004207224|limitless:september-30-1787661859256#fd06c9597ca59059#j2": {
+   "verdict": "equivalent",
+   "why": "Both venues have identical criteria and deadlines regarding Kharg Island's control.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:55.687Z"
+  },
+  "polymarket:kharg-island-no-longer-under-iranian-control-by-december-31-20260730004337418|limitless:december-31-1787661859240#0a0be0cd9c303925#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical criteria, sources, and December 31 deadline for Kharg Island.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:55.687Z"
+  },
+  "polymarket:us-announces-end-of-iranian-blockade-by-december-31-2026-20260727171803489-375-949-645-919-269-157-255-857|limitless:december-31-1787654182318#a4321afa817f7717#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets match on exact wording, resolution sources, and deadline conditions.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:55.687Z"
+  },
+  "polymarket:will-the-us-confirm-that-aliens-exist-before-2027-789-924-249|limitless:december-31-1787671443106#5dfdfce4733ee4fa#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets feature identical scoping, qualifying officials, and December 31 deadline.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:55.687Z"
+  },
+  "polymarket:will-benjamin-netanyahu-be-the-next-prime-minister-of-israel|limitless:benjamin-netanyahu-1769098855968#38a29c4fb6654894#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve to Benjamin Netanyahu if he is sworn in as the next prime minister.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:57.973Z"
+  },
+  "polymarket:iran-charges-hormuz-fees-by-october-31|limitless:october-31-1787660046627#cc31afb48654251a#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical conditions and deadlines for Iran charging Hormuz fees.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:57.974Z"
+  },
+  "polymarket:will-samuel-alito-announce-his-retirement-by-september-30-2026-20260630151901966|limitless:september-30-1787744916606#994100aadc11ec91#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical rules and deadlines for Samuel Alito's retirement announcement.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:57.974Z"
+  },
+  "polymarket:iran-charges-hormuz-fees-by-september-30|limitless:september-30-1787660046632#7e910566be531b7f#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use identical criteria and deadlines for Iran charging Hormuz fees by September 30.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:57.974Z"
+  },
+  "polymarket:will-yair-golan-be-the-next-prime-minister-of-israel|limitless:yair-golan-1769098856023#0a897687d401fe79#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets resolve to Yair Golan if he becomes the next sworn prime minister.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:12:57.974Z"
+  },
+  "polymarket:will-maria-corina-machado-enter-venezuela-by-september-30-20260728195821515|limitless:september-30-1787747700859#edf3d1dfaf15e1e0#j2": {
+   "verdict": "equivalent",
+   "why": "Identical criteria, deadlines, and terrestrial entry rules for María Corina Machado.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:12.744Z"
+  },
+  "polymarket:will-maria-corina-machado-enter-venezuela-by-december-31-20260728195714929|limitless:december-31-1787747700850#8b6baa5567c189a8#j2": {
+   "verdict": "equivalent",
+   "why": "Identical criteria, deadlines, and terrestrial entry rules for María Corina Machado.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:12.744Z"
+  },
+  "polymarket:will-strc-hit-100-by-september-30-20260618001621118|limitless:september-30-1788430626332#fd4d135c28bc37c2#j2": {
+   "verdict": "caveats",
+   "why": "Fallback sources — Polymarket: WSJ/Google/MarketWatch · Limitless: none specified.",
+   "scenario": "TradingView experiences a temporary outage on the deadline day, and STRC hits $100 according to Google Finance but cannot be verified on TradingView.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:12.744Z"
+  },
+  "polymarket:bank-of-england-increases-interest-rates-by-25-bps-after-november-2026-meeting-20260730150602310|limitless:25-bps-increase-1789387521645#f5fdce50ad15182d#j2": {
+   "verdict": "equivalent",
+   "why": "Identical meeting dates, resolution sources, and handling of postponed or cancelled meetings.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:12.744Z"
+  },
+  "polymarket:will-the-5-year-treasury-yield-dip-below-4pt20-before-2027|limitless:below-420percent-1788779312103#1160c9ec75a351da#j2": {
+   "verdict": "equivalent",
+   "why": "Identical yield thresholds, dates, Treasury source data, and resolution rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:12.744Z"
+  },
+  "polymarket:will-zelenskyy-and-putin-not-meet|limitless:no-meeting-before-2027-1787248233142#b68c29e85299d1c1#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical event definitions, deadlines, and fallback outcomes regarding Putin and Zelenskyy's meeting.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:15.675Z"
+  },
+  "polymarket:will-bitcoin-dip-to-80k-september-21-27-2026|limitless:80000-1789963519679#b818c2a9bb4ac9aa#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets use the exact same Binance 1m candle low data source and date range.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:15.675Z"
+  },
+  "polymarket:will-bitcoin-dip-to-78k-september-21-27-2026|limitless:78000-1789963519679#d453cd92f3609b9d#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets track identical Binance 1m low candle criteria over the same dates.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:15.675Z"
+  },
+  "polymarket:will-bitcoin-reach-86k-september-21-27-2026-from-september-23|limitless:86000-1789963519679#ed75472e769c0c24#j2": {
+   "verdict": "different",
+   "why": "Window start — Polymarket: market creation · Limitless: September 21.",
+   "scenario": "Bitcoin hits $86,000 on September 22 before dropping. Polymarket resolves YES, but Limitless resolves NO because the window only started on September 21.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:15.675Z"
+  },
+  "polymarket:no-change-in-bank-of-englands-interest-rates-after-november-2026-meeting-20260730150602309|limitless:no-change-1789387521640#9132f59e85f6f99c#j2": {
+   "verdict": "equivalent",
+   "why": "Both markets share identical rules, sources, deadlines, and fallback outcomes for the November 2026 BOE meeting.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:15.676Z"
+  },
+  "polymarket:will-bitcoin-dip-to-83k-on-september-25-2026|limitless:83000-1790340607941#b22451fd125a51c2#j2": {
+   "verdict": "equivalent",
+   "why": "Identical resolution sources, time windows, and thresholds on Binance BTC/USDT.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:20.099Z"
+  },
+  "polymarket:will-bitcoin-dip-to-82k-on-september-25-2026|limitless:82000-1790340607941#b22451fd125a51c2#j2": {
+   "verdict": "equivalent",
+   "why": "Identical resolution sources, time windows, and thresholds on Binance BTC/USDT.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:20.099Z"
+  },
+  "polymarket:will-bitcoin-reach-86k-on-september-25-2026|limitless:86000-1790340607941#cb95aa13c98eff71#j2": {
+   "verdict": "equivalent",
+   "why": "Identical high price thresholds, timeframes, and Binance resolution rules.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:20.099Z"
+  },
+  "polymarket:will-ethereum-dip-to-2500-september-21-27-2026|limitless:2500-1789963561335#3e16d1af53d45c1d#j2": {
+   "verdict": "equivalent",
+   "why": "Identical low price conditions, date ranges, and Binance exchange rules for Ethereum.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:20.099Z"
+  },
+  "polymarket:will-ethereum-dip-to-2300-september-21-27-2026|limitless:2300-1789963561335#a4fc54a92840ddca#j2": {
+   "verdict": "equivalent",
+   "why": "Identical low price conditions, date ranges, and Binance exchange rules for Ethereum.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:20.099Z"
+  },
+  "polymarket:will-ethereum-reach-2800-september-21-27-2026-from-september-22|limitless:2800-1789963561335#8b4faa5dfe87d544#j2": {
+   "verdict": "equivalent",
+   "why": "Both track the exact same Binance ETH/USDT 1-minute high price rules and date ranges.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:24.376Z"
+  },
+  "polymarket:us-x-iran-diplomatic-meeting-by-december-31-2026-20260922|limitless:december-31-2026-1787658200734#3a88da69157bfef3#j2": {
+   "verdict": "equivalent",
+   "why": "Both use identical criteria for US-Iran senior diplomatic meetings by the end of 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:24.376Z"
+  },
+  "polymarket:will-ethereum-dip-to-1500-in-september-2026|limitless:will-ethereum-dip-to-1500-in-september-2026-p#60b2a2bfc9b11e3b#j2": {
+   "verdict": "equivalent",
+   "why": "Both use identical Binance low price thresholds and resolution terms for September 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:24.377Z"
+  },
+  "polymarket:will-ethereum-dip-to-1600-in-september-2026|limitless:will-ethereum-dip-to-1600-in-september-2026-p#ad332400710655bc#j2": {
+   "verdict": "equivalent",
+   "why": "Both track identical Binance ETH/USDT low price conditions for September 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:24.377Z"
+  },
+  "polymarket:us-recession-by-end-of-2026|manifold:ElSLRhzqyR#765116130daa1d8e#j2": {
+   "verdict": "different",
+   "why": "Window — Polymarket: Q2 2025 to Q4 2026 · Manifold: Q1 2026 to Q4 2026",
+   "scenario": "A recession starting with negative GDP growth in Q3 and Q4 2025 would trigger Polymarket to resolve YES, but Manifold would resolve NO because its window starts in Q1 2026.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:24.377Z"
+  },
+  "polymarket:will-luiz-incio-lula-da-silva-win-the-2026-brazilian-presidential-election|manifold:qUIpIulZcs#9180041678698fe2#j2": {
+   "verdict": "different",
+   "why": "Resolution source — Polymarket: TSE / consensus · Manifold: Narcissist Forecasting Contest judges",
+   "scenario": "A dispute arises over election results where official courts declare Lula the winner, but the contest judges choose a different interpretation.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:28.991Z"
+  },
+  "polymarket:will-jesus-christ-return-before-2027|manifold:I9quycncs8#9002a181b0bfba2a#j2": {
+   "verdict": "equivalent",
+   "why": "Both track the Second Coming of Christ before 2027 using mainstream consensus reporting.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:28.991Z"
+  },
+  "polymarket:another-fed-rate-hike-in-2026|manifold:PUu5UdNR6E#c24477f3e5b656b5#j2": {
+   "verdict": "different",
+   "why": "Window — Polymarket: Sept 17 to Dec 2026 meeting · Manifold: Any time after September 2026",
+   "scenario": "The Fed raises rates in early November 2026, causing Polymarket to resolve YES and Manifold to resolve YES, but a hike in July would resolve Manifold YES and Polymarket NO.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:28.991Z"
+  },
+  "polymarket:will-the-los-angeles-dodgers-win-the-2026-world-series|manifold:L0Z26cRAUt#b0060ee3606a89b2#j2": {
+   "verdict": "caveats",
+   "why": "Deadline & Cancellation Rules — Polymarket specifies Dec 31, 2026 deadline and Other fallback · Manifold lacks explicit fallback rules.",
+   "scenario": "The World Series is delayed into January 2027 due to an extended strike, causing Polymarket to resolve to Other while Manifold awaits official results.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:28.991Z"
+  },
+  "polymarket:will-china-invade-taiwan-before-2027|manifold:dSaVvMLpLbwaLLUGfGfK#9be260cba5ffe586#j2": {
+   "verdict": "different",
+   "why": "Conditional clauses — Manifold requires specific 2024 election outcomes and has different deadline windows.",
+   "scenario": "China invades Taiwan in November 2026, satisfying Polymarket's end-of-2026 deadline, but Manifold resolves N/A because of specific pre-conditions regarding the 2024 US election.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:28.991Z"
+  },
+  "polymarket:will-bitcoin-reach-87pt5k-in-september-2026|manifold:ddhA5Ihhlg#2ca35ae4fc317100#j2": {
+   "verdict": "equivalent",
+   "why": "Both track the same Binance 1m BTC/USDT high price threshold in September 2026.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:35.180Z"
+  },
+  "polymarket:will-t1-win-worlds-2026|manifold:cdZON998RS#76075c03fe9f3e15#j2": {
+   "verdict": "different",
+   "why": "Deadline & Postponement — Polymarket: Nov 2026 with Other fallback · Manifold: open-ended",
+   "scenario": "The tournament is postponed to December 2026 and T1 eventually wins. Polymarket resolves to Other, while Manifold resolves YES.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:35.180Z"
+  },
+  "polymarket:will-trump-acquire-greenland-before-2027|manifold:y9RAdPnhOp#c2b5a37b8583f2a2#j2": {
+   "verdict": "different",
+   "why": "Deadline — Polymarket: Dec 31, 2026 · Manifold: Jan 20, 2029",
+   "scenario": "The US acquires part of Greenland in June 2027. Polymarket resolves NO, while Manifold resolves YES.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:35.180Z"
+  },
+  "polymarket:billionaire-one-time-wealth-tax-passes-in-california-election-2026|manifold:9nsyLEANnz#59e5cb58fd9aaf0d#j2": {
+   "verdict": "different",
+   "why": "Scope — Polymarket: strict $1B wealth tax proposition · Manifold: any similar ballot measure",
+   "scenario": "A tax measure targeting $500M+ net worth passes in California. Polymarket resolves NO, while Manifold resolves YES.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:35.180Z"
+  },
+  "polymarket:will-the-republicans-win-the-2028-us-presidential-election|manifold:acuirwp6fw#addd499b46d550e6#j2": {
+   "verdict": "different",
+   "why": "Questions compare different entities (Republicans vs incumbent party).",
+   "scenario": "Democrats win in 2024 and Republicans win in 2028. Polymarket resolves YES, and Manifold also resolves YES because the incumbent party lost. If Democrats win in 2024 and Democrats win in 2028, Polymarket resolves NO and Manifold resolves YES, causing a divergence.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:35.180Z"
+  },
+  "limitless:another-fed-rate-hike-in-2026-1789636928078|manifold:PUu5UdNR6E#2bf695442c791fe2#j2": {
+   "verdict": "caveats",
+   "why": "Window — Limitless: late 2026 · Manifold: any time after September",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:37.822Z"
+  },
+  "limitless:us-recession-by-end-of-2026-1767804297592|manifold:ElSLRhzqyR#151b4863c5b4e0d9#j2": {
+   "verdict": "different",
+   "why": "GDP Window — Limitless: Q2 2025 to Q4 2026 · Manifold: Q1 2026 to Q4 2026",
+   "scenario": "A recession consisting of Q3 2025 and Q4 2025 negative GDP quarters would trigger YES on Limitless but NO on Manifold.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:37.822Z"
+  },
+  "limitless:will-china-invade-taiwan-by-end-of-2026-1768932552478|manifold:dSaVvMLpLbwaLLUGfGfK#b5dcf73078279684#j2": {
+   "verdict": "different",
+   "why": "Conditions — Manifold requires Trump to have won the 2024 election",
+   "scenario": "If an invasion occurs in 2026 under a non-Trump presidency, Limitless resolves YES and Manifold resolves N/A.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:37.822Z"
+  },
+  "limitless:brian-schatz-1785851933309|manifold:EzquAh9CtO#c2f7ab6995c65826#j2": {
+   "verdict": "equivalent",
+   "why": "Both resolve to YES if Brian Schatz is chosen as the next Senate Majority Leader following the 2026 elections.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:37.822Z"
+  },
+  "limitless:democratic-party-1785850263376|manifold:hS5cg06hdz#106d1009e37e0c8c#j2": {
+   "verdict": "caveats",
+   "why": "Tie-breaking rules — Limitless accounts for VP tie-breaker; Manifold specifies 51 seats.",
+   "scenario": "",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:37.822Z"
+  },
+  "limitless:will-trump-acquire-greenland-before-2027-1768930762585|manifold:y9RAdPnhOp#70db5516d269cdbe#j2": {
+   "verdict": "different",
+   "why": "Deadline — Limitless: 2026 · Manifold: 2029",
+   "scenario": "The US officially acquires part of Greenland in 2027. Limitless resolves NO, but Manifold resolves YES.",
+   "model": "gemini-3.5-flash-lite",
+   "at": "2026-09-25T17:13:41.284Z"
   }
  }
 }

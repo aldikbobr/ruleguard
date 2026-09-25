@@ -26,18 +26,27 @@ Even among the Polymarket ↔ Limitless “copies” one pair asks a different q
 
 `scripts/ai-analyze.mjs --sample` ran the AI review on the same 30 random-sample pairs (Sep 25, 2026; `gemini-3.5-flash-lite` on the free tier — the stronger `gemini-3.8-flash` had used up its daily free quota). Report: `research/ai-eval.json`.
 
+**Judge v2 (current)** — after v1 missed two one-sided clauses, the judge prompt now says that a clause stated on only one side that could change the outcome or its timing is at least “caveats”, and the judge sees the verified quotes, not just summaries.
+
 | Manual label ↓ / AI → | equivalent | caveats | different | uncertain |
 |---|---|---|---|---|
 | equivalent (18) | **18** | 0 | 0 | 0 |
-| caveats (6) | 2 | **4** | 0 | 0 |
-| different (6) | 0 | 1 | **5** | 0 |
+| caveats (6) | 1 | **2** | 3 | 0 |
+| different (6) | 0 | 0 | **6** | 0 |
 
-- **Same label in 27 of 30.** It caught **5 of 6** “different” pairs, and every pair it called “different” was different (5 of 5).
-- **Errors lean the risky way:** two pairs with caveats were called “equivalent” (Maine Senate: swearing-in vs election win; F1: a missing early-settlement clause), and one “different” pair was called “caveats” (it still named the deadline gap).
+| | v1 | **v2** |
+|---|---|---|
+| Same label | 27/30 | 26/30 |
+| “Different” pairs caught | 5/6 | **6/6** |
+| Dangerous: called “equivalent” when not | 2 | **1** (F1: a missing early-settlement clause) |
+| False alarm: called “different” when “caveats” | 0 | 3 |
+
+- **v2 errs on the safe side**, which is what a risk tool should do. Two of the three false alarms are arguable (“sworn in” vs “wins the election” can split on a contested result; an Oct vs Dec 2027 deadline can split if a government forms in between).
 - **Quotes:** 284 of 299 extracted quotes (95%) were found verbatim in the rules; the rest were discarded and the terms marked unknown.
-- The full run reviewed all 187 current pairs in ~9 minutes at no cost (1,458 of 1,551 quotes verified).
+- All 187 current pairs were reviewed at no cost: passports in ~9 minutes, the v2 re-judging in ~3 minutes (1,458 of 1,551 quotes verified).
+- **Refresh with AI:** when a pair's rules change, the ↻ button re-runs the AI for that pair (~10–15 s). In a simulated change (a “resolves 50-50 if unknown by Dec 31” clause added to one side) the verdict moved from “equivalent” to “different” with a concrete scenario.
 
-⚠️ The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat this as indicative. The prompts tell the model to prefer “uncertain” over “equivalent”, but in this run it never said “uncertain”; the two false “equivalent” calls are the thing to fix next.
+⚠️ v2 was tuned after seeing v1's errors **on these same 30 pairs**, so its numbers are optimistic until a fresh sample confirms them. The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat all of this as indicative.
 
 ## Step 1: proof of concept
 

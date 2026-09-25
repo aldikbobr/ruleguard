@@ -587,9 +587,11 @@ async function pullPrices() {
 // --- refresh one pair: refetch both markets' prices and rules on the server and re-compare them
 function pairNote(p) {
   if (!p.refreshedAt) return "";
-  const note = `Updated ${ago(Date.now() - p.refreshedAt)}`;
+  let note = `Updated ${ago(Date.now() - p.refreshedAt)}`;
+  if (p.aiNote) note += ` · ${p.aiNote}`;
   if (!p.rulesChanged) return note;
-  return `${note} · ⚠ Rules changed since the snapshot${p.verdict || p.sample || p.ai ? " — the review may be outdated" : ""}`;
+  const stale = p.verdict || p.sample || (p.ai && !p.aiFresh);
+  return `${note} · ⚠ Rules changed since the snapshot${stale ? " — the review may be outdated" : " — 🤖 AI re-reviewed it"}`;
 }
 // the ↻ button sits in the row itself, so a pair can be refreshed without expanding it
 async function refreshOne(k, button) {
@@ -613,6 +615,9 @@ async function refreshOne(k, button) {
       }
     }
     p.cmp = body.cmp;
+    if (body.ai) p.ai = body.ai; // the AI verdict for the current rules (from the cache, or redone if the rules changed)
+    p.aiFresh = Boolean(body.ai_fresh);
+    p.aiNote = body.ai_note || "";
     p.refreshedAt = Date.parse(body.fetched_at);
     p.rulesChanged = body.rules_changed.a || body.rules_changed.b;
     const old = document.getElementById(k);

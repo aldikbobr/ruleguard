@@ -1,11 +1,11 @@
 {
-  "at": "2026-09-25T16:48:10.434Z",
-  "prompt_version": 1,
+  "at": "2026-09-25T17:10:15.135Z",
+  "prompt_version": "1.2",
   "models": [
     "gemini-3.5-flash-lite"
   ],
   "n": 30,
-  "exact_agreement": 27,
+  "exact_agreement": 26,
   "matrix": {
     "equivalent": {
       "equivalent": 18,
@@ -14,30 +14,25 @@
       "uncertain": 0
     },
     "caveats": {
-      "equivalent": 2,
-      "caveats": 4,
-      "different": 0,
+      "equivalent": 1,
+      "caveats": 2,
+      "different": 3,
       "uncertain": 0
     },
     "different": {
       "equivalent": 0,
-      "caveats": 1,
-      "different": 5,
+      "caveats": 0,
+      "different": 6,
       "uncertain": 0
     }
   },
-  "different_recall": "5/6",
-  "different_precision": "5/5",
+  "different_recall": "6/6",
+  "different_precision": "6/9",
   "false_equivalent": [
-    {
-      "n": 25,
-      "human": "caveats",
-      "ai_why": "Both markets resolve based on a Republican winning the 2026 Maine Senate seat."
-    },
     {
       "n": 27,
       "human": "caveats",
-      "ai_why": "Both venues evaluate the 2026 F1 drivers' standings with identical deadlines and fallback rules."
+      "ai_why": "Both markets match on the 2026 F1 drivers' standings outcome, deadlines, and fallback rules."
     }
   ],
   "pairs": [
@@ -47,7 +42,7 @@
       "title": "Titans vs. Giants",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Identical game event, deadline, and 50-50 fallback for ties or cancellations.",
+      "why": "Identical game rules, deadlines, sources, and tie-breaking fallback outcomes.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -57,7 +52,7 @@
       "title": "Will the US confirm that aliens exist by September 30?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Matching criteria, government official sources, deadline, and No resolution fallback.",
+      "why": "Exact matching criteria for US official confirmation, deadlines, and fallback resolutions.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -66,9 +61,9 @@
       "venues": "kalshi-polymarket",
       "title": "Will Democratics win the Senate race in Kansas?",
       "human": "caveats",
-      "ai": "caveats",
-      "why": "Kalshi settles on swearing-in; Polymarket settles on election outcome.",
-      "scenario": "The election winner dies before being sworn in; Kalshi might void or resolve differently than Polymarket.",
+      "ai": "different",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: election winner.",
+      "scenario": "The Democratic candidate wins the election but dies or is disqualified before being sworn in, causing Kalshi to resolve No and Polymarket Yes.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -87,7 +82,7 @@
       "title": "Will Bitcoin dip to $76,000 September 21-27?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Identical Binance 1-minute candle price threshold and date parameters.",
+      "why": "Identical Binance 1-minute BTC/USDT low price conditions, dates, and data sources.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -96,9 +91,9 @@
       "venues": "kalshi-polymarket",
       "title": "Will Aleksandar Vučić become Prime Minister of Serbia following the next Serbian general election?",
       "human": "different",
-      "ai": "caveats",
-      "why": "Deadline — Kalshi: Dec 2028 · Polymarket: Jun 2028",
-      "scenario": "Vucic becomes Prime Minister in July 2028, causing Kalshi to resolve YES while Polymarket resolves to Other due to its earlier deadline.",
+      "ai": "different",
+      "why": "Deadlines differ — Kalshi: Dec 2028 · Polymarket: Jun 2028.",
+      "scenario": "Vučić is appointed Prime Minister in July 2028, causing Polymarket to resolve to Other and Kalshi to Yes.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -106,9 +101,9 @@
       "venues": "kalshi-polymarket",
       "title": "Will Benjamin Netanyahu become Prime Minister of Israel following the 2026 Israeli legislative election?",
       "human": "caveats",
-      "ai": "caveats",
-      "why": "Deadline — Kalshi: Oct 2027 · Polymarket: Dec 2027",
-      "scenario": "Netanyahu takes office in November 2027, making Kalshi resolve to No one and Polymarket resolve YES.",
+      "ai": "different",
+      "why": "Deadlines differ — Kalshi: Oct 2027 · Polymarket: Dec 2027.",
+      "scenario": "Netanyahu forms a government in November 2027, making Kalshi resolve to No one and Polymarket resolve to Yes.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -117,7 +112,7 @@
       "title": "US announces end of Iranian blockade by September 30, 2026?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Identical terms, sources, and deadlines for announcing the end of the Iranian blockade.",
+      "why": "Both markets match identically in terms, resolution criteria, and deadlines.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -127,7 +122,7 @@
       "title": "Iran charges Hormuz fees by December 31?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Identical events, deadlines, and criteria regarding Iran charging Hormuz fees.",
+      "why": "Both venues share identical definitions, sources, and target deadlines.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -137,7 +132,7 @@
       "title": "Panthers vs. Browns",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Identical game, deadline, and edge case handling for the Panthers vs. Browns NFL matchup.",
+      "why": "Both sports markets feature identical rules, game mappings, and tie resolutions.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -147,8 +142,8 @@
       "title": "Will Marine Le Pen win the 2027 French presidential election?",
       "human": "caveats",
       "ai": "caveats",
-      "why": "Polymarket specifies deadline and resolution source; Kalshi is implicit.",
-      "scenario": "Le Pen wins, but official certification is delayed past Polymarket's December 31 deadline, causing it to resolve to Other while Kalshi resolves YES.",
+      "why": "Fallback rules and specific source definitions differ slightly between venues.",
+      "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -157,7 +152,7 @@
       "title": "Will Ethereum reach $3,300 in September?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both use identical Binance source, thresholds, and timeframes.",
+      "why": "Both markets use identical underlying price sources, time windows, and threshold criteria.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -167,8 +162,8 @@
       "title": "Will Republican win the House race for VT-AL?",
       "human": "caveats",
       "ai": "caveats",
-      "why": "Kalshi allows early resolution on media projections; Polymarket waits for official results.",
-      "scenario": "Media projects a Republican win early based on exit polls, but a recount subsequently reverses the outcome before official certification.",
+      "why": "Settlement trigger — Kalshi: sworn in · Polymarket: wins election.",
+      "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -177,7 +172,7 @@
       "title": "Eagles vs. Bears",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both match on teams, rules, postponement handling, and 50-50 tie fallback.",
+      "why": "Both markets share identical game matching, postponement, cancellation, and scoring source rules.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -187,7 +182,7 @@
       "title": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets share identical conditions, deadlines, and swearing-in requirements.",
+      "why": "Both markets use identical criteria, deadlines, and swearing-in rules for the Israeli Prime Minister.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -197,7 +192,7 @@
       "title": "US-Iran Hormuz Agreement by September 30?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets share identical terms, deadlines, and criteria for the US-Iran Hormuz agreement.",
+      "why": "Identical definitions, deadlines, and resolution sources for the US-Iran Hormuz agreement.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -207,7 +202,7 @@
       "title": "Texans vs. Colts",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets have matching rules, deadlines, and 50-50 fallback outcomes for the Texans-Colts game.",
+      "why": "Identical game, time, rules, and 50-50 fallback for ties or cancellations.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -217,7 +212,7 @@
       "title": "Metamask FDV above $2B one day after launch?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets target Metamask's FDV threshold of $2B one day after launch with identical fallback rules.",
+      "why": "Both specify Metamask token FDV above $2B one day after launch.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -227,8 +222,8 @@
       "title": "Will Putin and Zelenskyy meet next in Turkey?",
       "human": "different",
       "ai": "different",
-      "why": "Deadline — Kalshi: December 31, 2028 · Limitless: December 31, 2026",
-      "scenario": "Putin and Zelenskyy meet in Turkey in 2027. Limitless resolves to No, while Kalshi remains open.",
+      "why": "Deadline — Kalshi: Dec 2028 · Limitless: Dec 2026",
+      "scenario": "Putin and Zelenskyy meet in Turkey in March 2027. Limitless resolves to No meeting before 2027, while Kalshi remains open and resolves Yes.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -237,7 +232,7 @@
       "title": "Clarity Act (H.R.3633) signed into law in 2026?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both venues track the exact same bill H.R.3633 with identical deadlines and legislative sources.",
+      "why": "Identical bill, deadline, and resolution sources for the Clarity Act.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -247,8 +242,8 @@
       "title": "Will Yair Golan be the next Prime Minister of Israel?",
       "human": "different",
       "ai": "different",
-      "why": "Interim PM rules differ — Kalshi counts interim appointments, Limitless explicitly excludes them.",
-      "scenario": "Yair Golan is appointed as an interim Prime Minister and serves briefly before a new election, but is never formally sworn in as a permanent PM. Kalshi would resolve YES, while Limitless would resolve NO.",
+      "why": "Interim roles — Kalshi: counts · Limitless: excludes",
+      "scenario": "Yair Golan serves as an interim Prime Minister and steps down before a formal vote, resolving Kalshi as YES and Limitless as NO.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -257,8 +252,8 @@
       "title": "Will Avigdor Lieberman be the next Prime Minister of Israel?",
       "human": "different",
       "ai": "different",
-      "why": "Interim PM rules differ — Kalshi counts acting appointments, Polymarket excludes them.",
-      "scenario": "Avigdor Lieberman takes office as an interim Prime Minister. Kalshi resolves YES, while Polymarket resolves NO.",
+      "why": "Interim roles — Kalshi: counts · Polymarket: excludes",
+      "scenario": "Avigdor Lieberman takes office as an interim Prime Minister but is never formally sworn in for a full term, causing Kalshi to resolve YES and Polymarket NO.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -267,8 +262,8 @@
       "title": "Where will Trump and Putin next meet?",
       "human": "different",
       "ai": "different",
-      "why": "Deadline — Kalshi: Jan 1, 2029 · Polymarket: Dec 31, 2026",
-      "scenario": "Trump and Putin meet in China in 2027. Polymarket resolves NO because it is past their 2026 deadline, while Kalshi resolves YES.",
+      "why": "Deadline — Kalshi: 2029 · Polymarket: 2026",
+      "scenario": "Trump and Putin meet in China in 2027, resolving Kalshi as YES and Polymarket as NO.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -277,7 +272,7 @@
       "title": "Will Ethereum reach $4,000 in September?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both use identical Binance ETH/USDT high price thresholds and exact time windows.",
+      "why": "Both use identical rules, Binance 1m High source, threshold, and September 2026 window.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -286,9 +281,9 @@
       "venues": "kalshi-polymarket",
       "title": "Will Republicans win the Senate race in Maine?",
       "human": "caveats",
-      "ai": "equivalent",
-      "why": "Both markets resolve based on a Republican winning the 2026 Maine Senate seat.",
-      "scenario": "",
+      "ai": "different",
+      "why": "Trigger — Kalshi: sworn in · Polymarket: election winner",
+      "scenario": "The Republican candidate wins the election in 2026 but dies before being sworn in for the 2027 term, making Polymarket YES and Kalshi NO.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -297,7 +292,7 @@
       "title": "US-Iran Final Nuclear Deal by December 31, 2026?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets share identical conditions, sources, and a December 31, 2026 deadline.",
+      "why": "Both markets match on the exact same event, deadline, and edge case rules for a US-Iran deal.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -307,7 +302,7 @@
       "title": "Will Kimi Antonelli be the 2026 F1 Drivers' Champion?",
       "human": "caveats",
       "ai": "equivalent",
-      "why": "Both venues evaluate the 2026 F1 drivers' standings with identical deadlines and fallback rules.",
+      "why": "Both markets match on the 2026 F1 drivers' standings outcome, deadlines, and fallback rules.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -317,7 +312,7 @@
       "title": "Will Anthropic IPO by December 15, 2026?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets have identical terms, deadlines, and identical handling of public acquisitions.",
+      "why": "Both markets share identical criteria, deadlines, and acquisition fallback terms for Anthropic's IPO.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     },
@@ -327,8 +322,8 @@
       "title": "Next US-Iran senior diplomatic meeting by September 30, 2026?",
       "human": "different",
       "ai": "different",
-      "why": "Different event definitions: Polymarket requires any senior diplomatic meeting, Limitless requires formal peace talks.",
-      "scenario": "A high-level sanctions negotiation occurs that is not classified as peace talks; Polymarket settles YES while Limitless settles NO.",
+      "why": "Deadline — Polymarket: March 31, 2027 · Limitless: September 30, 2026",
+      "scenario": "A diplomatic meeting occurs in December 2026. Limitless resolves to No as its deadline has passed, while Polymarket resolves to Yes.",
       "model": "gemini-3.5-flash-lite"
     },
     {
@@ -337,7 +332,7 @@
       "title": "US announces end of Iranian blockade by October 31, 2026?",
       "human": "equivalent",
       "ai": "equivalent",
-      "why": "Both markets share identical criteria, sources, and deadline dates for the US blockade announcement.",
+      "why": "Both venues specify the exact same announcement criteria, sources, and reversal rules regarding the Iranian blockade.",
       "scenario": "",
       "model": "gemini-3.5-flash-lite"
     }
