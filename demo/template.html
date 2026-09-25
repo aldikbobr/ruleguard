@@ -84,6 +84,7 @@ h2{font-size:19px;margin:32px 0 4px;letter-spacing:-.01em}
 .full{margin-top:8px}
 .full>summary{cursor:pointer;color:var(--muted);font-size:13px}
 .scn{font-size:13.5px;margin:8px 0}
+.aimodel{color:var(--muted);font-size:12px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
 .col h5{margin:0 0 4px;font-size:13px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .col .q{font-weight:600;margin:2px 0 6px;font-size:13.5px}
@@ -208,7 +209,7 @@ footer li{margin:3px 0}
   <b>How it works and limitations</b>
   <ul>
     <li>Pairs are matched by title similarity, with vetoes for mismatched numbers, years, months, parties, direction, tournament stage, outcomes and proper nouns.</li>
-    <li>The automatic 🔴/🟡/🟢 labels come from keyword rules, not AI. They are signals to check, not conclusions: “no differences found” does not mean “equivalent”.</li>
+    <li>🤖 marks pairs reviewed by AI (Gemini, free tier): it extracts each market's settlement terms with verbatim quotes (a quote not found in the rules is discarded) and then classifies the pair; it says “not sure” rather than “equivalent” when in doubt. Its accuracy against the manual labels is shown in the random-sample section. Pairs without 🤖, ✋ or 🎲 fall back to keyword rules, which are signals to check, not conclusions.</li>
     <li>✋ marks pairs reviewed by hand against the rule texts. They were picked as illustrative examples, so they are <b>not a random sample</b>. 🎲 marks pairs from the random sample.</li>
     <li>Raw spread = 1 − (YES on one venue + NO on the other), using ask prices from the APIs, without fees, book depth or slippage. In thin books it changes within minutes, so “Arbitrage traps” are ranked by the gap between mid prices (halfway between buying YES and buying NO), and markets with a YES/NO gap wider than 15 pts are excluded. No spread is shown for Manifold (play money).</li>
     <li>Kalshi's API exposes a summary of the rules (<code>rules_primary</code>); the full contract terms may add details.</li>
@@ -236,6 +237,7 @@ const daysApart = (x, y) => Math.abs(Date.parse(x) - Date.parse(y)) / 864e5;
 const fmtDate = d => d ? new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "—";
 const titleOf = p => `${p.a.title}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + p.a.outcome : ""}`;
 const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
+const AI_LABEL = { equivalent: "equivalent", caveats: "same with caveats", different: "different contracts", uncertain: "not sure" };
 const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
 const mkey = m => `${m.venue}:${m.id}`;
 const edgeHtml = p => `${p.edge == null ? "—" : (p.edge > 0 ? "+" : "") + cents(p.edge)}<small>${p.edge == null ? "no spread" : "raw spread"}</small>`;
@@ -247,9 +249,9 @@ function rawEdge(a, b) {
   const best = [x, y].filter(v => v != null).sort((p, q) => q - p)[0];
   return best == null ? null : Math.round(best * 1000) / 1000;
 }
-// precedence: manual review → random-sample label → automatic label
-const LABEL_RISK = { different: "different", caveats: "check", equivalent: "looks_equivalent" };
-const riskOf = p => p.verdict ? LABEL_RISK[p.verdict.verdict] : p.sample ? LABEL_RISK[p.sample.label] : p.cmp.cls;
+// precedence: manual review → random-sample label → AI review → keyword label
+const LABEL_RISK = { different: "different", caveats: "check", equivalent: "looks_equivalent", uncertain: "check" };
+const riskOf = p => p.verdict ? LABEL_RISK[p.verdict.verdict] : p.sample ? LABEL_RISK[p.sample.label] : p.ai ? LABEL_RISK[p.ai.verdict] : p.cmp.cls;
 
 // highlight the parts of the rules that usually decide settlement
 const HL = [
@@ -298,7 +300,7 @@ async function status() {
 }
 function showKeys(keys) {
   const item = (on, name, what) => `<span class="${on ? "on" : ""}" title="${esc(what)}">${on ? "✓" : "○"} ${esc(name)}: ${on ? "key connected" : "no key"}</span>`;
-  $("#conn").innerHTML = item(keys.anthropic, "AI rule review (Claude API)", "ANTHROPIC_API_KEY in the .env file") + item(keys.dflow, "Solana (DFlow)", "DFLOW_API_KEY in the .env file");
+  $("#conn").innerHTML = item(keys.gemini, "AI rule review (Gemini)", "GEMINI_API_KEY in the .env file") + item(keys.dflow, "Solana (DFlow)", "DFLOW_API_KEY in the .env file");
   $("#conn").hidden = false;
 }
 async function waitForRefresh() {
@@ -359,7 +361,8 @@ $("#tiles").innerHTML = `
   <div class="tile"><div class="v">${P.length}</div><div class="l">“identical” market pairs across ${DATA.venues.length} venues</div></div>
   <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 likely different contracts</div></div>
   <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 differences worth checking</div></div>
-  <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ reviewed by hand</div></div>`;
+  <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">✋ reviewed by hand</div></div>
+  ${DATA.ai_stats?.reviewed ? `<div class="tile"><div class="v">${DATA.ai_stats.reviewed}</div><div class="l">🤖 reviewed by AI (Gemini)</div></div>` : ""}`;
 
 // --- random sample
 const S = DATA.sample_stats;
@@ -375,6 +378,8 @@ if (S && S.all && S.all.n) {
     bar("Polymarket ↔ Limitless", `Limitless often copies Polymarket's rules: identical in ${S.polymarket_limitless.equivalent} of ${S.polymarket_limitless.n}`, S.polymarket_limitless) +
     bar("Whole sample", `${S.all.n} pairs`, S.all) +
     `<div class="legend"><span><i style="background:var(--red)"></i>different: a plausible scenario settles them differently</span><span><i style="background:var(--amber)"></i>caveats: they differ only in rare edge cases</span><span><i style="background:var(--green)"></i>equivalent in substance</span></div>`;
+  const E = DATA.ai_stats?.eval;
+  if (E) $("#sbars").insertAdjacentHTML("beforeend", `<div class="srow"><div class="lbl"><b>🤖 AI vs the manual labels</b><span>same label in ${E.exact_agreement} of ${E.n} · caught ${E.different_recall} “different” · wrongly said “equivalent”: ${E.false_equivalent}</span></div></div>`);
   $("#sample-note").textContent = `Reproducible (scripts/sample.mjs, seed ${S.seed}, data snapshot ${fmtTime(S.snapshot)}). Labeled by ${S.reviewer}. The sample is small and some pairs share one event (e.g. several Israeli PM candidates under the same rules), so treat the numbers as indicative, not as a precise rate.`;
 }
 
@@ -426,7 +431,7 @@ function render() {
 // List row: label, question, one-line "why", spread, refresh button. Expanded: a compact table; the full rules sit one level deeper.
 function card(p) {
   const r = riskOf(p);
-  const src = p.verdict ? `<span title="Reviewed by hand">✋</span> ` : p.sample ? `<span title="Random sample, pair #${p.sample.n}">🎲</span> ` : "";
+  const src = p.verdict ? `<span title="Reviewed by hand">✋</span> ` : p.sample ? `<span title="Random sample, pair #${p.sample.n}">🎲</span> ` : p.ai ? `<span title="AI review (${esc(p.ai.model)})">🤖</span> ` : "";
   const warn = p.rulesChanged ? `<span title="Rules changed since the snapshot">⚠</span> ` : "";
   const refresh = served ? `<button type="button" class="rbtn-sm" data-refresh="${esc(key(p))}" title="${esc(p.refreshedAt ? `Refresh this pair · ${pairNote(p)}` : "Refresh this pair")}" aria-label="Refresh this pair">↻</button>` : "";
   return `<details class="pair" id="${esc(key(p))}">
@@ -440,8 +445,9 @@ function card(p) {
     <div class="body">
       ${served ? `<div class="ptools"><span class="pmsg${p.rulesChanged ? " warn" : ""}">${esc(pairNote(p))}</span></div>` : ""}
       ${factsTable(p)}
-      <details class="full"><summary>Full rules${p.verdict ? " and scenario" : ""}</summary>
+      <details class="full"><summary>Full rules${p.verdict || p.ai?.scenario ? " and scenario" : ""}</summary>
         ${p.verdict ? `<p class="scn"><b>How they diverge:</b> ${esc(p.verdict.scenario)}</p>` : ""}
+        ${p.ai ? `<p class="scn">🤖 <b>AI review — ${esc(AI_LABEL[p.ai.verdict])}:</b> ${esc(p.ai.why)}${p.ai.scenario ? `<br><b>How they diverge:</b> ${esc(p.ai.scenario)}` : ""} <span class="aimodel">(${esc(p.ai.model)})</span></p>` : ""}
         ${p.sample ? `<p class="scn">🎲 <b>Sample pair #${p.sample.n}:</b> ${esc(p.sample.reason)}</p>` : ""}
         <div class="cols">${side(p.a)}${side(p.b)}</div>
       </details>
@@ -475,6 +481,7 @@ function dot(id) { return `<span class="dot" style="background:${V[id].color}" t
 function whyLine(p) {
   if (p.verdict?.short) return p.verdict.short;
   if (p.sample?.short) return p.sample.short;
+  if (p.ai?.why) return p.ai.verdict === "uncertain" ? `Unclear: ${p.ai.why}` : p.ai.why;
   const A = V[p.a.venue].name, B = V[p.b.venue].name, fa = p.cmp.facts?.a, fb = p.cmp.facts?.b;
   if (!fa || !fb) return "";
   if ((fa.status === DE_FACTO) !== (fb.status === DE_FACTO)) return `${A}: ${fa.status || "not stated"} · ${B}: ${fb.status || "not stated"}`;
@@ -582,7 +589,7 @@ function pairNote(p) {
   if (!p.refreshedAt) return "";
   const note = `Updated ${ago(Date.now() - p.refreshedAt)}`;
   if (!p.rulesChanged) return note;
-  return `${note} · ⚠ Rules changed since the snapshot${p.verdict || p.sample ? " — the review may be outdated" : ""}`;
+  return `${note} · ⚠ Rules changed since the snapshot${p.verdict || p.sample || p.ai ? " — the review may be outdated" : ""}`;
 }
 // the ↻ button sits in the row itself, so a pair can be refreshed without expanding it
 async function refreshOne(k, button) {

@@ -22,6 +22,23 @@ Even among the Polymarket ↔ Limitless “copies” one pair asks a different q
 
 ⚠️ **Limitations:** the sample is small (11 pairs in the main group); some pairs share one event (Israeli PM candidates under the same rules), so the observations aren't independent; the labels were made by Claude and not re-checked by a human; Kalshi's API exposes only summary rules; the population is the pairs our algorithm found (Polymarket's top 2,000 markets, at most 3 pairs per event), not every market on the venues. Treat the numbers as indicative, not as a precise rate.
 
+## AI rule review (Gemini) vs the manual labels
+
+`scripts/ai-analyze.mjs --sample` ran the AI review on the same 30 random-sample pairs (Sep 25, 2026; `gemini-3.5-flash-lite` on the free tier — the stronger `gemini-3.8-flash` had used up its daily free quota). Report: `research/ai-eval.json`.
+
+| Manual label ↓ / AI → | equivalent | caveats | different | uncertain |
+|---|---|---|---|---|
+| equivalent (18) | **18** | 0 | 0 | 0 |
+| caveats (6) | 2 | **4** | 0 | 0 |
+| different (6) | 0 | 1 | **5** | 0 |
+
+- **Same label in 27 of 30.** It caught **5 of 6** “different” pairs, and every pair it called “different” was different (5 of 5).
+- **Errors lean the risky way:** two pairs with caveats were called “equivalent” (Maine Senate: swearing-in vs election win; F1: a missing early-settlement clause), and one “different” pair was called “caveats” (it still named the deadline gap).
+- **Quotes:** 284 of 299 extracted quotes (95%) were found verbatim in the rules; the rest were discarded and the terms marked unknown.
+- The full run reviewed all 187 current pairs in ~9 minutes at no cost (1,458 of 1,551 quotes verified).
+
+⚠️ The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat this as indicative. The prompts tell the model to prefer “uncertain” over “equivalent”, but in this run it never said “uncertain”; the two false “equivalent” calls are the thing to fix next.
+
 ## Step 1: proof of concept
 
 - Loaded **54,636** open Kalshi markets and the **2,000** most active Polymarket markets (both APIs are public; no keys needed).

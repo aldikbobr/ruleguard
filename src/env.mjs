@@ -17,6 +17,7 @@ export function loadEnv(root) {
 // Which features the keys unlock: boolean flags only, never the values
 export function keyStatus() {
   return {
+    gemini: Boolean(process.env.GEMINI_API_KEY),
     anthropic: Boolean(process.env.ANTHROPIC_API_KEY),
     dflow: Boolean(process.env.DFLOW_API_KEY)
   };

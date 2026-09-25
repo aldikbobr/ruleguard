@@ -44,6 +44,21 @@ node scripts/build-demo.mjs --from-cache   # re-render the page only
 
 Requires Node.js 20+. No dependencies.
 
+## AI rule review (Gemini)
+
+`scripts/ai-analyze.mjs` reviews pairs with Gemini on the free tier (key from [aistudio.google.com](https://aistudio.google.com) in `.env` as `GEMINI_API_KEY`):
+
+1. **Market passport** — the model lists each market's settlement terms (event, threshold, deadline, window start, source, what counts and doesn't, edge cases, fallback outcomes), each with a verbatim quote. Quotes are checked against the rule text; a quote that isn't there is discarded and the term becomes `unknown`.
+2. **Pair verdict** — `equivalent`, `caveats`, `different` or `uncertain`, with a one-line reason and a divergence scenario. When in doubt the model is told to say `uncertain`, not `equivalent`.
+
+Results are cached in `research/ai-cache.json` (per market and rule-text hash), so reruns only analyze new markets and changed rules. `--sample` also scores the model against the 30 manually labeled pairs (`research/ai-eval.json`). The free tier is rate-limited and busy models return 503, so requests are spaced out and fall back from `gemini-3.8-flash` to `gemini-3.5-flash-lite`; the model used is recorded with each verdict.
+
+```bash
+node scripts/ai-analyze.mjs --sample   # 30 labeled pairs + accuracy report
+node scripts/ai-analyze.mjs --all      # every matched pair
+node scripts/build-demo.mjs --from-cache
+```
+
 ## How it works
 
 1. **Load** open markets and their rule texts: Kalshi (`rules_primary`/`rules_secondary`), Polymarket Gamma (`description`), Limitless (`description`), Manifold (`textDescription`, play money).

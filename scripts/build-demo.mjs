@@ -15,6 +15,7 @@ import * as manifold from "../src/venues/manifold.mjs";
 import { matchVenues } from "../src/match.mjs";
 import { compareRules, rawEdge } from "../src/compare.mjs";
 import { VERDICTS } from "../src/verdicts.mjs";
+import { loadCache, lookup } from "../src/ai/review.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => (a.startsWith("--") ? [...acc, [a.slice(2), arr[i + 1]]] : acc), []));
@@ -49,8 +50,25 @@ function attachSample(data) {
   };
 }
 
+// AI verdicts from research/ai-cache.json (made by scripts/ai-analyze.mjs) and the accuracy report, if present
+function attachAI(data) {
+  const { verdictOf } = lookup(loadCache(path.join(ROOT, "research", "ai-cache.json")));
+  for (const p of data.pairs) {
+    const v = verdictOf(p);
+    p.ai = v ? { verdict: v.verdict, why: v.why, scenario: v.scenario, model: v.model } : null;
+  }
+  const evalFile = path.join(ROOT, "research", "ai-eval.json");
+  const ev = fs.existsSync(evalFile) ? JSON.parse(fs.readFileSync(evalFile, "utf8")) : null;
+  data.ai_stats = {
+    reviewed: data.pairs.filter(p => p.ai).length,
+    models: [...new Set(data.pairs.filter(p => p.ai).map(p => p.ai.model))],
+    eval: ev && { n: ev.n, exact_agreement: ev.exact_agreement, different_recall: ev.different_recall, different_precision: ev.different_precision, false_equivalent: ev.false_equivalent.length, at: ev.at }
+  };
+}
+
 function renderDemo(data) {
   attachSample(data);
+  attachAI(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), template.replace("/*__DATA__*/null", json));
