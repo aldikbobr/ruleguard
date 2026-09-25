@@ -33,7 +33,7 @@ When served, the page shows how fresh the data is (green < 15 min, amber < 2 h, 
 
 **Auto-refresh (⏱ in the header):** choose how often prices update (30 s – 5 min, or off) and how often pairs and rules are fully rebuilt (15 min – 3 h, or off). Settings are saved in the browser; periodic work runs only while the tab is visible.
 
-**Refresh this pair:** each expanded pair has a button that refetches both markets' prices and rules (`GET /api/pair?key=…`), re-compares them and warns if the rules changed since the snapshot — in which case a manual review may be outdated.
+**Refresh one pair:** every row has a ↻ button that refetches both markets' prices and rules in about half a second (`GET /api/pair?key=…`), re-compares them and flags ⚠ if the rules changed since the snapshot — in which case a manual review may be outdated. It works without expanding the row.
 
 Rebuild with fresh data from all four venues (public APIs, no keys needed, ~2 min):
 

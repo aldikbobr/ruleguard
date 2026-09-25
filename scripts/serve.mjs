@@ -3,7 +3,7 @@
 //   GET  /api/status   — data snapshot time, whether a refresh is running, which keys are connected (yes/no only)
 //   POST /api/refresh  — runs scripts/build-demo.mjs in the background (one refresh at a time)
 //   GET  /api/prices   — live prices for every market in the matched pairs (cached for 25 s; no venue keys needed)
-//   GET  /api/pair?key=<venue:id|venue:id> — refetch one pair's prices and rules and re-compare them (cached for 10 s)
+//   GET  /api/pair?key=<venue:id|venue:id> — refetch one pair's prices and rules and re-compare them (cached for 3 s)
 // Listens on 127.0.0.1 only: the server is not reachable from other machines.
 import http from "node:http";
 import fs from "node:fs";
@@ -77,7 +77,7 @@ async function livePrices() {
 
 // "Refresh this pair": refetch both markets, keep the cached rules when a venue returns none,
 // re-compare, and report whether the rules changed since the snapshot (a manual review may then be outdated)
-const PAIR_TTL_MS = 10_000;
+const PAIR_TTL_MS = 3_000; // short: a pair can be refreshed again within seconds; this only absorbs double clicks
 const MAX_RULES = 8000; // same truncation as scripts/build-demo.mjs, so texts compare like for like
 const pairCache = new Map();
 const clip = s => (s.length > MAX_RULES ? s.slice(0, MAX_RULES) + " …" : s);
