@@ -20,7 +20,7 @@ export async function load({ pages = 20 } = {}) {
         event: m.events?.[0]?.title || "",
         title: m.question,
         outcome: m.groupItemTitle || "",
-        rules: [m.description, m.resolutionSource ? `Resolution source: ${m.resolutionSource}` : ""].filter(Boolean).join("\n\n"),
+        rules: rulesOf(m),
         close: m.endDate,
         yes, no,
         volume: num(m.volumeNum ?? m.volume),
@@ -30,6 +30,15 @@ export async function load({ pages = 20 } = {}) {
     await sleep(150);
   }
   return markets.filter(m => m.rules);
+}
+
+const rulesOf = m => [m.description, m.resolutionSource ? `Resolution source: ${m.resolutionSource}` : ""].filter(Boolean).join("\n\n");
+
+// One market with its current prices and rules (for "refresh this pair")
+export async function market(id) {
+  const [m] = await getJson(`${API}/markets?slug=${encodeURIComponent(id)}&limit=1`);
+  if (!m) throw new Error(`market not found: ${id}`);
+  return { rules: rulesOf(m), close: m.endDate, ...quote(m) };
 }
 
 // Buying YES = bestAsk; buying NO ≈ 1 − bestBid. Without a book, fall back to the last outcome prices.

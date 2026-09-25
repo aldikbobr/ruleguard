@@ -51,6 +51,17 @@ function quote(m) {
   return { yes: num(yesAsk) ?? num(yesMid), no: num(noAsk) ?? num(noMid) };
 }
 
+// One market with its current prices and rules (for "refresh this pair").
+// Rules may be empty for a child of a group market; the caller then keeps the cached rules.
+export async function market(id) {
+  const m = await getJson(`${API}/markets/${encodeURIComponent(id)}`);
+  return {
+    rules: stripHtml(m.description),
+    close: m.expirationTimestamp ? new Date(m.expirationTimestamp).toISOString() : null,
+    ...quote(m)
+  };
+}
+
 // Live prices: there is no batch endpoint, so one market per request, at most 6 at a time
 export async function prices(ids) {
   const out = new Map();

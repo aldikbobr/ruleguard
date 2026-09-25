@@ -2,7 +2,8 @@
 // Serves demo/ at http://localhost:4173 and refreshes the data from a button on the page.
 //   GET  /api/status   — data snapshot time, whether a refresh is running, which keys are connected (yes/no only)
 //   POST /api/refresh  — runs scripts/build-demo.mjs in the background (one refresh at a time)
-//   GET  /api/prices   — live prices for every market in the matched pairs (cached for 45 s; no venue keys needed)
+//   GET  /api/prices   — live prices for every market in the matched pairs (cached for 25 s; no venue keys needed)
+//   GET  /api/pair?key=<venue:id|venue:id> — refetch one pair's prices and rules and re-compare them (cached for 10 s)
 // Listens on 127.0.0.1 only: the server is not reachable from other machines.
 import http from "node:http";
 import fs from "node:fs";
@@ -14,6 +15,7 @@ import * as kalshi from "../src/venues/kalshi.mjs";
 import * as polymarket from "../src/venues/polymarket.mjs";
 import * as limitless from "../src/venues/limitless.mjs";
 import * as manifold from "../src/venues/manifold.mjs";
+import { compareRules, rawEdge } from "../src/compare.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DIR = path.join(ROOT, "demo");
@@ -38,6 +40,7 @@ function startRefresh() {
   child.stderr.on("data", collect);
   child.on("close", code => {
     Object.assign(priceCache, { at: 0, body: null }); // the set of pairs may have changed
+    pairCache.clear();
     Object.assign(job, { running: false, finishedAt: Date.now(), ok: code === 0, error: code === 0 ? null : `the build exited with code ${code}` });
     console.log(code === 0 ? "Refresh complete" : `Refresh failed (code ${code})`);
   });
@@ -45,7 +48,8 @@ function startRefresh() {
 }
 
 // Live prices: one shared request to the venues for all open tabs; the result lives for PRICE_TTL_MS
-const PRICE_TTL_MS = 45_000;
+// (shorter than the fastest auto-refresh option on the page, 30 s)
+const PRICE_TTL_MS = 25_000;
 const VENUES = { kalshi, polymarket, limitless, manifold };
 const priceCache = { at: 0, body: null, pending: null };
 
@@ -71,6 +75,40 @@ async function livePrices() {
   return priceCache.pending;
 }
 
+// "Refresh this pair": refetch both markets, keep the cached rules when a venue returns none,
+// re-compare, and report whether the rules changed since the snapshot (a manual review may then be outdated)
+const PAIR_TTL_MS = 10_000;
+const MAX_RULES = 8000; // same truncation as scripts/build-demo.mjs, so texts compare like for like
+const pairCache = new Map();
+const clip = s => (s.length > MAX_RULES ? s.slice(0, MAX_RULES) + " …" : s);
+const squash = s => String(s || "").replace(/\s+/g, " ").trim();
+const pairKey = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
+
+async function refreshPair(key) {
+  const hit = pairCache.get(key);
+  if (hit && Date.now() - hit.at < PAIR_TTL_MS) return hit.body;
+  const data = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  const p = data.pairs.find(x => pairKey(x) === key);
+  if (!p) throw Object.assign(new Error("this pair is not in the current data — reload the page"), { status: 404 });
+  const fresh = await Promise.all([p.a, p.b].map(m => VENUES[m.venue].market(m.id)));
+  const [a, b] = [p.a, p.b].map((m, i) => {
+    const f = fresh[i];
+    const rules = f.rules ? clip(f.rules) : m.rules;
+    return { market: { ...m, yes: f.yes, no: f.no, close: f.close ?? m.close, rules }, changed: Boolean(f.rules) && squash(rules) !== squash(m.rules) };
+  });
+  const [ma, mb] = [VENUES[p.a.venue].meta, VENUES[p.b.venue].meta];
+  const body = {
+    fetched_at: new Date().toISOString(),
+    a: a.market,
+    b: b.market,
+    cmp: compareRules(a.market, b.market, [ma.name, mb.name]),
+    edge: ma.money === "play" || mb.money === "play" ? null : rawEdge(a.market, b.market),
+    rules_changed: { a: a.changed, b: b.changed }
+  };
+  pairCache.set(key, { at: Date.now(), body });
+  return body;
+}
+
 function json(res, status, body) {
   res.writeHead(status, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" });
   res.end(JSON.stringify(body));
@@ -94,6 +132,12 @@ http.createServer((req, res) => {
 
   if (url.pathname === "/api/prices" && req.method === "GET") {
     livePrices().then(body => json(res, 200, body)).catch(e => json(res, 502, { error: e.message }));
+    return;
+  }
+
+  if (url.pathname === "/api/pair" && req.method === "GET") {
+    const key = url.searchParams.get("key") || "";
+    refreshPair(key).then(body => json(res, 200, body)).catch(e => json(res, e.status || 502, { error: e.message }));
     return;
   }
 

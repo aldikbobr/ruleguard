@@ -29,7 +29,11 @@ node scripts/serve.mjs      # http://localhost:4173
 
 When served, the page shows how fresh the data is (green < 15 min, amber < 2 h, red older) and has a **Refresh data** button that re-runs the pipeline on the local server (one run at a time, at most once per minute; the server listens on 127.0.0.1 only).
 
-**Live prices:** while the page is open, prices for all matched markets are refreshed every minute via `GET /api/prices` (Kalshi and Polymarket in batches, Limitless and Manifold per market; ~350 markets in ~4 s; cached for 45 s on the server). No venue API keys are needed — market data on all four venues is public. Pairs and rules change rarely and are refreshed with the button.
+**Live prices:** while the page is open, prices for all matched markets are refreshed via `GET /api/prices` (Kalshi and Polymarket in batches, Limitless and Manifold per market; ~350 markets in ~4 s; cached for 25 s on the server). No venue API keys are needed — market data on all four venues is public.
+
+**Auto-refresh (⏱ in the header):** choose how often prices update (30 s – 5 min, or off) and how often pairs and rules are fully rebuilt (15 min – 3 h, or off). Settings are saved in the browser; periodic work runs only while the tab is visible.
+
+**Refresh this pair:** each expanded pair has a button that refetches both markets' prices and rules (`GET /api/pair?key=…`), re-compares them and warns if the rules changed since the snapshot — in which case a manual review may be outdated.
 
 Rebuild with fresh data from all four venues (public APIs, no keys needed, ~2 min):
 

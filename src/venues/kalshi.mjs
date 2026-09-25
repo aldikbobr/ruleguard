@@ -35,6 +35,17 @@ export async function load({ pages = 30 } = {}) {
   return markets.filter(m => m.rules);
 }
 
+// One market with its current prices and rules (for "refresh this pair")
+export async function market(id) {
+  const { market: m } = await getJson(`${API}/markets/${encodeURIComponent(id)}`);
+  return {
+    rules: [m.rules_primary, m.rules_secondary].filter(Boolean).join("\n\n"),
+    close: m.close_time,
+    yes: num(m.yes_ask_dollars),
+    no: num(m.no_ask_dollars)
+  };
+}
+
 // Live prices for a list of tickers: batches of 50 via ?tickers=
 export async function prices(ids) {
   const out = new Map();

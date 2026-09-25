@@ -32,6 +32,17 @@ export async function load({ perSort = 1000 } = {}) {
   return [...byId.values()];
 }
 
+// One market with its current probability and rules (for "refresh this pair")
+export async function market(id) {
+  const m = await getJson(`${API}/market/${encodeURIComponent(id)}`);
+  return {
+    rules: (m.textDescription || "").trim(),
+    close: m.closeTime ? new Date(m.closeTime).toISOString() : null,
+    yes: num(m.probability),
+    no: m.probability != null ? 1 - m.probability : null
+  };
+}
+
 // Live probabilities (play money): one market per request, at most 6 at a time
 export async function prices(ids) {
   const out = new Map();

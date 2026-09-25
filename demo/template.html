@@ -95,6 +95,18 @@ footer li{margin:3px 0}
 .rbtn{font:inherit;font-size:13px;font-weight:550;padding:5px 12px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
 .rbtn:disabled{opacity:.55;cursor:progress}
 .fmsg{font-size:12.5px;color:var(--muted)}
+.auto{position:relative}
+.auto>summary{list-style:none;cursor:pointer;color:var(--fg)}
+.auto>summary::-webkit-details-marker{display:none}
+.apanel{position:absolute;z-index:20;top:calc(100% + 6px);left:0;min-width:250px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.apanel label{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px}
+.apanel select{font:inherit;font-size:13px;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.ahint{margin:0;font-size:12px;color:var(--muted)}
+.ptools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 6px}
+.pbtn{font:inherit;font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.pbtn:disabled{opacity:.55;cursor:progress}
+.pmsg{font-size:12.5px;color:var(--muted)}
+.pmsg.warn{color:var(--amber);font-weight:550}
 @keyframes flash{from{background:var(--mark)}to{background:transparent}}
 .flash{animation:flash 1.6s ease-out}
 .conn{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
@@ -122,6 +134,28 @@ footer li{margin:3px 0}
     <span class="fbadge" id="fbadge" role="status"><span class="fdot"></span><span id="ftext"></span></span>
     <span class="fbadge" id="pbadge" role="status" hidden><span class="fdot"></span><span id="ptext"></span></span>
     <button type="button" class="rbtn" id="refresh">↻ Refresh data</button>
+    <details class="auto" id="auto" hidden>
+      <summary class="fbadge" id="autosum">⏱ Auto-refresh</summary>
+      <div class="apanel">
+        <label>Prices
+          <select id="apPrices">
+            <option value="30">every 30 s</option>
+            <option value="60">every minute</option>
+            <option value="120">every 2 min</option>
+            <option value="300">every 5 min</option>
+            <option value="0">off</option>
+          </select></label>
+        <label>Pairs &amp; rules
+          <select id="apFull">
+            <option value="0">off</option>
+            <option value="15">every 15 min</option>
+            <option value="30">every 30 min</option>
+            <option value="60">every hour</option>
+            <option value="180">every 3 hours</option>
+          </select></label>
+        <p class="ahint">Runs while this page is open. Saved in this browser.</p>
+      </div>
+    </details>
     <span class="fmsg" id="fmsg" aria-live="polite"></span>
   </div>
   <div class="conn" id="conn" hidden></div>
@@ -171,6 +205,7 @@ footer li{margin:3px 0}
     <li>✋ marks pairs reviewed by hand against the rule texts. They were picked as illustrative examples, so they are <b>not a random sample</b>. 🎲 marks pairs from the random sample.</li>
     <li>Raw spread = 1 − (YES on one venue + NO on the other), using ask prices from the APIs, without fees, book depth or slippage. In thin books it changes within minutes, so “Arbitrage traps” are ranked by the gap between mid prices (halfway between buying YES and buying NO), and markets with a YES/NO gap wider than 15 pts are excluded. No spread is shown for Manifold (play money).</li>
     <li>Kalshi's API exposes a summary of the rules (<code>rules_primary</code>); the full contract terms may add details.</li>
+    <li>“Refresh this pair” refetches both markets and re-compares them in this page only; the saved snapshot changes on the next full refresh. Auto-refresh runs while the page is open and visible.</li>
     <li>Informational prototype. Not financial advice.</li>
   </ul>
 </footer>
@@ -277,13 +312,14 @@ async function waitForRefresh() {
     return;
   }
 }
-btn.addEventListener("click", async () => {
+// full refresh of pairs and rules — from the button or from auto-refresh
+async function startFullRefresh(prefix = "") {
   if (!served) {
     msg.textContent = "Refresh works when the demo is served: node scripts/serve.mjs → http://localhost:4173";
     return;
   }
   btn.disabled = true;
-  msg.textContent = "Starting a refresh (usually 1–3 minutes)…";
+  msg.textContent = `${prefix}Starting a refresh (usually 1–3 minutes)…`;
   try {
     const r = await fetch("/api/refresh", { method: "POST", headers: { "X-RuleGuard": "1" } });
     const body = await r.json().catch(() => ({}));
@@ -293,7 +329,8 @@ btn.addEventListener("click", async () => {
     msg.textContent = "The server isn't responding. Start it with: node scripts/serve.mjs";
   }
   btn.disabled = false;
-});
+}
+btn.addEventListener("click", () => startFullRefresh());
 if (served) {
   status().then(s => {
     showKeys(s.keys);
@@ -391,6 +428,7 @@ function card(p) {
       <div class="edge" data-edge="${esc(key(p))}">${edgeHtml(p)}</div>
     </summary>
     <div class="body">
+      ${served ? `<div class="ptools"><button type="button" class="pbtn" data-refresh="${esc(key(p))}">↻ Refresh this pair</button><span class="pmsg${p.rulesChanged ? " warn" : ""}">${esc(pairNote(p))}</span></div>` : ""}
       ${factsTable(p)}
       <details class="full"><summary>Full rules${p.verdict ? " and scenario" : ""}</summary>
         ${p.verdict ? `<p class="scn"><b>How they diverge:</b> ${esc(p.verdict.scenario)}</p>` : ""}
@@ -449,12 +487,31 @@ function openTrap(e) {
 }
 render();
 
-// --- live prices: the server pulls current prices from the venues once a minute (no keys needed); the page updates them in place
+// --- live prices: the server pulls current prices from the venues (no keys needed); the page updates them in place
 const byMkey = new Map(), byKey = new Map(P.map(p => [key(p), p]));
 for (const p of P) for (const m of [p.a, p.b]) { if (!byMkey.has(mkey(m))) byMkey.set(mkey(m), []); byMkey.get(mkey(m)).push(m); }
-let pricesAt = null, pricesCount = 0, pricesErrors = [], pricesFailed = false;
+let pricesAt = null, pricesCount = 0, pricesErrors = [], pricesFailed = false, pricesTriedAt = 0, pulling = false;
 
-function flash(el) { el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+function flash(el) { if (!el) return; el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+
+// --- auto-refresh settings (saved per browser; the page works with defaults if storage is unavailable)
+const AUTO_KEY = "ruleguard.autorefresh";
+const auto = { prices: 60, full: 0 };
+try { Object.assign(auto, JSON.parse(localStorage.getItem(AUTO_KEY) || "{}")); } catch { /* private mode or blocked storage */ }
+const every = s => s >= 60 ? `${s / 60} min` : `${s} s`;
+function paintAuto() {
+  $("#apPrices").value = String(auto.prices);
+  $("#apFull").value = String(auto.full);
+  $("#autosum").textContent = `⏱ Auto: prices ${auto.prices ? every(auto.prices) : "off"} · pairs ${auto.full ? every(auto.full * 60) : "off"}`;
+}
+for (const [id, field] of [["#apPrices", "prices"], ["#apFull", "full"]]) {
+  $(id).addEventListener("change", e => {
+    auto[field] = Number(e.target.value);
+    try { localStorage.setItem(AUTO_KEY, JSON.stringify(auto)); } catch { /* ignore */ }
+    paintAuto();
+    paintPrices();
+  });
+}
 
 function paintPrices() {
   const b = $("#pbadge");
@@ -465,26 +522,15 @@ function paintPrices() {
     return;
   }
   const age = Date.now() - pricesAt;
-  b.className = `fbadge ${pricesFailed || age > 3 * 60000 ? "fresh-mid" : "fresh-ok"}`;
-  $("#ptext").textContent = `Prices: live · ${age < 60000 ? `${Math.max(1, Math.round(age / 1000))} s ago` : ago(age)}`;
-  b.title = `Prices refresh every minute while the page is open. Prices received: ${pricesCount}.${pricesErrors.length ? " Errors: " + pricesErrors.join("; ") : ""}`;
+  const when = age < 60000 ? `${Math.max(1, Math.round(age / 1000))} s ago` : ago(age);
+  const stale = pricesFailed || !auto.prices || age > Math.max(3 * 60000, auto.prices * 2000);
+  b.className = `fbadge ${stale ? "fresh-mid" : "fresh-ok"}`;
+  $("#ptext").textContent = auto.prices ? `Prices: live · ${when}` : `Prices: auto-refresh off · ${when}`;
+  b.title = `${auto.prices ? `Prices refresh every ${every(auto.prices)} while the page is open.` : "Price auto-refresh is off."} Prices received: ${pricesCount}.${pricesErrors.length ? " Errors: " + pricesErrors.join("; ") : ""}`;
 }
 
-// the first load always runs; periodic ones only while the tab is visible, to go easy on the venues
-async function pullPrices(force = false) {
-  if (document.hidden && !force) return;
-  let body;
-  try {
-    const r = await fetch("/api/prices", { cache: "no-store" });
-    if (!r.ok) throw new Error(String(r.status));
-    body = await r.json();
-  } catch { pricesFailed = true; paintPrices(); return; }
-  const changed = new Set();
-  for (const [k, markets] of byMkey) {
-    const q = body.prices[k];
-    if (!q) continue;
-    for (const m of markets) if (q.yes !== m.yes || q.no !== m.no) { m.yes = q.yes; m.no = q.no; changed.add(k); }
-  }
+// redraw prices and spreads in place for the given changed market keys
+function repaint(changed) {
   for (const p of P) if (V[p.a.venue].money !== "play" && V[p.b.venue].money !== "play") p.edge = rawEdge(p.a, p.b);
   for (const el of document.querySelectorAll("[data-px]")) {
     const m = byMkey.get(el.dataset.px)?.[0];
@@ -499,16 +545,97 @@ async function pullPrices(force = false) {
     if (el.innerHTML !== h) { el.innerHTML = h; flash(el); }
   }
   renderTraps();
-  pricesAt = Date.parse(body.fetched_at); pricesCount = body.count; pricesErrors = body.errors || []; pricesFailed = false;
+}
+
+async function pullPrices() {
+  if (pulling) return;
+  pulling = true; pricesTriedAt = Date.now();
+  try {
+    const r = await fetch("/api/prices", { cache: "no-store" });
+    if (!r.ok) throw new Error(String(r.status));
+    const body = await r.json();
+    const changed = new Set();
+    for (const [k, markets] of byMkey) {
+      const q = body.prices[k];
+      if (!q) continue;
+      for (const m of markets) if (q.yes !== m.yes || q.no !== m.no) { m.yes = q.yes; m.no = q.no; changed.add(k); }
+    }
+    repaint(changed);
+    pricesAt = Date.parse(body.fetched_at); pricesCount = body.count; pricesErrors = body.errors || []; pricesFailed = false;
+  } catch { pricesFailed = true; }
+  pulling = false;
   paintPrices();
 }
 
+// --- refresh one pair: refetch both markets' prices and rules on the server and re-compare them
+function pairNote(p) {
+  if (!p.refreshedAt) return "";
+  const note = `Updated ${ago(Date.now() - p.refreshedAt)}`;
+  if (!p.rulesChanged) return note;
+  return `${note} · ⚠ Rules changed since the snapshot${p.verdict || p.sample ? " — the review may be outdated" : ""}`;
+}
+async function refreshOne(k, button) {
+  const p = byKey.get(k);
+  if (!p) return;
+  const note = button.parentElement.querySelector(".pmsg");
+  button.disabled = true;
+  note.className = "pmsg";
+  note.textContent = "Refreshing…";
+  try {
+    const r = await fetch(`/api/pair?key=${encodeURIComponent(k)}`, { cache: "no-store" });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(body.error || `error ${r.status}`);
+    const changed = new Set();
+    for (const side of ["a", "b"]) {
+      const f = body[side], k2 = mkey(p[side]);
+      for (const m of byMkey.get(k2) || [p[side]]) {
+        if (m.yes !== f.yes || m.no !== f.no) changed.add(k2);
+        Object.assign(m, { yes: f.yes, no: f.no, close: f.close, rules: f.rules });
+      }
+    }
+    p.cmp = body.cmp;
+    p.refreshedAt = Date.parse(body.fetched_at);
+    p.rulesChanged = body.rules_changed.a || body.rules_changed.b;
+    const old = document.getElementById(k);
+    if (old) {
+      const holder = document.createElement("div");
+      holder.innerHTML = card(p);
+      const fresh = holder.firstElementChild;
+      fresh.open = true;
+      old.replaceWith(fresh);
+      flash(fresh.querySelector(".ft"));
+    }
+    repaint(changed);
+  } catch (e) {
+    note.textContent = `Refresh failed: ${e.message}`;
+    button.disabled = false;
+  }
+}
+$("#list").addEventListener("click", e => {
+  const b = e.target.closest("[data-refresh]");
+  if (b) { e.preventDefault(); refreshOne(b.dataset.refresh, b); }
+});
+
 if (served) {
+  $("#auto").hidden = false;
+  paintAuto();
   paintPrices();
-  pullPrices(true);
-  setInterval(pullPrices, 60000);
-  setInterval(paintPrices, 5000);
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() - (pricesAt || 0) > 60000) pullPrices(); });
+  pullPrices(); // the first load always runs; later ones follow the auto-refresh settings
+  let fullTriedAt = 0;
+  setInterval(() => {
+    paintPrices();
+    for (const el of document.querySelectorAll(".pair[open] .pmsg:not(:empty)")) {
+      const p = byKey.get(el.closest(".pair").id);
+      if (p?.refreshedAt) el.textContent = pairNote(p);
+    }
+    if (document.hidden) return; // periodic work only while the tab is visible, to go easy on the venues
+    if (auto.prices && Date.now() - pricesTriedAt >= auto.prices * 1000) pullPrices();
+    const age = Date.now() - Date.parse(DATA.generated_at);
+    if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 5 * 60000) {
+      fullTriedAt = Date.now();
+      startFullRefresh("Auto-refresh: ");
+    }
+  }, 5000);
 }
 </script>
 </body>
