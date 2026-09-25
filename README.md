@@ -27,6 +27,8 @@ Open `demo/index.html` in a browser, or serve it:
 node scripts/serve.mjs      # http://localhost:4173
 ```
 
+When served, the page shows how fresh the data is (green < 15 min, amber < 2 h, red older) and has a **Refresh data** button that re-runs the pipeline on the local server (one run at a time, at most once per minute; the server listens on 127.0.0.1 only).
+
 Rebuild with fresh data from all four venues (public APIs, no keys needed, ~2 min):
 
 ```bash
