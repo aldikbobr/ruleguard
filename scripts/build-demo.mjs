@@ -4,7 +4,7 @@
 //
 // Usage:  node scripts/build-demo.mjs [--per-venue-pair 100] [--kalshi-pages 30]
 //         node scripts/build-demo.mjs --from-cache   (re-render the page from saved data only)
-//         add --static <file> to also write a hosted snapshot (no live prices or refresh buttons)
+//         add --static <file> or --static-page <file> to also write a hosted snapshot (no live prices or refresh buttons)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -105,10 +105,15 @@ function renderDemo(data) {
   attachChain(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), fill(template, data));
-  // --static <file>: a snapshot for hosting without the local server (refresh controls hidden)
+  // --static <file>: a snapshot for hosting without the local server (refresh controls hidden), as a fragment
+  // for hosts that add their own <html>/<head>/<body>; --static-page <file>: the same snapshot as a complete page
   if (args.static) {
     fs.writeFileSync(path.resolve(args.static), fragment(fill(template, { ...data, static: true })));
     console.log(`Static snapshot: ${path.resolve(args.static)}`);
+  }
+  if (args["static-page"]) {
+    fs.writeFileSync(path.resolve(args["static-page"]), fill(template, { ...data, static: true }));
+    console.log(`Static page: ${path.resolve(args["static-page"])}`);
   }
 }
 
