@@ -4,6 +4,7 @@
 //
 // Usage:  node scripts/build-demo.mjs [--per-venue-pair 100] [--kalshi-pages 30]
 //         node scripts/build-demo.mjs --from-cache   (re-render the page from saved data only)
+//         add --static <file> to also write a hosted snapshot (no live prices or refresh buttons)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -72,12 +73,26 @@ function attachAI(data) {
   };
 }
 
+// a replacer function, so "$&" or "$'" in rule texts isn't treated as a replacement pattern
+const fill = (template, data) => template.replace("/*__DATA__*/null", () => JSON.stringify(data).replace(/</g, "\\u003c"));
+
+// hosts that wrap the page in their own <html>/<head>/<body> get only the title, the styles and the body
+function fragment(html) {
+  const head = html.match(/<head>([\s\S]*?)<\/head>/)[1].replace(/<meta[^>]*>\s*/g, "");
+  const body = html.match(/<body>([\s\S]*)<\/body>/)[1];
+  return `${head.trim()}\n${body.trim()}\n`;
+}
+
 function renderDemo(data) {
   attachSample(data);
   attachAI(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
-  const json = JSON.stringify(data).replace(/</g, "\\u003c");
-  fs.writeFileSync(path.join(ROOT, "demo", "index.html"), template.replace("/*__DATA__*/null", json));
+  fs.writeFileSync(path.join(ROOT, "demo", "index.html"), fill(template, data));
+  // --static <file>: a snapshot for hosting without the local server (refresh controls hidden)
+  if (args.static) {
+    fs.writeFileSync(path.resolve(args.static), fragment(fill(template, { ...data, static: true })));
+    console.log(`Static snapshot: ${path.resolve(args.static)}`);
+  }
 }
 
 // --from-cache: re-render the page from research/pairs-all.json without fetching the venues
@@ -153,5 +168,5 @@ fs.writeFileSync(path.join(ROOT, "research", "pairs-all.json"), JSON.stringify(d
 renderDemo(data);
 
 const by = c => pairs.filter(p => p.cmp.cls === c).length;
-console.log(`\nPairs: ${pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | reviewed by hand: ${pairs.filter(p => p.verdict).length}`);
+console.log(`\nPairs: ${pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | reviewed in depth: ${pairs.filter(p => p.verdict).length}`);
 console.log(`Demo: ${path.join(ROOT, "demo", "index.html")}  (${Math.round((Date.now() - t0) / 1000)} s)`);

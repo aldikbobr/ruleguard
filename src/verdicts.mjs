@@ -1,4 +1,4 @@
-// Pairs reviewed by hand (Sep 25, 2026), based on Kalshi's summary rules (rules_primary) and Polymarket's description.
+// Pairs reviewed in depth (Sep 25, 2026) by an AI assistant (Claude), not yet re-checked by a person, based on Kalshi's summary rules (rules_primary) and Polymarket's description.
 // Key: "<id on the first venue>|<id on the second>". Hand-picked examples, not a random sample — see research/FINDINGS.md.
 
 export const VERDICTS = {
