@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+.solana/
 
 # dependencies and local files
 node_modules/
