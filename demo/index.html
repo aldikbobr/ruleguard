@@ -146,7 +146,7 @@ footer li{margin:3px 0}
   <div class="fresh">
     <span class="fbadge" id="fbadge" role="status"><span class="fdot"></span><span id="ftext"></span></span>
     <span class="fbadge" id="pbadge" role="status" hidden><span class="fdot"></span><span id="ptext"></span></span>
-    <button type="button" class="rbtn" id="refresh">↻ Refresh data</button>
+    <button type="button" class="rbtn" id="refresh">↻ Refresh all pairs</button>
     <details class="auto" id="auto" hidden>
       <summary class="fbadge" id="autosum">⏱ Auto-refresh</summary>
       <div class="apanel">
@@ -161,6 +161,7 @@ footer li{margin:3px 0}
         <label>Pairs &amp; rules
           <select id="apFull">
             <option value="0">off</option>
+            <option value="5">every 5 min</option>
             <option value="15">every 15 min</option>
             <option value="30">every 30 min</option>
             <option value="60">every hour</option>
@@ -219,7 +220,7 @@ footer li{margin:3px 0}
     <li>Raw spread = 1 − (YES on one venue + NO on the other), using ask prices from the APIs, without fees, book depth or slippage. In thin books it changes within minutes, so “Arbitrage traps” are ranked by the gap between mid prices (halfway between buying YES and buying NO), and markets with a YES/NO gap wider than 15 pts are excluded. No spread is shown for Manifold (play money).</li>
     <li id="chainNote" hidden></li>
     <li>Kalshi's API exposes a summary of the rules (<code>rules_primary</code>); the full contract terms may add details.</li>
-    <li>In the local version (<code>node scripts/serve.mjs</code>) prices update live, and the ↻ button on each pair refetches both markets and re-compares them in this page only; the saved snapshot changes on the next full refresh. Auto-refresh runs while the page is open and visible.</li>
+    <li>With live data (the hosted demo or <code>node scripts/serve.mjs</code>) prices update on a timer, the ↻ button on a pair refetches both markets' prices and rules and re-compares them (and re-runs the AI review if the rules changed), and “Refresh all pairs” does that for every pair; locally it also rebuilds the list of pairs. Auto-refresh (⏱) runs while the page is open and visible.</li>
     <li>Informational prototype. Not financial advice.</li>
   </ul>
 </footer>
@@ -293,17 +294,19 @@ function ago(ms) {
   if (h < 48) return rtf.format(-h, "hour");
   return rtf.format(-Math.round(h / 24), "day");
 }
+// hosted: the page runs on the hosted demo (api/ functions): no rebuild, "Refresh all pairs" refreshes them in place
+let hosted = false, allRefreshedAt = 0;
 function paintFreshness() {
   if (STATIC) {
     $("#fbadge").className = "fbadge";
     $("#ftext").textContent = `Snapshot: ${fmtTime(DATA.generated_at)}`;
     return;
   }
-  const age = Date.now() - Date.parse(DATA.generated_at);
+  const age = Date.now() - Math.max(Date.parse(DATA.generated_at), allRefreshedAt);
   const cls = age < 15 * 60000 ? "fresh-ok" : age < 2 * 3600000 ? "fresh-mid" : "fresh-old";
   $("#fbadge").className = `fbadge ${cls}`;
   $("#ftext").textContent = `${served ? "Pairs & rules" : "Data"}: ${ago(age)}`;
-  $("#fbadge").title = `Data snapshot: ${fmtTime(DATA.generated_at)}. Green: under 15 minutes old; amber: under 2 hours; red: older.`;
+  $("#fbadge").title = `Pairs matched ${fmtTime(DATA.generated_at)}${allRefreshedAt ? `; prices and rules of every pair rechecked ${fmtTime(allRefreshedAt)}` : ""}. Green: under 15 minutes old; amber: under 2 hours; red: older.`;
 }
 paintFreshness();
 setInterval(paintFreshness, 30000);
@@ -315,9 +318,10 @@ async function status() {
   if (!r.ok) throw new Error(`status ${r.status}`);
   return r.json();
 }
+// only what is switched on: a visitor has nothing to do with a missing key
 function showKeys(keys) {
-  const item = (on, name, what) => `<span class="${on ? "on" : ""}" title="${esc(what)}">${on ? "✓" : "○"} ${esc(name)}: ${on ? "key connected" : "no key"}</span>`;
-  $("#conn").innerHTML = item(keys.gemini, "AI rule review (Gemini)", "GEMINI_API_KEY in the .env file") + item(keys.dflow, "Solana (DFlow)", "DFLOW_API_KEY in the .env file");
+  if (!keys?.gemini) return;
+  $("#conn").innerHTML = `<span class="on" title="When a venue changes a pair's rules, its ↻ button asks Gemini for a new review">✓ AI re-review on rule changes (Gemini)</span>`;
   $("#conn").hidden = false;
 }
 async function waitForRefresh() {
@@ -356,15 +360,19 @@ async function startFullRefresh(prefix = "") {
   }
   btn.disabled = false;
 }
-btn.addEventListener("click", () => startFullRefresh());
+btn.addEventListener("click", () => hosted ? refreshAll() : startFullRefresh());
 if (served) {
+  btn.disabled = true; // until the server says what kind of refresh it supports
   status().then(s => {
+    hosted = Boolean(s.hosted);
+    btn.disabled = false;
+    btn.title = hosted ? "Refetch the prices and rules of every pair and re-compare them" : "Refetch everything from the venues and rebuild the list of pairs (1–3 minutes)";
     showKeys(s.keys);
     if (s.refreshing) { msg.textContent = "A refresh is running…"; waitForRefresh(); }
     else if (s.generated_at && Date.parse(s.generated_at) > Date.parse(DATA.generated_at)) {
       msg.innerHTML = `Newer data is available. <a href="" onclick="location.reload();return false">Reload</a>`;
     }
-  }).catch(() => {});
+  }).catch(() => { btn.disabled = false; });
 } else if (STATIC) {
   btn.hidden = true;
 } else {
@@ -628,17 +636,18 @@ function pairNote(p) {
   const stale = p.verdict || p.sample || (p.ai && !p.aiFresh);
   return `${note} · ⚠ Rules changed since the snapshot${stale ? " — the review may be outdated" : " — 🤖 AI re-reviewed it"}`;
 }
-// the ↻ button sits in the row itself, so a pair can be refreshed without expanding it
-async function refreshOne(k, button) {
+// the ↻ button sits in the row itself, so a pair can be refreshed without expanding it.
+// ai: false skips a fresh AI review (used by "Refresh all pairs"). Returns whether the refresh worked.
+async function refreshOne(k, button, { ai = true } = {}) {
   const p = byKey.get(k);
-  if (!p || button.classList.contains("spin")) return;
+  if (!p || button?.classList.contains("spin")) return false;
   const note = document.getElementById(k)?.querySelector(".pmsg");
-  button.classList.remove("done", "fail");
-  button.classList.add("spin");
-  button.title = "Refreshing…";
+  button?.classList.remove("done", "fail");
+  button?.classList.add("spin");
+  if (button) button.title = "Refreshing…";
   if (note) { note.className = "pmsg"; note.textContent = "Refreshing…"; }
   try {
-    const r = await fetch(`/api/pair?key=${encodeURIComponent(k)}`, { cache: "no-store" });
+    const r = await fetch(`/api/pair?key=${encodeURIComponent(k)}${ai ? "" : "&ai=0"}`, { cache: "no-store" });
     const body = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(body.error || `error ${r.status}`);
     const changed = new Set();
@@ -671,17 +680,42 @@ async function refreshOne(k, button) {
       }
     }
     repaint(changed);
+    return true;
   } catch (e) {
-    button.classList.remove("spin");
-    button.classList.add("fail");
-    button.title = `Refresh failed: ${e.message}`;
+    button?.classList.remove("spin");
+    button?.classList.add("fail");
+    if (button) button.title = `Refresh failed: ${e.message}`;
     if (note) note.textContent = `Refresh failed: ${e.message}`;
+    return false;
   }
 }
 $("#list").addEventListener("click", e => {
   const b = e.target.closest("[data-refresh]");
   if (b) { e.preventDefault(); refreshOne(b.dataset.refresh, b); }
 });
+
+// "Refresh all pairs" on the hosted demo: every pair's prices and rules, six at a time, updated in place
+async function refreshAll(prefix = "") {
+  if (btn.disabled) return;
+  btn.disabled = true;
+  const queue = P.map(key);
+  let done = 0, failed = 0;
+  const worker = async () => {
+    for (let k; (k = queue.shift()) !== undefined;) {
+      const button = document.getElementById(k)?.querySelector("summary [data-refresh]");
+      if (!(await refreshOne(k, button, { ai: false }))) failed++;
+      msg.textContent = `${prefix}Refreshing pairs… ${++done} of ${P.length}`;
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, worker));
+  allRefreshedAt = Date.now();
+  paintFreshness();
+  const changedRules = P.filter(p => p.rulesChanged).length;
+  msg.textContent = `${prefix}All ${P.length} pairs refreshed at ${new Date().toLocaleTimeString("en-US", { timeStyle: "short" })}` +
+    `${changedRules ? ` · rules changed in ${changedRules} (marked ⚠; press their ↻ for a new AI review)` : " · no rule changes"}` +
+    `${failed ? ` · ${failed} could not be reached` : ""}.`;
+  btn.disabled = false;
+}
 
 if (served) {
   $("#auto").hidden = false;
@@ -697,10 +731,11 @@ if (served) {
     }
     if (document.hidden) return; // periodic work only while the tab is visible, to go easy on the venues
     if (auto.prices && Date.now() - pricesTriedAt >= auto.prices * 1000) pullPrices();
-    const age = Date.now() - Date.parse(DATA.generated_at);
-    if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 5 * 60000) {
+    const age = Date.now() - Math.max(Date.parse(DATA.generated_at), allRefreshedAt);
+    if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 4 * 60000) {
       fullTriedAt = Date.now();
-      startFullRefresh("Auto-refresh: ");
+      if (hosted) refreshAll("Auto-refresh: ");
+      else startFullRefresh("Auto-refresh: ");
     }
   }, 5000);
 }

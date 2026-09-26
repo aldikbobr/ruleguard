@@ -13,7 +13,11 @@ node scripts/serve.mjs   # http://localhost:4173, listens on 127.0.0.1 only
 | `GET` | `/api/status` | Snapshot time, whether a refresh is running, the last log lines, and which keys are connected (`true`/`false` only, never the keys) |
 | `POST` | `/api/refresh` | Re-runs the whole pipeline. Requires the header `X-RuleGuard: 1`. Returns `202` when started, `409` if a refresh is already running, `429` if the last one was less than a minute ago |
 | `GET` | `/api/prices` | Current YES/NO ask prices for every matched market, cached for 25 s |
-| `GET` | `/api/pair?key=<venue:id>\|<venue:id>` | Refetches both markets' prices and rules, re-compares them, and re-runs the AI review if the rules changed since the snapshot. Cached for 3 s |
+| `GET` | `/api/pair?key=<venue:id>\|<venue:id>[&ai=0]` | Refetches both markets' prices and rules, re-compares them, and re-runs the AI review if the rules changed since the snapshot (`ai=0` skips a fresh AI review; "Refresh all pairs" uses it). Cached for 3 s |
+
+## Hosted demo (Vercel)
+
+The same endpoints run as serverless functions from `api/` (`status`, `prices`, `pair`), sharing their logic with the local server through `src/live.mjs`; `vercel.json` builds the page from the committed data. Kalshi and Limitless don't allow browser requests from other sites (no CORS), which is why the live buttons need a server rather than a static page. On the hosted demo there is no `/api/refresh` (no writable storage), so "Refresh all pairs" refetches the prices and rules of every pair in place. At most four fresh AI reviews run per minute, so a public page can't exhaust the free Gemini quota; set `GEMINI_API_KEY` in the Vercel project to enable them.
 
 ### `GET /api/pair` response
 

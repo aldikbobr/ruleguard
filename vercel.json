@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/build-demo.mjs --from-cache",
+  "outputDirectory": "demo",
+  "functions": {
+    "api/*.mjs": {
+      "maxDuration": 30,
+      "includeFiles": "research/{pairs-all,ai-cache}.json"
+    }
+  }
+}

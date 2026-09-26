@@ -36,7 +36,9 @@ const rulesOf = m => [m.description, m.resolutionSource ? `Resolution source: ${
 
 // One market with its current prices and rules (for "refresh this pair")
 export async function market(id) {
-  const [m] = await getJson(`${API}/markets?slug=${encodeURIComponent(id)}&limit=1`);
+  // Gamma leaves closed markets out unless asked, and a matched market may have closed since the snapshot
+  const find = async extra => (await getJson(`${API}/markets?slug=${encodeURIComponent(id)}${extra}&limit=1`))[0];
+  const m = (await find("")) ?? (await find("&closed=true"));
   if (!m) throw new Error(`market not found: ${id}`);
   return { rules: rulesOf(m), close: m.endDate, ...quote(m) };
 }
