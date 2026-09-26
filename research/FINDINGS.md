@@ -62,6 +62,8 @@ To test v2 fairly, `scripts/sample.mjs --seed 20260926 --exclude random-sample.j
 - One “uncertain” (Kalshi's one-line rule summary for the French election), which is the intended behavior when a side says too little.
 - **Quotes:** 291 of 299 (97%) found verbatim.
 
+**A right class with a wrong scenario.** For "Bitcoin reaches $86,000, Sep 21–27" (Polymarket vs Limitless) the AI correctly called the pair `different` because the windows start on different days, but its scenario had the logic reversed. The real split: Polymarket counts prices only after its market opened (Sep 23, 16:57 UTC), Limitless from 12:00 AM ET on Sep 21. It already happened: on Sep 26 Limitless had resolved Yes, while Polymarket's Yes traded at 7.5¢ with the week still running. An in-depth review now replaces the AI scenario for this pair in the demo. The scenario text is less reliable than the class, which is why the pitch materials quote only in-depth reviews.
+
 ⚠️ v2 was tuned after seeing v1's errors **on the first 30 pairs**, so the table above that one is optimistic; the held-out table is the one to quote. The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat all of this as indicative.
 
 ## Step 1: proof of concept
@@ -133,7 +135,8 @@ The step-1 files in `research/` (`report.html`, `pairs.csv`, `pairs.json`) were 
 
 ## Next steps
 
-1. An independent human check of the random-sample labels.
-2. **AI market passport** — structured rule extraction with an exact quote per field (needs a Claude API key in `.env`).
+1. An independent human check of the 60 labeled pairs (random and held-out).
+2. ~~AI market passport~~ — done (Gemini, see above).
 3. Find a way to get Kalshi's full contract terms.
-4. Solana: Kalshi markets via DFlow (needs a DFlow API key).
+4. Solana: Kalshi markets via DFlow (needs a DFlow API key); verdicts are already attested on devnet.
+5. Settled pairs: how often "the same" market actually settled in opposite directions (`scripts/closed-pairs.mjs`).

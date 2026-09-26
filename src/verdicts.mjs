@@ -97,5 +97,12 @@ export const VERDICTS = {
     short: "Nearly identical; Polymarket's window starts Jan 9, 2026",
     summary: "Same source (Arkham Intel Explorer). Polymarket's window starts Jan 9, 2026, and it falls back to a consensus of sources if Arkham goes offline.",
     scenario: "They split if Arkham is unavailable or if coins moved before Jan 9, 2026."
+  },
+  // Added Sep 26, 2026. The AI got the class right but reversed the scenario, so this review replaces it in the demo.
+  "will-bitcoin-reach-86k-september-21-27-2026-from-september-23|86000-1789963519679": {
+    verdict: "different",
+    short: "Window — Polymarket: from its launch on Sep 23 · Limitless: from Sep 21",
+    summary: "Both use Binance BTC/USDT 1-minute highs, but Polymarket ignores price action before the market was created (Sep 23, 16:57 UTC), while Limitless counts the whole week from 12:00 AM ET on Sep 21.",
+    scenario: "A touch of $86,000 on Sep 21–23, before Polymarket's market opened, counts only on Limitless. This has already happened: on Sep 26 Limitless had resolved Yes, while Polymarket's Yes traded at 7.5¢ with the week still running."
   }
 };

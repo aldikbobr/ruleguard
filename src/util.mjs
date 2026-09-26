@@ -2,14 +2,22 @@
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// Rate limits (429), server errors and network hiccups are retried with growing pauses (1, 2, 4… s, at most 60 s),
+// or as long as the venue's Retry-After asks. Long batch jobs pass more tries; the live page keeps the default.
 export async function getJson(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
-    const res = await fetch(url, { headers: { accept: "application/json" } });
+    const last = i === tries - 1;
+    let res;
+    try { res = await fetch(url, { headers: { accept: "application/json" } }); }
+    catch (e) { if (last) throw e; await sleep(Math.min(60000, 1000 * 2 ** i)); continue; }
     if (res.ok) return res.json();
-    if (res.status === 429 || res.status >= 500) { await sleep(1000 * (i + 1)); continue; }
+    if ((res.status === 429 || res.status >= 500) && !last) {
+      const after = Number(res.headers.get("retry-after"));
+      await sleep(after > 0 ? Math.min(120000, after * 1000) : Math.min(60000, 1000 * 2 ** i));
+      continue;
+    }
     throw new Error(`${res.status} ${url}`);
   }
-  throw new Error(`failed after retries: ${url}`);
 }
 
 // Runs fn for every item with limited concurrency

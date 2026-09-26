@@ -1,7 +1,7 @@
-# Renders the docs/logo.svg geometry to a 1024x1024 PNG with System.Drawing (no extra tools).
+# Renders the assets/logo.svg geometry to a 1024x1024 PNG with System.Drawing (no extra tools).
 # If you change the logo, change both files the same way.
-# Usage: powershell -File scripts/logo-png.ps1 -Out docs/logo.png
-param([string]$Out = "docs/logo.png")
+# Usage: powershell -File scripts/logo-png.ps1 -Out assets/logo.png
+param([string]$Out = "assets/logo.png")
 Add-Type -AssemblyName System.Drawing
 $s = 2.0  # 512 -> 1024
 $bmp = New-Object System.Drawing.Bitmap 1024, 1024

@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "description": "Rule-equivalence layer for prediction markets",
+  "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "demo": "node scripts/build-demo.mjs",
     "serve": "node scripts/serve.mjs",
-    "attest": "node scripts/attest.mjs"
+    "attest": "node scripts/attest.mjs",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "dependencies": {
     "@solana/kit": "5.5.1",

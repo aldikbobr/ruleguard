@@ -6,6 +6,11 @@
 
 # dependencies and local files
 node_modules/
-.claude/settings.local.json
+research/.cache/
+.claude/
+
+# team notes and assistant instructions stay local (the repository is English-only)
+team/
+CLAUDE.md
 .DS_Store
 Thumbs.db
