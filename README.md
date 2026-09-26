@@ -74,10 +74,11 @@ npm install                                  # sas-lib, @solana/kit
 node scripts/attest.mjs --sample --dry-run   # encode the 30 labeled verdicts offline, nothing sent
 node scripts/attest.mjs --setup              # devnet key, devnet SOL, credential and schema
 node scripts/attest.mjs --sample             # publish or update the 30 verdicts → research/attestations.json
+node scripts/attest.mjs --all                # every matched pair: in-depth review → labeled samples → AI verdict
 node scripts/attest.mjs --read "<pair key>"  # read one verdict back from the chain
 ```
 
-The devnet signing key is created on first run in `.solana/devnet-authority.json` (git-ignored). Mainnet is refused in code until a security review. **Status:** built and tested offline; the first devnet publish is waiting for devnet SOL (the public faucet allows about one airdrop per IP per day).
+The devnet signing key is created on first run in `.solana/devnet-authority.json` (git-ignored). Mainnet is refused in code until a security review. **Status: live on devnet.** Every matched pair has an attestation, 191 in total (Sep 26, 2026): all 187 pairs in the current snapshot plus 4 labeled sample pairs that have since dropped out of it. The `method` field says where each verdict comes from: 120 AI verdicts (`ai-judge-v2`), 56 labels from the random and held-out samples (`ai-label-v0`), and 15 in-depth reviews (`ai-review-v0`). All of these were produced by AI, and none has been re-checked by a human yet. credential [`92cf2ssE…Wy9t`](https://explorer.solana.com/address/92cf2ssEpn7KbqrgFj6PWKouiDwbW276Fk7s1WUwMy9t?cluster=devnet), schema [`8LCZ1hTu…GkJM`](https://explorer.solana.com/address/8LCZ1hTuWkRrxcQHUXGjqBYGkotqdnoeY5fYD3vMGkJM?cluster=devnet). Every attestation address and transaction is listed in `research/attestations.json`. Publishing all of them cost about 0.49 devnet SOL (free test tokens), mostly refundable rent deposits. The public devnet RPC rate-limits bursts, so the script pauses between pairs and retries on HTTP 429.
 
 ## How it works
 
@@ -100,8 +101,8 @@ The devnet signing key is created on first run in `.solana/devnet-authority.json
 
 ## Roadmap
 
-- Done: 4-venue pipeline and demo; random labeled sample; AI passports and verdicts on all matched pairs; held-out accuracy check; attestation code
-- Next: human re-check of the labels; fix the two missed "caveats" patterns; first devnet publish of the attestations
+- Done: 4-venue pipeline and demo; random labeled sample; AI passports and verdicts on all matched pairs; held-out accuracy check; verdicts for all matched pairs attested on Solana devnet, with Explorer links in the demo
+- Next: human re-check of the labels; fix the two missed "caveats" patterns; re-attest automatically when a venue changes its rules
 - Then: Kalshi markets on Solana via DFlow as one side of a pair; a study of closed pairs (how many actually settled differently); API and alerts for aggregators and bots
 - Later: attestations on mainnet after a security review
 

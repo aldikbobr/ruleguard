@@ -3,12 +3,16 @@
 // Addresses and signatures are saved to research/attestations.json for the demo page.
 //
 // Usage:  node scripts/attest.mjs --sample [--limit N] [--dry-run]   the 30 labeled random-sample pairs
+//         node scripts/attest.mjs --all [--limit N] [--dry-run]      every matched pair that has a verdict
+//         node scripts/attest.mjs ... [--delay MS]                    pause between pairs (default 2000)
 //         node scripts/attest.mjs --read "<pair key>"                 read one verdict back from the chain
 //         node scripts/attest.mjs --setup                             key, devnet SOL, credential and schema only
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadEnv } from "../src/env.mjs";
+import { VERDICTS } from "../src/verdicts.mjs";
+import { lookup, loadCache, JUDGE_VERSION } from "../src/ai/review.mjs";
 import {
   PROGRAM, CREDENTIAL_NAME, SCHEMA, connect, loadAuthority, addresses, encode, rulesHash, balance, ensureFunded,
   ensureIssuer, publishVerdict, readVerdict, explorer
@@ -21,10 +25,11 @@ const OUT = path.join(ROOT, "research", "attestations.json");
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, "research", f), "utf8"));
 const sol = lamports => (Number(lamports) / 1e9).toFixed(4) + " SOL";
 
-// Verdicts of the labeled random sample: the label, the rule texts it was made from, and the snapshot time
-function sampleVerdicts() {
-  const sample = read("random-sample.json");
-  const labels = new Map(read("random-labels.json").labels.map(l => [l.n, l]));
+// Verdicts of a labeled sample: the label, the rule texts it was made from, and the snapshot time
+function labeledVerdicts(sampleFile, labelsFile) {
+  if (!fs.existsSync(path.join(ROOT, "research", sampleFile)) || !fs.existsSync(path.join(ROOT, "research", labelsFile))) return [];
+  const sample = read(sampleFile);
+  const labels = new Map(read(labelsFile).labels.map(l => [l.n, l]));
   const checkedAt = Math.floor(Date.parse(sample.snapshot) / 1000);
   return sample.pairs.filter(p => labels.has(p.n)).map(p => ({
     pairKey: p.key,
@@ -33,6 +38,27 @@ function sampleVerdicts() {
     rulesHash: rulesHash(p.a.rules, p.b.rules),
     checkedAt
   }));
+}
+const sampleVerdicts = () => labeledVerdicts("random-sample.json", "random-labels.json");
+
+// Every matched pair with a verdict, in the demo's priority order: in-depth review (written by an AI assistant,
+// src/verdicts.mjs) → labeled samples (random and held-out) → AI judge. Keyword-only pairs are not attested.
+function allVerdicts() {
+  const data = read("pairs-all.json");
+  const snapshot = Math.floor(Date.parse(data.generated_at) / 1000);
+  const labeled = new Map([...labeledVerdicts("random-sample.json", "random-labels.json"),
+    ...labeledVerdicts("holdout-sample.json", "holdout-labels.json")].map(v => [v.pairKey, v]));
+  const { verdictOf } = lookup(loadCache(path.join(ROOT, "research", "ai-cache.json")));
+  const out = [];
+  for (const p of data.pairs) {
+    const pairKey = `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
+    const review = VERDICTS[`${p.a.id}|${p.b.id}`];
+    const ai = verdictOf(p);
+    if (review) out.push({ pairKey, verdict: review.verdict, method: "ai-review-v0", rulesHash: rulesHash(p.a.rules, p.b.rules), checkedAt: snapshot });
+    else if (labeled.has(pairKey)) out.push(labeled.get(pairKey));
+    else if (ai) out.push({ pairKey, verdict: ai.verdict, method: `ai-judge-v${JUDGE_VERSION}`, rulesHash: rulesHash(p.a.rules, p.b.rules), checkedAt: ai.at ? Math.floor(Date.parse(ai.at) / 1000) : snapshot });
+  }
+  return out;
 }
 
 const authority = await loadAuthority(ROOT);
@@ -45,8 +71,8 @@ if (args.read) {
   process.exit(0);
 }
 
-let verdicts = args.sample ? sampleVerdicts() : [];
-if (!args.sample && !args.setup) { console.error("Choose --sample, --read or --setup"); process.exit(1); }
+let verdicts = args.all ? allVerdicts() : args.sample ? sampleVerdicts() : [];
+if (!args.all && !args.sample && !args.setup) { console.error("Choose --all, --sample, --read or --setup"); process.exit(1); }
 if (args.limit) verdicts = verdicts.slice(0, Number(args.limit));
 
 if (args["dry-run"]) {
@@ -65,9 +91,26 @@ console.log(`Credential "${CREDENTIAL_NAME}" ${issuer.credential}\nSchema "${SCH
 
 const saved = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : { items: {} };
 const counts = { created: 0, updated: 0, unchanged: 0, failed: 0 };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const PAUSE_MS = Number(args.delay) || 2000; // the public devnet RPC rate-limits bursts (HTTP 429)
+
+// Retries rate-limit and connection errors with a growing wait; a rerun is safe because publishing is idempotent
+async function publishWithRetry(v) {
+  for (const wait of [10_000, 30_000, 60_000, null]) {
+    try {
+      return await publishVerdict(client, authority, v);
+    } catch (e) {
+      if (wait === null || !/429|Too Many|WebSocket|fetch failed|ECONNRESET|timed? ?out/i.test(e.message)) throw e;
+      console.log(`  (rate-limited, retrying in ${wait / 1000} s)`);
+      await sleep(wait);
+    }
+  }
+}
+
 for (const v of verdicts) {
   try {
-    const r = await publishVerdict(client, authority, v);
+    const r = await publishWithRetry(v);
+    await sleep(PAUSE_MS);
     counts[r.status]++;
     const prev = saved.items[v.pairKey] || {};
     saved.items[v.pairKey] = {
