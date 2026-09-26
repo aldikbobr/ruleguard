@@ -23,6 +23,8 @@ Details and limitations: [`research/FINDINGS.md`](research/FINDINGS.md). The pai
 
 **Hosted snapshot:** https://claude.ai/artifact/B61ZXiuoWxCx1THjtmREUC (data of Sep 25, 2026; search, filters and side-by-side rules work, but prices are frozen and there are no refresh buttons). It is built with `node scripts/build-demo.mjs --from-cache --static <file>`.
 
+**Pitch deck:** https://aldikbobr.github.io/ruleguard-deck/
+
 For the live version, serve the demo locally (opening `demo/index.html` directly also works, without live prices):
 
 ```bash
