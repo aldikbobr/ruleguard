@@ -38,3 +38,21 @@
 | 2:50–3:00 | Вернуться наверх | RuleGuard: check the contract, not just the price. |
 
 Перед записью: закрыть лишние вкладки, масштаб страницы 110–125 %, проверить, что пара с ⛓ и рабочей ссылкой на Explorer есть на экране.
+
+---
+
+## 3. Еженедельный видео-апдейт (~1 минута, раз в неделю)
+
+Правила Colosseum «настоятельно рекомендуют» такие апдейты. Можно записать на телефон или экран, без монтажа. Шаблон (EN), в скобках — что подставить:
+
+> Hi, this is [name] from RuleGuard, week [N] update.
+> **Shipped:** [1–2 things, e.g. "every matched pair now has a verdict on Solana devnet, 191 attestations" / "AI accuracy on 30 unseen pairs: 7 of 7 different pairs caught"].
+> **Learned:** [one finding, e.g. "the biggest price gaps keep being rule differences, not mispricing"].
+> **Users:** [demand numbers: channel subscribers, teams we talked to, one quote from a trader].
+> **Next week:** [1–2 goals].
+> Thanks!
+
+Готовые пункты на первую неделю (25–27.09):
+- Shipped: a 4-venue pipeline (~59k markets, 187 pairs); AI rule review with verified quotes; every verdict published on Solana devnet via the Solana Attestation Service (191 attestations).
+- Learned: in a random sample, only 1 of 11 cross-operator pairs had fully matching rules. On 30 unseen pairs, the AI caught 7 of 7 "different" pairs.
+- Next: a human re-check of the labels, a study of closed pairs, and outreach to aggregators and traders.

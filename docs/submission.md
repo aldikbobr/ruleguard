@@ -2,6 +2,15 @@
 
 Поля — по официальной странице https://colosseum.com/hackathon (проверено 25.09.2026). Ответы на английском, их можно вставлять в форму как есть. `[…]` — заполнить вам.
 
+**Важное из официальных правил** (их прочитал чат «RuleGuard», подробности в `ПЛАН_ДО_ПОДАЧИ.md`):
+- **Дедлайн: 12.10, 23:59 по тихоокеанскому времени = 13.10, 11:59 по UTC+5.** Сдаём 11.10 с запасом.
+- Каждый участник регистрирует **свой** аккаунт на colosseum.com; лидер команды добавляет остальных и отправляет заявку.
+- В форме спрашивают, **где находится команда**.
+- Приватный репозиторий допустим, если дать доступ `hackathon@colosseum.com`. Но **open-source — один из критериев оценки** (п. 8e правил), поэтому лучше сделать репозиторий публичным.
+- Прошлую работу нужно раскрыть в форме (текст ниже, раздел «Past work disclosure»).
+- Всё на английском. Логотипы Colosseum использовать нельзя: на обложке презентации только текст «Colosseum · Crypto World's Fair 2026», это допустимо.
+- **Раз в неделю 1-минутное видео-апдейт**: не обязательно, но «настоятельно рекомендуется». Шаблон — в `docs/video-scripts.md`.
+
 ---
 
 **Product name:** RuleGuard
@@ -26,11 +35,9 @@ Verdicts are published on Solana as Solana Attestation Service attestations, sig
 
 **Team:** […name — role — background, one line each]
 
-**Team location:** […]
-
 **Logo:** `docs/logo.png` (1024×1024) or `docs/logo.svg`
 
-**GitHub repository:** https://github.com/aldikbobr/ruleguard (private; make it public or give the judges access before submitting)
+**GitHub repository:** https://github.com/aldikbobr/ruleguard (make it public before submitting, since open-source counts in judging; the minimum is read access for `hackathon@colosseum.com`)
 
 **Presentation video (2–3 min):** […YouTube link] (script: `docs/video-scripts.md`)
 
@@ -49,4 +56,18 @@ Before collecting results we set this bar for Oct 11: 30+ Telegram subscribers, 
 
 **Distribution plan:** outreach to aggregator and bot teams (X, Discord), trader communities (r/Kalshi, r/Polymarket), and a daily Telegram channel. On-chain attestations let other Solana programs integrate without talking to us.
 
+**Team location:** […city, country]
+
 **Past work disclosure:** The project started during the hackathon: the first commit is from Sep 25, 2026, and there is no earlier codebase. Reused components: the venues' public APIs, Gemini, `sas-lib`/`@solana/kit` and the Solana Attestation Service program. Code, research notes and the deck were written with the help of AI coding assistants (Claude Code). Details are in the README section "What was built during the hackathon".
+
+---
+
+## Заявка на ключ DFlow (необязательно, 2 минуты)
+
+Зачем: подключить рынки Kalshi на Solana (токены DFlow) как одну из сторон пары. Это задача № 15 в плане, «если останется время». Форма: https://forms.gle/eX3cghbMF8VBB9qa9 (ссылка со страницы https://pond.dflow.net/build/api-key). Ответ приходит через 2–5 дней. О цене в документации ничего не сказано: если в форме попросят оплату, не соглашайтесь и напишите мне. Отправлять форму можете только вы.
+
+Готовые ответы (EN):
+- **Project:** RuleGuard, the rule-equivalence layer for prediction markets (Colosseum Crypto World's Fair 2026).
+- **Use case:** Read-only access to the prediction-markets metadata API. We match Kalshi markets tokenized via DFlow with "the same" markets on Polymarket and Limitless, compare their resolution rules, and show the outcome token mints next to our verdict. Verdicts are published on Solana via the Solana Attestation Service. We don't place trades.
+- **Expected volume:** Low. We refresh a few hundred markets a few times a day.
+- **Links:** https://aldikbobr.github.io/ruleguard-deck/ · https://github.com/aldikbobr/ruleguard
