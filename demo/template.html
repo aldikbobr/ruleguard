@@ -276,11 +276,11 @@ function highlight(text) {
 }
 
 // --- header
-// STATIC: a hosted snapshot (build-demo.mjs --static) with no local server behind it
+// STATIC: a snapshot (build-demo.mjs --static / --static-page) with no server behind it
 const STATIC = Boolean(DATA.static);
-$("#gen").textContent = STATIC
-  ? `Snapshot of the venues' public APIs taken ${fmtTime(DATA.generated_at)}. Live prices and the refresh buttons run in the local version.`
-  : `Data fetched ${fmtTime(DATA.generated_at)} from the venues' public APIs.`;
+const LIVE_URL = "https://ruleguard-rho.vercel.app/";
+if (STATIC) $("#gen").innerHTML = `Snapshot of the venues' public APIs taken ${esc(fmtTime(DATA.generated_at))}. Live prices and the refresh buttons: <a href="${LIVE_URL}" target="_blank" rel="noopener">${esc(LIVE_URL.replace(/^https:\/\/|\/$/g, ""))}</a>.`;
+else $("#gen").textContent = `Pairs matched ${fmtTime(DATA.generated_at)} from the venues' public APIs.`;
 
 // --- data freshness: prediction-market prices move within minutes
 // served: the page is opened through scripts/serve.mjs (refresh button and live prices work)
