@@ -132,6 +132,8 @@ footer li{margin:3px 0}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 .snote{color:var(--muted);font-size:12.5px;margin:8px 2px 0}
+.chain{color:var(--muted);font-size:13px;margin:6px 0 0}
+.chain a,.srow .lbl span a{color:inherit}
 @media (max-width:760px){.bar{position:static}.cols{grid-template-columns:1fr}.pair>summary{gap:8px;padding:8px 10px}.ft{font-size:13px}.ft thead th:first-child,.ft tbody th{width:30%}}
 </style>
 </head>
@@ -214,6 +216,7 @@ footer li{margin:3px 0}
     <li>🤖 marks pairs reviewed by AI (Gemini, free tier): it extracts each market's settlement terms with verbatim quotes (a quote not found in the rules is discarded) and then classifies the pair; it says “not sure” rather than “equivalent” when in doubt. Its accuracy against the labeled pairs is shown in the random-sample section. Pairs without 🤖, 🔍 or 🎲 fall back to keyword rules, which are signals to check, not conclusions.</li>
     <li>🔍 marks pairs reviewed in depth against the rule texts, with a scenario in which they settle differently. These reviews were written by an AI assistant (Claude) and have not been re-checked by a person yet. They were picked as illustrative examples, so they are <b>not a random sample</b>. 🎲 marks pairs from the random sample.</li>
     <li>Raw spread = 1 − (YES on one venue + NO on the other), using ask prices from the APIs, without fees, book depth or slippage. In thin books it changes within minutes, so “Arbitrage traps” are ranked by the gap between mid prices (halfway between buying YES and buying NO), and markets with a YES/NO gap wider than 15 pts are excluded. No spread is shown for Manifold (play money).</li>
+    <li id="chainNote" hidden></li>
     <li>Kalshi's API exposes a summary of the rules (<code>rules_primary</code>); the full contract terms may add details.</li>
     <li>In the local version (<code>node scripts/serve.mjs</code>) prices update live, and the ↻ button on each pair refetches both markets and re-compares them in this page only; the saved snapshot changes on the next full refresh. Auto-refresh runs while the page is open and visible.</li>
     <li>Informational prototype. Not financial advice.</li>
@@ -375,7 +378,15 @@ $("#tiles").innerHTML = `
   <div class="tile"><div class="v" style="color:var(--red)">${P.filter(p => riskOf(p) === "different").length}</div><div class="l">🔴 likely different contracts</div></div>
   <div class="tile"><div class="v" style="color:var(--amber)">${P.filter(p => riskOf(p) === "check").length}</div><div class="l">🟡 differences worth checking</div></div>
   <div class="tile"><div class="v">${P.filter(p => p.verdict).length}</div><div class="l">🔍 reviewed in depth</div></div>
-  ${DATA.ai_stats?.reviewed ? `<div class="tile"><div class="v">${DATA.ai_stats.reviewed}</div><div class="l">🤖 reviewed by AI (Gemini)</div></div>` : ""}`;
+  ${DATA.ai_stats?.reviewed ? `<div class="tile"><div class="v">${DATA.ai_stats.reviewed}</div><div class="l">🤖 reviewed by AI (Gemini)</div></div>` : ""}
+  ${DATA.chain_stats?.total ? `<div class="tile"><div class="v">${DATA.chain_stats.total}</div><div class="l">⛓ verdicts on Solana ${esc(DATA.chain_stats.network)}</div></div>` : ""}`;
+
+// --- Solana: where the published verdicts live
+if (DATA.chain_stats?.total) {
+  const C = DATA.chain_stats;
+  $("#chainNote").innerHTML = `⛓ marks pairs whose verdict is published on Solana ${esc(C.network)} through the Solana Attestation Service (issuer <a href="${esc(C.credential)}" target="_blank" rel="noopener">RuleGuard ↗</a>, schema <a href="${esc(C.schema)}" target="_blank" rel="noopener">${esc(C.schema_name)} ↗</a>). Each attestation sits at an address derived from the pair, so any program can look up the verdict; it also stores a hash of both rule texts, which shows exactly what was checked.`;
+  $("#chainNote").hidden = false;
+}
 
 // --- random sample
 const S = DATA.sample_stats;
@@ -396,6 +407,8 @@ if (S && S.all && S.all.n) {
   const aiLine = (title, x) => `<div class="srow"><div class="lbl"><b>${title}</b><span>same label in ${x.exact_agreement} of ${x.n} · caught ${x.different_recall} “different” · wrongly said “equivalent”: ${x.false_equivalent}</span></div></div>`;
   if (H) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI on 30 unseen pairs (held out, labeled blind)", H));
   else if (E) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI vs the labeled sample", E));
+  const C = DATA.chain_stats;
+  if (C?.total) $("#sbars").insertAdjacentHTML("beforeend", `<div class="srow"><div class="lbl"><b>⛓ The ${C.total} sample labels are published on Solana ${esc(C.network)}</b><span>Solana Attestation Service · <a href="${esc(C.credential)}" target="_blank" rel="noopener">issuer ↗</a> · <a href="${esc(C.schema)}" target="_blank" rel="noopener">schema ↗</a></span></div></div>`);
   $("#sample-note").textContent = `Reproducible (scripts/sample.mjs, seed ${S.seed}, data snapshot ${fmtTime(S.snapshot)}). Labeled by ${S.reviewer}. The sample is small and some pairs share one event (e.g. several Israeli PM candidates under the same rules), so treat the numbers as indicative, not as a precise rate.`;
 }
 
@@ -449,18 +462,20 @@ function card(p) {
   const r = riskOf(p);
   const src = p.verdict ? `<span title="Reviewed in depth">🔍</span> ` : p.sample ? `<span title="Random sample, pair #${p.sample.n}">🎲</span> ` : p.ai ? `<span title="AI review (${esc(p.ai.model)})">🤖</span> ` : "";
   const warn = p.rulesChanged ? `<span title="Rules changed since the snapshot">⚠</span> ` : "";
+  const chain = p.chain ? `<span title="Verdict published on Solana ${esc(DATA.chain_stats.network)}">⛓</span> ` : "";
   const refresh = served ? `<button type="button" class="rbtn-sm" data-refresh="${esc(key(p))}" title="${esc(p.refreshedAt ? `Refresh this pair · ${pairNote(p)}` : "Refresh this pair")}" aria-label="Refresh this pair">↻</button>` : "";
   return `<details class="pair" id="${esc(key(p))}">
     <summary>
       <span class="badge b-${r}">${CLS[r]}</span>
       <div class="ptitle"><div class="t">${esc(titleOf(p))}</div>
-        <div class="why">${dot(p.a.venue)}${dot(p.b.venue)} ${warn}${src}${esc(whyLine(p))}</div></div>
+        <div class="why">${dot(p.a.venue)}${dot(p.b.venue)} ${warn}${src}${chain}${esc(whyLine(p))}</div></div>
       <div class="edge" data-edge="${esc(key(p))}">${edgeHtml(p)}</div>
       ${refresh}
     </summary>
     <div class="body">
       ${served ? `<div class="ptools"><span class="pmsg${p.rulesChanged ? " warn" : ""}">${esc(pairNote(p))}</span></div>` : ""}
       ${factsTable(p)}
+      ${p.chain ? `<p class="chain">⛓ Verdict “${esc(p.chain.verdict)}” is published on Solana ${esc(DATA.chain_stats.network)} as an attestation, readable by any program: <a href="${esc(p.chain.url)}" target="_blank" rel="noopener">view on Solana Explorer ↗</a></p>` : ""}
       <details class="full"><summary>Full rules${p.verdict || p.ai?.scenario ? " and scenario" : ""}</summary>
         ${p.verdict ? `<p class="scn"><b>How they diverge:</b> ${esc(p.verdict.scenario)}</p>` : ""}
         ${p.ai ? `<p class="scn">🤖 <b>AI review — ${esc(AI_LABEL[p.ai.verdict])}:</b> ${esc(p.ai.why)}${p.ai.scenario ? `<br><b>How they diverge:</b> ${esc(p.ai.scenario)}` : ""} <span class="aimodel">(${esc(p.ai.model)})</span></p>` : ""}

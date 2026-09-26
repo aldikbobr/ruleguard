@@ -73,6 +73,22 @@ function attachAI(data) {
   };
 }
 
+// Verdicts published on Solana by scripts/attest.mjs (Solana Attestation Service), if present
+function attachChain(data) {
+  const file = path.join(ROOT, "research", "attestations.json");
+  if (!fs.existsSync(file)) return;
+  const att = JSON.parse(fs.readFileSync(file, "utf8"));
+  const explorer = address => `https://explorer.solana.com/address/${address}?cluster=${att.network}`;
+  for (const p of data.pairs) {
+    const it = att.items?.[`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`];
+    p.chain = it ? { verdict: it.verdict, url: explorer(it.attestation) } : null;
+  }
+  data.chain_stats = {
+    network: att.network, total: Object.keys(att.items || {}).length, attached: data.pairs.filter(p => p.chain).length,
+    credential: explorer(att.credential), schema: explorer(att.schema), schema_name: att.schema_name
+  };
+}
+
 // a replacer function, so "$&" or "$'" in rule texts isn't treated as a replacement pattern
 const fill = (template, data) => template.replace("/*__DATA__*/null", () => JSON.stringify(data).replace(/</g, "\\u003c"));
 
@@ -86,6 +102,7 @@ function fragment(html) {
 function renderDemo(data) {
   attachSample(data);
   attachAI(data);
+  attachChain(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), fill(template, data));
   // --static <file>: a snapshot for hosting without the local server (refresh controls hidden)
