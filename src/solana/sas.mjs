@@ -102,13 +102,17 @@ export async function balance(client, authority) {
 export async function ensureFunded(client, authority) {
   const have = await balance(client, authority);
   if (have >= MIN_BALANCE) return have;
-  try {
-    await airdropFactory(client)({ recipientAddress: authority.address, lamports: lamports(1_000_000_000n), commitment: "confirmed" });
-  } catch (e) {
-    // The public devnet faucet allows about one airdrop per IP per day
-    throw new Error(`Devnet airdrop failed (${e.message}). Send at least 0.2 devnet SOL to ${authority.address} via https://faucet.solana.com (network: devnet) and rerun.`);
+  // The public devnet faucet allows about one airdrop per IP per day and often refuses 1 SOL while granting less
+  let error;
+  for (const amount of [1_000_000_000n, 500_000_000n, 200_000_000n]) {
+    try {
+      await airdropFactory(client)({ recipientAddress: authority.address, lamports: lamports(amount), commitment: "confirmed" });
+      return balance(client, authority);
+    } catch (e) {
+      error = e;
+    }
   }
-  return balance(client, authority);
+  throw new Error(`Devnet airdrop failed (${error.message}). Send at least 0.2 devnet SOL to ${authority.address} via https://faucet.solana.com (network: devnet) and rerun.`);
 }
 
 // Creates the credential and the schema once; later runs only read them
