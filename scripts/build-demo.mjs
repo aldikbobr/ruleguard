@@ -81,10 +81,12 @@ function attachChain(data) {
   const explorer = address => `https://explorer.solana.com/address/${address}?cluster=${att.network}`;
   for (const p of data.pairs) {
     const it = att.items?.[`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`];
-    p.chain = it ? { verdict: it.verdict, url: explorer(it.attestation) } : null;
+    p.chain = it ? { verdict: it.verdict, method: it.method, url: explorer(it.attestation) } : null;
   }
+  const items = Object.values(att.items || {});
   data.chain_stats = {
-    network: att.network, total: Object.keys(att.items || {}).length, attached: data.pairs.filter(p => p.chain).length,
+    network: att.network, total: items.length, attached: data.pairs.filter(p => p.chain).length,
+    by_method: items.reduce((acc, it) => ({ ...acc, [it.method]: (acc[it.method] || 0) + 1 }), {}),
     credential: explorer(att.credential), schema: explorer(att.schema), schema_name: att.schema_name
   };
 }

@@ -242,6 +242,8 @@ const daysApart = (x, y) => Math.abs(Date.parse(x) - Date.parse(y)) / 864e5;
 const fmtDate = d => d ? new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "—";
 const titleOf = p => `${p.a.title}${p.a.outcome && !p.a.title.includes(p.a.outcome) ? " · " + p.a.outcome : ""}`;
 const CLS_ORDER = { different: 0, check: 1, looks_equivalent: 2 };
+// how an attested verdict was made (the "method" field of the attestation, see scripts/attest.mjs)
+const METHOD = { "ai-judge-v2": ["AI verdict", "AI verdicts"], "ai-label-v0": ["sample label", "sample labels"], "ai-review-v0": ["in-depth review", "in-depth reviews"] };
 const AI_LABEL = { equivalent: "equivalent", caveats: "same with caveats", different: "different contracts", uncertain: "not sure" };
 const key = p => `${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`;
 const mkey = m => `${m.venue}:${m.id}`;
@@ -408,7 +410,8 @@ if (S && S.all && S.all.n) {
   if (H) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI on 30 unseen pairs (held out, labeled blind)", H));
   else if (E) $("#sbars").insertAdjacentHTML("beforeend", aiLine("🤖 AI vs the labeled sample", E));
   const C = DATA.chain_stats;
-  if (C?.total) $("#sbars").insertAdjacentHTML("beforeend", `<div class="srow"><div class="lbl"><b>⛓ The ${C.total} sample labels are published on Solana ${esc(C.network)}</b><span>Solana Attestation Service · <a href="${esc(C.credential)}" target="_blank" rel="noopener">issuer ↗</a> · <a href="${esc(C.schema)}" target="_blank" rel="noopener">schema ↗</a></span></div></div>`);
+  const byMethod = Object.entries(C?.by_method || {}).sort((x, y) => y[1] - x[1]).map(([m, k]) => `${k} ${METHOD[m]?.[k === 1 ? 0 : 1] || m}`).join(", ");
+  if (C?.total) $("#sbars").insertAdjacentHTML("beforeend", `<div class="srow"><div class="lbl"><b>⛓ ${C.total} verdicts are published on Solana ${esc(C.network)}</b><span>${esc(byMethod)} · Solana Attestation Service · <a href="${esc(C.credential)}" target="_blank" rel="noopener">issuer ↗</a> · <a href="${esc(C.schema)}" target="_blank" rel="noopener">schema ↗</a></span></div></div>`);
   $("#sample-note").textContent = `Reproducible (scripts/sample.mjs, seed ${S.seed}, data snapshot ${fmtTime(S.snapshot)}). Labeled by ${S.reviewer}. The sample is small and some pairs share one event (e.g. several Israeli PM candidates under the same rules), so treat the numbers as indicative, not as a precise rate.`;
 }
 
@@ -475,7 +478,7 @@ function card(p) {
     <div class="body">
       ${served ? `<div class="ptools"><span class="pmsg${p.rulesChanged ? " warn" : ""}">${esc(pairNote(p))}</span></div>` : ""}
       ${factsTable(p)}
-      ${p.chain ? `<p class="chain">⛓ Verdict “${esc(p.chain.verdict)}” is published on Solana ${esc(DATA.chain_stats.network)} as an attestation, readable by any program: <a href="${esc(p.chain.url)}" target="_blank" rel="noopener">view on Solana Explorer ↗</a></p>` : ""}
+      ${p.chain ? `<p class="chain">⛓ Verdict “${esc(p.chain.verdict)}” (${esc(METHOD[p.chain.method]?.[0] || p.chain.method || "verdict")}) is published on Solana ${esc(DATA.chain_stats.network)} as an attestation, readable by any program: <a href="${esc(p.chain.url)}" target="_blank" rel="noopener">view on Solana Explorer ↗</a></p>` : ""}
       <details class="full"><summary>Full rules${p.verdict || p.ai?.scenario ? " and scenario" : ""}</summary>
         ${p.verdict ? `<p class="scn"><b>How they diverge:</b> ${esc(p.verdict.scenario)}</p>` : ""}
         ${p.ai ? `<p class="scn">🤖 <b>AI review — ${esc(AI_LABEL[p.ai.verdict])}:</b> ${esc(p.ai.why)}${p.ai.scenario ? `<br><b>How they diverge:</b> ${esc(p.ai.scenario)}` : ""} <span class="aimodel">(${esc(p.ai.model)})</span></p>` : ""}
