@@ -7,7 +7,7 @@
 
 > Markets that look identical on Kalshi, Polymarket, Limitless and Manifold often settle under different rules. RuleGuard matches "the same" market across venues, compares the resolution rules clause by clause, and publishes a verdict for every pair on Solana, so traders, aggregators and bots stop mistaking a rule gap for arbitrage.
 
-[Live demo](https://claude.ai/artifact/B61ZXiuoWxCx1THjtmREUC) · [Pitch deck](https://aldikbobr.github.io/ruleguard-deck/) · [Findings](research/FINDINGS.md) · [Docs](docs/) · Video walkthrough (coming soon)
+[Live demo](https://aldikbobr.github.io/ruleguard/) · [Pitch deck](https://aldikbobr.github.io/ruleguard-deck/) · [Findings](research/FINDINGS.md) · [Docs](docs/) · Video walkthrough (coming soon)
 
 ---
 
@@ -180,7 +180,7 @@ Full roadmap: [docs/roadmap.md](docs/roadmap.md)
 
 ## Resources
 
-- [Live demo](https://claude.ai/artifact/B61ZXiuoWxCx1THjtmREUC) (snapshot of Sep 25, 2026; the live version runs locally)
+- [Live demo](https://aldikbobr.github.io/ruleguard/) (snapshot of Sep 25, 2026; the live version runs locally)
 - [Pitch deck](https://aldikbobr.github.io/ruleguard-deck/)
 - [Findings and limitations](research/FINDINGS.md)
 - [RuleGuard issuer on Solana Explorer (devnet)](https://explorer.solana.com/address/92cf2ssEpn7KbqrgFj6PWKouiDwbW276Fk7s1WUwMy9t?cluster=devnet)
