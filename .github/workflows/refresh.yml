@@ -1,0 +1,70 @@
+name: Daily data refresh
+
+# Re-scans the four venues, rebuilds the pairs and commits the new data; Vercel redeploys on the push and the
+# Pages workflow runs after this one. The AI review and the Solana attestations of new or changed pairs run
+# when their keys are set as repository secrets (GEMINI_API_KEY, SOLANA_DEVNET_KEY); without them they are skipped.
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      SOLANA_DEVNET_KEY: ${{ secrets.SOLANA_DEVNET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Fetch markets and rebuild the pairs
+        run: node scripts/build-demo.mjs
+
+      # a venue outage would otherwise publish a page with half the pairs missing
+      - name: Sanity check
+        run: |
+          node -e "
+            const fs = require('fs'), { execSync } = require('child_process');
+            const now = JSON.parse(fs.readFileSync('research/pairs-all.json', 'utf8')).pairs.length;
+            const before = JSON.parse(execSync('git show HEAD:research/pairs-all.json', { maxBuffer: 1 << 28 })).pairs.length;
+            console.log('pairs', before, '->', now);
+            if (now < before * 0.5) { console.error('Too few pairs; not publishing.'); process.exit(1); }
+          "
+
+      - name: AI review of new or changed pairs
+        if: env.GEMINI_API_KEY != ''
+        continue-on-error: true
+        run: node scripts/ai-analyze.mjs --all
+
+      - name: Attest new or changed verdicts on Solana devnet
+        if: env.SOLANA_DEVNET_KEY != ''
+        continue-on-error: true
+        run: |
+          mkdir -p .solana
+          printf '%s' "$SOLANA_DEVNET_KEY" > .solana/devnet-authority.json
+          node scripts/attest.mjs --all
+
+      - name: Render the page with everything above
+        run: node scripts/build-demo.mjs --from-cache
+
+      - name: Commit the new data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/pairs-all.json research/ai-cache.json research/attestations.json demo/index.html
+          git diff --cached --quiet && echo "No changes." && exit 0
+          git commit -m "Daily data refresh"
+          git push

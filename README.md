@@ -48,7 +48,7 @@
 
 | | |
 |---|---|
-| Markets scanned | 59,399 open markets on 4 venues → 187 "identical" pairs |
+| Markets scanned (snapshot of Sep 25, 2026) | 59,399 open markets on 4 venues → 187 "identical" pairs |
 | Random sample, different operators (Kalshi ↔ Polymarket / Limitless) | rules fully matched in only **1 of 11** pairs; **5 of 11** have a plausible scenario where they settle differently |
 | Random sample, Polymarket ↔ Limitless | 17 of 19 identical (Limitless mostly copies Polymarket's rules) |
 | AI review on 30 held-out pairs, labeled before looking at the AI | same label in **26 of 30**; caught **7 of 7** "different" pairs; 2 risky "equivalent" calls, both on pairs that differ only in edge cases |
@@ -56,7 +56,7 @@
 | Verdicts on Solana devnet | **191** attestations covering all 187 pairs |
 | Settled Kalshi ↔ Polymarket pairs, 2023–2026 | 341 pairs: 332 paid out the same way; **7 paid out in opposite directions because of the rules**; 2 more were matching errors |
 
-The labels come from an AI assistant and have not yet been re-checked by a person, and the samples are small, so treat the rates as indicative. Methods, confusion matrices and limitations: [research/FINDINGS.md](research/FINDINGS.md).
+The live demo re-scans the venues every day (`.github/workflows/refresh.yml`) and rechecks every pair's prices and rules while it is open, so its counts move; the numbers above are fixed to the dates shown. The labels come from an AI assistant and have not yet been re-checked by a person, and the samples are small, so treat the rates as indicative. Methods, confusion matrices and limitations: [research/FINDINGS.md](research/FINDINGS.md).
 
 ### Example findings
 

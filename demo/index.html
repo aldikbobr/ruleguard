@@ -365,6 +365,8 @@ if (served) {
   btn.disabled = true; // until the server says what kind of refresh it supports
   status().then(s => {
     hosted = Boolean(s.hosted);
+    // the hosted demo rechecks every pair on its own (on open, then every 15 min) unless the visitor chose otherwise
+    if (hosted && !("full" in savedAuto)) { auto.full = 15; paintAuto(); }
     btn.disabled = false;
     btn.title = hosted ? "Refetch the prices and rules of every pair and re-compare them" : "Refetch everything from the venues and rebuild the list of pairs (1–3 minutes)";
     showKeys(s.keys);
@@ -557,7 +559,8 @@ function flash(el) { if (!el) return; el.classList.remove("flash"); void el.offs
 // --- auto-refresh settings (saved per browser; the page works with defaults if storage is unavailable)
 const AUTO_KEY = "ruleguard.autorefresh";
 const auto = { prices: 60, full: 0 };
-try { Object.assign(auto, JSON.parse(localStorage.getItem(AUTO_KEY) || "{}")); } catch { /* private mode or blocked storage */ }
+let savedAuto = {};
+try { savedAuto = JSON.parse(localStorage.getItem(AUTO_KEY) || "{}"); Object.assign(auto, savedAuto); } catch { /* private mode or blocked storage */ }
 const every = s => s >= 60 ? `${s / 60} min` : `${s} s`;
 function paintAuto() {
   $("#apPrices").value = String(auto.prices);
