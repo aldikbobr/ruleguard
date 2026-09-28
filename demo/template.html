@@ -371,8 +371,8 @@ if (served) {
     btn.title = hosted ? "Refetch the prices and rules of every pair and re-compare them" : "Refetch everything from the venues and rebuild the list of pairs (1–3 minutes)";
     showKeys(s.keys);
     if (s.refreshing) { msg.textContent = "A refresh is running…"; waitForRefresh(); }
-    else if (s.generated_at && Date.parse(s.generated_at) > Date.parse(DATA.generated_at)) {
-      msg.innerHTML = `Newer data is available. <a href="" onclick="location.reload();return false">Reload</a>`;
+    else if (s.pairs_sig && s.pairs_sig !== pairsSig(P)) {
+      msg.innerHTML = `New pairs are available. <a href="" onclick="location.reload();return false">Reload</a>`;
     }
   }).catch(() => { btn.disabled = false; });
 } else if (STATIC) {
@@ -697,18 +697,29 @@ $("#list").addEventListener("click", e => {
   if (b) { e.preventDefault(); refreshOne(b.dataset.refresh, b); }
 });
 
-// The hosted demo's pairs are rebuilt every 15 minutes by the refresh workflow: a newer set means a reload,
-// otherwise every pair is refreshed in place
+// Signature of the set of pairs; the server computes the same (src/page.mjs, pairsSig) — keep the two in step
+function pairsSig(pairs) {
+  const s = pairs.map(key).sort().join("\n");
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0;
+  return `${pairs.length}-${h.toString(16)}`;
+}
+// The hosted demo's pairs are rebuilt every few minutes by the refresh workflow. When the set changed, reload,
+// unless the visitor is reading an expanded pair: then offer a reload instead of pulling the page away.
+async function checkNewPairs(prefix = "") {
+  let s;
+  try { s = await status(); } catch { return false; }
+  if (!s.pairs_sig || s.pairs_sig === pairsSig(P)) return false;
+  if (document.querySelector(".pair[open]")) {
+    msg.innerHTML = `${esc(prefix)}New pairs are available. <a href="" onclick="location.reload();return false">Reload</a>`;
+  } else {
+    msg.textContent = `${prefix}New pairs found — reloading…`;
+    location.reload();
+  }
+  return true;
+}
 async function refreshOrReload(prefix = "") {
-  try {
-    const s = await status();
-    if (s.generated_at && Date.parse(s.generated_at) > Date.parse(DATA.generated_at)) {
-      msg.textContent = `${prefix}New pairs found — reloading…`;
-      location.reload();
-      return;
-    }
-  } catch { /* refresh in place below */ }
-  return refreshAll(prefix);
+  if (!(await checkNewPairs(prefix))) return refreshAll(prefix);
 }
 
 // "Refresh all pairs" on the hosted demo: every pair's prices and rules, six at a time, updated in place
@@ -739,7 +750,7 @@ if (served) {
   paintAuto();
   paintPrices();
   pullPrices(); // the first load always runs; later ones follow the auto-refresh settings
-  let fullTriedAt = 0;
+  let fullTriedAt = 0, pairsCheckedAt = Date.now();
   setInterval(() => {
     paintPrices();
     for (const el of document.querySelectorAll(".pair[open] .pmsg:not(:empty)")) {
@@ -748,6 +759,8 @@ if (served) {
     }
     if (document.hidden) return; // periodic work only while the tab is visible, to go easy on the venues
     if (auto.prices && Date.now() - pricesTriedAt >= auto.prices * 1000) pullPrices();
+    // a light check once a minute: has the refresh workflow published a new set of pairs?
+    if (hosted && Date.now() - pairsCheckedAt >= 60000) { pairsCheckedAt = Date.now(); checkNewPairs(); }
     const age = Date.now() - Math.max(Date.parse(DATA.generated_at), allRefreshedAt);
     if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 4 * 60000) {
       fullTriedAt = Date.now();

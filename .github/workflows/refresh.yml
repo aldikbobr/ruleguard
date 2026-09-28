@@ -1,12 +1,14 @@
 name: Live data refresh
 
-# Every 15 minutes: re-scan the four venues, rebuild the pairs and publish the page data to the live-data branch
-# (one force-pushed commit, so main's history stays the team's). The hosted demo reads it on every page load.
+# Every 5 minutes (GitHub's shortest schedule, often a few minutes late): re-scan the four venues, rebuild the pairs
+# and, when the set of pairs changed or the last publish is an hour old, publish the page data to the live-data branch
+# (one force-pushed commit, so main's history stays the team's). The hosted demo reads it on every page load, and an
+# open page checks for a new set once a minute.
 # The AI review of new or changed pairs runs when GEMINI_API_KEY is set as a repository secret; the Solana
 # attestations of new or changed verdicts run once a day when SOLANA_DEVNET_KEY is set. Without keys both are skipped.
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
     - cron: "5 6 * * *"
   workflow_dispatch:
 
@@ -80,6 +82,15 @@ jobs:
         env:
           TOKEN: ${{ github.token }}
         run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            import { pairsSig } from './src/page.mjs';
+            if (!fs.existsSync('previous.json') || process.env.GITHUB_EVENT_NAME !== 'schedule') process.exit(0);
+            const prev = JSON.parse(fs.readFileSync('previous.json', 'utf8')), now = JSON.parse(fs.readFileSync('live/live-data.json', 'utf8'));
+            const fresh = Date.now() - Date.parse(prev.generated_at) < 60 * 60 * 1000;
+            if (pairsSig(prev.pairs) === pairsSig(now.pairs) && fresh) { console.log('Same pairs as the last publish; skipping.'); fs.writeFileSync('skip', ''); }
+          "
+          [ -f skip ] && exit 0
           cd live
           git init -q -b live-data
           git add .

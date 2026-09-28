@@ -12,7 +12,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { loadEnv, keyStatus } from "../src/env.mjs";
-import { livePrices, refreshPair, resetCaches, snapshotTime } from "../src/live.mjs";
+import { livePrices, refreshPair, resetCaches, snapshotInfo } from "../src/live.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DIR = path.join(ROOT, "demo");
@@ -47,8 +47,8 @@ http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
 
   if (url.pathname === "/api/status" && req.method === "GET") {
-    snapshotTime().then(generated_at => json(res, 200, {
-      generated_at,
+    snapshotInfo().then(info => json(res, 200, {
+      ...info,
       hosted: false,
       refreshing: job.running,
       started_at: job.startedAt,

@@ -12,6 +12,7 @@ import { compareRules, rawEdge } from "./compare.mjs";
 import { loadCache, saveCache, lookup, passports, verdicts } from "./ai/review.mjs";
 import { geminiReady } from "./ai/gemini.mjs";
 import { getJson } from "./util.mjs";
+import { pairsSig } from "./page.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 export const DATA = path.join(ROOT, "research", "pairs-all.json");
@@ -32,7 +33,7 @@ const AI_PER_MINUTE = 4;
 // locally, and whenever that file can't be fetched, from research/pairs-all.json as deployed
 const LIVE_DATA_URL = process.env.LIVE_DATA_URL
   ?? (process.env.VERCEL ? "https://raw.githubusercontent.com/aldikbobr/ruleguard/live-data/live-data.json" : "");
-const LIVE_TTL_MS = 60_000;
+const LIVE_TTL_MS = 30_000;
 const liveCache = { at: 0, data: null };
 
 // The latest published page data, or null when there is none (then the deployed snapshot is used)
@@ -40,14 +41,19 @@ export async function liveData() {
   if (!LIVE_DATA_URL) return null;
   if (liveCache.data && Date.now() - liveCache.at < LIVE_TTL_MS) return liveCache.data;
   try {
-    const data = await getJson(LIVE_DATA_URL);
+    // the query string gets past GitHub's 5-minute raw-file cache
+    const data = await getJson(`${LIVE_DATA_URL}?t=${Math.floor(Date.now() / LIVE_TTL_MS)}`);
     if (data?.pairs?.length) return Object.assign(liveCache, { at: Date.now(), data }).data;
   } catch { /* keep serving the last good copy or the snapshot */ }
   return liveCache.data;
 }
 const readData = async () => (await liveData()) ?? JSON.parse(fs.readFileSync(DATA, "utf8"));
-export async function snapshotTime() {
-  try { return (await readData()).generated_at ?? null; } catch { return null; }
+// When the pairs were built and which set it is (see pairsSig), for /api/status
+export async function snapshotInfo() {
+  try {
+    const data = await readData();
+    return { generated_at: data.generated_at ?? null, pairs_sig: pairsSig(data.pairs) };
+  } catch { return { generated_at: null, pairs_sig: null }; }
 }
 
 const priceCache = { at: 0, body: null, pending: null };

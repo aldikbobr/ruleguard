@@ -3,6 +3,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import handler from "../api/status.mjs";
 import page from "../api/page.mjs";
+import fs from "node:fs";
+import { pairsSig } from "../src/page.mjs";
 
 function fakeRes() {
   const res = { statusCode: 0, headers: {}, body: "" };
@@ -17,6 +19,16 @@ test("/ serves the page (the deployed snapshot when there is no live data)", asy
   assert.equal(res.statusCode, 200);
   assert.match(res.body, /<title>RuleGuard Demo<\/title>/);
   assert.doesNotMatch(res.body, /\/\*__DATA__\*\/null/, "the data is filled in");
+});
+
+test("pairsSig ignores order and matches the page's copy of the algorithm", () => {
+  const pair = (a, b) => ({ a: { venue: "kalshi", id: a }, b: { venue: "polymarket", id: b } });
+  const x = [pair("A", "a"), pair("B", "b")];
+  assert.equal(pairsSig(x), pairsSig([...x].reverse()));
+  assert.notEqual(pairsSig(x), pairsSig([pair("A", "a"), pair("C", "c")]));
+  assert.match(pairsSig(x), /^2-/);
+  const template = fs.readFileSync(new URL("../demo/template.html", import.meta.url), "utf8");
+  assert.ok(template.includes("h = (h * 33 + s.charCodeAt(i)) >>> 0"), "the page must hash the pairs the same way");
 });
 
 test("/api/status says it is the hosted demo and reports keys as yes/no only", async () => {
