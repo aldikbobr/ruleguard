@@ -35,7 +35,7 @@
 - **RuleGuard:** shows a verdict and a divergence scenario next to every price gap, and ranks "arbitrage traps" by the mid-price gap on liquid markets only, because raw spreads in thin books move within minutes.
 
 ### 3. A "risk-free" hedge can lose on both legs
-- **Problem:** a trader hedged a player prop across Kalshi and Polymarket for +$3 and lost $47 when the player didn't play: one venue settled No, the other at the last traded price ([DarkHorse Odds, Sep 22, 2026](https://about.darkhorseodds.com/guides/kalshi-polymarket-market-rules)). A live case this week: "Bitcoin reaches $86,000, Sep 21–27". Limitless counts the whole week and has already resolved Yes; Polymarket only counts prices after its market opened on Sep 23, and its Yes traded at about 8¢ on Sep 26.
+- **Problem:** a trader hedged a player prop across Kalshi and Polymarket for +$3 and lost $47 when the player didn't play: one venue settled No, the other at the last traded price ([DarkHorse Odds, Sep 22, 2026](https://about.darkhorseodds.com/guides/kalshi-polymarket-market-rules)). A case we caught live: "Bitcoin reaches $86,000, Sep 21–27". Limitless counts the whole week; Polymarket only counts prices after its market opened on Sep 23. Bitcoin touched $86,000 before that, so Limitless resolved **Yes** and Polymarket resolved **No** (Sep 28, 2026).
 - **RuleGuard:** turns the clause that differs into a concrete scenario ("a touch of $86,000 on Sep 21–23 counts only on Limitless"), so the risk is visible before the trade.
 
 ### 4. No machine-readable answer

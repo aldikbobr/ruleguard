@@ -103,6 +103,6 @@ export const VERDICTS = {
     verdict: "different",
     short: "Window — Polymarket: from its launch on Sep 23 · Limitless: from Sep 21",
     summary: "Both use Binance BTC/USDT 1-minute highs, but Polymarket ignores price action before the market was created (Sep 23, 16:57 UTC), while Limitless counts the whole week from 12:00 AM ET on Sep 21.",
-    scenario: "A touch of $86,000 on Sep 21–23, before Polymarket's market opened, counts only on Limitless. This has already happened: on Sep 26 Limitless had resolved Yes, while Polymarket's Yes traded at 7.5¢ with the week still running."
+    scenario: "A touch of $86,000 on Sep 21–23, before Polymarket's market opened, counts only on Limitless. That is what happened: Limitless resolved Yes, Polymarket resolved No (Sep 28, 2026): the same Yes position paid on one venue and lost on the other."
   }
 };
