@@ -1,6 +1,44 @@
 # RuleGuard — findings
 
-**Date:** Sep 25, 2026 · **Scripts:** `scripts/poc.mjs` (step 1), `scripts/build-demo.mjs` (demo), `scripts/sample.mjs` (random sample)
+**Date:** Sep 25–28, 2026 · **Scripts:** `scripts/poc.mjs` (step 1), `scripts/build-demo.mjs` (demo), `scripts/sample.mjs` (random sample), `scripts/closed-pairs.mjs` (settled pairs)
+
+## Settled pairs: how often "the same" market actually paid out differently
+
+`scripts/closed-pairs.mjs` loaded the settled markets we could reach on both venues (Sep 28, 2026): 158,123 traded Kalshi markets with rules, from its politics, elections, economics, world, science and technology, companies, entertainment and mentions series, 2023 to Sep 2026, including Kalshi's historical archive; and 31,960 resolved Yes/No Polymarket markets, the most traded ones of each month since Jan 2024. The demo's matcher paired them: 584 pairs. Pairs that settled more than 60 days apart are almost always the same question asked for different periods, so they are kept in `research/closed-pairs.json` but left out of the headline.
+
+| Settled pairs (Kalshi ↔ Polymarket, within 60 days) | 341 |
+|---|---|
+| Paid out the same way | **332 (97%)** |
+| Paid out in opposite directions because of the rules | **7 (2%)** |
+| Opposite, but a matching error (different questions) | 2 |
+
+Every opposite result was checked against both rule texts:
+
+| Pair | Kalshi | Polymarket | What decided it |
+|---|---|---|---|
+| **Same question, different fine print** | | | |
+| Netflix says "Warner Bros" on its Jan 20, 2026 earnings call | No | Yes | Same call. The venues count word forms differently: Kalshi the exact phrase or its plural/possessive only, Polymarket any usage, compounds included |
+| Kari Lake joins the Trump administration | No | Yes | The venues define "the administration" differently; Polymarket counts any formal appointment to a federal role |
+| **Look-alike questions, different windows or definitions** | | | |
+| Trump meets Putin: Kalshi "before 2025" vs Polymarket "in August" | No | Yes | Kalshi's rules count only Jun 1 – Jul 1, 2025 |
+| Trump meets Xi: Kalshi "before 2025" vs Polymarket "in August" | Yes | No | Kalshi counts all of 2025 |
+| Trump and Maduro: Kalshi "meet" vs Polymarket "talk in November" | No | Yes | Kalshi: in person, Nov 29 – Dec 31; Polymarket: phone calls count, November |
+| Anthropic has the top AI model: "before 2027" vs "end of January 2026" | Yes | No | Any moment vs one check on Jan 31, 2026 |
+| TikTok back on the App Store: "before 2026" vs "before February" | Yes | No | Kalshi until the end of 2025; Polymarket Jan 20–31, 2025 |
+| **Matching errors** | | | |
+| Musk at the inauguration vs Trump says "Elon Musk" in the speech | Yes | No | Different questions |
+| A nominee withdraws vs Trump tweets on inauguration day | No | Yes | Different questions |
+
+Two more same-question pairs settled months apart and also paid out in opposite directions because of the fine print. They are left out of the table above:
+
+- **"Will Trump meet with Vladimir Putin before 2026?" (Kalshi) vs "…in 2025?" (Polymarket):** Kalshi's rules count only Oct 16 – Dec 31, 2025, so the Aug 15, 2025 Alaska summit didn't count. Kalshi paid No, Polymarket Yes.
+- **"Will Elon Musk join the Trump administration?":** Kalshi counts only appointments made after its market opened; Polymarket counted his 2025 role. Kalshi paid No, Polymarket Yes.
+
+And across venues outside this study, "Bitcoin reaches $86,000, Sep 21–27" paid Yes on Limitless and No on Polymarket (see the AI review section).
+
+**What this means:** rule gaps rarely flip the result (about 2% of settled pairs here), but when they do, a hedge across the two venues loses one leg completely, and the flip never shows in the price beforehand. Most of the flips are look-alike questions whose titles differ only in the fine print of a date, which is exactly what a title-based scanner pairs.
+
+⚠️ **Limitations:** Polymarket coverage is limited to the most traded markets of each month; Kalshi's rules are its summary texts; untraded Kalshi markets were excluded because Kalshi closed them in bulk as "No" even when the event happened; the review of the opposite results was done by an AI assistant (Claude) against the rule texts, not yet re-checked by a person.
 
 ## Headline: random sample of 30 pairs
 
@@ -62,7 +100,7 @@ To test v2 fairly, `scripts/sample.mjs --seed 20260926 --exclude random-sample.j
 - One “uncertain” (Kalshi's one-line rule summary for the French election), which is the intended behavior when a side says too little.
 - **Quotes:** 291 of 299 (97%) found verbatim.
 
-**A right class with a wrong scenario.** For "Bitcoin reaches $86,000, Sep 21–27" (Polymarket vs Limitless) the AI correctly called the pair `different` because the windows start on different days, but its scenario had the logic reversed. The real split: Polymarket counts prices only after its market opened (Sep 23, 16:57 UTC), Limitless from 12:00 AM ET on Sep 21. That is how they settled: Limitless resolved Yes, Polymarket resolved No (Sep 28, 2026), a real divergence between "the same" market that RuleGuard had flagged as `different` beforehand. An in-depth review now replaces the AI scenario for this pair in the demo. The scenario text is less reliable than the class, which is why the pitch materials quote only in-depth reviews.
+**A right class with a wrong scenario.** For "Bitcoin reaches $86,000, Sep 21–27" (Polymarket vs Limitless) the AI correctly called the pair `different` because the windows start on different days, but its scenario had the logic reversed. The real split: Polymarket counts prices only after its market opened (Sep 23, 16:57 UTC), Limitless from 12:00 AM ET on Sep 21. That is how they settled: Limitless resolved Yes, Polymarket resolved No (Sep 28, 2026). RuleGuard had flagged the pair as `different` while Polymarket's market was still open (its Yes traded at 7.5¢ on Sep 26); Limitless had already resolved by then. An in-depth review now replaces the AI scenario for this pair in the demo. The scenario text is less reliable than the class, which is why the pitch materials quote only in-depth reviews.
 
 ⚠️ v2 was tuned after seeing v1's errors **on the first 30 pairs**, so the table above that one is optimistic; the held-out table is the one to quote. The “manual labels” were made by Claude (a different model) and not re-checked by a human, the sample is small, and a light model did most of the work — treat all of this as indicative.
 

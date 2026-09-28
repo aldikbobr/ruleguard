@@ -54,6 +54,7 @@
 | AI review on 30 held-out pairs, labeled before looking at the AI | same label in **26 of 30**; caught **7 of 7** "different" pairs; 2 risky "equivalent" calls, both on pairs that differ only in edge cases |
 | Quotes the AI cited that were found word for word in the rules | 291 of 299 (97%) |
 | Verdicts on Solana devnet | **191** attestations covering all 187 pairs |
+| Settled Kalshi ↔ Polymarket pairs, 2023–2026 | 341 pairs: 332 paid out the same way; **7 paid out in opposite directions because of the rules**; 2 more were matching errors |
 
 The labels come from an AI assistant and have not yet been re-checked by a person, and the samples are small, so treat the rates as indicative. Methods, confusion matrices and limitations: [research/FINDINGS.md](research/FINDINGS.md).
 
@@ -160,7 +161,7 @@ node scripts/closed-pairs.mjs                # study of markets that have alread
 - [x] Four-venue pipeline and live demo
 - [x] AI passports and verdicts for all matched pairs, with a held-out accuracy check
 - [x] Verdicts of all matched pairs attested on Solana devnet
-- [ ] Study of settled pairs: how often "the same" market settled in opposite directions
+- [x] Study of settled pairs: how often "the same" market settled in opposite directions
 - [ ] Human re-check of the labeled samples
 - [ ] Kalshi markets on Solana via DFlow as one side of a pair
 - [ ] Hosted API and alerts for aggregators and bots

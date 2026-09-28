@@ -47,19 +47,26 @@ async function cached(name, load, refetch) {
 }
 
 // Kalshi: every settled market of the chosen series (the settled-events feed is newest first and is dominated by
-// daily price markets, so it is read series by series instead); only markets that settled Yes or No
-async function loadKalshi() {
+// daily price markets, so it is read series by series instead); only markets that settled Yes or No.
+// Kalshi keeps markets settled in the last few months under /markets and moves older ones to /historical/markets
+// (the cutoff is at /historical/cutoff), so both are read.
+const KALSHI_SOURCES = {
+  "closed-kalshi": ticker => `${K}/markets?series_ticker=${encodeURIComponent(ticker)}&status=settled&limit=1000`,
+  "closed-kalshi-historical": ticker => `${K}/historical/markets?series_ticker=${encodeURIComponent(ticker)}&limit=1000`
+};
+async function loadKalshi(name) {
+  const urlOf = KALSHI_SOURCES[name];
   const { series } = await getJson(`${K}/series`);
   const chosen = series.filter(s => CATEGORIES.has(s.category) && !SKIP_FREQUENCY.has(s.frequency));
-  console.log(`  kalshi: ${chosen.length} of ${series.length} series`);
-  const st = progress("closed-kalshi");
+  console.log(`  ${name}: ${chosen.length} of ${series.length} series`);
+  const st = progress(name);
   let done = st.done.size, failed = 0;
   await mapLimit(chosen.filter(s => !st.done.has(s.ticker)), 10, async s => {
     const found = [];
     let cursor = "";
     do {
       let d;
-      try { d = await getJson(`${K}/markets?series_ticker=${encodeURIComponent(s.ticker)}&status=settled&limit=1000${cursor ? `&cursor=${cursor}` : ""}`, TRIES); }
+      try { d = await getJson(`${urlOf(s.ticker)}${cursor ? `&cursor=${cursor}` : ""}`, TRIES); }
       catch (e) { failed++; console.warn(`  kalshi ${s.ticker}: ${e.message}`); return; }
       for (const m of d.markets ?? []) {
         if (!["yes", "no"].includes(m.result)) continue;
@@ -77,11 +84,11 @@ async function loadKalshi() {
     } while (cursor);
     st.items.push(...found);
     st.done.add(s.ticker);
-    if (++done % 250 === 0) { st.save(); console.log(`  kalshi: ${done} series, ${st.items.length} settled markets`); }
+    if (++done % 250 === 0) { st.save(); console.log(`  ${name}: ${done} series, ${st.items.length} settled markets`); }
   });
   if (failed) {
     st.save();
-    throw new Error(`kalshi: ${failed} series could not be read even after retries; rerun to resume`);
+    throw new Error(`${name}: ${failed} series could not be read even after retries; rerun to resume`);
   }
   st.finish();
   return st.items;
@@ -140,33 +147,48 @@ const t0 = Date.now();
 console.log("Loading settled markets…");
 // --refetch reloads both venues; --refetch-polymarket or --refetch-kalshi reloads one
 const refetch = venue => Boolean(args.refetch || args[`refetch-${venue}`]);
-const [kalshi, poly] = await Promise.all([
-  cached("closed-kalshi", () => loadKalshi(), refetch("kalshi")),
+// the two Kalshi sources one after the other, to stay under its rate limit
+const loadBothKalshi = async () => [
+  await cached("closed-kalshi", () => loadKalshi("closed-kalshi"), refetch("kalshi")),
+  await cached("closed-kalshi-historical", () => loadKalshi("closed-kalshi-historical"), refetch("kalshi"))
+];
+const [[kalshiLive, kalshiHistorical], poly] = await Promise.all([
+  loadBothKalshi(),
   cached("closed-polymarket", () => loadPolymarket(Number(args["poly-pages-per-month"] ?? 20)), refetch("polymarket"))
 ]);
-console.log(`Kalshi: ${kalshi.length} settled markets · Polymarket: ${poly.length}`);
+// Left out on Kalshi: multi-leg combos (KXMVE…), which have no rule text of their own, and markets that never
+// traded. Kalshi closed untraded markets in bulk as "No" (e.g. on Dec 22, 2025), even when the event had happened,
+// so their "result" is not a settlement anyone was paid on.
+const seenK = new Set();
+const kalshi = [...kalshiLive, ...kalshiHistorical].filter(m => m.rules && m.volume > 0 && !m.id.startsWith("KXMVE") && !seenK.has(m.id) && seenK.add(m.id));
+console.log(`Kalshi: ${kalshi.length} traded settled markets with rules (${kalshiLive.length} recent, ${kalshiHistorical.length} historical loaded) · Polymarket: ${poly.length}`);
 
 const days = (x, y) => Math.abs(Date.parse(x) - Date.parse(y)) / 864e5;
-const matched = matchVenues(kalshi, poly, { minScore: 0.5, perEvent: 5 });
-const far = matched.filter(p => !(days(p.a.settled, p.b.settled) <= MAX_GAP_DAYS));
-const pairs = matched.filter(p => days(p.a.settled, p.b.settled) <= MAX_GAP_DAYS).map(p => ({
+const item = p => ({
   score: Math.round(p.score * 100) / 100,
   gap_days: Math.round(days(p.a.settled, p.b.settled)),
   agree: p.a.result === p.b.result,
   a: p.a, b: p.b
-}));
+});
+const byAgreement = (x, y) => Number(x.agree) - Number(y.agree) || y.score - x.score;
+const matched = matchVenues(kalshi, poly, { minScore: 0.5, perEvent: 5 }).map(item);
+const pairs = matched.filter(p => p.gap_days <= MAX_GAP_DAYS).sort(byAgreement);
+// kept for review but not in the headline: most are the same question asked for different periods
+const far = matched.filter(p => !(p.gap_days <= MAX_GAP_DAYS)).sort(byAgreement);
 
 const disagree = pairs.filter(p => !p.agree);
 const data = {
   generated_at: new Date().toISOString(),
   kalshi_markets: kalshi.length, polymarket_markets: poly.length,
-  matched: matched.length, dropped_far_apart: far.length, max_gap_days: MAX_GAP_DAYS,
+  matched: matched.length, max_gap_days: MAX_GAP_DAYS,
   pairs: pairs.length, disagree: disagree.length,
-  items: pairs.sort((x, y) => Number(x.agree) - Number(y.agree) || y.score - x.score)
+  far_apart: far.length, far_apart_disagree: far.filter(p => !p.agree).length,
+  items: pairs,
+  far_apart_items: far
 };
 fs.writeFileSync(OUT, JSON.stringify(data, null, 2));
 
-console.log(`\nMatched ${matched.length} pairs; ${far.length} dropped (settled more than ${MAX_GAP_DAYS} days apart); ${pairs.length} kept.`);
+console.log(`\nMatched ${matched.length} pairs; ${pairs.length} settled within ${MAX_GAP_DAYS} days of each other; ${far.length} further apart (${data.far_apart_disagree} of them settled differently), kept separately.`);
 console.log(`Settled the same way: ${pairs.length - disagree.length} · differently: ${disagree.length}\n`);
 for (const p of disagree) {
   console.log(`[${p.score}] Kalshi ${p.a.result.toUpperCase()} vs Polymarket ${p.b.result.toUpperCase()} (${p.gap_days} d apart)`);

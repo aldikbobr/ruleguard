@@ -9,10 +9,9 @@
 - [x] Random labeled sample and a held-out accuracy check of the AI
 - [x] Demo with live prices, full and per-pair refresh, and a hosted snapshot
 - [x] Verdicts of all matched pairs published on Solana devnet (Solana Attestation Service)
+- [x] Study of settled pairs: 341 Kalshi ↔ Polymarket pairs, 7 paid out in opposite directions because of the rules
 
 ## Next
-
-- [ ] Study of settled pairs: how often "the same" market settled in opposite directions (`scripts/closed-pairs.mjs`, in progress)
 - [ ] Human re-check of the 60 labeled pairs
 - [ ] Fix the two "caveats" patterns the AI still calls equivalent, checked on a fresh sample
 - [ ] Re-attest automatically when a verdict or the rules change
