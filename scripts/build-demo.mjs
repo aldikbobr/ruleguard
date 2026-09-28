@@ -10,89 +10,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import * as kalshi from "../src/venues/kalshi.mjs";
-import * as polymarket from "../src/venues/polymarket.mjs";
-import * as limitless from "../src/venues/limitless.mjs";
-import * as manifold from "../src/venues/manifold.mjs";
-import { matchVenues } from "../src/match.mjs";
-import { compareRules, rawEdge } from "../src/compare.mjs";
-import { VERDICTS } from "../src/verdicts.mjs";
-import { loadCache, lookup } from "../src/ai/review.mjs";
+import { collect, recompare, enrich } from "../src/build.mjs";
 import { fill } from "../src/page.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => (a.startsWith("--") ? [...acc, [a.slice(2), arr[i + 1]]] : acc), []));
-const PER_PAIR = Number(args["per-venue-pair"] ?? 100);
-const MAX_RULES = 8000;
-
-const VENUES = [kalshi, polymarket, limitless, manifold];
 const t0 = Date.now();
-
-// Labeled random sample (scripts/sample.mjs + research/random-labels.json):
-// labels are attached to pairs by key, and the stats are computed here rather than by hand
-function attachSample(data) {
-  const sp = path.join(ROOT, "research", "random-sample.json"), lp = path.join(ROOT, "research", "random-labels.json");
-  if (!fs.existsSync(sp) || !fs.existsSync(lp)) return;
-  const sample = JSON.parse(fs.readFileSync(sp, "utf8"));
-  const labels = JSON.parse(fs.readFileSync(lp, "utf8"));
-  const byN = new Map(labels.labels.map(l => [l.n, l]));
-  const byKey = new Map(sample.pairs.map(p => [p.key, { ...byN.get(p.n), venues: p.venues }]));
-  for (const p of data.pairs) {
-    const s = byKey.get(`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`);
-    p.sample = s?.label ? { n: s.n, label: s.label, short: s.short, reason: s.reason } : null;
-  }
-  const count = rows => ({ n: rows.length, equivalent: rows.filter(r => r.label === "equivalent").length, caveats: rows.filter(r => r.label === "caveats").length, different: rows.filter(r => r.label === "different").length });
-  const rows = [...byKey.values()].filter(r => r.label);
-  const copy = r => r.venues.join("-") === "polymarket-limitless";
-  data.sample_stats = {
-    snapshot: sample.snapshot, seed: sample.seed, population: sample.population, reviewer: labels.reviewer, method: labels.method,
-    attached: data.pairs.filter(p => p.sample).length,
-    all: count(rows),
-    cross_operator: count(rows.filter(r => !copy(r))),
-    polymarket_limitless: count(rows.filter(copy))
-  };
-}
-
-// AI verdicts from research/ai-cache.json (made by scripts/ai-analyze.mjs) and the accuracy report, if present
-function attachAI(data) {
-  const { verdictOf } = lookup(loadCache(path.join(ROOT, "research", "ai-cache.json")));
-  for (const p of data.pairs) {
-    const v = verdictOf(p);
-    p.ai = v ? { verdict: v.verdict, why: v.why, scenario: v.scenario, model: v.model } : null;
-  }
-  // the held-out report (pairs never used to tune the prompts) is the honest number; the tuning-set report is kept for reference
-  const readEval = f => {
-    const file = path.join(ROOT, "research", f);
-    if (!fs.existsSync(file)) return null;
-    const ev = JSON.parse(fs.readFileSync(file, "utf8"));
-    return { n: ev.n, exact_agreement: ev.exact_agreement, different_recall: ev.different_recall, different_precision: ev.different_precision, false_equivalent: ev.false_equivalent.length, at: ev.at };
-  };
-  data.ai_stats = {
-    reviewed: data.pairs.filter(p => p.ai).length,
-    models: [...new Set(data.pairs.filter(p => p.ai).map(p => p.ai.model))],
-    eval: readEval("ai-eval.json"),
-    holdout: readEval("ai-eval-holdout.json")
-  };
-}
-
-// Verdicts published on Solana by scripts/attest.mjs (Solana Attestation Service), if present
-function attachChain(data) {
-  const file = path.join(ROOT, "research", "attestations.json");
-  if (!fs.existsSync(file)) return;
-  const att = JSON.parse(fs.readFileSync(file, "utf8"));
-  const explorer = address => `https://explorer.solana.com/address/${address}?cluster=${att.network}`;
-  for (const p of data.pairs) {
-    const it = att.items?.[`${p.a.venue}:${p.a.id}|${p.b.venue}:${p.b.id}`];
-    p.chain = it ? { verdict: it.verdict, method: it.method, url: explorer(it.attestation) } : null;
-  }
-  const items = Object.values(att.items || {});
-  data.chain_stats = {
-    network: att.network, total: items.length, attached: data.pairs.filter(p => p.chain).length,
-    by_method: items.reduce((acc, it) => ({ ...acc, [it.method]: (acc[it.method] || 0) + 1 }), {}),
-    credential: explorer(att.credential), schema: explorer(att.schema), schema_name: att.schema_name
-  };
-}
-
 
 // hosts that wrap the page in their own <html>/<head>/<body> get only the title, the styles and the body
 function fragment(html) {
@@ -102,9 +25,7 @@ function fragment(html) {
 }
 
 function renderDemo(data) {
-  attachSample(data);
-  attachAI(data);
-  attachChain(data);
+  enrich(data);
   const template = fs.readFileSync(path.join(ROOT, "demo", "template.html"), "utf8");
   fs.writeFileSync(path.join(ROOT, "demo", "index.html"), fill(template, data));
   // --static <file>: a snapshot for hosting without the local server (refresh controls hidden), as a fragment
@@ -123,76 +44,20 @@ function renderDemo(data) {
 
 // --from-cache: re-render the page from research/pairs-all.json without fetching the venues
 if ("from-cache" in args) {
-  const data = JSON.parse(fs.readFileSync(path.join(ROOT, "research", "pairs-all.json"), "utf8"));
-  const names = Object.fromEntries(VENUES.map(v => [v.meta.id, v.meta.name]));
-  for (const p of data.pairs) {
-    p.verdict = VERDICTS[`${p.a.id}|${p.b.id}`] || null;
-    p.cmp = compareRules(p.a, p.b, [names[p.a.venue], names[p.b.venue]]); // the rules are cached, so recompute the comparison
-  }
+  const data = recompare(JSON.parse(fs.readFileSync(path.join(ROOT, "research", "pairs-all.json"), "utf8")));
   renderDemo(data);
   console.log(`Demo re-rendered from cache (${data.generated_at}): ${path.join(ROOT, "demo", "index.html")}`);
   process.exit(0);
 }
 
 console.log("Loading venues…");
-const loaded = await Promise.all(VENUES.map(async v => {
-  try {
-    const markets = await v.load(v === kalshi ? { pages: Number(args["kalshi-pages"] ?? 30) } : {});
-    console.log(`  ${v.meta.name}: ${markets.length} markets`);
-    return markets;
-  } catch (e) {
-    console.warn(`  ${v.meta.name}: failed to load — ${e.message}`);
-    return [];
-  }
-}));
-
-const pairs = [];
-const pairStats = [];
-for (let i = 0; i < VENUES.length; i++) {
-  for (let j = i + 1; j < VENUES.length; j++) {
-    const [va, vb] = [VENUES[i].meta, VENUES[j].meta];
-    // Manifold questions are free-form and user-written, so they need a stricter similarity threshold
-    const minScore = va.id === "manifold" || vb.id === "manifold" ? 0.6 : 0.45;
-    let found = matchVenues(loaded[i], loaded[j], { minScore }).slice(0, PER_PAIR);
-    // Manifold rules are fetched only for markets that ended up in pairs
-    const needRules = found.flatMap(p => [p.a, p.b]).filter(m => m.venue === "manifold");
-    if (needRules.length) await manifold.hydrateRules(needRules);
-    const before = found.length;
-    found = found.filter(p => p.a.rules && p.b.rules);
-    pairStats.push({ a: va.id, b: vb.id, pairs: found.length, dropped_no_rules: before - found.length });
-    for (const p of found) {
-      const play = va.money === "play" || vb.money === "play";
-      const v = VERDICTS[`${p.a.id}|${p.b.id}`] || null;
-      pairs.push({
-        venues: [va.id, vb.id],
-        score: Math.round(p.score * 100) / 100,
-        edge: play ? null : rawEdge(p.a, p.b),
-        cmp: compareRules(p.a, p.b, [va.name, vb.name]),
-        verdict: v,
-        a: slim(p.a),
-        b: slim(p.b)
-      });
-    }
-    console.log(`  pairs ${va.name} ↔ ${vb.name}: ${found.length}`);
-  }
-}
-
-function slim(m) {
-  return { venue: m.venue, id: m.id, title: m.title, outcome: m.outcome, rules: m.rules.length > MAX_RULES ? m.rules.slice(0, MAX_RULES) + " …" : m.rules, close: m.close, yes: m.yes, no: m.no, url: m.url };
-}
-
-const data = {
-  generated_at: new Date().toISOString(),
-  venues: VENUES.map((v, i) => ({ ...v.meta, markets: loaded[i].length })),
-  pair_stats: pairStats,
-  pairs
-};
+const data = await collect({ kalshiPages: Number(args["kalshi-pages"] ?? 30), perVenuePair: Number(args["per-venue-pair"] ?? 100), log: console.log });
 
 fs.mkdirSync(path.join(ROOT, "research"), { recursive: true });
 fs.writeFileSync(path.join(ROOT, "research", "pairs-all.json"), JSON.stringify(data, null, 2));
 
 renderDemo(data);
 
-const by = c => pairs.filter(p => p.cmp.cls === c).length;
-console.log(`\nPairs: ${pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | reviewed in depth: ${pairs.filter(p => p.verdict).length}`);
+const by = c => data.pairs.filter(p => p.cmp.cls === c).length;
+console.log(`\nPairs: ${data.pairs.length} | different: ${by("different")} | check: ${by("check")} | looks_equivalent: ${by("looks_equivalent")} | reviewed in depth: ${data.pairs.filter(p => p.verdict).length}`);
 console.log(`Demo: ${path.join(ROOT, "demo", "index.html")}  (${Math.round((Date.now() - t0) / 1000)} s)`);

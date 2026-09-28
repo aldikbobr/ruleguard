@@ -13,6 +13,7 @@ import { loadCache, saveCache, lookup, passports, verdicts } from "./ai/review.m
 import { geminiReady } from "./ai/gemini.mjs";
 import { getJson } from "./util.mjs";
 import { pairsSig } from "./page.mjs";
+import { collect, enrich } from "./build.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 export const DATA = path.join(ROOT, "research", "pairs-all.json");
@@ -29,23 +30,46 @@ const AI_TIMEOUT_MS = 25_000; // the ↻ button never waits longer than this for
 // A public deployment must not let anyone burn the free Gemini quota: at most this many fresh AI reviews a minute
 const AI_PER_MINUTE = 4;
 
-// On Vercel the pairs come from the live-data branch, which .github/workflows/refresh.yml rebuilds every 15 minutes;
-// locally, and whenever that file can't be fetched, from research/pairs-all.json as deployed
+// On Vercel the pairs come from the live-data branch, which .github/workflows/refresh.yml rebuilds every 5 minutes,
+// or from this server's own rescan when that is newer; locally, and when neither exists, from research/pairs-all.json
 const LIVE_DATA_URL = process.env.LIVE_DATA_URL
   ?? (process.env.VERCEL ? "https://raw.githubusercontent.com/aldikbobr/ruleguard/live-data/live-data.json" : "");
 const LIVE_TTL_MS = 30_000;
 const liveCache = { at: 0, data: null };
 
-// The latest published page data, or null when there is none (then the deployed snapshot is used)
+const newest = (...sets) => sets.filter(Boolean).sort((x, y) => Date.parse(y.generated_at) - Date.parse(x.generated_at))[0] ?? null;
+
+// The latest page data this server knows: the published live data or its own rescan, whichever is newer;
+// null when there is neither (then the deployed snapshot is used)
 export async function liveData() {
-  if (!LIVE_DATA_URL) return null;
-  if (liveCache.data && Date.now() - liveCache.at < LIVE_TTL_MS) return liveCache.data;
-  try {
-    // the query string gets past GitHub's 5-minute raw-file cache
-    const data = await getJson(`${LIVE_DATA_URL}?t=${Math.floor(Date.now() / LIVE_TTL_MS)}`);
-    if (data?.pairs?.length) return Object.assign(liveCache, { at: Date.now(), data }).data;
-  } catch { /* keep serving the last good copy or the snapshot */ }
-  return liveCache.data;
+  if (!LIVE_DATA_URL) return rescanned.data;
+  if (!liveCache.data || Date.now() - liveCache.at >= LIVE_TTL_MS) {
+    try {
+      // the query string gets past GitHub's 5-minute raw-file cache
+      const data = await getJson(`${LIVE_DATA_URL}?t=${Math.floor(Date.now() / LIVE_TTL_MS)}`);
+      if (data?.pairs?.length) Object.assign(liveCache, { at: Date.now(), data });
+    } catch { /* keep serving the last good copy or the snapshot */ }
+  }
+  return newest(liveCache.data, rescanned.data);
+}
+
+// "Refresh all pairs" on the hosted demo: scan the four venues again right now (about 20 s) instead of waiting for
+// the refresh workflow. At most once a minute per server, and only when someone asks, which keeps it inside the
+// free tier's CPU budget; concurrent requests share one scan.
+const RESCAN_MIN_MS = 60_000;
+const rescanned = { at: 0, data: null, pending: null };
+export async function rescan() {
+  if (rescanned.data && Date.now() - rescanned.at < RESCAN_MIN_MS) return rescanned.data;
+  rescanned.pending ??= (async () => {
+    const data = enrich(await collect());
+    const safe = await liveData();
+    // a venue outage must not replace a good set with a half-empty one
+    if (safe && data.pairs.length < safe.pairs.length * 0.5) return safe;
+    Object.assign(rescanned, { at: Date.now(), data });
+    resetCaches();
+    return data;
+  })().finally(() => { rescanned.pending = null; });
+  return rescanned.pending;
 }
 const readData = async () => (await liveData()) ?? JSON.parse(fs.readFileSync(DATA, "utf8"));
 // When the pairs were built and which set it is (see pairsSig), for /api/status

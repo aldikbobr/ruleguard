@@ -6,8 +6,8 @@
   "rewrites": [{ "source": "/", "destination": "/api/page" }],
   "functions": {
     "api/*.mjs": {
-      "maxDuration": 30,
-      "includeFiles": "{research/pairs-all.json,research/ai-cache.json,demo/template.html,demo/index.html}"
+      "maxDuration": 60,
+      "includeFiles": "{research/*.json,demo/template.html,demo/index.html}"
     }
   }
 }

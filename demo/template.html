@@ -227,7 +227,17 @@ footer li{margin:3px 0}
 </div>
 
 <script>
-const DATA = /*__DATA__*/null;
+const EMBEDDED = /*__DATA__*/null;
+// A rescan on the hosted demo hands newer data over through sessionStorage and reloads, so the page never goes back
+// to an older set even if the reload is served by a server that hasn't seen the rescan
+const STORE_KEY = "ruleguard.data", NOTE_KEY = "ruleguard.note";
+const DATA = (() => {
+  try {
+    const s = JSON.parse(sessionStorage.getItem(STORE_KEY) || "null");
+    if (s && !EMBEDDED.static && Date.parse(s.generated_at) > Date.parse(EMBEDDED.generated_at)) return s;
+  } catch { /* storage blocked or empty */ }
+  return EMBEDDED;
+})();
 const V = Object.fromEntries(DATA.venues.map(v => [v.id, v]));
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -360,13 +370,17 @@ async function startFullRefresh(prefix = "") {
   }
   btn.disabled = false;
 }
-btn.addEventListener("click", () => hosted ? refreshOrReload() : startFullRefresh());
+btn.addEventListener("click", () => hosted ? rescanAndApply() : startFullRefresh());
+try {
+  const note = sessionStorage.getItem(NOTE_KEY);
+  if (note) { msg.textContent = note; sessionStorage.removeItem(NOTE_KEY); }
+} catch { /* storage blocked */ }
 if (served) {
   btn.disabled = true; // until the server says what kind of refresh it supports
   status().then(s => {
     hosted = Boolean(s.hosted);
-    // the hosted demo rechecks every pair on its own (on open, then every 15 min) unless the visitor chose otherwise
-    if (hosted && !("full" in savedAuto)) { auto.full = 15; paintAuto(); }
+    // the hosted demo rescans the venues on its own (on open, then every 5 min) unless the visitor chose otherwise
+    if (hosted && !("full" in savedAuto)) { auto.full = 5; paintAuto(); }
     btn.disabled = false;
     btn.title = hosted ? "Refetch the prices and rules of every pair and re-compare them" : "Refetch everything from the venues and rebuild the list of pairs (1–3 minutes)";
     showKeys(s.keys);
@@ -704,22 +718,48 @@ function pairsSig(pairs) {
   for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0;
   return `${pairs.length}-${h.toString(16)}`;
 }
-// The hosted demo's pairs are rebuilt every few minutes by the refresh workflow. When the set changed, reload,
-// unless the visitor is reading an expanded pair: then offer a reload instead of pulling the page away.
-async function checkNewPairs(prefix = "") {
-  let s;
-  try { s = await status(); } catch { return false; }
-  if (!s.pairs_sig || s.pairs_sig === pairsSig(P)) return false;
+const diffNote = data => {
+  const before = new Set(P.map(key)), after = new Set(data.pairs.map(key));
+  const added = [...after].filter(k => !before.has(k)).length, gone = [...before].filter(k => !after.has(k)).length;
+  return `Venues scanned at ${new Date(data.generated_at).toLocaleTimeString("en-US", { timeStyle: "short" })}: ${added} new pair${added === 1 ? "" : "s"}, ${gone} gone.`;
+};
+// Show newer data: hand it to the reloaded page. A visitor reading an expanded pair gets a link instead of a jump.
+function applyData(data, note) {
+  try { sessionStorage.setItem(STORE_KEY, JSON.stringify(data)); sessionStorage.setItem(NOTE_KEY, note); }
+  catch { /* too big or blocked: the reload still gets the server's newest data */ }
   if (document.querySelector(".pair[open]")) {
-    msg.innerHTML = `${esc(prefix)}New pairs are available. <a href="" onclick="location.reload();return false">Reload</a>`;
-  } else {
-    msg.textContent = `${prefix}New pairs found — reloading…`;
-    location.reload();
+    msg.innerHTML = `${esc(note)} <a href="" onclick="location.reload();return false">Show</a>`;
+    return;
   }
-  return true;
+  location.reload();
 }
-async function refreshOrReload(prefix = "") {
-  if (!(await checkNewPairs(prefix))) return refreshAll(prefix);
+// A light check once a minute: has the refresh workflow (every 5 minutes) or a rescan produced a newer set of pairs?
+async function checkNewPairs() {
+  try {
+    const s = await status();
+    if (!s.pairs_sig || s.pairs_sig === pairsSig(P) || !(Date.parse(s.generated_at) > Date.parse(DATA.generated_at))) return;
+    const data = await fetch("/api/data", { cache: "no-store" }).then(r => (r.ok ? r.json() : null));
+    if (data && Date.parse(data.generated_at) > Date.parse(DATA.generated_at)) applyData(data, diffNote(data));
+  } catch { /* try again next minute */ }
+}
+// "Refresh all pairs" on the hosted demo: the server scans the four venues right now (about 20 s); new and closed
+// markets show up at once, with every pair's prices and rules. If that fails, the current pairs are rechecked in place.
+async function rescanAndApply(prefix = "") {
+  if (btn.disabled) return;
+  btn.disabled = true;
+  msg.textContent = `${prefix}Scanning the four venues for new pairs… (about 20 s)`;
+  try {
+    const r = await fetch("/api/data?rescan=1", { cache: "no-store" });
+    if (!r.ok) throw new Error(`error ${r.status}`);
+    const data = await r.json();
+    if (Date.parse(data.generated_at) > Date.parse(DATA.generated_at)) return applyData(data, `${prefix}${diffNote(data)}`);
+    btn.disabled = false;
+    return refreshAll(prefix);
+  } catch (e) {
+    btn.disabled = false;
+    msg.textContent = `${prefix}The scan failed (${e.message}); rechecking the current pairs instead.`;
+    return refreshAll(prefix);
+  }
 }
 
 // "Refresh all pairs" on the hosted demo: every pair's prices and rules, six at a time, updated in place
@@ -764,7 +804,7 @@ if (served) {
     const age = Date.now() - Math.max(Date.parse(DATA.generated_at), allRefreshedAt);
     if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 4 * 60000) {
       fullTriedAt = Date.now();
-      if (hosted) refreshOrReload("Auto-refresh: ");
+      if (hosted) rescanAndApply("Auto-refresh: ");
       else startFullRefresh("Auto-refresh: ");
     }
   }, 5000);
