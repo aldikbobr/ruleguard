@@ -1,11 +1,13 @@
-name: Daily data refresh
+name: Live data refresh
 
-# Re-scans the four venues, rebuilds the pairs and commits the new data; Vercel redeploys on the push and the
-# Pages workflow runs after this one. The AI review and the Solana attestations of new or changed pairs run
-# when their keys are set as repository secrets (GEMINI_API_KEY, SOLANA_DEVNET_KEY); without them they are skipped.
+# Every 15 minutes: re-scan the four venues, rebuild the pairs and publish the page data to the live-data branch
+# (one force-pushed commit, so main's history stays the team's). The hosted demo reads it on every page load.
+# The AI review of new or changed pairs runs when GEMINI_API_KEY is set as a repository secret; the Solana
+# attestations of new or changed verdicts run once a day when SOLANA_DEVNET_KEY is set. Without keys both are skipped.
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "*/15 * * * *"
+    - cron: "5 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,7 +20,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       SOLANA_DEVNET_KEY: ${{ secrets.SOLANA_DEVNET_KEY }}
@@ -30,6 +32,15 @@ jobs:
           cache: npm
       - run: npm ci
 
+      # the AI cache and the attestations carry over between runs through the live-data branch
+      - name: Restore the previous live data
+        run: |
+          git fetch --depth=1 origin live-data 2>/dev/null || exit 0
+          for f in ai-cache.json attestations.json; do
+            git show FETCH_HEAD:$f > research/$f.new 2>/dev/null && mv research/$f.new research/$f || rm -f research/$f.new
+          done
+          git show FETCH_HEAD:live-data.json > previous.json 2>/dev/null || true
+
       - name: Fetch markets and rebuild the pairs
         run: node scripts/build-demo.mjs
 
@@ -37,9 +48,11 @@ jobs:
       - name: Sanity check
         run: |
           node -e "
-            const fs = require('fs'), { execSync } = require('child_process');
-            const now = JSON.parse(fs.readFileSync('research/pairs-all.json', 'utf8')).pairs.length;
-            const before = JSON.parse(execSync('git show HEAD:research/pairs-all.json', { maxBuffer: 1 << 28 })).pairs.length;
+            const fs = require('fs');
+            const prev = fs.existsSync('previous.json') ? 'previous.json' : null;
+            const count = f => JSON.parse(fs.readFileSync(f, 'utf8')).pairs.length;
+            const now = count('research/pairs-all.json');
+            const before = prev ? count(prev) : JSON.parse(require('child_process').execSync('git show HEAD:research/pairs-all.json', { maxBuffer: 1 << 28 })).pairs.length;
             console.log('pairs', before, '->', now);
             if (now < before * 0.5) { console.error('Too few pairs; not publishing.'); process.exit(1); }
           "
@@ -49,22 +62,26 @@ jobs:
         continue-on-error: true
         run: node scripts/ai-analyze.mjs --all
 
-      - name: Attest new or changed verdicts on Solana devnet
-        if: env.SOLANA_DEVNET_KEY != ''
+      - name: Attest new or changed verdicts on Solana devnet (daily)
+        if: env.SOLANA_DEVNET_KEY != '' && (github.event.schedule == '5 6 * * *' || github.event_name == 'workflow_dispatch')
         continue-on-error: true
         run: |
           mkdir -p .solana
           printf '%s' "$SOLANA_DEVNET_KEY" > .solana/devnet-authority.json
           node scripts/attest.mjs --all
 
-      - name: Render the page with everything above
-        run: node scripts/build-demo.mjs --from-cache
-
-      - name: Commit the new data
+      - name: Build the page data
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/pairs-all.json research/ai-cache.json research/attestations.json demo/index.html
-          git diff --cached --quiet && echo "No changes." && exit 0
-          git commit -m "Daily data refresh"
-          git push
+          mkdir -p live
+          node scripts/build-demo.mjs --from-cache --data-out live/live-data.json
+          cp research/ai-cache.json research/attestations.json live/
+
+      - name: Publish to the live-data branch
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          cd live
+          git init -q -b live-data
+          git add .
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Live data $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-data

@@ -4,10 +4,6 @@ name: Demo on GitHub Pages
 on:
   push:
     branches: [main]
-  # pushes made by other workflows don't trigger this one, so it also runs after the daily refresh
-  workflow_run:
-    workflows: ["Daily data refresh"]
-    types: [completed]
   workflow_dispatch:
 
 permissions:

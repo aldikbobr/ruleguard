@@ -2,6 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import handler from "../api/status.mjs";
+import page from "../api/page.mjs";
 
 function fakeRes() {
   const res = { statusCode: 0, headers: {}, body: "" };
@@ -10,9 +11,17 @@ function fakeRes() {
   return res;
 }
 
-test("/api/status says it is the hosted demo and reports keys as yes/no only", () => {
+test("/ serves the page (the deployed snapshot when there is no live data)", async () => {
   const res = fakeRes();
-  handler({ url: "/api/status", method: "GET" }, res);
+  await page({ url: "/", method: "GET" }, res);
+  assert.equal(res.statusCode, 200);
+  assert.match(res.body, /<title>RuleGuard Demo<\/title>/);
+  assert.doesNotMatch(res.body, /\/\*__DATA__\*\/null/, "the data is filled in");
+});
+
+test("/api/status says it is the hosted demo and reports keys as yes/no only", async () => {
+  const res = fakeRes();
+  await handler({ url: "/api/status", method: "GET" }, res);
   assert.equal(res.statusCode, 200);
   assert.match(res.headers["content-type"], /application\/json/);
   const body = JSON.parse(res.body);

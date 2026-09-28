@@ -1,12 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "node scripts/build-demo.mjs --from-cache",
-  "outputDirectory": "demo",
+  "buildCommand": "node scripts/build-demo.mjs --from-cache && mkdir -p public && cp assets/logo.png public/logo.png",
+  "outputDirectory": "public",
+  "rewrites": [{ "source": "/", "destination": "/api/page" }],
   "functions": {
     "api/*.mjs": {
       "maxDuration": 30,
-      "includeFiles": "research/{pairs-all,ai-cache}.json"
+      "includeFiles": "{research/pairs-all.json,research/ai-cache.json,demo/template.html,demo/index.html}"
     }
   }
 }

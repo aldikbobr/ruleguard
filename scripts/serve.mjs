@@ -47,8 +47,8 @@ http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
 
   if (url.pathname === "/api/status" && req.method === "GET") {
-    return json(res, 200, {
-      generated_at: snapshotTime(),
+    snapshotTime().then(generated_at => json(res, 200, {
+      generated_at,
       hosted: false,
       refreshing: job.running,
       started_at: job.startedAt,
@@ -57,7 +57,8 @@ http.createServer((req, res) => {
       error: job.error,
       log: job.log.slice(-6),
       keys: keyStatus()
-    });
+    }));
+    return;
   }
 
   if (url.pathname === "/api/prices" && req.method === "GET") {

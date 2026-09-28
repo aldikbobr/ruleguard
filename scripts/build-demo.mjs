@@ -4,7 +4,8 @@
 //
 // Usage:  node scripts/build-demo.mjs [--per-venue-pair 100] [--kalshi-pages 30]
 //         node scripts/build-demo.mjs --from-cache   (re-render the page from saved data only)
-//         add --static <file> or --static-page <file> to also write a hosted snapshot (no live prices or refresh buttons)
+//         add --static <file> or --static-page <file> to also write a hosted snapshot (no live prices or refresh buttons),
+//         --data-out <file> to write the page's data as JSON (the live data the hosted demo serves)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -17,6 +18,7 @@ import { matchVenues } from "../src/match.mjs";
 import { compareRules, rawEdge } from "../src/compare.mjs";
 import { VERDICTS } from "../src/verdicts.mjs";
 import { loadCache, lookup } from "../src/ai/review.mjs";
+import { fill } from "../src/page.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => (a.startsWith("--") ? [...acc, [a.slice(2), arr[i + 1]]] : acc), []));
@@ -91,8 +93,6 @@ function attachChain(data) {
   };
 }
 
-// a replacer function, so "$&" or "$'" in rule texts isn't treated as a replacement pattern
-const fill = (template, data) => template.replace("/*__DATA__*/null", () => JSON.stringify(data).replace(/</g, "\\u003c"));
 
 // hosts that wrap the page in their own <html>/<head>/<body> get only the title, the styles and the body
 function fragment(html) {
@@ -113,6 +113,8 @@ function renderDemo(data) {
     fs.writeFileSync(path.resolve(args.static), fragment(fill(template, { ...data, static: true })));
     console.log(`Static snapshot: ${path.resolve(args.static)}`);
   }
+  // --data-out <file>: the page's data as JSON, which the refresh workflow publishes for the hosted demo
+  if (args["data-out"]) fs.writeFileSync(path.resolve(args["data-out"]), JSON.stringify(data));
   if (args["static-page"]) {
     fs.writeFileSync(path.resolve(args["static-page"]), fill(template, { ...data, static: true }));
     console.log(`Static page: ${path.resolve(args["static-page"])}`);

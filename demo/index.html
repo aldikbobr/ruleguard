@@ -360,7 +360,7 @@ async function startFullRefresh(prefix = "") {
   }
   btn.disabled = false;
 }
-btn.addEventListener("click", () => hosted ? refreshAll() : startFullRefresh());
+btn.addEventListener("click", () => hosted ? refreshOrReload() : startFullRefresh());
 if (served) {
   btn.disabled = true; // until the server says what kind of refresh it supports
   status().then(s => {
@@ -697,6 +697,20 @@ $("#list").addEventListener("click", e => {
   if (b) { e.preventDefault(); refreshOne(b.dataset.refresh, b); }
 });
 
+// The hosted demo's pairs are rebuilt every 15 minutes by the refresh workflow: a newer set means a reload,
+// otherwise every pair is refreshed in place
+async function refreshOrReload(prefix = "") {
+  try {
+    const s = await status();
+    if (s.generated_at && Date.parse(s.generated_at) > Date.parse(DATA.generated_at)) {
+      msg.textContent = `${prefix}New pairs found — reloading…`;
+      location.reload();
+      return;
+    }
+  } catch { /* refresh in place below */ }
+  return refreshAll(prefix);
+}
+
 // "Refresh all pairs" on the hosted demo: every pair's prices and rules, six at a time, updated in place
 async function refreshAll(prefix = "") {
   if (btn.disabled) return;
@@ -737,7 +751,7 @@ if (served) {
     const age = Date.now() - Math.max(Date.parse(DATA.generated_at), allRefreshedAt);
     if (auto.full && !btn.disabled && age >= auto.full * 60000 && Date.now() - fullTriedAt > 4 * 60000) {
       fullTriedAt = Date.now();
-      if (hosted) refreshAll("Auto-refresh: ");
+      if (hosted) refreshOrReload("Auto-refresh: ");
       else startFullRefresh("Auto-refresh: ");
     }
   }, 5000);

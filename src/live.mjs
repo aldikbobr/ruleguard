@@ -11,6 +11,7 @@ import * as manifold from "./venues/manifold.mjs";
 import { compareRules, rawEdge } from "./compare.mjs";
 import { loadCache, saveCache, lookup, passports, verdicts } from "./ai/review.mjs";
 import { geminiReady } from "./ai/gemini.mjs";
+import { getJson } from "./util.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 export const DATA = path.join(ROOT, "research", "pairs-all.json");
@@ -27,9 +28,26 @@ const AI_TIMEOUT_MS = 25_000; // the ↻ button never waits longer than this for
 // A public deployment must not let anyone burn the free Gemini quota: at most this many fresh AI reviews a minute
 const AI_PER_MINUTE = 4;
 
-const readData = () => JSON.parse(fs.readFileSync(DATA, "utf8"));
-export function snapshotTime() {
-  try { return readData().generated_at ?? null; } catch { return null; }
+// On Vercel the pairs come from the live-data branch, which .github/workflows/refresh.yml rebuilds every 15 minutes;
+// locally, and whenever that file can't be fetched, from research/pairs-all.json as deployed
+const LIVE_DATA_URL = process.env.LIVE_DATA_URL
+  ?? (process.env.VERCEL ? "https://raw.githubusercontent.com/aldikbobr/ruleguard/live-data/live-data.json" : "");
+const LIVE_TTL_MS = 60_000;
+const liveCache = { at: 0, data: null };
+
+// The latest published page data, or null when there is none (then the deployed snapshot is used)
+export async function liveData() {
+  if (!LIVE_DATA_URL) return null;
+  if (liveCache.data && Date.now() - liveCache.at < LIVE_TTL_MS) return liveCache.data;
+  try {
+    const data = await getJson(LIVE_DATA_URL);
+    if (data?.pairs?.length) return Object.assign(liveCache, { at: Date.now(), data }).data;
+  } catch { /* keep serving the last good copy or the snapshot */ }
+  return liveCache.data;
+}
+const readData = async () => (await liveData()) ?? JSON.parse(fs.readFileSync(DATA, "utf8"));
+export async function snapshotTime() {
+  try { return (await readData()).generated_at ?? null; } catch { return null; }
 }
 
 const priceCache = { at: 0, body: null, pending: null };
@@ -42,7 +60,7 @@ export function resetCaches() {
 }
 
 async function fetchPrices() {
-  const data = readData();
+  const data = await readData();
   const ids = {};
   for (const p of data.pairs) for (const m of [p.a, p.b]) (ids[m.venue] ??= new Set()).add(m.id);
   const prices = {}, errors = [];
@@ -74,7 +92,7 @@ export async function refreshPair(key, { ai = true } = {}) {
   const cacheKey = `${key}#${ai ? 1 : 0}`;
   const hit = pairCache.get(cacheKey);
   if (hit && Date.now() - hit.at < PAIR_TTL_MS) return hit.body;
-  const data = readData();
+  const data = await readData();
   const p = data.pairs.find(x => pairKey(x) === key);
   if (!p) throw Object.assign(new Error("this pair is not in the current data — reload the page"), { status: 404 });
   const fresh = await Promise.all([p.a, p.b].map(m => VENUES[m.venue].market(m.id)));
