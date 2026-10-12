@@ -17,10 +17,12 @@
 
 ## Team
 
-| Name | Role | Contact |
-|------|------|---------|
-| [Name] | [Role] | [Telegram / X] |
-| [Name] | [Role] | [Telegram / X] |
+| Name | Role | Background | Contact |
+|------|------|------------|---------|
+| Aldiyar Uap | Founder · product, code, design | High-school student; runs his own business selling websites | [GitHub @aldikbobr](https://github.com/aldikbobr) |
+| Alikhan Zhunis | Co-founder · design | High-school student; geography and English olympiads | — |
+
+High-school founders from Kazakhstan.
 
 ---
 
