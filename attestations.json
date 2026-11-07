@@ -1,0 +1,1543 @@
+{
+  "items": {
+    "polymarket:nfl-ten-nyg-2026-09-27|limitless:titans-vs-giants-1790010331995": {
+      "attestation": "7B4Wqc2WJ9gVQ4VoMG31SUptnYxmV2vjUNSx6YvS1oGu",
+      "signature": "K7fVTWRkpjLeVpmsHEErC274gNsY1GcrRUUHzJ2JG6PWay4fZQhZkSrXAMSgqz6iLNcgYD8eQ97BsU956pyN3ZR",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "36259a193c27e06c67562ae6c1e1408b56931c826aa1c70c42bc83f7c7c68d51",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-the-us-confirm-that-aliens-exist-by-september-30-396|limitless:september-30-1787671443124": {
+      "attestation": "DNh5ZPGqjB3qmnQ7iHK2cgiFGGTu8U3p4JhAFNBD353d",
+      "signature": "wJGoBGF8JY9Xcs1ptjVYfEPvXbiJ15GbdVQ84Uq8HzSz6K46m7WKQcW9HsPr3kQUgeTrneGvj3qsV3Ui2r2Ld3c",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "ed2c1d81e45f9ad3d3bb5b32453cec0a41e00564adccce8da49af5b820c8dbdf",
+      "checked_at": 1790339818
+    },
+    "kalshi:SENATEKS-26-D|polymarket:will-the-democrats-win-the-kansas-senate-race-in-2026": {
+      "attestation": "9jPSspptMrbVyacgdnuLCzQ8aRx72kE8wEXtyjc5cXtB",
+      "signature": "2fHbLQHYNuwDmHWEinPadqzBhYGJ9mMfC6y6H1CZ1X57cifzVFFxAYo2QrAmUYTgdcRMtSkKvJ33tG9VsuAQ5o4u",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "2bf928c31793d1fbffb94ca30fb6e46b4c196c215a431e0545245100ffa3af81",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXPRESNOMR-28-JDV|limitless:jd-vance-1768931335052": {
+      "attestation": "4V3PiVwcVhvd5nW8w3TTa1AUYYxH3oNJBH67vdQgGu3D",
+      "signature": "31Kju5Bvr8U8ci7MWsc4vn74y6csvGQ5vDedZUd5HHcX4Mtdtu2hUgAnYX7Bz7idYn1qmMoNRWaicNHBSfsmSYpY",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "7f51df36e91546fdc1d1e8fe3c0cfa92f7234694617b20a001319f7f11881dbd",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-bitcoin-dip-to-76k-september-21-27-2026|limitless:76000-1789963519679": {
+      "attestation": "FMcWDWsubwcaG2CoPo9ssGZcM7kj2Fj2sRymV4fXkXJs",
+      "signature": "5gwEYcR4Umxi923RHhiVnJWy1dEfkXimbG3XaHFcf5PVeyxwpPYEHgAfCjLM7AivFzdDXf11nJPmGNoEyJeFS47S",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "a829f8b0cdbff80be6834db30ee6e93eea5e4eb4b5acf08884b8ebf75100ad10",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXSERBIAPM-27DEC31-AVUC|polymarket:will-aleksandar-vucic-be-the-next-prime-minister-of-serbia-20260629223938643": {
+      "attestation": "D5g51hey67gbtecVg7GDigFcygfUfcnAvufFuxqcoQ63",
+      "signature": "4riUhxCfEkXuFvpveNYezUDHJyycMzCfJwAmDRH4EPBgVF4VqwGj66Kh74pTb6gXhbQXCBcBJqTkAKvMpEFPqbuH",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "7b348ea1352717ac81f8c4a49b93517f27c20a22dc3b9899334a93a3b160b282",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXISRAELPM-26OCT27-BNET|polymarket:will-benjamin-netanyahu-be-the-next-prime-minister-of-israel": {
+      "attestation": "EsE9yjscdYECJ1wGhn6ZvSm12Yz6Q1p5EyTR9em13H2",
+      "signature": "4wL3oKXhg9V2Ert7qRfqyayABVUawA614tvnuWJC6c4SiJMEZ9GDH5xb2gttnLpzZytmbM3fR7RQL4ff9uRNHVFX",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "3d864eb93d0beb892e7417a4895143446d98456f290cd668edbcc24c897a231f",
+      "checked_at": 1790351749
+    },
+    "polymarket:us-announces-end-of-iranian-blockade-by-september-30-2026-20260727171615364-722-649-646-561-213-644-414-831|limitless:september-30-1787654182332": {
+      "attestation": "C7WkwiWxf4q73yohU8aQBHJMwRQebKPh2WmLKqhWKBWL",
+      "signature": "37iyfMQpAfrmUBSqpqrZnoscSwpZrbjVjcvoFH1LkRn5BVBwe38XoDx3tzAaEhX6VY9VUkiJMZb9kT5gteJQQndX",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "80fc6a4a6b9217d048118eaaf1c5368e72010584f432e2fd52cc9b6a605028cc",
+      "checked_at": 1790339818
+    },
+    "polymarket:iran-charges-hormuz-fees-by-december-31-20260706203029175-553|limitless:december-31-1787660046616": {
+      "attestation": "78mimaNBjL94SnoS1LuU425wueQJsqo39TLHBw91HmQu",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "41d47fae8ce2e43a247d024955d8e9551132deecba994f057a880be10d62ecda",
+      "checked_at": 1790339818
+    },
+    "polymarket:nfl-car-cle-2026-09-27|limitless:panthers-vs-browns-1790010321196": {
+      "attestation": "9YwuRJG5R5EKNpoFUFGWQbhTKHJdLHSN9U3dU992rpqo",
+      "signature": "3X1P6Tqw1BRrAVeRhebYyU5i4518DAFViT3ZqEz5ufNYhGEzP8KvVazsBrN2TxPXNC5aAQWgj1MsezPQ3QRhnALi",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "cf28dce52ddbcf2621ac6f248f664225982af1c62304a84a5e56e8731ec0ca4b",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXFRENCHPRES-27-MLEP|polymarket:will-marine-le-pen-win-the-2027-french-presidential-election": {
+      "attestation": "GyYMnP6LQF26ExFPs59v7DHRPJiJKGr9TvHRCWqVAapB",
+      "signature": "UsySknjKBq1jGzHpc7wJSU6YnJGWPYpU4pGGYtf99a3F9A9n5rsR3azcJ1DEaedW3fwUHGBebmreJKBW1qJ9Jps",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "5f326808b7d726fae5fa913061cc84fbe2a75318120302d419d27b436f1e7948",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-ethereum-reach-3300-in-september-2026|limitless:will-ethereum-reach-3300-in-september-2026-p": {
+      "attestation": "GbYy3n34XZ6D9d5PNn8DnG8UhGV1xNan7pea4ZdUF9UJ",
+      "signature": "4Poehf3Qwz7fNCpJCXW67oYZgPaKcyXzn2HUR2hLTY75fJkUZfshHTgyRcw8jsfA2s3RgpadCCZU5AH6BycuWjR1",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "4111fbe4198d9b3558caecb4875fa60ab8cf99ff381470c8243bf5e1a2175c2a",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXHOUSERACE-VTAL-26-R|polymarket:will-the-republican-party-win-the-vt-al-house-seat": {
+      "attestation": "2CqqPrPYrBaWMZxaunnJYZED1ryUYjNionJmKn5MRGr4",
+      "signature": "3PjTrLgDAdapVsUaW4zcNkq53iDYvr3aFRPftSQTgTBbw6n1tarDGmpjCbuHj3YJBvj6GH6KKrdQpVEsN2VSiLvY",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "16bd69543512db19f835aeb6445b5900dab25b89341614b1140a8a96868d6f81",
+      "checked_at": 1790339818
+    },
+    "polymarket:nfl-phi-chi-2026-09-29|limitless:eagles-vs-bears-1790122806772": {
+      "attestation": "5Td4zMYLEo9fj4mwadBAM42K8DJwUvLCTb9AXXuvGQb5",
+      "signature": "2Ru3TruG7X6ZFWtDAZuJQodHQdymPNhvS3XemCat468aAR8btZTn3u8DotZrGDFWzkoou3nNL2iSuPGiGL4NYeRU",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "5fe7b1b6ac9c0341e904c917a82f6c5382396bd78bdd79b6c4b499fbbea5b6a8",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-gadi-eizenkot-be-the-next-prime-minister-of-israel|limitless:gadi-eizenkot-1769098856001": {
+      "attestation": "6YZpS2TnRVaWJ4M6ZfUenmh8p16GtSbpJ8kbw8rkFvqY",
+      "signature": "55epbret3F6TnGHgbzjALrkPt9wUR4HKsLBij448CzMXkZ91N4WSJrMPc2QiWwMiaJmsLv3ec7j1uhwiTvS6QaCc",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "98462f79e0d48f8d5b43d8dd488812d60ce30f7992b7e7aa597bf1dd2ff11e39",
+      "checked_at": 1790339818
+    },
+    "polymarket:us-iran-hormuz-agreement-by-september-30|limitless:september-30-1787666375374": {
+      "attestation": "qtmeLPKVm6GiPmnhikNWpN6x6BCpTQjrLLYsf9eAvhQ",
+      "signature": "4xThWNXJ119xx5bJRiUhWqq23HaBDwQvu2JEkDGj1npSkqRrJfCejYuajtRQcmsVbEgkhb5qVQfCQDxeGReDCr1G",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "89e57554567042206b864bc6338a15e244bfd451aeccf979a0f84a23760e24a9",
+      "checked_at": 1790339818
+    },
+    "polymarket:nfl-hou-ind-2026-09-27|limitless:texans-vs-colts-1790010328042": {
+      "attestation": "oZnJa2xsq9VrSxn6yowkaiSdg5qJiz3rzo1UQBA8HhC",
+      "signature": "51RzCp24uow4Va5opTxfBgpW7NwWHo5RmuWpienD7rurN3Wzn79yaQKDLzV9S8KVCQNauZTuBHBFDeYMxbAzXaiy",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "1278409384cd0b6d5485405f0667514ba80554f5c68d234910830856dd865123",
+      "checked_at": 1790339818
+    },
+    "polymarket:metamask-fdv-above-2b-one-day-after-launch-222-955-573-228|limitless:metamask-fdv-above-dollar2b-one-day-after-launch-1764857266348": {
+      "attestation": "6Pb6ndVPQRn5dM7DS3MwaFm5E1xmxcRSJcGBaMzVaMWc",
+      "signature": "5JhvuRw4tzzyDb7zdZVYL3VjMWz32y3463FGNVRRYo5wH6TyW3tg1ddVBevv79NU5qbwyaH158JnxRG8iXwRf4e4",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "0dd5b1910d4c7a8fb2b4e53aef6eb2a5a03f480177294a9099dd95708c7761f7",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXPUTINZELENSKYYLOCATION-28-TUR|limitless:turkey-1787248233202": {
+      "attestation": "FDDcCpDcVQfRfpie9nQgqGvbgtnodiVbVx9s9vmX3hDN",
+      "signature": "4oepjDMRXqV2Pufx5HCQBh2BucgmS6Nc6qwLfYjuBLZrWZDFHb1Bnf7xdbu5QxVsjQdoEd7ToD2p85fm3hAh68KB",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "33d6d6e010c63fcb7297bed7b4cbd2b055c471b03bc9568045f766009cfa4af3",
+      "checked_at": 1790339818
+    },
+    "polymarket:clarity-act-signed-into-law-in-2026|limitless:clarity-act-hr3633-signed-into-law-in-2026-1789385165383": {
+      "attestation": "PV5gmnp29VHdH6XswA7pc9QJieV6sACcvnWecSXV69P",
+      "signature": "3cV2XPjwLQDrJVRSKTe3sEiXvW5i2h4nV3KuV8YUHLQw44yV4mMisbvauRD4eTXreEB6UGr35y6pWxQLPma9DVTs",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "fc92a4befa5e349adf2f62ed3c55b6796a9b8daafc02de1e44c56bdac43274af",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-YGOL|limitless:yair-golan-1769098856023": {
+      "attestation": "Gc1kGwAyHibRiUqosm9ian4JWAugrf5ufHUZaNZLhzQN",
+      "signature": "57ozursLaoMXVoyak7YSrhGULezgRKhxdtamhP6wgmV4GtZE8bYpP4XKDcZBNMxZ4PiGr95iWjegq8hS1YXtTkhr",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "afbaf6a7a6f5a4856f88ebf5c19fb30ebf34ac58650acd5a6b881ec528382479",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-ALIE|polymarket:will-avigdor-lieberman-be-the-next-prime-minister-of-israel": {
+      "attestation": "2HrVkdq42Y3aMMrUnN5ortaU6LpADUDNo7MoGssDB4rb",
+      "signature": "2vBeCmfhYMpZrHmorrHStM4Mrif9gNq88iBrGxWdcgeG3is4jVTnQ97TBtxseQNgZY75GnKQzxYwdWrTk5ZtoL3E",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "7a4dbed551ba0aabdccefb5e634225c788fd061e7fc4cde31e134cf773526abb",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXPUTINDJTLOCATION-29-PRC|polymarket:will-trump-and-putin-meet-next-in-china-784": {
+      "attestation": "EiRUHhHLeM6yK9VSzb6xV8bQpbVJRj7FWQE5mQNBcHmu",
+      "signature": "3TJZGZbqximLN8kPmZ3tjtrp7uLS5ypHNQdWJY8bnTFybbTCvHdxS9vPQRvFTqW51ssrUrAe2mhTgdKHXe1pALDF",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "323a49283bc1c1d1fc9ae69abf9090b2730e9f2ff15c0ba2e42fbe4113b8bd31",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-ethereum-reach-4000-in-september-2026|limitless:will-ethereum-reach-4000-in-september-2026-p": {
+      "attestation": "GSsAuT7Q2uz4TBpmu27QQon9fa4RcEdEqqvoWKjy4Gzg",
+      "signature": "4mV1WfveeJsRJMXvpKyS9VeNEZiELR7xqxu9itEWJ45LPTdhVcpgHSkdT1eevBkQM2wZSobod7NPLpiCFjURTuSR",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "4111fbe4198d9b3558caecb4875fa60ab8cf99ff381470c8243bf5e1a2175c2a",
+      "checked_at": 1790339818
+    },
+    "kalshi:SENATEME-26-R|polymarket:will-the-republicans-win-the-maine-senate-race-in-2026": {
+      "attestation": "6qtSE8a1uDkmosWhP9gpMocoD2jZvGYDzmyaWxmkkuqc",
+      "signature": "2CfxvcAfC7GZMafFD5tawKCpzgmCpd1wCtomf5KksprsCLUrmMN8qWEC9oSfDrcAgFZALRuf3Fd2MzL5KuwkhRku",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "5cfb74eb8cb3558d4653436e5996f14b23b20966b20847c2d91d5e8e96e292d7",
+      "checked_at": 1790339818
+    },
+    "polymarket:us-iran-final-nuclear-deal-by-december-31-2026-191|limitless:december-31-1787657393561": {
+      "attestation": "99ZmbFfwSkrw6TwCzHENRA9776RYy8ezpkAYzGC2CWfD",
+      "signature": "w86JkL1R7T9sUrmVU2jPoV96ygMV7zkKhpHLr6ez1RNwYTjrcj8Uxyfv21su2WSAj5CU1RuMrvVtRx7waGtBC5n",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "1234c7486e6f2f4c70b209f608e1cbdf5173695cdf49bec2a965216ff0610d9f",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-kimi-antonelli-be-the-2026-f1-drivers-champion|limitless:kimi-antonelli-1769015228948": {
+      "attestation": "Fttt9GAKAKoHYXoMFTZsUbRTiNR9n9AEh3KscXfTW88o",
+      "signature": "cSndFoAyJrddJoMd2ptbHFVXMSycmD5veua3mtJ6vnxrB1SGcM5nurwyQfY17APH2zR9xTqTmKdFSiNaqQW97Kg",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "5e468b1830721ed1eb26770a4e2a388ec46f5086be4f95a2d283b12c6fceedcf",
+      "checked_at": 1790339818
+    },
+    "polymarket:will-anthropic-ipo-by-december-15-2026|limitless:december-15-2026-1789547697142": {
+      "attestation": "6BjEaKgSdiFd1tLuC85YH2TtDWkmZ5fM3fATFzNBaKA9",
+      "signature": "5EJGDtWcEDo7nBHLFv3k4YKd8q8hKTEWr4ZKiDKAifYM9zjyDwMR8P2cCzqe58sZyeyNPTtRxcArMmBNx7GsZAKo",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "f0a7cb754c8a8439873582a5a66da36ba263699b0edfc8d5bf8ed0e95a784b10",
+      "checked_at": 1790339818
+    },
+    "polymarket:us-x-iran-diplomatic-meeting-by-march-31-2027-20260922|limitless:september-30-2026-1787658200745": {
+      "attestation": "2CPXBGtJx6FRbXaoFYuKmyguMWyMXN9YDtRuzDN7tF17",
+      "signature": "5nx67fQ73AZeGjhEPVnE5C59uAcGnCTzb4xxr6vMV1kv5scuxMvK34LD4nvnwVayffSQcAL1X1yNbyfJjoYWcT1q",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "d4889bf854c600f66929dfc5f4844f65029b16c9ebf3e8efa9c9a424a292d23c",
+      "checked_at": 1790339818
+    },
+    "polymarket:us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696|limitless:october-31-1787654182326": {
+      "attestation": "J2jL6FAx4H5qDxpB5cQjHZLtTM7ZRwRkUZYvc5cEZzjx",
+      "signature": "2BZEqtn5hifvjBik8WPnv6RZz8frGLL5qQQ9u6UbYaUtYrs3KHXMzevDNroC18EWYWiarvkuN9krdRZmSwc6Db6N",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "80fc6a4a6b9217d048118eaaf1c5368e72010584f432e2fd52cc9b6a605028cc",
+      "checked_at": 1790339818
+    },
+    "kalshi:KXNEXTROMANIAPM-45JAN01-MGEO|polymarket:will-mircea-geoan-be-the-next-prime-minister-of-romania": {
+      "attestation": "BgrJZ6X1CXm9HJ99PfeKKMAQ7ZC6mKNwnpjyW5L3qqQh",
+      "signature": "CjshrYKBRxpY8GyBUM7MbutjcvaAPEkuN8Sdnp9cuZNhv9X4aurUWx3w2GCk3JkoGhJMXeiDAqnXvg9oBUGZRUu",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "21845ad8450f38c73b87dc245d5eba2501fb2cceb70b69d3107925ed6edc0a87",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXNEXTROMANIAPM-45JAN01-SGRI|polymarket:will-sorin-grindeanu-be-the-next-prime-minister-of-romania": {
+      "attestation": "253UJupwxAoqw6nyAS29RBptS9cmCVHbeyLn7oE7JeoK",
+      "signature": "2rmong3SWSVvFTJBTLYpME6uyyq3HfCzFuHXUnVPetvJ4DiWyo1XsSBWppNJg9W7vfDqE3KFiguT7pq2VWUujNmo",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "4a31b3916bab009ecdf16eb5ade802c7907d20f4b54a7589134c4b54d99ca0e5",
+      "checked_at": 1790356246
+    },
+    "kalshi:KXNEXTROMANIAPM-45JAN01-IDUM|polymarket:will-ionu-dumitru-be-the-next-prime-minister-of-romania": {
+      "attestation": "61ENz56UgcTZBnS4PYrFfGPLRyu2smmhj33RCX5jUgee",
+      "signature": "3JBbo4CN9q4NuFqLYFUDEAo28TYxQP5YjY3ah2rU6tvaaDEKNV5tPd1C9ejMYmDHwQqKLQwVwdTzW4FMSc4h5syH",
+      "verdict": "uncertain",
+      "method": "ai-judge-v2",
+      "rules_hash": "213b0d68b953ffe90c4e76e90dbf32a96f889f319ae7fd7acf1ba78dfdafe7e8",
+      "checked_at": 1790356246
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-NBEN|polymarket:will-naftali-bennett-be-the-next-prime-minister-of-israel": {
+      "attestation": "8gVF6f7XhAEKdRSxPUytJ8tyxW1BZjy819z8WXgs7kFx",
+      "signature": "5hAV1dw6FFDVYMRAM4uRfmy1KMfJQWfEd87Zuo4DUCDNZmRbFFAbBHaiM7bMgPR1VKu5TpwmQXTHguyRPCwskALX",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "4caba304810f6b453e319d0a9028aa147eeeca110f3280679e2d276257ad1369",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-YCOH|polymarket:will-yossi-cohen-be-the-next-prime-minister-of-israel": {
+      "attestation": "95y9pcXXnT1SCWTTzqSu2kCfy8A6GpHV4qYccJGCvD4E",
+      "signature": "2EcwhAHodpAcSVoRBRfsjdaSEXJFQ8MoxJmwRTuwSt5YwhLfo97ET5xn7ciB5FNRSyzY2fYcTTtcsjVj8P3UuMYW",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "3f56d0796b7ed9710ceb2dd6c1198480eab6189511e4dcd33e0ef3c693db23e1",
+      "checked_at": 1790356246
+    },
+    "kalshi:KXPUTINZELENSKYYLOCATION-28-RUS|polymarket:will-zelenskyy-and-putin-meet-next-in-russia": {
+      "attestation": "FPBGX8yqzipzNy3K8fPUsrh5wZMtLXnPHcPe5KzjGS3b",
+      "signature": "5xwXH5nNhSxBYpvLaz96nQ58ieHf8LnLhpGosdb4JshgaESdiEXjg6QCuzJhHoQUo32YAXucbKnnnNND4TdxjNxT",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "b4e342c9a5749538f20c8c5fa004cebf69a7cf93f282ef1bd32479d1b0e27483",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXCEARAGOV-26OCT04-EFRE|polymarket:will-elmano-de-freitas-win-the-2026-cear-gubernatorial-election": {
+      "attestation": "2WQXrNJ4Nz7E18hh6jbLLZPmtzfWanGhZpZRsusEoiCD",
+      "signature": "5xmTNcAhbApJahaWAaVJ32KgMmhub8xbn8GF2hJMWJLQYfVKZ1BfAkJtYZdmt9ZLSTsrxehU5xJcWRUfYk5fgz8r",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "65c3b9a6bc6e031652a4d5c1a63f9a6160d4da45af586537a5e34347aed10f81",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXCEARAGOV-26OCT04-CGOM|polymarket:will-ciro-gomes-win-the-2026-cear-gubernatorial-election": {
+      "attestation": "G8hb6Uis6NTir9ZhdyLQBnhn81o2q7jbyZNwHdJ4uXPj",
+      "signature": "SpjsfystxCUvQaN5hMWgmrU7RfsM9Xtb4FAk21Hzeh31rkwgGUWLoAixWLRAytdSwjEKMRW4qifk1pHanGveTcy",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "14dfe29cdb9a69e3700b8605ddb166d9811051c06a8cf5e857384599386519df",
+      "checked_at": 1790356250
+    },
+    "kalshi:KXFRENCHPRES-27-EPHI|polymarket:will-douard-philippe-win-the-2027-french-presidential-election": {
+      "attestation": "F8yEJS2dWEWbsYMzfCAdfVrKKsohyBDgTULtGgyz13o1",
+      "signature": "3PuJjqhfr4XSyqXm5eomRyPgGszwyeJSoo7xeuQMBFbCySgKDjLJcxweCmurngpmEm8RAfB1Ng54cv7YXfzF7u8o",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "ef14eedfc507a120726d568ab3cce5e92d3a3912aa4f0615900b803957d6a624",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXFRENCHPRES-27-EZEM|polymarket:will-ric-zemmour-win-the-2027-french-presidential-election": {
+      "attestation": "4iquLZ17YeXHj2bgP5vmPUXv9yYErnbCseQzxfJNc3u4",
+      "signature": "4qgqZqGYj6gb747VVoEg3Yf7CpYKdU2w5EJPn7d6VzSRCyUpgoQF22mb8AxUfkhT7BqcE7Uz7XiSPN88UsfBueKz",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "260780369e4a4d856b5bb2de125f5899d0ed07dfcfded708dc6e5516de08dd03",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATETX-26-R|polymarket:will-the-republicans-win-the-texas-senate-race-in-2026": {
+      "attestation": "3jcpcgSXxMAzqyiL3jXqPUVAyKEuZQL4s5LvNFJpuq2r",
+      "signature": "46UCgpiro1fnA898KBEP6QJ3jb8qXbaZD2iNVDajpydLXqABGNpC7hYEaP5vvoDPAyLD8LvtXkeAajN5oZxxsHKN",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "a7db1c19a431eb9b1286b0e1a9c19011607ee14e8b8bb7662094bf6abdd8710d",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATESD-26-R|polymarket:will-the-republicans-win-the-south-dakota-senate-race-in-2026": {
+      "attestation": "FRZvQRsguY8GCQi7i18dtjbkkC5XxzcTT5JxyGg6QBGW",
+      "signature": "2dqRSSzqFfR87bjH3u7d96RycggJjbE2zWpv8EwdqK2nfabWT4QSCuZ5cGXaKvVaHdYsmWHyoaPaxALYjpNzi5W8",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "d94f58bc93ba860b1b82a97cc0c183ec33728df33230081a9e41a7caebd460b1",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATENH-26-R|polymarket:will-the-republicans-win-the-new-hampshire-senate-race-in-2026": {
+      "attestation": "7qQuT82LkLzGs8ZUQucxNFVXmhgCN7j9eAherU5mqQ39",
+      "signature": "3iYPqNhEYGDigVKvvDrUN2sdWWpPE1gMsdTDRH9fqXArtjsS6GpMT6ebpaB6z81pqNADZjrQqJwhEcPzSCuFnyis",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "835cf1dd2de31135765f77f0f5c56f1ef1a518c5d6b5364f470d67bcc9c75881",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATENE-26-R|polymarket:will-the-republicans-win-the-nebraska-senate-race-in-2026": {
+      "attestation": "Emwr5UK5T5SiaLFtLkZgaiBJzHYETFryXonGrZdnfH42",
+      "signature": "52pbkw2QSzQqpS8uHzKCg36kJrr33NTk7hKxr8LVLuiuC4W9Qm3EZa9C5NwW2BkQa8nHGa6HrSGqXEf4EW6YB5Ed",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "db67b0a1f14fac1c07dc178bd4c47e83efa4a58fb715d28da928121965c4d188",
+      "checked_at": 1790356255
+    },
+    "kalshi:SENATEMN-26-R|polymarket:will-the-republicans-win-the-minnesota-senate-race-in-2026": {
+      "attestation": "5CAucQnazhrcyfEfDYkpvxFYRcyf2W7nGH2PUCevw56e",
+      "signature": "62sRqrPfgWPDYS5pMzZ9gjJeF3YfuoxYeyTcHtNB3t9trumLMQojhWnbN3PjfUNDnG2fQyD6jXT3L85Za6MURfJn",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "39f5cda9bc1aee888df1bded5d9c121696d0539baa14e2e211054eaf4b5e86e2",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATEMI-26-R|polymarket:will-the-republicans-win-the-michigan-senate-race-in-2026": {
+      "attestation": "59qTh2V9U8rkTzCemPmhqBP8cdnsP5onKjJrrk9J42G2",
+      "signature": "3DXGYJntiFZPrCogoezTH4T9zw29Di9VtdZ6PQmqoQTvb2uuyzK2FpG1t4Y73PyfnkBM2AzkX3MpbF9UdnMvhiqE",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "1d6ea2b6afd6a867f6d4d51144ecc67eac4a953d4ce005c606f478b50753d03a",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATEKS-26-R|polymarket:will-the-republicans-win-the-kansas-senate-race-in-2026": {
+      "attestation": "55bTkCyrTHXEghCtdzNL7T4GYwqanjvZ4oijteQHwVM9",
+      "signature": "2ag1BSWq6FFs7HzytLgRXA8cNwyWzjYzaTbhoYyngkEZni3YEreK6wPAV6eVw1BkNQfyuZaohAcgm6qnwbjw1s9E",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "fa03e0833b50f0fa5017a93515f2eff28ae3c9de6efc95495e95a7ab2e5b7509",
+      "checked_at": 1790356259
+    },
+    "kalshi:SENATEIA-26-R|polymarket:will-the-republicans-win-the-iowa-senate-race-in-2026": {
+      "attestation": "DyjN1KFHRD8wKNd36xTq81frmodJ4AxJG5PRYpeHTd7r",
+      "signature": "5AEB4NTmuUhzeF6GPcpXjHo1eA6rvefRGY29b71e4UoJNtrEzTyQzJYgiHZYyf59NcPoY1Emex8Gde2V866V8tU8",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "f99e2b54d8c97e61337085769b71728da5ad465489494b422a030ed03de94f5d",
+      "checked_at": 1790356259
+    },
+    "kalshi:SENATEFLS-26-R|polymarket:will-the-republicans-win-the-florida-senate-race-in-2026": {
+      "attestation": "GTRzHPgRmUkXKHuZpfSS7WyCcWtADfRh97BK3TrydFi1",
+      "signature": "2nH47heZnisX9WUBcxxxAGmCVuc4idG5fUA1GDQgcB39nyafseu8nxfwC2HLLL3YWk8p1a7s6sKQ7EUFTtJD1HtT",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "4c6c42a2861b607a00e7cb0ab1a615503616d3e32f6d171fa126c95c96d0fb41",
+      "checked_at": 1790356259
+    },
+    "kalshi:KXBALLONDOR-26-LYAM|polymarket:will-lamine-yamal-win-the-2026-ballon-dor": {
+      "attestation": "6E48CEMUsJqMPZwoQRxTmQDp3TaAMbQdorMJRZanvYve",
+      "signature": "quVsrZmJRMeZbZ6JoHCgcSo7p3QNgrC11Rp37pyLdXUewt5BY7txG4J3XZZMBpZugf1aqVkSNoqYkUc99coMhRJ",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "cb6cd1c456f50d3f41f3d26ceeb26418717ff1d3a504d9d648b289613d008759",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXBALLONDOR-26-HKAN|polymarket:will-harry-kane-win-the-2026-ballon-dor": {
+      "attestation": "FsZiaXL2zutYHxGb1xB9L1XbH3bXvExvug8CbRWyCN3D",
+      "signature": "2kUMGJuhRhuHLkcZmkHksXg92rZL1CNrbfGSHQzy7JFovLpPXdD6dcafeVMTQzgxiEun4CNKF1axNwcGa6EX4YQy",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "71c8ef06dbc311219bafd378dc75e178388a7e379f92c12b00bdde443ac8b21f",
+      "checked_at": 1790356275
+    },
+    "kalshi:KXBALLONDOR-26-EHAA|polymarket:will-erling-haaland-win-the-2026-ballon-dor": {
+      "attestation": "FV69XRvvzz39QZHm5qGiSzU7ks2pbUeEuvUev1Y76tSs",
+      "signature": "2bBLgEverBgsf8HhMj9SAvZX3ZY3pwBqyNEbcDVuLQrNiGicdmVh4KyuWPc7NGh6wT4QpebJGbA7Cc3esXyCyRpF",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "687a4cfd40e3141b50adb15be611b42225487937cc94ce29a05bdf9a49c6bc04",
+      "checked_at": 1790356275
+    },
+    "kalshi:KXSATOSHIBTCYEAR-27|polymarket:will-satoshi-move-any-bitcoin-in-2026": {
+      "attestation": "HWfzfhuKgm3ZJogVkD2wq8MmN1qkqhvHXqGKrqCZUvTs",
+      "signature": "2AvTTgY3mDFVUCN1CrvEckXz5Ug9jvG7ndDnhX92JvV1Dfay3VQphbafdgiUpEAkHXFkGmb4SCrGqqTrwVf7ZjEF",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "95c88d1e528ec428909e16afa1ca3da0869b79d8f0feb9c9d85d6671321a2ec7",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXBOND-30-HAR|polymarket:harris-dickinson-announced-as-next-james-bond": {
+      "attestation": "86MK6DzvpYvDcqb5zgtWo2Qip3VYFjf8ZQqhhpDGxvzo",
+      "signature": "3yqUbqocfQ1hEMVjaQKV7ruKRhWq3wMu3SKYy2up8dDZiw79dRVEBuHafQHFrRfUSip5WrgAjpPbDUw3UDE4338B",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "5dece860ea197050a138e1cdc36bc89194565d0d255c1382110e8110e8081374",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXHURPATHHAWAII-26DEC|polymarket:will-a-hurricane-make-landfall-in-hawaii-before-2027-20260721182828397": {
+      "attestation": "HU81Bq9HkNtTvGhwuo6VkE8oSNQxW3Pe7QWrEtb4oKup",
+      "signature": "3HoRXmJKLtkSQiq4LkNzLHu1b8EWscVK1BQhVR3m7BS9BWkrbXkzpakvaFTDuHJTDohzLJuMkspgtUtafHw8Lhw6",
+      "verdict": "caveats",
+      "method": "ai-review-v0",
+      "rules_hash": "1a14e060de8586ef0095dad580fc954614ef3c75834d9e031a566865c4a1d087",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATENH-26-D|polymarket:will-the-democrats-win-the-new-hampshire-senate-race-in-2026": {
+      "attestation": "J9sYJ7q29qgFYvUz4KLZTxMNqnvdG8Pff3rS9iS6GirB",
+      "signature": "4jGEQewDXAbrDfAXcBUF7xqxgEL67ug7dReDTrwwVScuxuSbgMcBhry7XUTjnSGdnChiHpwwtZFc2hNkKeqniq96",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "461b4637a84a097ec3de1d9065645a50e9d2b8e8309cf51683b25930e8d5a6fd",
+      "checked_at": 1790356277
+    },
+    "kalshi:SENATEMI-26-D|polymarket:will-the-democrats-win-the-michigan-senate-race-in-2026": {
+      "attestation": "DnwZHtwRpyznJFAxZu2THqFeLGHbq3ZCyEBX1w2awfpy",
+      "signature": "NsofqaPb3zHAsCEHbHBsYmUCUwU9TG995hbWC5y7XeeWtavPFQghaHGAq8E9piaD2VvcTqxgX4dtjFxv8zmrXC6",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "cd6e8e89840cb7870ad226a9b9d93432fb22263ba219ac722ae921159ffbe0aa",
+      "checked_at": 1790356277
+    },
+    "kalshi:SENATETX-26-D|polymarket:will-the-democrats-win-the-texas-senate-race-in-2026": {
+      "attestation": "DLcq222xirkATVzCJKKY6d8DyQPnyoe3jb5fkTfnFfUp",
+      "signature": "2kTVb6ErAViJYFtBChdiuJ6m5dcwAJpT7iST4eYBLrxHKfY5qnTKutJH834cBTNUjZpw8T6YZ72zH2XJtScGnXha",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "349a694152ff9fa5dcbfeafc13cb0e4b4a621e74be93c7c36975f0a39d73fef9",
+      "checked_at": 1790356277
+    },
+    "kalshi:SENATEOHS-26-D|polymarket:will-the-democrats-win-the-ohio-senate-race-in-2026": {
+      "attestation": "HjKLWNMcX218mVbGmMmUbfeSsqimM6ydTsaEknT6FSSo",
+      "signature": "4nBYr75GT8f6cFtghnuXHCMG23TBmsTMKHHXV1qGCj88tQ4EA5r7LipASfADzvAF9At5yYw7fzqvqoKxYZz6SaYA",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "4008629ab57877295f63726c0d65a3568b2e84d8042f91a68ba74b5e4ddeb48f",
+      "checked_at": 1790351749
+    },
+    "kalshi:SENATEME-26-D|polymarket:will-the-democrats-win-the-maine-senate-race-in-2026": {
+      "attestation": "GLtTnirueVXqewYYEGHCkwr2enfFZNpVqfoEFmwUzW2k",
+      "signature": "5kDoBck4CrqJX4V47aBBJTn9K4mbc8C2f9xZVCk1WZTTberrBaxSujR9ydibDJwnP6kqrBnLcRJCfdbqHPekCZsr",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "ece84f7d32d478962ed8118e43d8e9d3e56c17e79ef4a12ff8540ca2661a5822",
+      "checked_at": 1790356277
+    },
+    "kalshi:SENATEIA-26-D|polymarket:will-the-democrats-win-the-iowa-senate-race-in-2026": {
+      "attestation": "3fHHEA1JfVEHNLpWHcLRXCLKCeAj37aMNYMhV76X1yTS",
+      "signature": "tveeBbmQRuUg5JBpcHTuLTTEFxygDrCzi7eJSCpnqhaJ4pCfjim6yLsb11aGa6sDKVz8nAeJxAFDPbsNwqsHiRp",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "c159f0fa1b72ffbe399bef3826463c235f331c6f2c8c4cb8064ae090fa300c60",
+      "checked_at": 1790356282
+    },
+    "kalshi:KXBRAZILPRES1R-26OCT04|polymarket:will-any-presidential-candidate-win-outright-in-the-first-round-of-the-brazil-election": {
+      "attestation": "CX9AKUq9d4PJegXvkcFMXnv3ib6YErt1cYDrjMsD2Mvh",
+      "signature": "gidAsqixJxQku9xkKgxcngi8XfcfABa1LBiV6bLgWXt6rnMwpjxAq1ZMTLn3waGEedkGH9zmuP5yTtwKjEa4y9h",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "7c1a70b25af1b67b706fe2e0fe2149c700705dc395407ef0f8206531f45d8b7c",
+      "checked_at": 1790356282
+    },
+    "kalshi:KXHOUSERACE-VTAL-26-D|polymarket:will-the-democratic-party-win-the-vt-al-house-seat": {
+      "attestation": "BMB25scib683hYq6jqkD3Y255a8fzmjRgMRwPeHGpBLL",
+      "signature": "3uyJEhLXDtviTcubhrmXS7JEwAQuwQdywTjeS2UsLKFuVPCbScijRfSSgEq2exxkJ7C22PbpegDgWtTiozytYsWY",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "0d203452eeb2abee6d331c54780b2e2b977742bf48fc54d639c97bf04fbb3bc3",
+      "checked_at": 1790356282
+    },
+    "kalshi:KXPRESPERSON-28-AOCA|polymarket:will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election": {
+      "attestation": "3xqLVErXy8iA4xLZL94ai6sb64wbKuymVxuT8dEcnDGk",
+      "signature": "3fWdaawkvXnwmqxiYShfUogFS2LSX64GWQFmNuQddPPZgbPUbi8awFrCcbmTNG3hpeuVNrPX4xi7aDZU2hMmmsQf",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "3ee858fab42fac3870d73c3eb20baf70e1de231355874769fd831aa9d48ec0fb",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXPRESPERSON-28-GNEWS|polymarket:will-gavin-newsom-win-the-2028-us-presidential-election": {
+      "attestation": "EDRCuk1XQda8CPdszDb8WKoWAc6UWDYgiyJnnwZqAeid",
+      "signature": "5kx51rYgskhYfr91PQ7UNPFmu3GzW3ziky1VyoZCF1pqrXQrj794gmZTDWdDsb4dqzHKCmnTyQDNcgrZhzwuTr8w",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "344cd2a5c34ca71af7d05a63eaec90d050c348f78b62035356c5b4fa89b6b242",
+      "checked_at": 1790356282
+    },
+    "kalshi:KXPRESPERSON-28-PBUT|polymarket:will-pete-buttigieg-win-the-2028-us-presidential-election": {
+      "attestation": "7gVUHCo6ZwJKr1Zv58NdEELfxhM5Fxx343LLfgU3CUaU",
+      "signature": "3rBf5NXfdTQyVa232AY4cDZkNhokaVaNHZr7vV5KonxaGimgutrQ7zs4rCNCZh7rVJ8FJZiaQHH4cvQycN6mTdFS",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "464b75d43abbad541655fbe3b4175c7089aa5d9b25fe7d483a5a1b870071a003",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXBCPREMIER-26OCT24-DEBY|polymarket:will-david-eby-be-the-next-premier-of-british-columbia": {
+      "attestation": "734mh1F5esdQLaPGMgCFRXuaW9zfTjrGwkxZ1DtwTJCh",
+      "signature": "2tHKVYiSaHA9XGxR4n5ytRNP7Y2ZDYFcYv9bT9x3VApQ9fU7KxNhzmhsjkVWNSitTedVKRbpt1grqByWNnqmXice",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "94b5b08bb24d0ce942f1a553f6ab1034bb631c278d36e7c87b57508f63c4daef",
+      "checked_at": 1790356286
+    },
+    "kalshi:KXBCPREMIER-26OCT24-LDOE|polymarket:will-lorne-doerkson-be-the-next-premier-of-british-columbia": {
+      "attestation": "G4Rtc8Rzn6MvKB2TbeeBhDJVG4zSXB7s56jnxC63wPTA",
+      "signature": "4KzRZNvaqyc4eQpCupuFGhKU6eHWeqcJCivG6GY7o74ReiZfK1jRPUyGoJ9HSJeXiGRC5NdkqSVgz46DqFbd99H2",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "2bc715cf8b6447a7296b6c989038986fdd1299ed60062e1478be1934f02f8e1f",
+      "checked_at": 1790356286
+    },
+    "kalshi:KXISRAELPM-26OCT27-GEIZ|polymarket:will-gadi-eizenkot-be-the-next-prime-minister-of-israel": {
+      "attestation": "8AVw4tcNt9DvPRkgAhjEX46dqLPngwS9R79tk6rf98ns",
+      "signature": "4vybFK4qRwon5iZdps8qLxtRuhr8YMYmt39ZpF7Ld4i7TWrfMmmyXtcQwrGenr8hZiqUmSmkgtr2jFpRRr7tMniL",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "9b1dffd29d02949583274679375efc1361ec81d63651cb368d8fa375d5b0edfd",
+      "checked_at": 1790356286
+    },
+    "kalshi:KXISRAELPM-26OCT27-YGOL|polymarket:will-yair-golan-be-the-next-prime-minister-of-israel": {
+      "attestation": "HHuJQqJXGhPkLYLjBvUEd2WnmkoG7G38pxCH141uug8",
+      "signature": "5UNF1QWd2iy2vnDiWFVWYQqzgGuKHU51kA2o3p6oLPLAUwbpMSUgNrdtVNUFTSF55axMg6pertnXkT1mcADZf8Sj",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "f6ede199cec791f593c555d9a923d1ecbe7dc9cb0743eee857cc19441fc4c4f4",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-DROD|polymarket:will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026": {
+      "attestation": "Fb29G9xuR8h75ADqE51rAjdJxfZvWCN4gzTxBzNxqqCp",
+      "signature": "41wEzfhXg2d9oYQYX6e8nzUoMuTG4yFyTn256UyFUZ27KuNUd4MjYPixWnXkRxBpVAwwoiUoSpshU3UFkYMyhsZz",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "bae4556b38d6c8362960c86e8d8b3465d08b62e81a63b8c8734cc1d461c1f368",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|polymarket:will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026": {
+      "attestation": "FVt5KmiXEyuHaayBYSSG8YN9u6mybKPNoaF7YihWSSBs",
+      "signature": "5u4p6vwrcaed4H8vkemiJNQR9PWAQe9vooZECSvNixxj34Bsg1NCkienmMNh86CP7Z8na7WhrosBsoqbay773BWZ",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "e9a9f26b039b88b6456941f306ab16e45371c870f457f5e2ea630e92c55e99cf",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXGREENLAND-29-27|polymarket:will-trump-acquire-greenland-before-2027": {
+      "attestation": "EyqkvnXrSzJe72G3mbR9BjgUNCCauWhXS3kLdCvW8UYA",
+      "signature": "4M67SUwNYwcF5hEjpA9Sv2r9ZY6JZYpgNL2AoEQd791Yjsm9yVCqdXypoSvqMtfS5Gw9s7uJM41CJzFoKs1P7muy",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "859c1b78f18a2c4c03721d843e0e18c4e779b529394840b54a5f0e532fafa48d",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXTOPAI-27-JAN01-META|polymarket:will-meta-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137054": {
+      "attestation": "EsoFpfqJD1h7oHaPuZ9SqL2yjgs8MRyHqLmBA5K9zcaC",
+      "signature": "2RM7QPwfiWif3M9YGGA4kLvQn6b7C7ZQg3JqjmKYLPaCByqJfFVwSfs8ULXywELnezG3m1DVr7HnLQrHeyRT4dVD",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "2cf0b5ab0d6a38dcbb10e60bc15c346a59a79cf7d5f99e445900f5b7720df094",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXTOPAI-27-JAN01-NVID|polymarket:will-nvidia-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137066": {
+      "attestation": "3uo8BBRVj7q6WGC9YJCEWYKp8jtaQZbyCPaPs8RUX9tn",
+      "signature": "3TYaPMbyhPzzriYHLfydPUNSFrzwcrJweZArSokR82fM2hAAuVRGApucwRrfzssYA59ks6KmbDqM9827NFfpBFHh",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "516f473ce36cf83f3fbf7b573f14a4e829ba7dca9b23f86a209ffa70a0684b44",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXTOPAI-27-JAN01-DEPP|polymarket:will-deepseek-have-the-best-ai-model-at-the-end-of-september-2026-20260717143137063": {
+      "attestation": "GLrszBzwWT3576E6hg4Qfj8JQAcLgRFVNmb63F8YFqod",
+      "signature": "2kyCtySHuCWc7qRNpZ9xcGfqwkEGShpAa3WFBYeZmbn9PcLFk27dfft5VgVk7fPiJsMqs7FhXaPaWFHXiUvBWewA",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "94f20339d1cab2963f1daaf2f08d3a6eefc4028901b6073f91c468a4650d39a1",
+      "checked_at": 1790356304
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-NMAD|polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026": {
+      "attestation": "87z8j9hYoiMcgHvfqNad86W625UPwcqZEpfrhuYnPdLr",
+      "signature": "4dpa3i8QXPEsGttZgoRf6rgqqbMf55rLuRCbofF8eXcbHzHTweeQhvkL92tfHcXPfA8Af2JN9THpmz6CHiMtZtJD",
+      "verdict": "different",
+      "method": "ai-review-v0",
+      "rules_hash": "a66dce4427dd3bfeba3619a1a60524b48be62ae8be4954ab3d85497b95796794",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXPRESNOMD-28-KH|limitless:kamala-harris-1768927395509": {
+      "attestation": "14TobCW1pUTSrmWShkjTGh2X9hNFMJ2Zk7UCioeS1fHm",
+      "signature": "56YNqJC7JQ1CTe9AnMTxPSm4kiNyrzW4p3ar3toK33egesLQyfqsbspU2KKdeNi234nFjPmDuwzuuygoAdxNjWrS",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "697b2edb1d302584633268baa4760c8cc3ef7442b9407343c038b49d68bc729d",
+      "checked_at": 1790356304
+    },
+    "kalshi:KXPRESNOMD-28-GN|limitless:gavin-newsom-1768927395479": {
+      "attestation": "4uchTGZ3NgzQrWgUEP9C3WrtdxWRuFhcZ5in5SfR7zNE",
+      "signature": "4U9EAZxezsrd8YTDGXHyWL3DaCfcjhQoMAbQjkhoX9Qt1F6GCXAU6KdpCRTEZqfD194Pwu6BSLvmLpe2H3vwonCE",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "25ac3f72ffe4533ee1fdbd2c1689147a353455490a81eed668b2143a4b95bc94",
+      "checked_at": 1790356304
+    },
+    "kalshi:KXPRESNOMD-28-JS|limitless:josh-shapiro-1768927395492": {
+      "attestation": "EDtCRgpusa1xuEt33dybPyS3Sm7sHmpaATPrNTytNwpc",
+      "signature": "4ZJymVvhcbCttmxPZ9TiUWLKJh7EFx7SQRWJhu56bWepTQ6VrS5xoFKwtkPbMH9vcVMDN3BJkVZYv2inbL2xWzxw",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "48f7358b0363d507d6dbba851da67fe24b232149fbe31087101a37f874e13856",
+      "checked_at": 1790356304
+    },
+    "kalshi:KXLAYOFFSYINFO-26-494000|limitless:more-tech-layoffs-in-2026-than-in-2025-1788780822193": {
+      "attestation": "35JoJG9msRe6PKukh4zzdLwDtLwSjL7qknJ7cHtVydbi",
+      "signature": "3ecjBR1q5snCmzJLYXgw5X16w2kjJxkdWBPEzKi9e2SmNqc5kd5CDS7o517KKgkz4QNBEb1EBjLfNiTN1M44Sq6q",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a86e88207077ea608c879bad8b9d815cdcfea17d5d474243bfdfb781c139a5bf",
+      "checked_at": 1790356309
+    },
+    "kalshi:KXLEAVEOPEC-27|limitless:will-another-country-leave-opec-in-2026-1787749159804": {
+      "attestation": "FdwEMCcWidVvXkMciChRHCSrRPCte7VV7jDxSkrUZuFA",
+      "signature": "2oEUwVZjmp21Cj14Xr3L8NJpqz9K3KiF3JuWbxiJUH5CTDzitJUkSDXqTmLzPZkLrR9dgds9FPteo7LM86gjdPU",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "ab89f749945de5cafbc05aab70ecfbace8a2cae0e2c5bdedb06fbbcf75478928",
+      "checked_at": 1790356309
+    },
+    "kalshi:KXGALLEGOOUT-26OCT01|limitless:before-oct-1-2026-1787764251359": {
+      "attestation": "Hzdi2uqziJvj5WsWRjgqc27WVekuAk5DYb4miPzZ2kDV",
+      "signature": "5c83x1uTwzFHnFvPwp3pVn3xLapMtVMpuCmAaKmcG6hMhosm2XDAQ442PuFkfmWGJsYkyDWEWYeoMtiwEjL7BePE",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "7f21b20d5a25314251d5a2675a1491987fbafca1420f71784dffb7bec69e09d5",
+      "checked_at": 1790356309
+    },
+    "kalshi:KXGALLEGOOUT-26APR-NOV03|limitless:before-nov-3-2026-1787764250647": {
+      "attestation": "EvzXECdayCe52HSxgMjTUdyBmMQwcZH5JU4X5k9jfKBJ",
+      "signature": "2sZYUiVUxZdq3yeKcg9BasHcGtnsr5AiNtJkmDs8NzNfUutXi6G2pwiHFA7jEvHJXsa5CckbeQh5ef3BqAcYnwQY",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "1b3fdc81232f3b31f8e01587f3d78680307fcc5a16eec94dba038d673a5a4625",
+      "checked_at": 1790356309
+    },
+    "kalshi:KXHKANEKNIGHT-26-YES|limitless:will-harry-kane-be-knighted-in-2026-1790165245270": {
+      "attestation": "DZe1W5CMq6ow6RkkJUyxX4aF2erF7Nqb3Jvp67zeTpe9",
+      "signature": "4aonMHpcsyyBCYSvmfERsEFR8EUWtv7KvV3ku9DT9UoK5jwXDV7HDujdSRMDgLV6ctcNXzPdmumcNAXLEtMdYBpa",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "dbd555aa75c68ddefa5be0a27064279d2e9db53b62ea6be7c18f8ef693eb973e",
+      "checked_at": 1790356309
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-NBEN|limitless:naftali-bennett-1769098855998": {
+      "attestation": "ESN8tn1DM51KvPjFPgQMVy4vti7oU6GA3b7Jkf8Poxxx",
+      "signature": "5mhpQazstgCGcAFsVeDCWtAiqkobPgZ1MKGfgfTJtgY84TXMNnBeC2udqgx928GmbPqCh65vvxbQibHteSHFLXYj",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "13a9dd34f4f09700b2e725ef6a387164d88d1a9268d5027d30f294c713f8e9a2",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXNEXTISRAELPM-45JAN01-YLAP|limitless:yair-lapid-1769098856014": {
+      "attestation": "GLQ4i1dPXs4gBas7XuiqBACgm8FukgsybyzDbHkrzxU8",
+      "signature": "3VRRp31dvPyMuyrgrNdQqPBdCXfqx3UKjmWgTpH7oY1tcBshFH34UP9LJCiXuUvLoBH8ahARivyon5aPAcPB5bqS",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "fd223b282d27316c66960c2ee6b0291f04cd8d1e91502e6f44e7d8dac4f9fc96",
+      "checked_at": 1790356313
+    },
+    "kalshi:KXPUTINZELENSKYYLOCATION-28-HUNG|limitless:hungary-1787248233211": {
+      "attestation": "2CvUFFD77ztA7JsXmtqhKVogDrjeKadGTdsaPCP1h4z7",
+      "signature": "4MTcPR18ycrNxRiNraopSi8GAFsmsTf4ToLML9rzdhMkhuGVzCRNcSmJgNbfTbPXC3CtkwWZJdBJN7EYc2NMXsAX",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "b768ac82b34b79255017eb7c8f69d8b8ff65cdfdc893b6f9646a9db77895da78",
+      "checked_at": 1790356313
+    },
+    "kalshi:KXPUTINZELENSKYYLOCATION-28-SWZ|limitless:switzerland-1787248233195": {
+      "attestation": "f6UeazwjW332pZjqCfaC9dan1cviDgxakinAzPuM7Ya",
+      "signature": "2WFQa8MjdPxVStZnwzaNRrHMNKzgcxNRFCfMzPuy6DVkyqUM3Y8PV4m8acLDkkPG3G1QjhogGqTNPcLMyTjPXEZi",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "71111429db9299fdce562728b77583c96802beb2ce18af516af84b699fba2074",
+      "checked_at": 1790356313
+    },
+    "kalshi:CONTROLH-2026-D|limitless:democratic-party-1769088464320": {
+      "attestation": "9K7ZCJYyEkoX4Jwsw84N6hqRCZSeUdqMzYpzNhydAqRo",
+      "signature": "5v1xoE7k1BvmJuyEsVpR9uUWNekk4KoY5jGaCmadKcoTukVYLX4mnaypmfC6tb32W8CLxt5hHbvZ16yDuchrcN8t",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "9027ba21f2e9fc0d315e4e203423d4d55b61e1cfbfe493193d2fb5f8c91ff02f",
+      "checked_at": 1790356313
+    },
+    "kalshi:CONTROLH-2026-R|limitless:republican-party-1769088464329": {
+      "attestation": "3QZYW2vk1YzjdVRKE3dvY5RVK7FDhZA5WAnVVziMYmog",
+      "signature": "3W2cAGU3SrBrqyKerKcCn67VSojquHkt5UUHVGCaiLHnMxwLskYJCXsmcXFRA74mPrYWumWjqNQVScSr8hkjDAT8",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "cb7b0139647c29bf444de0b2c8d521bb1f48a34acdfc20314c99e85d4ece56db",
+      "checked_at": 1790356324
+    },
+    "kalshi:CONTROLS-2026-D|limitless:democratic-party-1785850263376": {
+      "attestation": "FbxjbcSbXxSG2Zj4nWkJSULDecghLvvK9MaPtyp4jx7w",
+      "signature": "5cmyL3qjvgB2MpULTV8c1zfcsTJjv6kkeMBr7avePjQ547c2VqCMJ9AdqiKyyKb8zRymKs5uY39MF6jxfpBU1RzH",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "185f2bd7816930fe408ea6b3641d1f404c45b74ff1a335802adb05af7d19f9e9",
+      "checked_at": 1790356324
+    },
+    "kalshi:CONTROLS-2026-R|limitless:republican-party-1785850263389": {
+      "attestation": "6h6M4hY6ZmxPDiF1UudRzCgJvTJz1qmMEFpXBurzbK56",
+      "signature": "3WM5Jrfto9g17yCZHAWxuK1meWqSSZ8KDwBe5rnYWmK3LcycZKpWejsazX2S7FveJ6GnKhsT5uoZS775fZNyQbTi",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "e4647fb484fe8f74a4e4c2b016e2ed1f1adb907dd6d9359b63ce5382616f1408",
+      "checked_at": 1790356324
+    },
+    "kalshi:KXWINSTREAKMANU-27-5|limitless:will-manchester-united-mens-soccer-win-at-least-5-games-in-a-row-this-1790109556619": {
+      "attestation": "jn3FVXmqyiSCwHmaS7cLMqDtXBsyTQ8qsn2QgugFpNx",
+      "signature": "3HsHm8TKikbWS4w3WTRSQouyM8fQkckWE61mGoFU3FKQoZ9o16eSUxdKx2ZDVqH3zLbWnPQG7dfTQjYp2kYcAwUW",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "37c94fb827427703d17b94e93eec0807c1f4b375838d781305be0851a532af64",
+      "checked_at": 1790356324
+    },
+    "kalshi:KXISRAELPM-26OCT27-BNET|limitless:benjamin-netanyahu-1769098855968": {
+      "attestation": "GiMnJXR2otGAovnxyWQ4MtAXwr5ZT4T6DMiKAnXsGjoP",
+      "signature": "39Wtg2zwAib3TSCjQM1YwHZZJzDAE9kv7Smkfxb92sC6NqMi3TRUumT3ESe3Lawr39nPqWjREeANkAsRhKMJwR1d",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "abc8647af5a1855d0c3421f0e6e85ed91577306cc225846c5f2fe0297461e2a0",
+      "checked_at": 1790356324
+    },
+    "kalshi:KXISRAELPM-26OCT27-GEIZ|limitless:gadi-eizenkot-1769098856001": {
+      "attestation": "6LzsFwgjdSPtqEiTM6rcF7KNJkGCt7trEhqsq1zfnVaN",
+      "signature": "229EDZhkYoRq9Pbi4viWEGF2iVnzoN37wBeT6AktJDZYaai5C9Ng9YgYL9JoesiRvqfBHCcS91hUu55xbsb7E5ru",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "3078fb79cd21a725316cc558b1a0ec0ee00571f2ed3f48e68d547097ac755c0d",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXSTARSHIPSPACE-26-5.0|limitless:less5-1782465127228": {
+      "attestation": "FuRmpx1Ci3UwSDYhUAh2bCdqKRhrxukcGSr959UV8z2p",
+      "signature": "9LGXty8znpcsCnK1VSFrStSuAzs3y22hEHHVjBD14qNUsuKmo98XbjhXWzumvq3qnBRpkxCyFZ6ZMGYyEqRx9W2",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "0d41f817f8e651e441952b0e22b22e16c137739fce9597bedc3b583a7f366fd4",
+      "checked_at": 1790356326
+    },
+    "kalshi:KXPRESNOMR-28-DJTJR|limitless:donald-trump-jr-1768931335074": {
+      "attestation": "7y2ncouwSEn8y92CWeWD3WXd38pUvrfZkwSmHzjv4cAD",
+      "signature": "Yc2giMzbSZYuNwXwyEv9r999xiNPpgxJyANGxeMjtE9xxHfe2YRAjqNDwXfBjJvC8t1sXw9A9Liv6uwsLftjNbc",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "feafaa297e35a02213a18e3cdd9132b44535dc9d15427f09b8220f6edc737e99",
+      "checked_at": 1790356326
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-DROD|limitless:delcy-rodriguez-1787676477917": {
+      "attestation": "2GAiUoYdK7jerHLZNWfo2sM1HrnVZhkvHXNgBcasEYYG",
+      "signature": "4GPN9aMmtMBmPtiN7WXxP7d39UjAapMU68wbzGWog6GCmMStUMRj1b2pMCi2Qb3R4UikAgCAv3fMd1vjZUvqhLAq",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "530d1bd69d9cc8798bda1c9f5362e2859b460a54f43b06db59bd8e840f13ab3f",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-MMAC|limitless:maria-corina-machado-1787676477924": {
+      "attestation": "FL7KJ2nQReHZQ7zEWYdyJCnDX4ob2MfGDUWtr8v1iGDM",
+      "signature": "4qkRGUVLDWaZXDW95V7cV12dXkXr6iQdsXGWiC3cMjauvSDhmwqGe1Lm8ar4Xep1WMbCftUrKinqYqpFY1XVLSLy",
+      "verdict": "different",
+      "method": "ai-label-v0",
+      "rules_hash": "b068bbe492a7b3fabcc003a766c6ef53bdc55011b02c7d5991009679599c40ff",
+      "checked_at": 1790351749
+    },
+    "kalshi:KXGREENLAND-29-27|limitless:will-trump-acquire-greenland-before-2027-1768930762585": {
+      "attestation": "8HoQM9hZUam1CVEArxN74DZwMkW52UUcb8wuhxtR6RSE",
+      "signature": "37XsCGgxKFoF7R1ExX5QCEKFYoNPCj2TguydPwpKRcmUvaoi54BzcGmdkjmXFSg3sDdqTFbtUc9v2kka2eidanT6",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "69525ddc788616e080d973263cb1aa46e28022059bd5e74b1d8ce457f799b4be",
+      "checked_at": 1790356331
+    },
+    "kalshi:KXPRESNOMR-28-RDS|limitless:ron-desantis-1768931335065": {
+      "attestation": "HA7oy4twSMKX8S1bCgqSMCiYLRbS2qYM56pbSfav5tKw",
+      "signature": "3fhGhgkjxCvyR8KS2Q2TCSNm4qH71CQh1DZTa2QUKG3PShQp5t6Y1gsjbk3LyY8pmE9TXbgXpxp8oVHJGX2x4DDT",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "08dbbaa9bc9a5fadd360bc56a12d32f1eeea33318317457957c85f2dfa104660",
+      "checked_at": 1790356331
+    },
+    "kalshi:KXVENEZDEFACTO-27JAN01-NMAD|limitless:nicolas-maduro-1787676477905": {
+      "attestation": "5CtTECbd6yhB5FovsJGWFf7vFkK8SP5DF7fVFdFnsid",
+      "signature": "4z9AAd9yM1A8yiyLSdMtUSa1F8aSZvC4ngWt6revtshPjoazyzBsWRyJDZoxN27g2YQ5r3NbADim4DDWfCMq5dmV",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "7df656ff5890de145ddffb4df9c5caba97786e35f3f2e485eea7613e31d613d2",
+      "checked_at": 1790356331
+    },
+    "kalshi:KXGTEMP-27-P0|manifold:PZnRZhLUgt": {
+      "attestation": "H8k5ZoNdsMXqaswbhmxRG9tPfDP1cXPgn74ULe1QMVut",
+      "signature": "3uCrqW6g1m7eSDzH2sKQGCqj9QQCdNt7uusrtUNFHKxoGxpxK6QoSPZK4A2jjtXort4DiN6mSiBRhxhAbJhaEKhV",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "020568e0bd09fd62f8182b229129ae6966bf70f8059bfc3ebbe4787f435d5161",
+      "checked_at": 1790356331
+    },
+    "kalshi:KXMILLENNIUMALL-40-30JAN01|manifold:OI65QnIIys": {
+      "attestation": "E4DSae9uMU1RzGF5boucfMg5b9h9KQXvttS1m6YtVfUV",
+      "signature": "4aQvayvXvuu59RVbmhTbxpeeTVHNKQUknAudHBVNcj97Zg7XppRjzgHxZErLoUYos4D7E73xgnNZUmRzAuUc3Yu6",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "213e82217377458c8b7334af0fc097f3c5852d62d0bdb9a463f4e68b78adaaf2",
+      "checked_at": 1790356331
+    },
+    "kalshi:KXPRESELECTIONOCCUR-28|manifold:dP9ggPInAz": {
+      "attestation": "32rbhaCAMQJ9LmRheF6GCVWeXQvZFtY4qNS1Fhq9buwQ",
+      "signature": "28HdNKXASsTufGs1P9AGSwsdt1PRQKvGF7N3Dxdo1TNiuA14A6WEqGsVDwzBZGCGktpbqUJWVNFFKAP3ndaLCzqM",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "876924b42063ffd76fb1ff6bd3e4f09d6f974fe31b09c3774d63c46a42e70c04",
+      "checked_at": 1790356338
+    },
+    "kalshi:KXTRUMPPRES-28|manifold:XPwlP7BLrkQDbzw2wXDR": {
+      "attestation": "GbSXnSKue6nsvEiD2C1r98hqmWaEeFHCCZsH2AwWztrP",
+      "signature": "2HNqpavP6C41bqvz2KBYvDyqRa2CiM8i5MjfxjPTd83ww1UfcAyr3yKAd1khwbzvfBn695B3ZWW264dwXp4P6e15",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "c826d71af9a9b4c1c30dc90ff6828a091ccc977f197cc35a4f0af50d7e840b3e",
+      "checked_at": 1790356338
+    },
+    "kalshi:KXROBOTMARS-35|manifold:X6baYqVr651Iziyw23cD": {
+      "attestation": "EatWR9saYQYSWfVoYMj6RtxDkaYqPBgjd6ngAwievTPT",
+      "signature": "59PEXmfvzuJfKuE6RaZwTMPeSygVq472puGzjWiUunYGGUyBG3ng78FiPoceuRSybetuwnFAv7TcdEh8RWjL8xx8",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "ff655d35bd500dd14e92c0b03a0d673a47786c0bc1893d185e9d9f532c402db6",
+      "checked_at": 1790356338
+    },
+    "kalshi:KXGREENLAND-29-27|manifold:y9RAdPnhOp": {
+      "attestation": "31F1s1hCqRZBzNKrTgkPuCQPJXMkBRbdS5TW5NihbF76",
+      "signature": "5zBEAZwHbZd8v5JKZc3wRs1njBrpdhsmSo6kVqykk4fRdXEYnAasZyfRyWfmT8mJjbopeR5G1xAMNjNgDSRit5Mj",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "e5b8c74246aa05e8c9bf5649ef6e00a5d4c5ab031d443c113dce3b2fd5c535e1",
+      "checked_at": 1790356338
+    },
+    "kalshi:KXNZPM-26NOV07-CLUX|manifold:EUhytOdNRu": {
+      "attestation": "EGYLGkzJZL95AgAHP35VHtjJQGxMvZ5d3aeQ3xEitufU",
+      "signature": "4M73Pfmy8aPehzXx2DtjrA2FQy6HdCL7JUoEzPuh5ycDPohs5rurCRCtDnAACcZ8snLr2fwDaRrjiRd3R5QddfZr",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "4564b913ae87bb7c5fe5d6f2cdb9afb3e7d4036201bf9ac6107c79a983225c15",
+      "checked_at": 1790356338
+    },
+    "kalshi:KXMILLENNIUMALL-40-28JAN01|manifold:5EyEO0nZRu": {
+      "attestation": "8cyW4f8wb17XmJbtGnrgWHCtf7KdvXRQ7LhrrSYrqetj",
+      "signature": "5YBd6P7d9rpiHfrbkeMtoT6pcX4uiceHiGVWdAkHYPFirRxQhV51NDVVBS512aSNxepYJviBKVbmqr3EUiCCBGEV",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "f0b7e543abeb4b639fb78506718c56b2aa4f4b17aae1575741e86850065c806e",
+      "checked_at": 1790356341
+    },
+    "kalshi:KXPRESPARTY-2028-D|manifold:3hpDrur4CXnfLysxQdO3": {
+      "attestation": "5syx6e66ysL9KAx9PQG85FvcQBXKdZcHQKkBKyochewn",
+      "signature": "3XLAC59QBucjcBd2RNYRNcnYbMWdSmKQh41C75RDhAtFSDagHMdsDjSKCTCxyEu7yWyrLgmZML1W7TzCQsEWyCty",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "fca6a032f822601d850130f36f13becfc7f92f6ab7dfbb091084efdf0b8ac4e8",
+      "checked_at": 1790356341
+    },
+    "kalshi:KXIPO-26-ANTHROPIC|manifold:9shSz6N0zd": {
+      "attestation": "EZyELKwtpfTay3bKbny2zFxa6rbaVb2QXQK2CELC8U4G",
+      "signature": "BjtadrSajJZccEq5UtpFgKxcvKTLvdWFdgP1XuurZMSZosXR2AF2BgZk6Ka1h14Ras63taEQmDPmSBGyYTpn9zB",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "bd960a06956d98ba263e72ba03e11173c17585441adfcb753d33d3426f9cd562",
+      "checked_at": 1790356341
+    },
+    "polymarket:will-the-us-invade-iran-before-2027|limitless:will-the-us-invade-iran-before-2027-1787659328650": {
+      "attestation": "BsMhaty5G4hUj1zb2ck9K9TfxyfPFrxT7VkUFNGPjfbV",
+      "signature": "2Rr5z9ikDiGVaHQws92M3fvaL8gYGmGZ7zvgvS8G5KG369Pn1xVSta5sspPch3hd1MAsS6GyfKGTZDmpo3pem3ao",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "9d8afad7430b78fac627f92f709a8cc3ead47dcd27c7343cb3a8fe196f2f7566",
+      "checked_at": 1790356341
+    },
+    "polymarket:strait-of-hormuz-traffic-returns-to-normal-by-december-31|limitless:strait-of-hormuz-traffic-returns-to-normal-by-december-31-1787655886769": {
+      "attestation": "8sjmqXKZ6TN5QP69vDSRmCMvMuzPJd6BEEp6E3L2zsRq",
+      "signature": "3oTN1hYfp4PooycWTo7u4BocPd3NxyBw6oaSAK5xoHUSqNCa67Gc7SdUijLGmw4Mv8nGajcBfeUC2k4B2tkuddEE",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "f45a6fd2d62466e0d8d2822204cc3acd997f212d87eb50736b57a797dce670cf",
+      "checked_at": 1790351749
+    },
+    "polymarket:nfl-nyj-det-2026-09-27|limitless:jets-vs-lions-1790010322468": {
+      "attestation": "2a2B1iYYq1QtGYNb1CnRUraLAaZQVbP7Z3kLtUcxhQZK",
+      "signature": "4cp3ERpo3Mh3cCfHGWEJC4z2dXDfRyNKCXZzbqN8o5LhNBFjYxTy7uXpxLFgV3d5GjYtvpaFEEhtAwAZLwJQrWYz",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "67021bf9856f1616e5877ad86e8a6b736ceb95e0c1d134b4f508ebc7549736b0",
+      "checked_at": 1790356345
+    },
+    "polymarket:will-china-invade-taiwan-before-2027|limitless:will-china-invade-taiwan-by-end-of-2026-1768932552478": {
+      "attestation": "DsLCHtYezj1fdBSY4VCgh1RMsxfBZeBkwpiNNKDXTdEV",
+      "signature": "WKrF1FC5nBZ7PP4VRGtJ69zYt6jHPuWfTv7nSuGpVmcPohDV5q33JadEYiTtfhezmWQMexD6qWqykskQA8QDzVu",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "2352f529927ba533aab9834b5b3aa046d4197cafb739825126a10b0e101cdfaa",
+      "checked_at": 1790356345
+    },
+    "polymarket:us-recession-by-end-of-2026|limitless:us-recession-by-end-of-2026-1767804297592": {
+      "attestation": "GA2mXkukmj8T27qDFdKCNXdBQXtkQjtUBNMMZaaqg8nH",
+      "signature": "5JmBkw7i3FRrKokhdXd9Akfv12UxDK8SE1ESk3MbnrDn49XdpCSwwWdFYeEaqSPLP6y7sonhjEPBr4kUc5euVBZg",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "4edf5660a02e71d5862c36062f9a42de384102bce8c859db031c4ebd75096e25",
+      "checked_at": 1790356345
+    },
+    "polymarket:nfl-ari-sf-2026-09-27|limitless:cardinals-vs-49ers-1790021111171": {
+      "attestation": "CnTFPmvtGBkvJdAw6An3ZeePhAVDvfS2HTvXwUJ6GKpv",
+      "signature": "4U6fKgRcfYLTdUHoqje9Vov78VF3JT4wS3FBrM7CUzLLdx9gaB2ib1rEDvQ3XmRH7pZECVhVGd3aUFczSSvewsBZ",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "de331dd8128dc4191a4d37a00fdfb119f3b3aced095d693cb487e33b739be346",
+      "checked_at": 1790356345
+    },
+    "polymarket:will-the-iranian-regime-fall-by-the-end-of-2026|limitless:will-the-iranian-regime-fall-before-2027-1787660719869": {
+      "attestation": "AaoF2N3Toif1Su8APaCPNVpoYyZiaBix8kArUR4PHtar",
+      "signature": "4HzbYJwAZ2VZU9w6sv3iYTfduzgvadhkdDVACA8Mt9JdGFYUKGZP9j4ZY9y1jk62zB9m4Ck8YgBGZ8ixdbPyY9i5",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a4ed3e6a9e73c291119d522f2636c3c13420d552f53dbd8debf580bc5577a0af",
+      "checked_at": 1790356345
+    },
+    "polymarket:us-iran-final-nuclear-deal-by-september-30-2026|limitless:september-30-1787657393583": {
+      "attestation": "6e8X7Nk3Muw2Z6qKuzuXAETUxTFrUKEmGqmkbHyhkQpj",
+      "signature": "38heU2sDC3voxTGtAydYcrfxRH4gxhUwd8rVa8i8SuZQhjDWRTF4ddUhSrxVCBVKjQLp9gzXkLrWMXx21g8zvG9j",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "1234c7486e6f2f4c70b209f608e1cbdf5173695cdf49bec2a965216ff0610d9f",
+      "checked_at": 1790356350
+    },
+    "polymarket:nfl-bal-dal-2026-09-27|limitless:ravens-vs-cowboys-1790022904014": {
+      "attestation": "DzXzijP1gabafsF4uT3NZFb8ooY1ZpSom8pZe64NhChm",
+      "signature": "tobiugckgkhtNKvSueT3Z2iHntUD2HAHK5iFuAdmRZJ5QfR9do3EZvnshXoiM5mwFprxHsonhhtoShjCCYenFzn",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "ec94100a03ddae91d11c24813a5b2d00629a65dc8f52a313b3b791d21ec3ee44",
+      "checked_at": 1790356350
+    },
+    "polymarket:us-iran-final-nuclear-deal-by-october-31-2026|limitless:october-31-1787657393576": {
+      "attestation": "AqqEPhFuySAqpWpB928BnqcEx8aYq7w1fxujAjpaD1vk",
+      "signature": "GwcAgjQViE7ZrPaYc5PGqgQ9vqBxZdf88rgeH7PFbxeQrKgXvB2Pw692kwTNFkWBPzhFbgFpTQieSaeKi2XqKnC",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "1234c7486e6f2f4c70b209f608e1cbdf5173695cdf49bec2a965216ff0610d9f",
+      "checked_at": 1790356350
+    },
+    "polymarket:nfl-kc-mia-2026-09-27|limitless:chiefs-vs-dolphins-1790010330684": {
+      "attestation": "DDAMiyRkzeTgUCVYYzAyMw2q8pRVcmS6CEtuTqEXrqNv",
+      "signature": "4M87xTc8PMZnPWXcoomHmB8NBPdq5tmAXU1wZVv39dPyQjaXdAGuQy43LJxsnYJShMohYL5oXxjD3atPUazkYPqm",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "2596842b802bf4ffb74e18d39807c0b7b4e2d58c0d1f83526dca5726576762b9",
+      "checked_at": 1790356350
+    },
+    "polymarket:xi-jinping-out-before-2027|limitless:xi-jinping-out-before-2027-1787659720504": {
+      "attestation": "GvS1p6FdGqDc7sV91SngUBafvDZdnbAgcMtndud3xpCD",
+      "signature": "2dQ8Ginq7fs4rby1AkucsZ1ESo4P22nSSS6pFMnf8WgiL67zXHZ56GA6sC1kSiPqW5BwiNHBnNCMCerGxAaDdk1x",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "de87da6b081ffc0a819f6547d7dee105374bd5ccce365d7e1be6111d6d8ca68c",
+      "checked_at": 1790356350
+    },
+    "polymarket:nfl-la-den-2026-09-28|limitless:rams-vs-broncos-1790036404717": {
+      "attestation": "42Ri4ovhajtJ18Zii5kgqp3rpEMLGRGwVUTbTPPmuFvZ",
+      "signature": "5B3XxccnLX5H6ccMTSLKWgGHcG2khCpcJhW6Kh1KHcXKNZdj6CJGPh69R4qoV6axoL71vtUbh3hQWNMFmTiUZUQp",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "e6ad935ba0916bd80aa996b572dd9bc4dde1de589fd930147171ca388ab0632a",
+      "checked_at": 1790356354
+    },
+    "polymarket:trump-out-as-president-before-2027|limitless:trump-out-as-president-before-2027-1768933068297": {
+      "attestation": "97L9BJ6ioKLNPiLMS9hHNoYDg2qivoEPFfSZJGDyFWrs",
+      "signature": "3NYrTd49ngU4B3gYwFqFDQccQAsrnMXi4wKFAUaVuJbnY4UjnJG8aRS4zJW4TXZo4eVoG3iSx6HrNc6W6EZo3oML",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "9bfdf270d54423d57e46e46a74b91ba372b4c6fa00b4352a214d1dd8d72f4b12",
+      "checked_at": 1790356354
+    },
+    "polymarket:will-the-us-acquire-any-part-of-greenland-in-2026|limitless:will-the-us-acquire-part-of-greenland-in-2026-1787749529287": {
+      "attestation": "4pVFsjfFzHYQ1NvNMdXbTHfcBDf5KxYCzypyvSBDyiXy",
+      "signature": "4w2nnVU2jsDNNAG4eR4ak5oCSnh7YAEw3hteR1oGUkceYwgXpgH9ZB2iUAgB3Rku4HiDM6sFinoSXwfokZCVWrVg",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "e672c95942ce491f3c1de55b73497de963ac4f9d3854861433579f0171236a0e",
+      "checked_at": 1790356354
+    },
+    "polymarket:nfl-min-tb-2026-09-27|limitless:vikings-vs-buccaneers-1790021112250": {
+      "attestation": "3M3RRTmCpoBHNXEyBTQJLs7MvxyrAojKRKhUNKup5QF3",
+      "signature": "36YWGpoM69yAVQNkgria5Trmy9t8Bk4JBaL9N6fHDbmsQziUJrcAVRQwxCFSZqkqLCaqS7Avw3ETSedcV291i4kp",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "c46d27d518c4b7f1467383df498647bf49ef9b7933b57889a307c55e80455a66",
+      "checked_at": 1790356354
+    },
+    "polymarket:will-anthropic-ipo-by-october-31-2026-213|limitless:october-31-2026-1789547697117": {
+      "attestation": "8vCjKcNCP7jkmv7zyoPCKgWEja1cSCceSeUL8TfSrebs",
+      "signature": "5FEYg5zbMQLkaWvrQr6ozTYGryRxyrQdAHZoezrK6YmUSsPn23esCMARgeefCBrGss4shu5Q5gxGnRdTcBVHmP3W",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "f0a7cb754c8a8439873582a5a66da36ba263699b0edfc8d5bf8ed0e95a784b10",
+      "checked_at": 1790356354
+    },
+    "polymarket:nfl-sea-was-2026-09-27|limitless:seahawks-vs-commanders-1790010338341": {
+      "attestation": "2GkB89PP6zcvy29RD2njNodd2C9K2X9BVuKEnF9tndgR",
+      "signature": "4R71KT7RfERGzmeQMY2tPCD927rr8zAWiQx9Leh6hgPxneBZHaZfbbSZJ5X5kNvinAakeAy1LgtGYUtbaVCZsL1n",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "5a14a713c923bc82e5acf5ccda8fd4fd09991f0f0450179c7e3a7ea6d47aae38",
+      "checked_at": 1790356359
+    },
+    "polymarket:will-lewis-hamilton-be-the-2026-f1-drivers-champion|limitless:lewis-hamilton-1769015228956": {
+      "attestation": "DjKmP1fSntwEFmcbpwb9iDPbjHY26FYwz5uur3zY3nUR",
+      "signature": "kG2o9SAfTTHFDDCP1z6TJfuWwNv9m73k2RMFN66zyDdsn2ccPiw18VFktXfpdVQVvYa3jyPMeTgmrAHvTaLQjpP",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "5e468b1830721ed1eb26770a4e2a388ec46f5086be4f95a2d283b12c6fceedcf",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-george-russell-be-the-2026-f1-drivers-champion|limitless:george-russell-1769015228929": {
+      "attestation": "3bVk9zAztdb4HGqMiZtfF13ME2BuxgaGvraWGfcrTsKG",
+      "signature": "KGNpGjfkg8XpnQgRWGq8i2EhpcUbajnkapSDLcMp5xv94nc1NGPraAVtbyUH2kEhSuiLP8rvHw12DnXhDaQ7peH",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "5e468b1830721ed1eb26770a4e2a388ec46f5086be4f95a2d283b12c6fceedcf",
+      "checked_at": 1790356359
+    },
+    "polymarket:nfl-lac-buf-2026-09-27|limitless:chargers-vs-bills-1790010320115": {
+      "attestation": "gnbtqiHqoJYCVGRmKAtX4okgQkEgLz8PdYHLTfmdgwS",
+      "signature": "4CbF98YHWKYHA55NM2D4CuHf5YwcSWpUrkyGrbCeFfM8mrfimBndfhaG6vUcYWs7zD3wpWhwTkCswWr36eeESau2",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "af70186411bf70db254c5da74b95e7265e9e5a2e99357dcec449b1bac3effb37",
+      "checked_at": 1790356359
+    },
+    "polymarket:nfl-cin-pit-2026-09-27|limitless:bengals-vs-steelers-1790010337293": {
+      "attestation": "4EvzwEtwmGKboJN5vS3h996pWz79Cnti8T1ioZ4HguG3",
+      "signature": "3gScAYGXBRRRpPR8tH5P4eZgi7Lb3xQcDV6F3wS8hBiqBmPqCsyDXN8BPayWKSHxEUnpPAj3RmKEB7F7XtcbisuB",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "820bcc526f5dbc8a2a608052bd4c6c54ff01466029a3552b94c84f0c370f5a51",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-nicols-maduro-be-the-leader-of-venezuela-end-of-2026|limitless:nicolas-maduro-1787676477905": {
+      "attestation": "EX8SMXHKXP5JeZN9XbW59Eh8Be8xNJadAqubK87eGfFF",
+      "signature": "4Hekj32cCDzTBmEGNuCNw38SEY8WR5VVovuP2EZvoiS4tigbNrQoteG4WmRjFQnk2z1SXeiPdfQonpYXiNYtviMa",
+      "verdict": "caveats",
+      "method": "ai-label-v0",
+      "rules_hash": "c64a05658b1074131280935062fff19b3305f6ed3b93fa938c1b048bc23d74cd",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026|limitless:maria-corina-machado-1787676477924": {
+      "attestation": "PurnNF7BFSLrytwWP6BXsC3Kond8ghBqXSHWZ9tU9SN",
+      "signature": "5EaPCPWQsXdvszkrnQFkWsBZ2PZkS7sUMz9w4KzUazrWCNu1JAhWPPBxVppFBpSSxAEg2WUZGmYMv2PPbcjHg24X",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "c64a05658b1074131280935062fff19b3305f6ed3b93fa938c1b048bc23d74cd",
+      "checked_at": 1790356364
+    },
+    "polymarket:will-trump-acquire-greenland-before-2027|limitless:will-trump-acquire-greenland-before-2027-1768930762585": {
+      "attestation": "6Kk3VV9EhJQLUfuD1J25eBp7h5DfgkSFAZ49NKaq2eqZ",
+      "signature": "3NNqz2kb2XxHrkWKHsTA3CHiFSn2HfnQsz1tdVPhbmKXbKdJRzKFgoNn2v5fHnwDU2M9PCvCexzCeGde8hEVsef3",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "ae70c12728cb60c19cc40bd34e90ddf80d4db832f1a30b70ae342643b59eb371",
+      "checked_at": 1790356364
+    },
+    "polymarket:will-trump-meet-with-kim-jong-un-in-2026|limitless:kim-jong-un-1787673220097": {
+      "attestation": "6oLT2a8VUyuBLJUt7u7ixFQ9FSjF24A2TaWDpmmktfZ7",
+      "signature": "4zfLnTc4T9qggDE6GyXMyYGuA9LqKKNmFeLF938BfsD6fP9on4Yc4gNBr3k23acGYjsk2AXw9W5HTLiG2QXVs4Y7",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "2b7500cade833b996f835dcec610a6bc7d50dd7497e9ba3b3e14d22b1a0fdadd",
+      "checked_at": 1790356364
+    },
+    "polymarket:another-fed-rate-hike-in-2026|limitless:another-fed-rate-hike-in-2026-1789636928078": {
+      "attestation": "7LmaHGQnh9dW1MQboPny8xgtjArr1vRx7KdwL14ryVoo",
+      "signature": "5GXjnAfivxy1QJe4h4XKDdtC8bJWLmx6V4YXnf2QBWezipZQmLu9A1toZYAhCLw8JPTbZEDNYCUnN6yjBG6wo7Ws",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "864c2397b52704e7fcd022eccebdafec906d436e9205f075ebdd97a7e5387d72",
+      "checked_at": 1790351749
+    },
+    "polymarket:us-x-china-tariff-agreement-by-december-31|limitless:us-x-china-tariff-agreement-by-december-31-1787675335206": {
+      "attestation": "HWv4Z66UP1b5kQUMkEVJTpuWoyqSjGHgJQz8Uf4YxGTt",
+      "signature": "3mBLDZefK73i1mtLCdCWdjBsoS9KuRruWyFCo2nhi3YR6x4jMcaUeGmANvNRxUALufMWyzNE2aoPXgckPKGPP5DP",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "85f3d3aa6a70b9661ef04b2759a43736a91a40a97ab3c1b8c9486da07a59c226",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-the-iranian-regime-fall-by-september-30-20260629143335077|limitless:will-the-iranian-regime-fall-by-september-30-1787660718524": {
+      "attestation": "8FPEjgGEUwgsMT55hTCqwN8tEtDoTsAGSMsbnxNr9puk",
+      "signature": "2suNrFy1QjWsLRQka8VG6fSNWS9oUHHesu1gbSSt9fvxEwhewPmNKphksKtFxMBF956j8d4Yw1uGeQwSHanrN58c",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "f60fcb41153e598004534b3ff0a922ecfd14a6e1b6a2941784d49697e02b6034",
+      "checked_at": 1790356370
+    },
+    "polymarket:will-revolut-launch-a-usd-stablecoin-in-2026|limitless:will-revolut-launch-a-usd-stablecoin-in-2026-1788430432342": {
+      "attestation": "ATsXewQXCqgksdsBsYaPZMfiwNWVvSaN3bGPDxMc6oiq",
+      "signature": "48TJzvo94wUHvWXuk2BPFpBhxaZKiXQr76Q7vA23351Yi8KngAHdJ7sxheQj8xx3djKGs2N23z9LQr6BTAQoGc2G",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "09a3c0b6a297f14d30663f241bd68c5e182406841681a3ed62501bc142e0badb",
+      "checked_at": 1790356370
+    },
+    "polymarket:will-anthropic-ipo-by-september-30-2026-733|limitless:september-30-2026-1789547697099": {
+      "attestation": "DTJD9Qtokt2rkbaCZkCuvgVWwgc1i4WstUyvmLGy4Ti1",
+      "signature": "5VWaRSAX9rAQ1BiEKq8GqtdWGGEpSYUv7oNmAgBYrkuPTNSyXxmUtVgFqqU1JwDnuYErj86SQkXFYHHrx2deihZu",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "f0a7cb754c8a8439873582a5a66da36ba263699b0edfc8d5bf8ed0e95a784b10",
+      "checked_at": 1790356370
+    },
+    "polymarket:nfl-ne-jax-2026-09-27|limitless:patriots-vs-jaguars-1790010329358": {
+      "attestation": "3QE1hoARGbqrjD7Kk8AKBTnZzXNZXqkNiDTLqyuJ5CPR",
+      "signature": "285LyjKrXoezXYgSALRaqWxzqmW1QseuqJtPRxdHrtHaAtFo3P5sHrzj8Nyuek1tYQ5GNsKjaz7PTFhVDtuz8wRH",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "d1c904094cc904502eab7a6b5019f29c3192fef2a1429cc17ae027e3ecec30b5",
+      "checked_at": 1790356370
+    },
+    "polymarket:will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026|limitless:delcy-rodriguez-1787676477917": {
+      "attestation": "B7iJb6TGvWm6YwMSyzJyAEhungMdQViN1GQh6KZbiQDH",
+      "signature": "NdJMSiu2QpbWSPyNEeQjD5yRbqzj8YQBxiWzmdspbbWKNSfMqMvs9mgDmoobS8jVTeyW3qEredvoSjx8FqXXLbW",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "c64a05658b1074131280935062fff19b3305f6ed3b93fa938c1b048bc23d74cd",
+      "checked_at": 1790356375
+    },
+    "polymarket:kharg-island-no-longer-under-iranian-control-by-september-30-20260730004207224|limitless:september-30-1787661859256": {
+      "attestation": "BeE6TVVAya8UAwttRzXE4TPY7gAWg19YP1n29AjeqpCT",
+      "signature": "2SjuY4fLGTJDJ5haoS5715vY6ko9KJoDmyvVLLH3KHkzjhmwm3xSbZ699gyQHp3dYf8JkutVLPHmNXgZKQ8n3LAG",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "ae4a2feabb073136f6f8ca740c043f6997fd433c4cdd169419e1c42afc83ffa3",
+      "checked_at": 1790356375
+    },
+    "polymarket:kharg-island-no-longer-under-iranian-control-by-december-31-20260730004337418|limitless:december-31-1787661859240": {
+      "attestation": "xQvd9bob5xvjuHNAWjZPJmvKgu3d1X8yde2rek4uv4Z",
+      "signature": "3LXAdBSAivMobKQznbood6b7t7XNLd6Sx5ixNj9VtuKAn654HH4yFhB5mdC4YH1m7MoZRcmrjV79SczFqXyNWyg2",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "236d2cfd71e7f310c64a79dfd80eb181e129d4a8ca4764663c6c31035811c9d5",
+      "checked_at": 1790356375
+    },
+    "polymarket:us-announces-end-of-iranian-blockade-by-december-31-2026-20260727171803489-375-949-645-919-269-157-255-857|limitless:december-31-1787654182318": {
+      "attestation": "2CsnBzwCPuAEReqG6GcajFDHiCMg2hMATSwqXiqqZdRk",
+      "signature": "dJE2et8LrzDXYMkmBdvZJKXGkTBk6RpgVUAgD7GCxXRzHDk2JNPEUaqDwndMYjJqfJ1JLoxYw8XVRaYdfhKXQBr",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "80fc6a4a6b9217d048118eaaf1c5368e72010584f432e2fd52cc9b6a605028cc",
+      "checked_at": 1790356375
+    },
+    "polymarket:will-the-us-confirm-that-aliens-exist-before-2027-789-924-249|limitless:december-31-1787671443106": {
+      "attestation": "DjgevwZcwwbVxbm5M3GrRnMQqR2cFhVjLUagZGzXRyxc",
+      "signature": "39Dfw3sRtPn6Fc5pBbhxgJzsdYPxvf9vTA4QeLH9WNB4Ge1GwnhqCABNk4nFCSGxmtRMrytN8b8mUhND9Weh8Pc3",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "d82242f5171feb9eba3515ea4f397c685da72a37c1ebf6685ecbe7da47277997",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-benjamin-netanyahu-be-the-next-prime-minister-of-israel|limitless:benjamin-netanyahu-1769098855968": {
+      "attestation": "7oJ5QyCSu7G6ngBUQqmEnAMuAh51gae7eHvCCnDNwEBn",
+      "signature": "66PxJct1Z9q5BvEUEgcKb3qt5tSqPrCYtjj9qSycxaY8p1HMaCYSf6QXLPeCNwup2txqG2H6ELduoHMeNHjRsdT7",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "98462f79e0d48f8d5b43d8dd488812d60ce30f7992b7e7aa597bf1dd2ff11e39",
+      "checked_at": 1790356377
+    },
+    "polymarket:iran-charges-hormuz-fees-by-october-31|limitless:october-31-1787660046627": {
+      "attestation": "2Jj44oMMhDgkQZ9KvsSmP7VTR9o5Dyj7Bxe4bKaeJwRE",
+      "signature": "64mVk5UP7WiytjzJ3jU2uwTkNgD8voAgNcvVSmr44beQtyWT1BaSBaESVDtJaLfZqdHLpH6g7TRdD575axuxzxU",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "41d47fae8ce2e43a247d024955d8e9551132deecba994f057a880be10d62ecda",
+      "checked_at": 1790356377
+    },
+    "polymarket:will-samuel-alito-announce-his-retirement-by-september-30-2026-20260630151901966|limitless:september-30-1787744916606": {
+      "attestation": "qV5UK4ejZzFiLxJxLCt9ZsbK9YWo6LgGrdYne6NwyrP",
+      "signature": "28W2vrwoyJTST3bzHuTZTsis2hTU44W6SqCmbu4C48CDNnA3wWA76tpLUPaBMRVLR9BvxvMH4GU4irr1mjFQgcBB",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "8148df1413b5cc52814376238790c836d2302b0065f51e555df62c825a3e432c",
+      "checked_at": 1790356377
+    },
+    "polymarket:iran-charges-hormuz-fees-by-september-30|limitless:september-30-1787660046632": {
+      "attestation": "BoToFeGowCb6MvRU2X5gaYP2wwJ9NxFHN2DDbYF8n7Jb",
+      "signature": "3ZqrbZZYEQnzCKWfxcxFzFpbNCCWQUNZtK866m6KGs1zhBBrjeS6eTcgw8Th99TyKWv9FH2rxgjYZ1Ux2TfB8MHU",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "41d47fae8ce2e43a247d024955d8e9551132deecba994f057a880be10d62ecda",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-yair-golan-be-the-next-prime-minister-of-israel|limitless:yair-golan-1769098856023": {
+      "attestation": "DZc67ggnMUammvRrgt8rvitaE3ku38F8MofuwccJfHcy",
+      "signature": "4Pxiie35ULMbKWh5FjLAnYUyh21wLvjvZdseujJtqLNEEDmDe64fJnL7HwtnnGUXUJWzgFgsNCajwGtbkMxMHbRn",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "98462f79e0d48f8d5b43d8dd488812d60ce30f7992b7e7aa597bf1dd2ff11e39",
+      "checked_at": 1790356377
+    },
+    "polymarket:will-maria-corina-machado-enter-venezuela-by-september-30-20260728195821515|limitless:september-30-1787747700859": {
+      "attestation": "9mQYssYrBsthRfn3i6o7KhoCGEfdUg5GoGnTvMh1FQju",
+      "signature": "NGQn5JrPBEP3p2cGirPSsXpS8oXj6BXPVizZuvNabDL9rbm6rc1dhWgUy8K7eqBHdQaLyJ4U6ppCxZH9NhwT5u7",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "e9387c7140a1855ca83e8b9126b5d78b6f317235a4b2b1da0f192d2d62223e4c",
+      "checked_at": 1790356392
+    },
+    "polymarket:will-maria-corina-machado-enter-venezuela-by-december-31-20260728195714929|limitless:december-31-1787747700850": {
+      "attestation": "3FXcbF5QuytqXgSPpBhMZt1jAbhFcZmAq1bR9NzpLTNi",
+      "signature": "5a6F8B3f1yTQxbxy63dXxaPpA4LB6fZFtmaez2SZmGcprQAzCg3VC4KjgNJzrvXkuo2cdDpkKZZLHD47aLf3JURA",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "cfa16b87e6cc8c415f048261f03a2629405e141e37d09c0b447620ee69a07790",
+      "checked_at": 1790356392
+    },
+    "polymarket:will-strc-hit-100-by-september-30-20260618001621118|limitless:september-30-1788430626332": {
+      "attestation": "8KyME9vxw3ZQC5rwYvpiMp89MP7JJAN4jywH2EsMSFyP",
+      "signature": "zkayw3Piu99YQSTHb5GQovxpHePhhPqVqrv7ah4SQZCA3XMFMj7YRq17FJrs7TVmppVyduJhxjkdFbUn5UuTYXk",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "d36e8debb2fc0f0165aa4a8d8ee4430fb67b59982efd6e43b28fd6b02d763390",
+      "checked_at": 1790356392
+    },
+    "polymarket:bank-of-england-increases-interest-rates-by-25-bps-after-november-2026-meeting-20260730150602310|limitless:25-bps-increase-1789387521645": {
+      "attestation": "CqqGabsbNdcx6MixzDcMnBHHbuVyvTVe4tTdn75uELDU",
+      "signature": "2dCXEdP6umVyQz5H6PoPh6VKTgy9habDTNzzsxgXWEKjX1cpugUQDnZMkDfdcX9tt3T81HALLLrnZQU41ssv9KKM",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "baaf55702e3b5e002041cd349b7a3c87eb0758f71e9086674e8f6a72b4c30929",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-the-5-year-treasury-yield-dip-below-4pt20-before-2027|limitless:below-420percent-1788779312103": {
+      "attestation": "A8bqBxfUNHKxizFkfLEGm4VvkmX9cGzKr1Vmf4Qt42UX",
+      "signature": "3oAHUJ8fNVPEuZo722nrHc6tdjSEcXrss9woaAVFA8TNNTSfuJ9R7gvGu3AfZt4Kb73ss8mahZT2NPw5ParXpR3M",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "9d780f2a98995c20099acb4907fdc714df0dbf7afcb3fd7b7cb355913f2e28f5",
+      "checked_at": 1790356392
+    },
+    "polymarket:will-zelenskyy-and-putin-not-meet|limitless:no-meeting-before-2027-1787248233142": {
+      "attestation": "5YHg13EFMRxed9Gx6Vw4X5vPuGEkfn9B7ZrF7d3kXhsw",
+      "signature": "3PAcFeCL89Yj2StGBPyWRBRcewTfb6hm9F5coUfqsKGNLb8y8Q2oLbvZQcrEyuEDb86f2S7JRaFKmSbkBjSJamVe",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a3e4125ae0271a3aa39361d1c51c48f4cc5d4492d04c0ee4771342fd4a307215",
+      "checked_at": 1790356395
+    },
+    "polymarket:will-bitcoin-dip-to-80k-september-21-27-2026|limitless:80000-1789963519679": {
+      "attestation": "4vUbJFDhhpct1oGCsjiiac1opT4BqWDBGZjXsMNpmEhp",
+      "signature": "3xaYcdyFZu7JQzSNKXTThCvMQB6Npi5i8WwwcMp8sCEokTZDnF1Mo3df79r6xHPHLY4Y6J518SPYT8uSB8LcDAPT",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a829f8b0cdbff80be6834db30ee6e93eea5e4eb4b5acf08884b8ebf75100ad10",
+      "checked_at": 1790356395
+    },
+    "polymarket:will-bitcoin-dip-to-78k-september-21-27-2026|limitless:78000-1789963519679": {
+      "attestation": "CjYPygZfVZRPD8F69KxFYn2Qry2WatTnrtQmjCawwhCK",
+      "signature": "4fyiRu7cSDdaZRjEw1np1VXbwdGcqYSh8Eygod5crho7MjoAQhzqEwZEGeHLqe3HcpTatytdejadCEwucU4cw127",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a829f8b0cdbff80be6834db30ee6e93eea5e4eb4b5acf08884b8ebf75100ad10",
+      "checked_at": 1790356395
+    },
+    "polymarket:will-bitcoin-reach-86k-september-21-27-2026-from-september-23|limitless:86000-1789963519679": {
+      "attestation": "Db6WRX81KGhw3vMAHzBQq8ejf7WJwBBuwTKjAmzPAhH",
+      "signature": "4U7HnqqnToh6yreb3qn7LQw4C5srDMWAozGtyqL3nHmPRikqCcgMGisAwJb4ksnPgTZtUnUJLgCTsvBvSMx3dGnR",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "5584fbd0d5a3bef2f1ea9a10a9df02e97a8436194920b5487081150eb12555bd",
+      "checked_at": 1790356395
+    },
+    "polymarket:no-change-in-bank-of-englands-interest-rates-after-november-2026-meeting-20260730150602309|limitless:no-change-1789387521640": {
+      "attestation": "8MM2aDSVqX6YT6phu9MNACzB31WC5rb1eSa4oiVnXcL8",
+      "signature": "NfPKdADKf9WR4onMbDDhTjPcxs6Jkb4rGExSD4KZEPCjNQbT9Pt6FsCM6bi4EkcdCD23SsyLKe1qHUi18zmNU9A",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "baaf55702e3b5e002041cd349b7a3c87eb0758f71e9086674e8f6a72b4c30929",
+      "checked_at": 1790356395
+    },
+    "polymarket:will-bitcoin-dip-to-83k-on-september-25-2026|limitless:83000-1790340607941": {
+      "attestation": "EgoFnLrNDqQBoSkpH2sRer1d96H3JvoeciobtD1Nv1vB",
+      "signature": "2nTwQPfc125nvx4647kAwGDSAycqEidertNJaG56nMthhLhX1LZr9okwJUCT3ZMkbaxYsdmPeitfqnEMcbZsMnGA",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a0ac6aeb074cfba4594f5b0b91ed794b2888e815ce5999a9ce817a0bc557fe17",
+      "checked_at": 1790356400
+    },
+    "polymarket:will-bitcoin-dip-to-82k-on-september-25-2026|limitless:82000-1790340607941": {
+      "attestation": "CC5twiYHDM58Sd9NgntcJxDXqEwVhVdYEi7pzXo6Drrr",
+      "signature": "5wbse3hBtz1vcaSmzPRhBZdyZP3iXxPspGyQKaTCtTkYAhrd4hdJDcnbufqjZUbYYboahvZRpQ5ahQjfPPvJYBEb",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a0ac6aeb074cfba4594f5b0b91ed794b2888e815ce5999a9ce817a0bc557fe17",
+      "checked_at": 1790356400
+    },
+    "polymarket:will-bitcoin-reach-86k-on-september-25-2026|limitless:86000-1790340607941": {
+      "attestation": "C8PMZkYp7AreZvvxWibDJqvm7N51kXapo3Jr2hnVVs8m",
+      "signature": "3MdyFVwdJpLdprSmwG4VtvoteB7PNJBigeWMeq1owcL12hUQnw8opHt2mZkxonWpsYq7wAtTSaRGZdc9ovauEbcb",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "16574b3a84409f65861690af67d89988ec2eeaf61151ae7f5c4ab09260f8ad01",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-ethereum-dip-to-2500-september-21-27-2026|limitless:2500-1789963561335": {
+      "attestation": "FKGSqTKTWpLcnyYk58Sqo3YPqm1AE9HESHW777BsG99N",
+      "signature": "5VM2KRWXCFuDkzhjUgTcBA8FGZekTkkZ3VxxviNCHcnz9K1iCEfNHbXEq41vZGXVCG3SANEszzT4T6sp1UnmhYN9",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "d1ca587ba8a4d29586401e1b183917bf3bc659d0e1ca7265dfc0477409cf1566",
+      "checked_at": 1790351749
+    },
+    "polymarket:will-ethereum-dip-to-2300-september-21-27-2026|limitless:2300-1789963561335": {
+      "attestation": "3sySdFdydKfjunqki63JgNSXGgtdEjv3wxdnpXcacFmB",
+      "signature": "5QSURKpiD7wbyPqGQxqmp7rM3qZcq8zUEmBDZiCnWiGGiyxWzrKR3GVT9fv1ix34wmoGDoGLGLwJwHWuEmNygC25",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "d1ca587ba8a4d29586401e1b183917bf3bc659d0e1ca7265dfc0477409cf1566",
+      "checked_at": 1790356400
+    },
+    "polymarket:will-ethereum-reach-2800-september-21-27-2026-from-september-22|limitless:2800-1789963561335": {
+      "attestation": "wqbLLsUn29ErdgNXvtGoj2bhNVZi6UZ88nQWp2Hk6FT",
+      "signature": "2uPPFxntaJywTsymbo1szzvVrfViSNeNYb6p3inmJZDMf1d4NE6BViMtimjVQP9XrdJRZSuxMa8Qd7BWW3BhPP8q",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "8698e6084d54668e4f7a1d790f326f092902f773e95f2331f19018e80b818e49",
+      "checked_at": 1790356404
+    },
+    "polymarket:us-x-iran-diplomatic-meeting-by-december-31-2026-20260922|limitless:december-31-2026-1787658200734": {
+      "attestation": "HcGbiPXVKEpdp7jaHoY7eN6c9obxT41NiLZsQ1CPgfEd",
+      "signature": "4QhZs3eD72PeNVcXqm9FoD3pKs9k9mXPozxcXcDhMeSTWtJSwmAzBQaujcf9mBJMgE3J9PMgwvZqfZ8CUCgtbkDj",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "e322d7ffdf083740eb569bc141da7e20d62a6a32a642ec98125fac59f4ca2145",
+      "checked_at": 1790356404
+    },
+    "polymarket:will-ethereum-dip-to-1500-in-september-2026|limitless:will-ethereum-dip-to-1500-in-september-2026-p": {
+      "attestation": "5iGF2LHMhb83AQHVgY5sJAusrXFgofkTZCsuB9mQuF8v",
+      "signature": "2UZWHN3CSaZGGDXStsNd2mdoLuudzdUpkWQjCykKeP142RK3ZptAqs9nNbgS7BMPTHSiaEokjKqxjdNo15khMg5g",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a2c9a7a564c38a18668d0bbe787ff70635a43cffd0040ba949744df4e61f5cb7",
+      "checked_at": 1790356404
+    },
+    "polymarket:will-ethereum-dip-to-1600-in-september-2026|limitless:will-ethereum-dip-to-1600-in-september-2026-p": {
+      "attestation": "3xMeHtAM8Xdmi1CEHMSNAzGmLtdTUJvaiCJNWhwLYJUW",
+      "signature": "2CsJamqzQnjMoNg9NM7Yf7z9vQ4qkD5P4iRYm5BddNshUcAtaW3yecd4Hymhb1zSGzVeWayTxvPWewoM359VuP1J",
+      "verdict": "equivalent",
+      "method": "ai-label-v0",
+      "rules_hash": "a2c9a7a564c38a18668d0bbe787ff70635a43cffd0040ba949744df4e61f5cb7",
+      "checked_at": 1790351749
+    },
+    "polymarket:us-recession-by-end-of-2026|manifold:ElSLRhzqyR": {
+      "attestation": "3ZK972DzBEHNmrFQ5uVEZh84wpcCQb9h1MBoSAVeTdp8",
+      "signature": "A7pPXjnFRGLvCijbhfnH59t5cnjj5qjCkF1VcenUxmFB1y5Es3eFcqP2Fpjf8AyZC8r4sL1uWNmSXScxjScP4iR",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "0e7a57f39f20312d361a3a38f0152a4fceb366724262363984e5b965703d7a00",
+      "checked_at": 1790356404
+    },
+    "polymarket:will-luiz-incio-lula-da-silva-win-the-2026-brazilian-presidential-election|manifold:qUIpIulZcs": {
+      "attestation": "7HSPp9eFuh2yh1xx2MbEMa1AJHuKjg5RtW2tKZNUpunW",
+      "signature": "57X3RMuXhiZdNsFMBAE5NZmxSWrtuZiMRRUGondn8B1WFt92N3cu1MjT3RSXKA3g1xCQ99mUFaowaNM5R6mgRoac",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "06a1cb21d8ccefbeeaf024426ba63dcc5e8cae241d948a3f976832250a631411",
+      "checked_at": 1790356408
+    },
+    "polymarket:will-jesus-christ-return-before-2027|manifold:I9quycncs8": {
+      "attestation": "AeHvUqr6N1vurfHjQ2efzUmQhRWADfNYYgpRtT2Uojef",
+      "signature": "46b4cHGJtPPxtgupcs3njucjka2RUEDw3ztH7aUAXHxZ95zWWYsvJi95dmgiVEsThWFToXYwbY2QZrkRfsvYHwiR",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "a2acc4c2937d85256fefc2aa9ed66169db4edaeff573149e78a3d8b22df8dec3",
+      "checked_at": 1790356408
+    },
+    "polymarket:another-fed-rate-hike-in-2026|manifold:PUu5UdNR6E": {
+      "attestation": "7ervVarbkfg6bpoArdXAvXsTbyp1uiwAy486kFnVH4yK",
+      "signature": "4AnWANu1CBeZnmME2MUY28rZNi9S126ThAdYo7E1STtfHqBhufGkkxx8ue3EoDAVGQGxzmqB7DQ1CTwwHqR8wrAw",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "d398f831feebf713f81e19382ecb79ecdba48518ab719b0d9985430371c4bbc8",
+      "checked_at": 1790356408
+    },
+    "polymarket:will-the-los-angeles-dodgers-win-the-2026-world-series|manifold:L0Z26cRAUt": {
+      "attestation": "AVcAfEMqZDwp2KEfr6oDsJb3NjARnGhr3fSARBxXv9Sg",
+      "signature": "Pu5orcDSvznj7ToSMTL8KufxXPiXSDHv5w9ZFepP56wv2q1yTso3JYqGTiRQn8ueHTJGQZVq68SCKPKraVyfyLp",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "89650e0a55a8448c2630d5b6027e567e9a4236c6065644f67c9c9f2f89d496d6",
+      "checked_at": 1790356408
+    },
+    "polymarket:will-china-invade-taiwan-before-2027|manifold:dSaVvMLpLbwaLLUGfGfK": {
+      "attestation": "5DW2WVVnKtznq3CCpFUcAukyXHT7ZBqJV6ni94k1ciFk",
+      "signature": "66ebwipDDAV3n7qz5LA3z3QKty1YNwk2dJTTiveFszHS3mK2k7U2vScTGoiHLcMV7A9zqJioH2V8ig3xZ4yoRfiB",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "d1f958b0bc56140d0b5f0914475ade3f0addfe8f3afb8b12ef24342f075e045c",
+      "checked_at": 1790356408
+    },
+    "polymarket:will-bitcoin-reach-87pt5k-in-september-2026|manifold:ddhA5Ihhlg": {
+      "attestation": "HPTdrZWNFpqdE2SKHx9Kp79HoQ9bsTKMLqHQ1dpfLhd6",
+      "signature": "49VGYL32tfgW4qcWxK7ahadMvsRDazYet5XJj63w9EiJZQK8MooWwDoRpQGk6Lo24h2vq79JFP911JS25onPhLYL",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "d5111e67145cdfb181c628a75cfe3052d5dea2afc500ff6b98957373821fc41d",
+      "checked_at": 1790356415
+    },
+    "polymarket:will-t1-win-worlds-2026|manifold:cdZON998RS": {
+      "attestation": "HwEAg3L3KCDY9TZ2aPMrqAScKghBtmpZB8bgbSzf4p5F",
+      "signature": "2KCQvxURnEqVGwT4F6UbdFNwQi1iKtEixtVGHS2v8WyLpxpp6TDDDZrLMFrQqugEHjpSdCzSj5oZJNkKDZos6qRp",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "16f7864794d6da14029e26fe8bf7dea46f44110d4ff3e225ae9af7fe5c24e855",
+      "checked_at": 1790356415
+    },
+    "polymarket:will-trump-acquire-greenland-before-2027|manifold:y9RAdPnhOp": {
+      "attestation": "E8WURbcK6TYY5e9o3iyLtoCLJDMmroGbw3s9H1njLrqq",
+      "signature": "52hMHYsSJAkDEbT7bmErNF35G4jsiiagbuo6HkYwyWsW2HmcKN14JMPfrjXiqZegroGVZaBVwBQL8UN11rt7E8RN",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "b298d0b06af0e1ae074b1705f7b3702453eca5911e4a322b871ca94ecb55d2db",
+      "checked_at": 1790356415
+    },
+    "polymarket:billionaire-one-time-wealth-tax-passes-in-california-election-2026|manifold:9nsyLEANnz": {
+      "attestation": "5dvtuVzi4FgGvAFYqDxkfSSM8BBsH9sc6vBtUTveC5Yj",
+      "signature": "541nEQdavKBhzsm1aNKrmGcnqvDGFj8zJrEgeprPATQcVPuDKsVmVYTfTdNBGnzjLDdVEEY6DE11qDEbycpgUUQw",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "3eb2bfd9d98f344163bf26355b095c43c60c1998d44d7bafd70cb68d6c597d13",
+      "checked_at": 1790356415
+    },
+    "polymarket:will-the-republicans-win-the-2028-us-presidential-election|manifold:acuirwp6fw": {
+      "attestation": "3cEqwmDsipvKC5ntTbLrDdikyNAXfP56jfFVx27nMhh3",
+      "signature": "8Y2vhAt6nuB1SGDcCcppSrZqZ4dZCLk1HkzE2mcmVa4iUVL4Hm4F3sqsPFHw3gs1VkkKFa75jQWTp4g4n3DxGGs",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "6f28682ed82748c2a72262f35ed773dce663de439e92f17d1993af32df3d658d",
+      "checked_at": 1790356415
+    },
+    "limitless:another-fed-rate-hike-in-2026-1789636928078|manifold:PUu5UdNR6E": {
+      "attestation": "Bw4EigumJYiMVurGeNkUKfD8Qzo38Umf3jynHaoVqWVK",
+      "signature": "3kfjvwDGx91PSUcR1qsiqMTbyhxavvGQd1J9FZbaWUiefBQMmXkyHg7ofMzW4qqhFmxPP7LzKAA6Yf7zhDUsedd9",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "b20752b486bac96c04d877457689fed96ba22ed1c8dd744d92762b3627f25c3d",
+      "checked_at": 1790356417
+    },
+    "limitless:us-recession-by-end-of-2026-1767804297592|manifold:ElSLRhzqyR": {
+      "attestation": "A4vHmm2epKuEjM21i62TchB9bnHgQst9ngSTz9bhvtVw",
+      "signature": "3HMHyDBUojCbBR75VvWcDsxQVvdZk8JuNsEgbro5dnE6iJvvgowwfGBH8JLdmkN3nSkkomMDJ9KCJzDu3uo7Sz9e",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "1b46ca712c064dc416b3420b72b7d63ca11f17a5afab2cdfd82484e0483a163e",
+      "checked_at": 1790356417
+    },
+    "limitless:will-china-invade-taiwan-by-end-of-2026-1768932552478|manifold:dSaVvMLpLbwaLLUGfGfK": {
+      "attestation": "8By8ggAXt1NB9cmy2ooG3A1NGFJws4VQNqe16rjoncTe",
+      "signature": "4m9ctAEUUM9LRRA4JqzGw3XMiWyQvurinik6ou2kJyZK1HSQY8RxqzdU1ZNTgU9gZRtY8yJSS5jh7vM9rxvrBpo8",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "20f6ba4e219e9711d71aea260ea8368de6dfacdf7faf65dd3866cb0242ef9635",
+      "checked_at": 1790356417
+    },
+    "limitless:brian-schatz-1785851933309|manifold:EzquAh9CtO": {
+      "attestation": "DDpgKiKjAFvPVMtbmoy5kpph4pYce5rvRzWFmqajkxMt",
+      "signature": "4mgxXjnEQhuMGbkziXCDsg3cWdfoz7R3T69aWALGewk5nvteXPMXPG7ZHTgsM7hrGnNyfynH5c9wisW1eQzZQqkS",
+      "verdict": "equivalent",
+      "method": "ai-judge-v2",
+      "rules_hash": "6847ce5706e014e75a8efc6d0a8e2bd54c43950d6de075beb79c2f1260928abf",
+      "checked_at": 1790356417
+    },
+    "limitless:democratic-party-1785850263376|manifold:hS5cg06hdz": {
+      "attestation": "6Si7o57AHWyPs71f8ATkxoP9VqXZi2hEcuvPnQCMZx8z",
+      "signature": "5EGWQZQNRmAamhPD2b1p9taBtAtykMabQ3CyghrRM6U4pRJRCBH383dryyXFbAvcyw36eREteVZad54Dagpvh6U4",
+      "verdict": "caveats",
+      "method": "ai-judge-v2",
+      "rules_hash": "c4f5c2f28b9cec8ce8f0fdba1052602a65287e1d3e721881c30d194be4f163d6",
+      "checked_at": 1790356417
+    },
+    "limitless:will-trump-acquire-greenland-before-2027-1768930762585|manifold:y9RAdPnhOp": {
+      "attestation": "6PkYvyZcLLuL5FwwCTuvhqsRXeSzVMCnwdDP4b3fZPFb",
+      "signature": "eeWJ6H9HgKmrX8PMGd4GXjjcFLyYBoQFUdHgH7tzHJxyNwAWPWK7aHiuZ117U9n3fBGLYYAJxmAWNfp4H2Wy1ZQ",
+      "verdict": "different",
+      "method": "ai-judge-v2",
+      "rules_hash": "f07bd7eb03fc237dab35804788c306345dd1fec8a209968b3b02f84e266511b6",
+      "checked_at": 1790356421
+    }
+  },
+  "network": "devnet",
+  "program": "22zoJMtdu4tQc2PzL74ZUT7FrwgB1Udec8DdW4yw4BdG",
+  "authority": "CqsXJdmwjZNBH9N4AdLZaibnfiqQn3mNJR9KTfixT89n",
+  "credential": "92cf2ssEpn7KbqrgFj6PWKouiDwbW276Fk7s1WUwMy9t",
+  "schema": "8LCZ1hTuWkRrxcQHUXGjqBYGkotqdnoeY5fYD3vMGkJM",
+  "schema_name": "ruleguard-pair-verdict",
+  "schema_version": 1,
+  "explorer": {
+    "credential": "https://explorer.solana.com/address/92cf2ssEpn7KbqrgFj6PWKouiDwbW276Fk7s1WUwMy9t?cluster=devnet",
+    "schema": "https://explorer.solana.com/address/8LCZ1hTuWkRrxcQHUXGjqBYGkotqdnoeY5fYD3vMGkJM?cluster=devnet"
+  },
+  "updated": "2026-09-26T08:12:44.261Z"
+}
